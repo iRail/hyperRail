@@ -15,3 +15,10 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::get('/easyrdf', function(){
+    $foaf = new EasyRdf_Graph("http://njh.me/foaf.rdf");
+    $foaf->load();
+    $me = $foaf->primaryTopic();
+    echo "We're loading information from http://njh.me/foaf.rdf: " . $me->get('foaf:name');
+});
