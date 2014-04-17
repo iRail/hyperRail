@@ -1,1 +1,11 @@
 /* Main SASS CSS file */
+
+body { padding-top: 110px; }
+
+.navbar-fixed-top{
+  min-height: 110px !important;
+}
+
+.navbar-nav{
+  margin-top: 25px !important;
+}

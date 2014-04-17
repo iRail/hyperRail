@@ -1,5 +1,7 @@
 <?php
 
+use \hyperRail\Utils\AcceptHeader as AcceptHeader;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,9 +13,12 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
+Route::get('/',  function(){
+    // Accept header test
+    // Content negotiation
+    $acceptHeader = new AcceptHeader(Request::header('accept'));
+    // TODO: negotiate content
+    return json_encode($acceptHeader);
 });
 
 Route::get('/easyrdf', function(){
