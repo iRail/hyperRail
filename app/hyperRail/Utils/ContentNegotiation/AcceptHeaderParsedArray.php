@@ -1,12 +1,8 @@
 <?php
 
-namespace hyperRail\Utils;
+namespace hyperRail\Utils\ContentNegotiation;
 
 /**
- * Note : Code is released under the GNU LGPL
- *
- * Please do not change the header of this file
- *
  * This library is free software; you can redistribute it and/or modify it under the terms of the GNU
  * Lesser General Public License as published by the Free Software Foundation; either version 2 of
  * the License, or (at your option) any later version.
@@ -19,23 +15,21 @@ namespace hyperRail\Utils;
 
 /**
  * The AcceptHeader page will parse and sort the different
- * allowed types for the content negociations
+ * allowed types for the content negotiations.
  *
  * @author      Pierrick Charron <pierrick@webstart.fr>
+ *              Nico Verbruggen <nico.verb@gmail.com>
  */
 
-class AcceptHeader extends \ArrayObject {
+class AcceptHeaderParsedArray extends \ArrayObject {
 
     /**
      * Constructor
-     *
-     * @param string $header Value of the Accept header
-     * @return void
+     * @param string $header
      */
     public function __construct($header)
     {
         $acceptedTypes = $this->_parse($header);
-        usort($acceptedTypes, array($this, '_compare'));
         parent::__construct($acceptedTypes);
     }
 
@@ -43,7 +37,7 @@ class AcceptHeader extends \ArrayObject {
      * Parse the accept header and return an array containing
      * all the informations about the Accepted types
      *
-     * @param string $header Value of the Accept header
+     * @param string $data
      * @return array
      */
     private function _parse($data)

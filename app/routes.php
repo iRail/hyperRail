@@ -1,6 +1,7 @@
 <?php
 
-use \hyperRail\Utils\AcceptHeader as AcceptHeader;
+use \hyperRail\Utils\ContentNegotiation\AcceptHeaderParsedArray as AcceptHeaderParsedArray;
+use \hyperRail\Utils\ContentNegotiation\AcceptHeaderQEvaluator as qEvaluator;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +15,10 @@ use \hyperRail\Utils\AcceptHeader as AcceptHeader;
 */
 
 Route::get('/',  function(){
-    // Accept header test
-    // Content negotiation
-    $acceptHeader = new AcceptHeader(Request::header('accept'));
-    // TODO: negotiate content
-    return json_encode($acceptHeader);
+    $acceptHeader = new AcceptHeaderParsedArray(Request::header('accept'));
+    // The q parameter is important because it tells us which format
+    // the end user would like to receive; so we need to evaluate it first!
+    return json_encode(qEvaluator::evaluate($acceptHeader));
 });
 
 Route::get('/stations', function(){
