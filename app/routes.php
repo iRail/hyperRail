@@ -21,7 +21,39 @@ Route::get('/',  function(){
     return json_encode($acceptHeader);
 });
 
-Route::get('/easyrdf', function(){
+Route::get('/stations', function(){
+
+});
+
+Route::get('/stations/{id}', function($id){
+    return $id;
+});
+
+Route::get('/stations/{id}/arrivals', function($id){
+    return $id;
+});
+
+Route::get('/stations/{id}/departures', function($id){
+    return $id;
+});
+
+Route::get('/vehicle', function(){
+
+});
+
+Route::get('/parkings', function(){
+
+});
+
+Route::get('/route', function(){
+
+});
+
+Route::get('/parkings/{location_id}', function($location_id){
+    return $location_id;
+});
+
+Route::get('/tests/easyrdf', function(){
     $foaf = new EasyRdf_Graph("http://njh.me/foaf.rdf");
     $foaf->load();
     $me = $foaf->primaryTopic();
