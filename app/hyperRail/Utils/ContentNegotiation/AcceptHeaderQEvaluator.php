@@ -23,12 +23,18 @@ class AcceptHeaderQEvaluator {
      * inherit this quality parameter from application/xml, which is 0.9.
      * The evaluate function fixes this, so we can do some comparisons.
      *
-     * For this first version, we return an array with all requested file formats
-     * and their quality setting.
+     * For this first version, we return an array with all q values as key
+     * which contain the list of mimes requested. Example array that is returned:
      *
-     * TODO: evaluate the different quality params and group them so that the
-     * server can evaluate which kind of MIME-type should be served to the
-     * person/client who made the request.
+     Array (
+     [0.9] => Array (
+            [0] => text/html
+            [1] => application/xhtml+xml
+            [2] => application/xml
+     )
+     [0.8] => Array (
+           [0] => image/webp )
+     )
      *
      * @param AcceptHeaderParsedArray $acceptHeader
      * @return array
@@ -38,8 +44,43 @@ class AcceptHeaderQEvaluator {
         // (AcceptHeader class leaves empty params if q is not specifically set)
         $parsedHeaders = self::fillEmptyQParams($acceptHeader);
         // Now, group requested formats per quality request
-        // For now, let's return the headers in JSON with all their Q's filled
-        return $parsedHeaders;
+        usort($parsedHeaders, "self::uSortByQ");
+        // Next, filter mime-types per q requested
+        $mimes = array();       // Array of all mime-types per q (as key)
+        $mimesAlike = array();  // Array of mime-types that have same q values
+                                // Will be pushed onto $mimes, when q is different
+        $prevQ = null;          // Previously measured q
+        foreach ($parsedHeaders as $header){
+            if (array_key_exists("q", $header['params'])){
+                // Get current q and mime-type
+                $currentQ = $header['params']['q'];
+                $mimeType = ($header['type'] . "/" . $header['subtype']);
+                // Check if there is a new Q to be saved
+                if ($currentQ !== $prevQ){
+                    // If a new q is found, create new $mimesAlike array
+                    // in which to store similar values
+                    $mimesAlike = array();
+                }
+                // Push mime-type to array wit
+                array_push($mimesAlike, $mimeType);
+                // Set key value pair (will override each time q is unchanged)
+                $mimes[$currentQ] = $mimesAlike;
+                // Set previous q encountered to this q
+                // and restart
+                $prevQ = $currentQ;
+            }
+        }
+        // TODO: calculate server-side q values depending on format?
+        // Sort mimes by number: higher is better
+        krsort($mimes);
+        // Finally, return mimetypes as array that can be used
+        // to determine which format needs to be sent to person who
+        // requested the resource
+        return $mimes;
+    }
+
+    static function uSortByQ($a, $b) {
+        return $a["params"]["q"] - $b["params"]["q"];
     }
 
     /**
@@ -61,12 +102,8 @@ class AcceptHeaderQEvaluator {
         $parsedHeaders = array();
         $prev_params = null;
         foreach ($reverted as $item){
-            // Level param checks take priority
-            if (array_key_exists("level", $item['params'])){
-                $prev_params = $item['params'];
-            }
-            // Then check for q params
-            elseif (array_key_exists("q", $item['params'])){
+            // Check for q params
+            if (array_key_exists("q", $item['params'])){
                 $prev_params = $item['params'];
             }
             else{
@@ -74,6 +111,10 @@ class AcceptHeaderQEvaluator {
                 if ($prev_params !== null){
                     // Assuming $params is set at all (if no q setting is found)
                     $item['params'] = $prev_params;
+                }
+                // In case no q params are sent at all, default to q=1
+                if ($prev_params == null && $item['params'] == null){
+                    $item['params'] = ["q" => 1];
                 }
             }
             array_push($parsedHeaders, $item);
