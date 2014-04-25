@@ -6,8 +6,14 @@
 	"require": {
 		"laravel/framework": "4.1.*",
         "easyrdf/easyrdf": "*",
-        "ml/json-ld": "1.*"
-	},
+        "ml/json-ld": "1.*",
+        "willdurand/negotiation": "@stable",
+        "fzaninotto/faker": "1.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.0.*",
+        "way/generators": "2.*"
+    },
 	"autoload": {
 		"classmap": [
 			"app/commands",
