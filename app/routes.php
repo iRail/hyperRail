@@ -1,5 +1,7 @@
 <?php
 
+use ML\JsonLD\JsonLD;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,6 +14,23 @@
 */
 
 Route::get('/', 'HomeController@showWelcome');
+
+Route::get('/jsonld', function(){
+
+    $graph = new EasyRdf_Graph();
+    if (empty($_REQUEST['data'])) {
+        $graph->load('http://hyperrail.dev/NMBS.ttl', 'turtle');
+    }
+
+    $format = EasyRdf_Format::getFormat('jsonld');
+    $output = $graph->serialise($format);
+    if (!is_scalar($output)) {
+        $output = var_export($output, true);
+    }
+
+    print $output;
+
+});
 
 Route::get('/stations', function(){
 
@@ -43,11 +62,4 @@ Route::get('/route', function(){
 
 Route::get('/parkings/{location_id}', function($location_id){
     return $location_id;
-});
-
-Route::get('/tests/easyrdf', function(){
-    $foaf = new EasyRdf_Graph("http://njh.me/foaf.rdf");
-    $foaf->load();
-    $me = $foaf->primaryTopic();
-    echo "We're loading information from http://njh.me/foaf.rdf: " . $me->get('foaf:name');
 });

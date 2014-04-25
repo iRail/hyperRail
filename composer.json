@@ -6,6 +6,7 @@
 	"require": {
 		"laravel/framework": "4.1.*",
         "easyrdf/easyrdf": "*",
+        "semsol/arc2": "*",
         "ml/json-ld": "1.*",
         "willdurand/negotiation": "@stable",
         "fzaninotto/faker": "1.3"

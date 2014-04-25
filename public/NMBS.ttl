@@ -1,0 +1,36 @@
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix geo:   <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix rplod: <http://semweb.mmlab.be/ns/rplod/> .
+@prefix transit: <http://vocab.org/transit/terms/> .
+
+<http://irail.be/stations/NMBS/008814449/departures/20140425142179260182460448872aff03ed5b7a107e>
+        rplod:actualDepartureTime     "2014-04-25T14:21:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008814464> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T14:23:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T14:23:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T14:21:00+02:00" ;
+        transit:headsign              "Mechelen [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 3464" ] .
+
+<http://irail.be/stations/NMBS/008813003/departures/201404250625fd279f007a8e9c0e60c74fb5a00b0244>
+        rplod:actualDepartureTime     "2014-04-25T06:25:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008814001> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T06:28:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "19" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T06:28:00+02:00" ;
+        rplod:platform                "6" ;
+        rplod:scheduledDepartureTime  "2014-04-25T06:25:00+02:00" ;
+        transit:headsign              "Geraardsbergen [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IR 3128" ] .
