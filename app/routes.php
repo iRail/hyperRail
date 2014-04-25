@@ -11,20 +11,7 @@
 |
 */
 
-Route::get('/',  function(){
-    // Set up negotiation
-    $negotiator   = new \Negotiation\FormatNegotiator();
-    // Get accept header
-    $acceptHeader = Request::header('accept');
-    // Test for priorities
-    $priorities   = array('text/html', 'application/json', '*/*');
-    // Get the best formats
-    $result = $negotiator->getBest($acceptHeader);
-    // Dump value
-    var_dump($result->getValue());
-    // Dump quality
-    var_dump($result->getQuality());
-});
+Route::get('/', 'HomeController@showWelcome');
 
 Route::get('/stations', function(){
 
