@@ -10,14 +10,20 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-        // Set up negotiation
+        /**
+         * Negotiation tests
+         // Set up negotiation
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
-        $priorities = array('application/json', '*/*');
+        $priorities = array('application/json');
         $result = $negotiator->getBest($acceptHeader, $priorities);
         echo "Server will return this format: " . $result->getValue();
         echo "\n";
         echo "Server has determined this quality: " . $result->getQuality();
+        */
+
+        return View::make('hello');
+
 	}
 
 }

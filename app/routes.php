@@ -27,8 +27,10 @@ Route::get('/jsonld', function(){
     if (!is_scalar($output)) {
         $output = var_export($output, true);
     }
+    // Expand JsonLD
+    $expanded = JsonLD::expand($output);
+    print JsonLD::toString($expanded, true);
 
-    print $output;
 
 });
 

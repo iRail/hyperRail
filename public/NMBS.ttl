@@ -34,3 +34,1043 @@
         transit:headsign              "Geraardsbergen [NMBS/SNCB]" ;
         transit:route                 [ rdfs:label
                           "IR 3128" ] .
+
+<http://irail.be/stations/NMBS/008841004/departures/2014042514591eb3fb257716098295881fe084b23ba5>
+        rplod:actualDepartureTime     "2014-04-25T14:59:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008843208> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T15:07:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "3" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T15:07:00+02:00" ;
+        rplod:platform                "6" ;
+        rplod:scheduledDepartureTime  "2014-04-25T14:59:00+02:00" ;
+        transit:headsign              "Doornik [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IC 2436" ] .
+
+<http://irail.be/stations/NMBS/008812005/departures/2014042518516e018527dbec88f916761073e4b3b3bf>
+        rplod:actualDepartureTime     "2014-04-25T18:51:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008811916> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T18:57:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T18:57:00+02:00" ;
+        rplod:platform                "7" ;
+        rplod:scheduledDepartureTime  "2014-04-25T18:51:00+02:00" ;
+        transit:headsign              "Louvain-La-Neuve-Univ. [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 6568" ] .
+
+<http://irail.be/stations/NMBS/008728686/departures/201404250635ddc04b4a2fad4978f1688ffdc9f5c18c>
+        rplod:actualDepartureTime     "2014-04-25T06:35:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008728685> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T06:37:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T06:37:00+02:00" ;
+        rplod:platform                "" ;
+        rplod:scheduledDepartureTime  "2014-04-25T06:35:00+02:00" ;
+        transit:headsign              "Lille Flandres(f)" ;
+        transit:route                 [ rdfs:label
+                          "IC 19900" ] .
+
+<http://irail.be/stations/NMBS/008833449/departures/201404251722f9a747f25dc845c082665599b6f936f9>
+        rplod:actualDepartureTime     "2014-04-25T17:22:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008833670> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T17:26:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T17:26:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T17:22:00+02:00" ;
+        transit:headsign              "Landen [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "P 8351" ] .
+
+<http://irail.be/stations/NMBS/008821600/departures/2014042508239f944c1af4c4d396113ff28255dabfdc>
+        rplod:actualDepartureTime     "2014-04-25T08:23:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008821717> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T08:37:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "3" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T08:37:00+02:00" ;
+        rplod:platform                "4" ;
+        rplod:scheduledDepartureTime  "2014-04-25T08:23:00+02:00" ;
+        transit:headsign              "Turnhout [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IC 3407" ] .
+
+<http://irail.be/stations/NMBS/008896370/departures/2014042519593f1a1c0e97a4b0f477b001341c9bb8cb>
+        rplod:actualDepartureTime     "2014-04-25T19:59:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008896388> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T20:03:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T20:03:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T19:59:00+02:00" ;
+        transit:headsign              "Sint-Niklaas [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IC 2319" ] .
+
+<http://irail.be/stations/NMBS/008821709/departures/201404252214f05d012848898e3fa470d3ac4acd66ec>
+        rplod:actualDepartureTime     "2014-04-25T22:14:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008821717> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T22:18:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "5" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T22:18:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T22:14:00+02:00" ;
+        transit:headsign              "Herentals [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 2971" ] .
+
+<http://irail.be/stations/NMBS/008884327/departures/201404250612241e8846bc9add9f621360e91004b987>
+        rplod:actualDepartureTime     "2014-04-25T06:12:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008884319> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T06:16:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T06:16:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T06:12:00+02:00" ;
+        transit:headsign              "Luik-Guillemins [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IC 1706" ] .
+
+<http://irail.be/stations/NMBS/008821196/departures/201404251228657fcb42c511e12ec85af6d0f25772df>
+        rplod:actualDepartureTime     "2014-04-25T12:28:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008894748> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T12:36:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T12:36:00+02:00" ;
+        rplod:platform                "3" ;
+        rplod:scheduledDepartureTime  "2014-04-25T12:28:00+02:00" ;
+        transit:headsign              "Oostende [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IC 1833" ] .
+
+<http://irail.be/stations/NMBS/008895430/departures/201404251946a30feea3579c201fe83229240c4200fd>
+        rplod:actualDepartureTime     "2014-04-25T19:46:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008895422> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T19:49:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T19:49:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T19:46:00+02:00" ;
+        transit:headsign              "Zottegem [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 2289" ] .
+
+<http://irail.be/stations/NMBS/008811601/departures/2014042517174b08e04ce12aff1df679dd150f44fee3>
+        rplod:actualDepartureTime     "2014-04-25T17:17:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008811304> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T17:35:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T17:35:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T17:17:00+02:00" ;
+        transit:headsign              "Brussel-Zuid [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IC 2437" ] .
+
+<http://irail.be/stations/NMBS/008892627/departures/201404252125f1d94981bd0493ba7ba61bda7815b35d>
+        rplod:actualDepartureTime     "2014-04-25T21:25:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008892601> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T21:28:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T21:28:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T21:25:00+02:00" ;
+        transit:headsign              "Ronse [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 1890" ] .
+
+<http://irail.be/stations/NMBS/008866001/departures/201404251553895aa7864f2b98c05ade29e319ac5580>
+        rplod:actualDepartureTime     "2014-04-25T15:53:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008200520> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T16:00:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T16:00:00+02:00" ;
+        rplod:platform                "5" ;
+        rplod:scheduledDepartureTime  "2014-04-25T15:53:00+02:00" ;
+        transit:headsign              "Luxembourg (l)" ;
+        transit:route                 [ rdfs:label
+                          "L 5915" ] .
+
+<http://irail.be/stations/NMBS/008812005/departures/201404251812e47c298e3ca14d054b0660d30696d231>
+        rplod:actualDepartureTime     "2014-04-25T18:12:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008811916> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T18:19:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T18:19:00+02:00" ;
+        rplod:platform                "7" ;
+        rplod:scheduledDepartureTime  "2014-04-25T18:12:00+02:00" ;
+        transit:headsign              "Dinant [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IC 2418" ] .
+
+<http://irail.be/stations/NMBS/008811247/departures/201404251414f2e5a5cfa19d455efd5b327018cdc2d3>
+        rplod:actualDepartureTime     "2014-04-25T14:14:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008811221> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T14:17:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T14:17:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T14:14:00+02:00" ;
+        transit:headsign              "S Gravenbrakel [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 3785" ] .
+
+<http://irail.be/stations/NMBS/008833134/departures/201404251808619330095ed8436b53a83a5176aff63d>
+        rplod:actualDepartureTime     "2014-04-25T18:08:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008833159> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T18:12:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T18:12:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T18:08:00+02:00" ;
+        transit:headsign              "Ottignies [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 3068" ] .
+
+<http://irail.be/stations/NMBS/008871373/departures/201404251259668a01b9fc6ebf2c9336b7cfc9fd2604>
+        rplod:actualDepartureTime     "2014-04-25T12:59:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008871381> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T13:02:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T13:02:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T12:59:00+02:00" ;
+        transit:headsign              "S Gravenbrakel [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 4363" ] .
+
+<http://irail.be/stations/NMBS/008891314/departures/2014042518030fd74290bdde36c0fea3c6974f85b3fe>
+        rplod:actualDepartureTime     "2014-04-25T18:03:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008891264> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T18:09:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T18:09:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T18:03:00+02:00" ;
+        transit:headsign              "Brugge [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "P 8901" ] .
+
+<http://irail.be/stations/NMBS/008881430/departures/201404251543384728e3bd4d8843ac4272227738fd0f>
+        rplod:actualDepartureTime     "2014-04-25T15:43:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008881406> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T15:47:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T15:47:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T15:43:00+02:00" ;
+        transit:headsign              "Bergen [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 4465" ] .
+
+<http://irail.be/stations/NMBS/008895505/departures/201404251949d31eca7783c802697364b5f4fa90ab1c>
+        rplod:actualDepartureTime     "2014-04-25T19:49:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008895612> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T19:56:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T19:56:00+02:00" ;
+        rplod:platform                "" ;
+        rplod:scheduledDepartureTime  "2014-04-25T19:49:00+02:00" ;
+        transit:headsign              "Dendermonde [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 1569" ] .
+
+<http://irail.be/stations/NMBS/008871365/departures/20140425200609d638f553ce3605619fbcffd6530cf3>
+        rplod:actualDepartureTime     "2014-04-25T20:06:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008871308> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T20:08:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "4" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T20:08:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T20:06:00+02:00" ;
+        transit:headsign              "Charleroi-Zuid [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 4389" ] .
+
+<http://irail.be/stations/NMBS/008811437/departures/201404250645b24e746eae20a262481db390dab28a4c>
+        rplod:actualDepartureTime     "2014-04-25T06:45:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008811429> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T06:49:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T06:49:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T06:45:00+02:00" ;
+        transit:headsign              "Brussel-Zuid [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 6577" ] .
+
+<http://irail.be/stations/NMBS/008200110/departures/20140425182987a1893b5fc5e2f1477775a5bfa17fb9>
+        rplod:actualDepartureTime     "2014-04-25T18:29:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008200120> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T18:39:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T18:39:00+02:00" ;
+        rplod:platform                "" ;
+        rplod:scheduledDepartureTime  "2014-04-25T18:29:00+02:00" ;
+        transit:headsign              "Gouvy [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 8643" ] .
+
+<http://irail.be/stations/NMBS/008811767/departures/201404250948a873efa58932bbb777676a9a7e3ab8ef>
+        rplod:actualDepartureTime     "2014-04-25T09:48:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008811759> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T09:50:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T09:50:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T09:48:00+02:00" ;
+        transit:headsign              "Ottignies [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 6459" ] .
+
+<http://irail.be/stations/NMBS/008892643/departures/201404250612ab27cfd31324b03540f1b6338abf7ded>
+        rplod:actualDepartureTime     "2014-04-25T06:12:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008892635> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T06:15:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T06:15:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T06:12:00+02:00" ;
+        transit:headsign              "Ronse [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 1875" ] .
+
+<http://irail.be/stations/NMBS/008821048/departures/201404251557585c3b9da3f3d596545b67b07da80db8>
+        rplod:actualDepartureTime     "2014-04-25T15:57:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008821089> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T16:08:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T16:08:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T15:57:00+02:00" ;
+        transit:headsign              "Aarschot [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "P 8280" ] .
+
+<http://irail.be/stations/NMBS/008832250/departures/20140425152216b34ba3076d5e414345b3311e4e960c>
+        rplod:actualDepartureTime     "2014-04-25T15:22:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008832243> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T15:26:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T15:26:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T15:22:00+02:00" ;
+        transit:headsign              "Antwerpen-Centraal [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IR 4436" ] .
+
+<http://irail.be/stations/NMBS/008822475/departures/2014042514549b40c5d707c7da3ef2ef8cd987034cd1>
+        rplod:actualDepartureTime     "2014-04-25T14:54:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008822517> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T14:57:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T14:57:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T14:54:00+02:00" ;
+        transit:headsign              "Leuven [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IR 4113" ] .
+
+<http://irail.be/stations/NMBS/008873007/departures/201404251914e5cd52180265ac64e0fc34376ffee21c>
+        rplod:actualDepartureTime     "2014-04-25T19:14:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008873239> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T19:20:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T19:20:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T19:14:00+02:00" ;
+        transit:headsign              "Couvin [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "P 8718" ] .
+
+<http://irail.be/stations/NMBS/008822004/departures/201404252340334d31cde2f648e9fc12b186b16cba1d>
+        rplod:actualDepartureTime     "2014-04-25T23:40:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008812005> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T23:55:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "12" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T23:55:00+02:00" ;
+        rplod:platform                "8" ;
+        rplod:scheduledDepartureTime  "2014-04-25T23:40:00+02:00" ;
+        transit:headsign              "Charleroi-Zuid [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IC 2044" ] .
+
+<http://irail.be/stations/NMBS/008881505/departures/201404251046782a3a2f24e30d89d8a91d4680fd1a2d>
+        rplod:actualDepartureTime     "2014-04-25T10:46:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008881562> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T10:53:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T10:53:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T10:46:00+02:00" ;
+        transit:headsign              "Brussel-Nat-Luchthaven [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IR 3710" ] .
+
+<http://irail.be/stations/NMBS/008893047/departures/2014042518177dc8d7c828440d0a58d27176302f32ca>
+        rplod:actualDepartureTime     "2014-04-25T18:17:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008893054> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T18:19:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T18:19:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T18:17:00+02:00" ;
+        transit:headsign              "Geraardsbergen [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 1868" ] .
+
+<http://irail.be/stations/NMBS/008873122/departures/20140425120914dd9b5be1f3c98a318270a6bc0cfda8>
+        rplod:actualDepartureTime     "2014-04-25T12:09:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008873007> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T12:20:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T12:20:00+02:00" ;
+        rplod:platform                "1b" ;
+        rplod:scheduledDepartureTime  "2014-04-25T12:09:00+02:00" ;
+        transit:headsign              "Charleroi-Zuid [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IR 4832" ] .
+
+<http://irail.be/stations/NMBS/008885522/departures/201404251218f534ef3640e9aaf763f87bc466f9b190>
+        rplod:actualDepartureTime     "2014-04-25T12:18:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008884855> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T12:26:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T12:26:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T12:18:00+02:00" ;
+        transit:headsign              "Jambes [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IR 3834" ] .
+
+<http://irail.be/stations/NMBS/008811916/departures/201404251211b3b671b2bc5814f0a50ef584612417d5>
+        rplod:actualDepartureTime     "2014-04-25T12:11:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008812005> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T12:18:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "8" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T12:18:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T12:11:00+02:00" ;
+        transit:headsign              "Brussel-Zuid [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IC 2132" ] .
+
+<http://irail.be/stations/NMBS/008893583/departures/201404251917eb76d884e33d1f7013c96bbc2d025b70>
+        rplod:actualDepartureTime     "2014-04-25T19:17:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008893542> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T19:21:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T19:21:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T19:17:00+02:00" ;
+        transit:headsign              "Gent-Sint-Pieters [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IR 3539" ] .
+
+<http://irail.be/stations/NMBS/008812005/departures/201404252123c79442575344e24db030eb45c6b68ad9>
+        rplod:actualDepartureTime     "2014-04-25T21:23:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008813003> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T21:26:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "4" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T21:26:00+02:00" ;
+        rplod:platform                "9" ;
+        rplod:scheduledDepartureTime  "2014-04-25T21:23:00+02:00" ;
+        transit:headsign              "Gent-Sint-Pieters [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IR 3542" ] .
+
+<http://irail.be/stations/NMBS/008843166/departures/20140425103878f4a106c2fae7bd9cf0b83b15eda783>
+        rplod:actualDepartureTime     "2014-04-25T10:38:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008843224> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T10:40:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T10:40:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T10:38:00+02:00" ;
+        transit:headsign              "Statte [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 4960" ] .
+
+<http://irail.be/stations/NMBS/008843406/departures/2014042518129ce329110ac764de869e8d4b38e6c151>
+        rplod:actualDepartureTime     "2014-04-25T18:12:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008843307> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T18:15:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "4" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T18:15:00+02:00" ;
+        rplod:platform                "6" ;
+        rplod:scheduledDepartureTime  "2014-04-25T18:12:00+02:00" ;
+        transit:headsign              "Hoei [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "P 8403" ] .
+
+<http://irail.be/stations/NMBS/008894508/departures/201404251627bcad33683793d19f9cbb234bc0a5afa7>
+        rplod:actualDepartureTime     "2014-04-25T16:27:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008894433> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T16:32:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T16:32:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T16:27:00+02:00" ;
+        transit:headsign              "Poperinge [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IC 2339" ] .
+
+<http://irail.be/stations/NMBS/008896370/departures/201404251958760391569c3c3e0db9af410d57abe666>
+        rplod:actualDepartureTime     "2014-04-25T19:58:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008896305> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T20:02:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T20:02:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T19:58:00+02:00" ;
+        transit:headsign              "Poperinge [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IC 2340" ] .
+
+<http://irail.be/stations/NMBS/008814126/departures/201404252107b9fdd1f96fbb3b44e82b836a56a1b590>
+        rplod:actualDepartureTime     "2014-04-25T21:07:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008814118> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T21:09:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T21:09:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T21:07:00+02:00" ;
+        transit:headsign              "Brussel-Noord [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IR 2820" ] .
+
+<http://irail.be/stations/NMBS/008844271/departures/201404251928dd4259a26d53c219b25327aef98c3e25>
+        rplod:actualDepartureTime     "2014-04-25T19:28:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008842036> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T19:34:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T19:34:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T19:28:00+02:00" ;
+        transit:headsign              "Luik-Paleis [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 5289" ] .
+
+<http://irail.be/stations/NMBS/008864436/departures/201404251804afb3ae85a3df7c0f053a2bf14d014a21>
+        rplod:actualDepartureTime     "2014-04-25T18:04:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008864410> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T18:11:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T18:11:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T18:04:00+02:00" ;
+        transit:headsign              "Jemelle [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "P 8676" ] .
+
+<http://irail.be/stations/NMBS/008822277/departures/201404251100fb44cde8f75fc9582e811486f736f428>
+        rplod:actualDepartureTime     "2014-04-25T11:00:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008822426> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T11:04:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "4" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T11:04:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T11:00:00+02:00" ;
+        transit:headsign              "Mechelen [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 3460" ] .
+
+<http://irail.be/stations/NMBS/008822772/departures/2014042518370287fc8dae27c7527540ef752d9763c7>
+        rplod:actualDepartureTime     "2014-04-25T18:37:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008894672> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T18:42:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T18:42:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T18:37:00+02:00" ;
+        transit:headsign              "Sint-Niklaas [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "P 8091" ] .
+
+<http://irail.be/stations/NMBS/008895778/departures/201404250528382d3727451340014a9d046c23b6f963>
+        rplod:actualDepartureTime     "2014-04-25T05:28:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008895844> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T05:31:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T05:31:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T05:28:00+02:00" ;
+        transit:headsign              "Denderleeuw [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "P 7951" ] .
+
+<http://irail.be/stations/NMBS/008832409/departures/201404252106d78f694ac2cc011a244bdde978bccfad>
+        rplod:actualDepartureTime     "2014-04-25T21:06:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008832565> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T21:16:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T21:16:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T21:06:00+02:00" ;
+        transit:headsign              "Neerpelt [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IR 3220" ] .
+
+<http://irail.be/stations/NMBS/008831401/departures/2014042505169611610727f77b8750cd819c8dd71721>
+        rplod:actualDepartureTime     "2014-04-25T05:16:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008833274> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T05:20:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T05:20:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T05:16:00+02:00" ;
+        transit:headsign              "Blankenberge [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IC 1527" ] .
+
+<http://irail.be/stations/NMBS/008881463/departures/201404251423fd11ec114613a41662b3ffd046260d59>
+        rplod:actualDepartureTime     "2014-04-25T14:23:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008882206> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T14:28:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "3" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T14:28:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T14:23:00+02:00" ;
+        transit:headsign              "Charleroi-Zuid [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 4484" ] .
+
+<http://irail.be/stations/NMBS/008811601/departures/20140425121502ddf93911540b241a126d2246f486af>
+        rplod:actualDepartureTime     "2014-04-25T12:15:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008861200> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T12:26:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "4" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T12:26:00+02:00" ;
+        rplod:platform                "3" ;
+        rplod:scheduledDepartureTime  "2014-04-25T12:15:00+02:00" ;
+        transit:headsign              "Luxembourg (l)" ;
+        transit:route                 [ rdfs:label
+                          "IC 2111" ] .
+
+<http://irail.be/stations/NMBS/008891116/departures/2014042518168342ecb3938560b94e899aeeb3c1252f>
+        rplod:actualDepartureTime     "2014-04-25T18:16:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008891009> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T18:23:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "4" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T18:23:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T18:16:00+02:00" ;
+        transit:headsign              "Brugge [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 588" ] .
+
+<http://irail.be/stations/NMBS/008861200/departures/2014042512511b106f080f592340677774934de761c8>
+        rplod:actualDepartureTime     "2014-04-25T12:51:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008861515> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T12:55:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T12:55:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T12:51:00+02:00" ;
+        transit:headsign              "Louvain-La-Neuve-Univ. [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 6283" ] .
+
+<http://irail.be/stations/NMBS/008874609/departures/2014042505135456522f6b47732283eef4b0984cb8d2>
+        rplod:actualDepartureTime     "2014-04-25T05:13:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008874005> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T05:19:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T05:19:00+02:00" ;
+        rplod:platform                "" ;
+        rplod:scheduledDepartureTime  "2014-04-25T05:13:00+02:00" ;
+        transit:headsign              "Doornik [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IR 3804" ] .
+
+<http://irail.be/stations/NMBS/008812120/departures/2014042513074f8021a3f3b33c209e5e55ded908aaa1>
+        rplod:actualDepartureTime     "2014-04-25T13:07:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008812146> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T13:10:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T13:10:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T13:07:00+02:00" ;
+        transit:headsign              "Dendermonde [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 1561" ] .
+
+<http://irail.be/stations/NMBS/008812245/departures/201404250815b2dfeab166a714dc31ade3f02766248f>
+        rplod:actualDepartureTime     "2014-04-25T08:15:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008812237> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T08:18:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T08:18:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T08:15:00+02:00" ;
+        transit:headsign              "Brussel-Zuid [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "P 7968" ] .
+
+<http://irail.be/stations/NMBS/008861200/departures/2014042517373e5c4aeb3a7260838df09834eba7d408>
+        rplod:actualDepartureTime     "2014-04-25T17:37:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008861416> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T17:41:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T17:41:00+02:00" ;
+        rplod:platform                "5" ;
+        rplod:scheduledDepartureTime  "2014-04-25T17:37:00+02:00" ;
+        transit:headsign              "Namen [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 6266" ] .
+
+<http://irail.be/stations/NMBS/008821121/departures/20140425154657adacef67ee1d3af197fc1dab42d038>
+        rplod:actualDepartureTime     "2014-04-25T15:46:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008821006> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T15:50:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "3" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T15:50:00+02:00" ;
+        rplod:platform                "8" ;
+        rplod:scheduledDepartureTime  "2014-04-25T15:46:00+02:00" ;
+        transit:headsign              "Antwerpen-Centraal [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IR 3235" ] .
+
+<http://irail.be/stations/NMBS/008813003/departures/201404260014e07906d7fda57e0aefc7fcd04e1941e0>
+        rplod:actualDepartureTime     "2014-04-26T00:14:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008814001> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-26T00:18:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "19" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-26T00:18:00+02:00" ;
+        rplod:platform                "4" ;
+        rplod:scheduledDepartureTime  "2014-04-26T00:14:00+02:00" ;
+        transit:headsign              "Brussel-Zuid [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 6394" ] .
+
+<http://irail.be/stations/NMBS/008813003/departures/201404251427fab6847beff5dedbf593998e610afa25>
+        rplod:actualDepartureTime     "2014-04-25T14:27:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008814001> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T14:30:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T14:30:00+02:00" ;
+        rplod:platform                "4" ;
+        rplod:scheduledDepartureTime  "2014-04-25T14:27:00+02:00" ;
+        transit:headsign              "Gent-Sint-Pieters [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IR 3535" ] .
+
+<http://irail.be/stations/NMBS/008812021/departures/201404251846541f34aaaa95787e1bf785877850a5e2>
+        rplod:actualDepartureTime     "2014-04-25T18:46:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008812005> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T18:50:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T18:50:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T18:46:00+02:00" ;
+        transit:headsign              "Zottegem [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 2088" ] .
+
+<http://irail.be/stations/NMBS/008832433/departures/201404251654772417e131dedea0c21363fd235ba3af>
+        rplod:actualDepartureTime     "2014-04-25T16:54:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008832409> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T17:01:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T17:01:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T16:54:00+02:00" ;
+        transit:headsign              "Hamont [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IR 3216" ] .
+
+<http://irail.be/stations/NMBS/008864816/departures/201404251749cbd7094cfdaa43a6e3d90cdedaf3a0aa>
+        rplod:actualDepartureTime     "2014-04-25T17:49:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008864501> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T17:53:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "4" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T17:53:00+02:00" ;
+        rplod:platform                "2" ;
+        rplod:scheduledDepartureTime  "2014-04-25T17:49:00+02:00" ;
+        transit:headsign              "Namen [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "L 5788" ] .
+
+<http://irail.be/stations/NMBS/008896008/departures/201404252148db5d5bdd1684d7ab0a45cdcf9b2980a8>
+        rplod:actualDepartureTime     "2014-04-25T21:48:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008896149> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T21:57:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "2" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T21:57:00+02:00" ;
+        rplod:platform                "" ;
+        rplod:scheduledDepartureTime  "2014-04-25T21:48:00+02:00" ;
+        transit:headsign              "Antwerpen-Centraal [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "IC 743" ] .
+
+<http://irail.be/stations/NMBS/008895000/departures/201404251708379903f669dcd90b344757ae1f8d14c8>
+        rplod:actualDepartureTime     "2014-04-25T17:08:00+02:00" ;
+        rplod:delay                   "" ;
+        rplod:nextStop                <http://irail.be/stations/NMBS/008895125> ;
+        rplod:nextStopActualArrivalTime
+                "2014-04-25T17:11:00+02:00" ;
+        rplod:nextStopDelay           "" ;
+        rplod:nextStopPlatform        "1" ;
+        rplod:nextStopScheduledArrivalTime
+                "2014-04-25T17:11:00+02:00" ;
+        rplod:platform                "1" ;
+        rplod:scheduledDepartureTime  "2014-04-25T17:08:00+02:00" ;
+        transit:headsign              "Burst [NMBS/SNCB]" ;
+        transit:route                 [ rdfs:label
+                          "P 8974" ] .
