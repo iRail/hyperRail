@@ -15,24 +15,7 @@ use ML\JsonLD\JsonLD;
 
 Route::get('/', 'HomeController@showWelcome');
 
-Route::get('/jsonld', function(){
-
-    $graph = new EasyRdf_Graph();
-    if (empty($_REQUEST['data'])) {
-        $graph->load('http://hyperrail.dev/NMBS.ttl', 'turtle');
-    }
-
-    $format = EasyRdf_Format::getFormat('jsonld');
-    $output = $graph->serialise($format);
-    if (!is_scalar($output)) {
-        $output = var_export($output, true);
-    }
-    // Expand JsonLD
-    $expanded = JsonLD::expand($output);
-    print JsonLD::toString($expanded, true);
-
-
-});
+Route::get('/apitest', 'ApiController@test');
 
 Route::get('/stations', function(){
 

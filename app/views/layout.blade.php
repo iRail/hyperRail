@@ -28,6 +28,7 @@
                 <li><a href="{{ URL::to('/') }}">Home</a></li>
                 <li><a href="{{ URL::to('/stations') }}">Stations</a></li>
                 <li><a href="{{ URL::to('/route') }}">Route</a></li>
+                <li><a href="{{ URL::to('/apitest') }}">API Test</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
