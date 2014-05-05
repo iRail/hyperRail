@@ -29,8 +29,8 @@ class ApiController extends \BaseController {
             "platform"              =>      "http://semweb.mmlab.be/ns/rplod/platform",
             "scheduledDepartureTime" =>     "http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime",
             "headsign"              =>      "http://vocab.org/transit/terms/headsign",
-            "route"                 =>      "http://vocab.org/transit/terms/route"
-
+            "routeLabel"            =>      "http://semweb.mmlab.be/ns/rplod/routeLabel",
+            "stop"                  =>      "http://semweb.mmlab.be/ns/rplod/stop"
         );
         // Next, encode the context as JSON
         $jsonContext = json_encode($context);
