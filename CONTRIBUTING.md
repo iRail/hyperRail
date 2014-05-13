@@ -1,3 +1,3 @@
 # Contribution Guidelines
 
-Please submit all issues and pull requests to the [laravel/framework](http://github.com/laravel/framework) repository!
+Please report all issues on the GitHub repository: https://github.com/iRail/hyperRail/

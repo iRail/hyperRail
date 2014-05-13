@@ -45,6 +45,7 @@ class ClassicRedirectController extends \BaseController {
             header("HTTP/1.1 301 Moved Permanently");
             header( "Location: http://" . _DOMAIN_ . "/route" . "?mode=train" . "&from=" . $departure->id . "&to=" . $destination->id . "&time=" . date("hi") );
         }
+        return "It looks like we couldn't convert your route request to the new format :(";
     }
 
     public function redirectSettings(){
