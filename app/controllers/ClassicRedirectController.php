@@ -23,6 +23,7 @@ class ClassicRedirectController extends \BaseController {
         else{
             return 'Liveboard for the following station: ' . $station_provided_string . ' was not found.';
         }
+        return null;
     }
 
     /**
