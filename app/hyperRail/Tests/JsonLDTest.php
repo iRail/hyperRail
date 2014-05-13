@@ -1,6 +1,6 @@
 <?php
 
-namespace hyperrail\Tests;
+namespace hyperRail\Tests;
 
 use ML\JsonLD\JsonLD;
 use EasyRdf_Graph;

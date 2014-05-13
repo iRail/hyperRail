@@ -1,6 +1,6 @@
 <?php
 
-namespace hyperrail;
+namespace hyperRail;
 
 class StationString {
 
