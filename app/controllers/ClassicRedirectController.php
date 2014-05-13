@@ -31,7 +31,7 @@ class ClassicRedirectController extends \BaseController {
      * and interpret two station names
      */
     public function redirectBoardTwoStations($station, $station2){
-        return 'You requested the liveboard for stations: ' . $station . " & " . $station2;
+       return 'Liveboards with multiple stations are no longer supported.';
     }
 
     /**
@@ -39,7 +39,12 @@ class ClassicRedirectController extends \BaseController {
      * way the routing is done
      */
     public function redirectHomeRoute($departure_station, $destination_station){
-
+        $departure = \hyperRail\StationString::convertToId($departure_station);
+        $destination = \hyperRail\StationString::convertToId($destination_station);
+        if ($departure != null && $destination != null){
+            header("HTTP/1.1 301 Moved Permanently");
+            header( "Location: http://" . _DOMAIN_ . "/route" . "?mode=train" . "&from=" . $departure->id . "&to=" . $destination->id . "&time=" . date("hi") );
+        }
     }
 
     public function redirectSettings(){
