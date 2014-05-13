@@ -15,28 +15,14 @@ class ClassicRedirectController extends \BaseController {
      * and interpret the station name
      */
     public function redirectBoardSingleStation($station_provided_string){
-        $json = file_get_contents('http://' . _DOMAIN_ . '/data/stations.json');
-        $data = json_decode($json);
-        foreach($data->stations as $station){
-            // TODO: write an array with station name alternates
-            // This also solves multilanguage issues since the strings are simply converted
-            // to the proper id :) This way, we can make iRail multilanguage!
-            /*
-             * FOR EXAMPLE:
-             *
-             * $alternates = array(
-             * "Gent-Sint-Pieters" => array('Ghent-Sint-Pieters', 'Gent Sint Pieters', 'Ghent Sint Pieters')
-             * )
-             */
-            // TODO: write a function that loops through station name alternates
-            // If the provided searchstring is contained within an item
-            // Redirect to that station
-            if (strpos($station->name,$station_provided_string) !== false) {
-                header("HTTP/1.1 301 Moved Permanently");
-                header("Location: http://" . _DOMAIN_ . "/station/" . $station->id);
-            }
+        $station_converted = \hyperRail\StationString::convertToId($station_provided_string);
+        if ($station_converted != null){
+            header("HTTP/1.1 301 Moved Permanently");
+            header("Location: http://" . _DOMAIN_ . "/station/" . $station_converted->id);
         }
-        return 'Liveboard for the following station: ' . $station_provided_string . ' was not found.';
+        else{
+            return 'Liveboard for the following station: ' . $station_provided_string . ' was not found.';
+        }
     }
 
     /**
