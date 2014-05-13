@@ -14,7 +14,7 @@ class JsonLDTest
         $graph = new EasyRdf_Graph();
         if (empty($_REQUEST['data'])) {
             // Load the sample information
-            $graph->load('http://irail.dev/NMBS.ttl', 'turtle');
+            $graph->load('http://' . _DOMAIN_ . '/NMBS.ttl', 'turtle');
         }
         // Export to JSON LD
         $format = EasyRdf_Format::getFormat('jsonld');
