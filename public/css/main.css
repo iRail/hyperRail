@@ -11,3 +11,6 @@ body {
 h2 {
   font-size: 1.5em;
   margin-bottom: 15px; }
+
+.chosen-select {
+  font-size: 1.2em !important; }

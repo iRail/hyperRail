@@ -10,8 +10,17 @@ Home
     <div class="col-md-12">
         <h1>Station search</h1>
         <div class="form-group">
-            <label for="email">Station search</label>
-            {{ Form::text('departure', '', array('class' => 'form-control', 'placeholder' => 'Station name')) }}
+            <label for="station">Station search</label>
+            <br/>
+            <?php
+            $json = file_get_contents('http://irail.dev/data/stations.json');
+            $data = json_decode($json);
+            ?>
+            <select class="chosen-select">
+                @foreach ($data->stations as $station)
+                <option value="{{$station->id}}">{{$station->name}}</option>
+                @endforeach
+            </select>
         </div>
         {{ Form::open() }}
         {{ Form::button('See station information', array('class' => 'btn btn-primary')) }}
@@ -21,5 +30,8 @@ Home
         <hr/>
     </div>
 </div>
+<script>
+    $(".chosen-select").chosen();
+</script>
 
 @stop
