@@ -35,39 +35,50 @@
         </div><!--/.nav-collapse -->
     </div>
 </div>
-<div class="container">
+<div class="container" ng-controller="StationListCtrl">
     <div class="row">
         <div class="col-sm-12">
             <h1>Route planner</h1>
         </div>
     </div>
-    <hr/>
-    <div class="row" ng-hide="results" ng-controller="StationListCtrl">
-        <div class="col-md-6">
+    <br/>
+    <div class="row">
+        <div class="col-md-8">
             <script type="text/ng-template" id="customTemplate.html">
                 <a>
                     <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
                 </a>
             </script>
-            <h2>Departure station</h2>
-            <pre>Model: @{{departure | json}}</pre>
+            <div class="form-group">
+            <label for="departure">Departure station</label>
             <input type="text" ng-model="departure" placeholder="Type a departure station" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination station</label>
+                <input type="text" ng-model="destination" placeholder="Select a destination station" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control">
+            </div>
+            <hr/>
+            <a class="btn btn-default btn-lg btn-primary" ng-click="save()">Plan route</a>
+            <hr/>
+            <pre>Model: @{{data | json}}</pre>
         </div>
-        <div class="col-md-6">
-            <h2>Destination station</h2>
-            <pre>Model: @{{destination | json}}</pre>
-            <input type="text" ng-model="destination" placeholder="Select a destination station" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control">
+        <div class="col-md-4">
+            <label for="destination">Choose your date</label>
+            <datepicker ng-model="mydate" min-date="minDate" show-weeks="true"></datepicker>
+            <hr/>
+            <label for="destination">Pick a time</label>
+            <select class="form-control input-lg" ng-model="timeoption">
+                <option value="arrival">Arrival at chosen hour</option>
+                <option value="departure">Departure at chosen hour</option>
+            </select>
+            <timepicker ng-model="mytime" ng-change="changed()" show-meridian="ismeridian"></timepicker>
+
+            <hr/>
         </div>
     </div>
-    <div class="row" ng-show="results" ng-controller="ResultsListCtrl">
-
+    <div class="row">
     </div>
     <hr/>
-    <div class="row">
-        <div class="col-sm-12">
-            <a href="#" class="btn btn-default btn-lg">Plan route</a>
-        </div>
-    </div>
     <hr/>
     <div class="row">
         <div class="col-sm-12">
