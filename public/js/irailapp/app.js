@@ -2,7 +2,7 @@
 
     var irailapp = angular.module('irailapp', ['ui.bootstrap']);
 
-    irailapp.controller('StationListCtrl', function ($scope, $http) {
+    irailapp.controller('StationListCtrl', function ($scope, $http, $filter) {
 
         $http.get('data/stations.json').success(function(data) {
             $scope.stations = data;
@@ -16,8 +16,8 @@
             $scope.data = {
                 "departure" : $scope.departure,
                 "destination" : $scope.destination,
-                "date" : $scope.mydate,
-                "time" : $scope.mytime,
+                "date" : $filter('date')($scope.mydate, 'shortDate'),
+                "time" : $filter('date')($scope.mytime, 'HH:mm'),
                 "timeoption" : $scope.timeoption
             }
         }
