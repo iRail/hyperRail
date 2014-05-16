@@ -26,7 +26,7 @@
                 }
             }
         };
-        
+
         $scope.save = function(){
             // Check if departure and destination are bound
             try{
@@ -42,7 +42,7 @@
                             }
                         }
                         catch(ex){
-                            alert('We could not find that station based on your input. Sorry.');
+
                         }
                         try{
                             if(($scope.stations.stations[i].name.toLowerCase()).indexOf($scope.destination.toLowerCase()) != -1){
@@ -51,7 +51,7 @@
                             }
                         }
                         catch(ex){
-                            alert('We could not find that station based on your input. Sorry.');
+
                         }
                     }
                     try{
