@@ -59,7 +59,12 @@
             <hr/>
             <a class="btn btn-default btn-lg btn-primary" ng-click="save()">Plan route</a>
             <hr/>
-            <pre>Model: @{{data | json}}</pre>
+            <pre ng-show="data != null">Model: @{{data | json}}</pre>
+            <div class="alert alert-danger" ng-show="data === null">
+                <p ng-show="stationnotfound === true">We could not translate your text to a station. <strong>Please check your input</strong>. We automatically suggest possible stations! :)</p>
+                <p ng-show="mytime === undefined">Don't forget to set the time.</p>
+                <p ng-show="mydate === undefined">Don't forget to set the date.</p>
+            </div>
         </div>
         <div class="col-md-4">
             <label for="destination">Choose your date</label>
@@ -74,9 +79,6 @@
             <hr/>
         </div>
     </div>
-    <div class="row">
-    </div>
-    <hr/>
     <hr/>
     <div class="row">
         <div class="col-sm-12">

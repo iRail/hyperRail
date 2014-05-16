@@ -7,6 +7,9 @@
         // Init departure and destination as undefined
         $scope.departure = undefined;
         $scope.destination = undefined;
+        $scope.mytime = new Date();
+        $scope.mydate = new Date();
+        $scope.timeoption = 'arrival';
 
         // Fetch stations via HTTP GET request
         $http.get('data/stations.json').success(function(data) {
@@ -28,6 +31,15 @@
         };
 
         $scope.save = function(){
+            // Check if time and date are set
+            if ($scope.mydate === undefined){
+                $scope.data = null;
+                return;
+            }
+            if ($scope.mytime === undefined){
+                $scope.data = null;
+                return;
+            }
             // Check if departure and destination are bound
             try{
                 $scope.saveDataCheck();
@@ -42,7 +54,6 @@
                             }
                         }
                         catch(ex){
-
                         }
                         try{
                             if(($scope.stations.stations[i].name.toLowerCase()).indexOf($scope.destination.toLowerCase()) != -1){
@@ -51,21 +62,16 @@
                             }
                         }
                         catch(ex){
-
                         }
                     }
                     try{
                         $scope.saveDataCheck();
                     }catch(ex){
-                        alert('We could not find that station based on your input. Sorry.');
+                        $scope.stationnotfound = true;
+                        $scope.data = null;
                     }
                 }
-            // Check if time and date are set
             // Check if select box has been set
         };
-
     });
-
-
-
 }());
