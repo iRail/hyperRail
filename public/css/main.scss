@@ -1,2 +1,8 @@
 /* Main SASS CSS file */
 
+input.ng-invalid {
+  border: 1px solid red !important;
+  }
+input.ng-valid {
+  border: 1px solid green !important;
+  }
