@@ -18,7 +18,7 @@ $gray-lighter:           lighten(#000, 93.5%) !default; // #eee
 // Brand colors
 // -------------------------
 
-$brand-primary:         #428bca !default;
+$brand-primary:         #C72929 !default;
 $brand-success:         #5cb85c !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
@@ -287,7 +287,7 @@ $navbar-default-toggle-border-color:       #ddd !default;
 // Inverted navbar
 //
 // Reset inverted navbar basics
-$navbar-inverse-color:                      $gray-light !default;
+$navbar-inverse-color:                      #FFF !default;
 $navbar-inverse-bg:                         #222 !default;
 $navbar-inverse-border:                     darken($navbar-inverse-bg, 10%) !default;
 

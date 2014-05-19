@@ -37,7 +37,7 @@
 <div class="container" ng-controller="StationListCtrl">
     <div class="row">
         <div class="col-sm-12">
-            <h1>Route planner</h1>
+            <h1>iRail Route Planner</h1>
         </div>
     </div>
     <br/>
@@ -57,8 +57,6 @@
                 <input type="text" ng-model="destination" placeholder="Select a destination station" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control">
             </div>
             <hr/>
-            <a class="btn btn-default btn-lg btn-primary" ng-click="save()">Plan route</a>
-            <hr/>
             <pre ng-show="data != null">Model: @{{data | json}}</pre>
             <div class="alert alert-danger" ng-show="data === null">
                 <p ng-show="stationnotfound === true">We could not translate your text to a station. <strong>Please check your input</strong>. We automatically suggest possible stations! :)</p>
@@ -76,6 +74,8 @@
                 <option value="departure">Departure at chosen hour</option>
             </select>
             <timepicker ng-model="mytime" ng-change="changed()" show-meridian="ismeridian"></timepicker>
+            <hr/>
+            <a class="btn btn-default btn-lg btn-primary" ng-click="save()">Plan route</a>
             <hr/>
         </div>
     </div>

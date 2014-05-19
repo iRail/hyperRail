@@ -4,3 +4,8 @@ Introducing the new iRail.be, now powered by HYDRA. We will also be using JSON-L
 
 We are using the following technologies:
 
+- laravel 4.1
+- bootstrap-sass
+- swiftmailer
+- angularjs
+- angularui
