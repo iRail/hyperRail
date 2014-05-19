@@ -18,19 +18,27 @@ $app = new Illuminate\Foundation\Application;
 | Detect The Application Environment
 |--------------------------------------------------------------------------
 |
-| Laravel takes a dead simple approach to your application environments
-| so you can just specify a machine name for the host that matches a
-| given environment, then we will automatically detect it for you.
-|
 */
 
-$env = $app->detectEnvironment(array(
+$env = $app->detectEnvironment( function() {
 
-	'local'         =>      array('MBPNicoV.local'),
-    'production'    =>      array(''),
-    'development'   =>      array('vagrant'),
+    $haystack = __DIR__; // Catch the directory path
 
-));
+    // Set the boolean
+    $isLocal = strpos($haystack, 'Users/nicoverbruggen/Repositories/hyperRail');
+    $isLocalVagrant = strpos($haystack, 'var/www/html/');
+    $isDevelopment = strpos($haystack, 'var/www/irail.be/development/');
+    $isTest = strpos($haystack, 'var/www/irail.be/test/');
+    $isProduction = strpos($haystack, 'var/www/irail.be/web/');
+
+    // Return the correct environment
+    if ($isLocal) return "local";
+    if ($isLocalVagrant) return "vagrant";
+    if ($isDevelopment) return "development";
+    if ($isTest) return "test";
+    if ($isProduction) return "production";
+
+});
 
 /*
 |--------------------------------------------------------------------------

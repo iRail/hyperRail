@@ -6,3 +6,6 @@ composer.lock
 .env.php
 .DS_Store
 Thumbs.db
+app/config/production
+app/config/local
+app/config/vagrant
