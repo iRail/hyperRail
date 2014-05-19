@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>iRail.be</title>
-    <link rel="stylesheet" href="{{ URL::asset('bower_components/bootstrap/dist/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('bower_components/bootstrap-sass/dist/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('js/chosen_v1.1.0/chosen.min.css') }}">
     <script src="{{ URL::asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ URL::asset('bower_components/bootstrap/dist/js/bootstrap.js') }}"></script>
+    <script src="{{ URL::asset('bower_components/bootstrap-sass/dist/js/bootstrap.js') }}"></script>
     <script src="{{ URL::asset('js/chosen_v1.1.0/chosen.jquery.js') }}"></script>
 </head>
 <body>
