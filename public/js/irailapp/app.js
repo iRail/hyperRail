@@ -2,7 +2,7 @@
 
     var irailapp = angular.module('irailapp', ['ui.bootstrap']);
 
-    irailapp.controller('StationListCtrl', function ($scope, $http, $filter) {
+    irailapp.controller('StationListCtrl', function ($scope, $http, $filter, $timeout) {
 
         // Init departure and destination as undefined
         $scope.departure = undefined;
@@ -10,6 +10,10 @@
         $scope.mytime = new Date();
         $scope.mydate = new Date();
         $scope.timeoption = 'arrival';
+
+        $scope.planning = true;
+        $scope.loading = false;
+        $scope.results = false;
 
         // Fetch stations via HTTP GET request
         $http.get('data/stations.json').success(function(data) {
@@ -26,7 +30,14 @@
                     "date" : $filter('date')($scope.mydate, 'shortDate'),
                     "time" : $filter('date')($scope.mytime, 'HH:mm'),
                     "timeoption" : $scope.timeoption
-                }
+                };
+                $scope.planning = false;
+                $scope.loading = true;
+                $timeout(function(){
+                    $scope.loading = false;
+                    $scope.results = true;
+                }, 10000);
+
             }
         };
 
