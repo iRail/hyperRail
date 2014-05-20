@@ -18,7 +18,7 @@ class ClassicRedirectController extends \BaseController {
         $station_converted = \hyperRail\StationString::convertToId($station_provided_string);
         if ($station_converted != null){
             header("HTTP/1.1 301 Moved Permanently");
-            header("Location: http://" . _DOMAIN_ . "/station/" . $station_converted->id);
+            header("Location: https://" . _DOMAIN_ . "/station/" . $station_converted->id);
         }
         else{
             return 'Liveboard for the following station: ' . $station_provided_string . ' was not found.';
@@ -43,7 +43,7 @@ class ClassicRedirectController extends \BaseController {
         $destination = \hyperRail\StationString::convertToId($destination_station);
         if ($departure != null && $destination != null){
             header("HTTP/1.1 301 Moved Permanently");
-            header( "Location: http://" . _DOMAIN_ . "/route" . "?mode=train" . "&from=" . $departure->id . "&to=" . $destination->id . "&time=" . date("hi") );
+            header( "Location: https://" . _DOMAIN_ . "/route" . "?mode=train" . "&from=" . $departure->id . "&to=" . $destination->id . "&time=" . date("hi") );
         }
         return "It looks like we couldn't convert your route request to the new format :(";
     }
