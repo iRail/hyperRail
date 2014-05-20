@@ -1,21 +1,30 @@
 (function(){
 
+    /*--------------------------------------------------------
+     * SET UP AS ANGULAR APP
+     *-------------------------------------------------------*/
+
     var irailapp = angular.module('irailapp', ['ui.bootstrap']);
 
     irailapp.controller('StationListCtrl', function ($scope, $http, $filter, $timeout) {
+
+    /*--------------------------------------------------------
+     * INITIAL VARIABLES & SETUP
+     *-------------------------------------------------------*/
 
         // Init departure and destination as undefined
         // TODO: unless &from=008821006&to=008892007 are set!
         $scope.departure = undefined;
         $scope.destination = undefined;
+
         // Time and date are automatically set
         $scope.mytime = new Date();
         $scope.mydate = new Date();
         // Timeoption defaults to arrive at set hour
-        $scope.timeoption = 'arrival';
+        $scope.timeoption = 'departure';
 
         // Default states
-        // TODO: unless &autoconfirm is set (which automatically searches)
+        // TODO: unless &auto is set (which automatically searches)
         $scope.planning = true; // When planning is set to true, you can enter stations and set time
         $scope.loading = false; // When loading is set to true, you see a spinner
         $scope.results = false; // When results is set to true, results are displayed
@@ -25,6 +34,10 @@
             $scope.stations = data;
             console.log($scope.stations);
         });
+
+        /*--------------------------------------------------------
+         * FUNCTIONS THAT CAN BE CALLED
+         *-------------------------------------------------------*/
 
         /**
          *  Check if we can dump the data
@@ -60,11 +73,19 @@
         };
 
         /**
+         * Used to interpret the new station id
+         * @param string
+         */
+        $scope.findStationById = function(string){
+            // TODO: return object from $scope.stations to bind
+        };
+
+        /**
          * Parse the results
          * @param data
          */
         $scope.parseResults = function(data){
-
+            $scope.connections = data.connection;
         };
 
         /**
@@ -121,7 +142,6 @@
 
         };
 
-
-
     });
+
 }());

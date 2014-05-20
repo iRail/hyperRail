@@ -88,64 +88,58 @@
                 on <strong>@{{mydate | date}}</strong>.
             </h4>
             <hr/>
-            <h5>2 routes found. Tap the headers below to expand. We automatically expanded the optimal route.</h5>
+            <h5>@{{connections.length}} routes found. Tap the headers below to expand. We automatically expanded the optimal route.</h5>
             <div class="panel-group results" id="accordion">
-                <div class="panel panel-default">
+                <div class="panel panel-default" ng-repeat="conn in connections">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            <a data-toggle="collapse" data-parent="#accordion" ng-href="#result-@{{connections.indexOf(conn)}}">
                                 <span class="container33">
-                                    <span class="el33 tleft">11:06 &rarr; 11:57</span>
-                                    <span class="el33 tcenter"><strong>01:44 </strong></span>
-                                    <span class="el33 tright">1 stop</span>
+                                    <span class="el33 tleft">
+                                        @{{ (conn.departure.time)*1000 | date:'HH:mm' }}
+                                        &rarr;
+                                        @{{ (conn.arrival.time)*1000 | date:'HH:mm' }}
+                                    </span>
+                                    <span class="el33 tcenter">
+                                        <strong>
+                                            @{{ ((conn.arrival.time-conn.departure.time))/60 }} min
+                                        </strong>
+                                    </span>
+                                    <span class="el33 tright">
+                                        @{{ conn.vias.number }}
+                                    </span>
                                 </span>
                             </a>
                         </h4>
                     </div>
-                    <div id="collapseOne" class="panel-collapse collapse in">
+                    <div id="result-@{{connections.indexOf(conn)}}" class="panel-collapse collapse">
                         <div class="panel-body">
                             <p>
-                            <strong>IR35432</strong>
-                            <span class="floatright">Destination: @{{destination.name}}</span>
+                                <strong>@{{ conn.arrival.vehicle }}</strong>
+                                <span class="floatright">Destination: @{{ conn.arrival.direction.name }}</span>
                             </p>
                             <ul class="list-group">
                                 <li class="list-group-item">
-                                    <span class="badge">Perron 2</span>
-                                    <strong>11:06</strong> &rarr; Station A
+                                    <span class="badge">Platform @{{ conn.departure.platform }}</span>
+                                    <strong>
+                                        @{{ (conn.departure.time)*1000 | date:'HH:mm' }}
+                                    </strong> @{{ conn.departure.station}}
+                                    <br/>
+                                    &darr; @{{conn.departure.vehicle.replace("BE.NMBS.","")}} <span class="small">(@{{conn.departure.direction.name}})</span>
+                                </li>
+                                <li class="list-group-item" ng-repeat="stop in conn.vias.via">
+                                    <span class="badge">Platform @{{ stop.departure.platform }}</span>
+                                    <strong>
+                                        @{{ (stop.departure.time)*1000 | date:'HH:mm' }}
+                                    </strong>@{{ stop.station}}
+                                    <br/>
+                                    &darr; @{{stop.arrival.vehicle.replace("BE.NMBS.","")}} <span class="small">(@{{stop.arrival.direction.name}})</span>
                                 </li>
                                 <li class="list-group-item">
-                                    <span class="badge">Perron 3</span>
-                                    <strong>11:57</strong> &rarr; Station B
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                <span class="container33">
-                                    <span class="el33 tleft">11:32 &rarr; 11:59</span>
-                                    <span class="el33 tcenter"><strong>01:44 </strong></span>
-                                    <span class="el33 tright">1 stop</span>
-                                </span>
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseTwo" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            IR35432 <span class="floatright">Destination: @{{destination.name}}</span>
-                            <br/>
-                            <br/>
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <span class="badge">Perron 2</span>
-                                    <strong>11:32</strong> | Station A
-                                </li>
-                                <li class="list-group-item">
-                                    <span class="badge">Perron 3</span>
-                                    <strong>11:59</strong> | Station B
+                                    <span class="badge">Platform @{{ conn.arrival.platform }}</span>
+                                    <strong>
+                                        @{{ (conn.arrival.time)*1000 | date:'HH:mm' }}
+                                    </strong> &rarr; @{{ conn.arrival.station}}
                                 </li>
                             </ul>
                         </div>

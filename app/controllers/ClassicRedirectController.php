@@ -43,7 +43,7 @@ class ClassicRedirectController extends \BaseController {
         $destination = \hyperRail\StationString::convertToId($destination_station);
         if ($departure != null && $destination != null){
             header("HTTP/1.1 301 Moved Permanently");
-            header( "Location: https://" . _DOMAIN_ . "/route" . "?mode=train" . "&from=" . $departure->id . "&to=" . $destination->id . "&time=" . date("hi") );
+            header( "Location: https://" . _DOMAIN_ . "/route" . "?mode=train" . "&from=" . $departure->id . "&to=" . $destination->id . "&time=" . date("hi") . "&auto" );
         }
         return "It looks like we couldn't convert your route request to the new format :(";
     }
