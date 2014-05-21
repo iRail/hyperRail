@@ -32,7 +32,6 @@
         // Fetch stations via HTTP GET request
         $http.get('data/stations.json').success(function(data) {
             $scope.stations = data;
-            // console.log($scope.stations);
         });
 
         /*--------------------------------------------------------
@@ -42,7 +41,7 @@
         /**
          *  Check if we can dump the data
           */
-        $scope.saveDataCheck = function(){
+        $scope.confirmRouteSearch = function(){
             if('id' in $scope.departure && 'id' in $scope.destination){
                 $scope.data = {
                     "departure" : $scope.departure,
@@ -65,8 +64,6 @@
                     + '&time=' + ($filter('date')($scope.mytime, 'HHmm'))
                     + '&timeSel=' + $scope.timeoption
                     + '&lang=NL&format=json';
-
-                console.log('Requesting the following url:' + url);
 
                 $http.get(url)
                     .success(function(data) {
@@ -123,7 +120,7 @@
             }
             // Check if departure and destination are bound
             try{
-                $scope.saveDataCheck();
+                $scope.confirmRouteSearch();
             }
             // If not bound, try to bind data (1 attempt)
             catch(ex){
@@ -146,7 +143,7 @@
                         }
                     }
                     try{
-                        $scope.saveDataCheck();
+                        $scope.confirmRouteSearch();
                     }catch(ex){
                         $scope.stationnotfound = true;
                         $scope.data = null;
@@ -169,8 +166,35 @@
             var destination = $scope.destination;
             $scope.destination = $scope.departure;
             $scope.departure = destination;
-            $scope.saveDataCheck();
-        }
+            $scope.confirmRouteSearch();
+        };
+
+        $scope.earlier = function(){
+            var itime = $scope.mytime;
+            $scope.mytime = new Date(itime.setHours(itime.getHours()-1));
+            $scope.confirmRouteSearch();
+        };
+
+        $scope.later = function(){
+            var itime = $scope.mytime;
+            $scope.mytime = new Date(itime.setHours(itime.getHours()+1));
+            $scope.confirmRouteSearch();
+        };
+
+        $scope.earliest = function(){
+            var itime = $scope.mytime;
+            $scope.timeoption = "depart";
+            $scope.mytime = new Date(itime.setHours(0, 0, 0));
+            $scope.confirmRouteSearch();
+        };
+
+        $scope.latest = function(){
+            var itime = $scope.mytime;
+            $scope.timeoption = "arrive";
+            $scope.mytime = new Date(itime.setHours(23, 59, 0));
+            $scope.confirmRouteSearch();
+        };
+
 
     });
 

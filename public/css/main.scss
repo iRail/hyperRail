@@ -4,6 +4,10 @@ input.ng-invalid {
   border: 1px solid red !important;
   }
 
+.navbar-bottom{
+  margin-bottom: 5px !important;
+  }
+
 .container33{
   display: inline-block;
   width: 100%;
@@ -51,7 +55,7 @@ input.ng-invalid {
   border-top: 1.1em solid rgba(0, 0, 0, 0.2);
   border-right: 1.1em solid rgba(0, 0, 0, 0.2);
   border-bottom: 1.1em solid rgba(0, 0, 0, 0.2);
-  border-left: 1.1em solid #333;
+  border-left: 1.1em solid #C72929;
   -webkit-animation: load8 1.1s infinite linear;
   animation: load8 1.1s infinite linear;
   }
@@ -95,11 +99,15 @@ input.ng-invalid {
   }
 
 .planner-time{
-  font-size: 1.4em;
+  font-size: 1.3em;
   color: #C72929;
   margin-right: 15px;
   }
 
 .planner-station{
-	font-size: 1.3em;
+	font-size: 1.2em;
+  }
+
+.badge{
+  font-size: 1.3em;
   }

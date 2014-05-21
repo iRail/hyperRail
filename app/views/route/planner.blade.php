@@ -76,7 +76,7 @@
     <div class="row" ng-show="loading">
         <div class="col-md-12 col-sm-12">
             <div class="loader">Loading...</div>
-            <p class="center">Loading your results! Sit tight.</p>
+            <h4 class="center lg">Loading your results! Sit tight.</h4>
             <p class="small center">Your results will be here in a few seconds.</p>
         </div>
     </div>
@@ -177,15 +177,15 @@
         <div class="col-md-3 col-sm-4 hidden-print">
             <br/>
             <div class="btn-group btn-wide btn-botm">
-            <a class="btn btn-default btn-50">&lt; Earlier</a>
-            <a class="btn btn-default btn-50">Later &gt;</a>
+            <a class="btn btn-default btn-lg btn-50" ng-click="earlier()">&lt; Earlier</a>
+            <a class="btn btn-default btn-lg btn-50" ng-click="later()">Later &gt;</a>
             </div>
             <div class="btn-group btn-wide btn-botm">
-            <a class="btn btn-default btn-50">&lt;&lt; Earliest</a>
-            <a class="btn btn-default btn-50">Latest &gt;&gt;</a>
+            <a class="btn btn-default btn-lg btn-50" ng-click="earliest()">&lt;&lt; Earliest</a>
+            <a class="btn btn-default btn-lg btn-50" ng-click="latest()">Latest &gt;&gt;</a>
             </div>
-            <a class="btn btn-primary btn-wide btn-botm" ng-click="reverse()"><i class="fa fa-exchange"></i> Reverse trip</a>
-            <a class="btn btn-default btn-wide btn-botm" ng-click="reset()"><i class="fa fa-undo"></i> Plan another trip</a>
+            <a class="btn btn-primary btn-wide btn-lg btn-botm" ng-click="reverse()"><i class="fa fa-exchange"></i> Reverse trip</a>
+            <a class="btn btn-default btn-wide btn-lg btn-botm" ng-click="reset()"><i class="fa fa-undo"></i> Plan another trip</a>
         </div>
     </div>
 </div>
