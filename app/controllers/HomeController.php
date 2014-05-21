@@ -31,5 +31,4 @@ class HomeController extends BaseController {
                 break;
         }
 	}
-
 }

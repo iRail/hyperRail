@@ -11,9 +11,9 @@
     /*--------------------------------------------------------
      * INITIAL VARIABLES & SETUP
      *-------------------------------------------------------*/
+        var automatic = GetURLParameter('auto');
 
         // Init departure and destination as undefined
-        // TODO: unless &from=008821006&to=008892007 are set!
         $scope.departure = undefined;
         $scope.destination = undefined;
 
@@ -28,11 +28,6 @@
         $scope.planning = true; // When planning is set to true, you can enter stations and set time
         $scope.loading = false; // When loading is set to true, you see a spinner
         $scope.results = false; // When results is set to true, results are displayed
-
-        // Fetch stations via HTTP GET request
-        $http.get('data/stations.json').success(function(data) {
-            $scope.stations = data;
-        });
 
         /*--------------------------------------------------------
          * FUNCTIONS THAT CAN BE CALLED
@@ -87,8 +82,13 @@
          * Used to interpret the new station id
          * @param string
          */
-        $scope.findStationById = function(string){
-            // TODO: return object from $scope.stations to bind
+        $scope.findStationById = function(suppliedIdentifierString){
+            console.log($scope.stations);
+            for (var i = 0, len = $scope.stations.stations.length; i < len; i++) {
+                if (($scope.stations.stations[i].id.toLowerCase()).indexOf(suppliedIdentifierString) != -1){
+                    return $scope.stations.stations[i];
+                }
+            }
         };
 
         /**
@@ -195,7 +195,46 @@
             $scope.confirmRouteSearch();
         };
 
+        // Fetch stations via HTTP GET request
+        $http.get('data/stations.json').success(function(data) {
+            $scope.stations = data;
+            // Check if we were redirected for automatic results!
+            if (automatic === 'true'){
+                // Check if URL params are set
+                var dep = GetURLParameter('from');
+                var des = GetURLParameter('to');
+                var urltime = GetURLParameter('time');
+                var date = GetURLParameter('date');
+                var timeoption = GetURLParameter('timeSel');
+
+                if (dep != "undefined" && des != "undefined"){
+                    $scope.departure = $scope.findStationById(dep);
+                    $scope.destination = $scope.findStationById(des);
+                    // TODO: get time and date from parameters
+                    if (timeoption === "arrive"){
+                        $scope.timeoption = "arrive";
+                    }
+                    else{
+                        $scope.timeoption = "depart";
+                    }
+                    $scope.confirmRouteSearch();
+                }
+            }
+        });
 
     });
+
+    function GetURLParameter(sParam){
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+        for (var i = 0; i < sURLVariables.length; i++)
+        {
+            var sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] == sParam)
+            {
+                return sParameterName[1];
+            }
+        }
+    }
 
 }());
