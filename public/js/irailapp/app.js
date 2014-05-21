@@ -68,6 +68,9 @@
                         $scope.loading = false;
                         // Show results
                         $scope.results = true;
+                        // TODO: add time and date
+                        // TODO: Ensure that we don't push too many states to our window history!
+                        window.history.pushState("departure", "iRail.be", "?from=" + $scope.departure.id + "&to=" + $scope.destination.id);
                     })
                     .error(function(){
                         $scope.error = true;
@@ -218,6 +221,22 @@
                         $scope.timeoption = "depart";
                     }
                     $scope.confirmRouteSearch();
+                }
+            }
+            if (GetURLParameter('from') !== 'undefined'){
+                try{
+                    $scope.departure = $scope.findStationById(GetURLParameter('from'));
+                }
+                catch(ex){
+                    console('Could not link departure station from URL.');
+                }
+            }
+            if (GetURLParameter('to') !== 'undefined'){
+                try{
+                    $scope.destination = $scope.findStationById(GetURLParameter('to'));
+                }
+                catch(ex){
+                    console('Could not link destination station from URL.');
                 }
             }
         });
