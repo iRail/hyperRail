@@ -6,7 +6,7 @@
 
     var irailapp = angular.module('irailapp', ['ui.bootstrap']);
 
-    irailapp.controller('StationListCtrl', function ($scope, $http, $filter, $timeout) {
+    irailapp.controller('PlannerCtrl', function ($scope, $http, $filter, $timeout) {
 
     /*--------------------------------------------------------
      * INITIAL VARIABLES & SETUP
@@ -21,7 +21,7 @@
         $scope.mytime = new Date();
         $scope.mydate = new Date();
         // Timeoption defaults to arrive at set hour
-        $scope.timeoption = 'departure';
+        $scope.timeoption = 'depart';
 
         // Default states
         // TODO: unless &auto is set (which automatically searches)
@@ -32,7 +32,7 @@
         // Fetch stations via HTTP GET request
         $http.get('data/stations.json').success(function(data) {
             $scope.stations = data;
-            console.log($scope.stations);
+            // console.log($scope.stations);
         });
 
         /*--------------------------------------------------------
@@ -52,23 +52,37 @@
                     "timeoption" : $scope.timeoption
                 };
                 // Set app as loading
+                $scope.results = false;
                 $scope.planning = false;
                 $scope.loading = true;
 
                 // Send a request to the old iRail api
                 // TODO: ensure that this request goes over HTTPs! This has to be fixed at launch!
 
-                var url = 'http://api.irail.be/connections/?to=' + $scope.destination.name + '&from=' + $scope.departure.name + '&lang=NL&format=json';
+                var url = 'http://api.irail.be/connections/?to=' + $scope.destination.name
+                    + '&from=' + $scope.departure.name
+                    + '&date=' + ($filter('date')($scope.mydate, 'ddMMyy'))
+                    + '&time=' + ($filter('date')($scope.mytime, 'HHmm'))
+                    + '&timeSel=' + $scope.timeoption
+                    + '&lang=NL&format=json';
+
+                console.log('Requesting the following url:' + url);
 
                 $http.get(url)
                     .success(function(data) {
-                        console.log(data);
+                        // console.log(data);
                         $scope.parseResults(data);
                         // The app is no longer loading content
                         $scope.loading = false;
                         // Show results
                         $scope.results = true;
-                });
+                    })
+                    .error(function(){
+                        $scope.error = true;
+                        $scope.loading = false;
+                        $scope.results = false;
+                        $scope.planning = false;
+                    });
             }
         };
 
@@ -85,6 +99,11 @@
          * @param data
          */
         $scope.parseResults = function(data){
+            if ($scope.timeoption === "arrive"){
+                // Reverse connections
+                // First result should be close to your set time
+                data.connection.reverse();
+            }
             $scope.connections = data.connection;
 
         };
@@ -140,8 +159,18 @@
          * Resets the route planner to default values
          */
         $scope.reset = function(){
-
+            $scope.error = false;
+            $scope.loading = false;
+            $scope.results = false;
+            $scope.planning = true;
         };
+
+        $scope.reverse = function(){
+            var destination = $scope.destination;
+            $scope.destination = $scope.departure;
+            $scope.departure = destination;
+            $scope.saveDataCheck();
+        }
 
     });
 

@@ -3,26 +3,31 @@
 input.ng-invalid {
   border: 1px solid red !important;
   }
-input.ng-valid {
-  border: 1px solid #A52222 !important;
-  }
 
 .container33{
   display: inline-block;
   width: 100%;
-  .el33{
-	float: left;
-	width: 33%;
-  }
   .tleft{
+	float: left;
+	width: 60%;
 	text-align: left;
 	}
   .tright{
+	float: left;
+	width: 20%;
 	text-align: right;
 	}
   .tcenter{
+	float: left;
+	width: 20%;
 	text-align: center;
 	}
+}
+
+.max-w5{
+  max-width: 480px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .floatright{
@@ -75,4 +80,26 @@ input.ng-valid {
 	-webkit-transform: rotate(360deg);
 	transform: rotate(360deg);
 	}
+  }
+
+.btn-wide{
+  width: 100% !important;
+  }
+
+.btn-50{
+  width: 50% !important;
+  }
+
+.btn-botm{
+  margin-bottom: 15px;
+  }
+
+.planner-time{
+  font-size: 1.4em;
+  color: #C72929;
+  margin-right: 15px;
+  }
+
+.planner-station{
+	font-size: 1.3em;
   }
