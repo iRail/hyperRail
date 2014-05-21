@@ -86,6 +86,7 @@
          */
         $scope.parseResults = function(data){
             $scope.connections = data.connection;
+
         };
 
         /**

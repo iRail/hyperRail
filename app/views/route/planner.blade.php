@@ -120,23 +120,24 @@
                             </p>
                             <ul class="list-group">
                                 <li class="list-group-item">
-                                    <span class="badge">Platform @{{ conn.departure.platform }}</span>
+                                    <span class="badge">@{{ conn.departure.platform }}</span>
                                     <strong>
                                         @{{ (conn.departure.time)*1000 | date:'HH:mm' }}
                                     </strong> @{{ conn.departure.station}}
-                                    <br/>
-                                    &darr; @{{conn.departure.vehicle.replace("BE.NMBS.","")}} <span class="small">(@{{conn.departure.direction.name}})</span>
                                 </li>
                                 <li class="list-group-item" ng-repeat="stop in conn.vias.via">
-                                    <span class="badge">Platform @{{ stop.departure.platform }}</span>
+                                    &darr; @{{stop.vehicle.replace("BE.NMBS.","")}} <span class="small">(@{{stop.direction.name}})</span>
+                                    <br/>
+                                    <span class="badge">@{{ stop.departure.platform }}</span>
                                     <strong>
                                         @{{ (stop.departure.time)*1000 | date:'HH:mm' }}
                                     </strong>@{{ stop.station}}
                                     <br/>
-                                    &darr; @{{stop.arrival.vehicle.replace("BE.NMBS.","")}} <span class="small">(@{{stop.arrival.direction.name}})</span>
                                 </li>
                                 <li class="list-group-item">
-                                    <span class="badge">Platform @{{ conn.arrival.platform }}</span>
+                                    &darr; @{{conn.arrival.vehicle.replace("BE.NMBS.","")}} <span class="small">(@{{conn.arrival.direction.name}})</span>
+                                    <br/>
+                                    <span class="badge">@{{ conn.arrival.platform }}</span>
                                     <strong>
                                         @{{ (conn.arrival.time)*1000 | date:'HH:mm' }}
                                     </strong> &rarr; @{{ conn.arrival.station}}
