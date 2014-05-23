@@ -45,22 +45,22 @@
             </script>
             <div class="form-group">
             <label for="departure">Departure station</label>
-            <input type="text" ng-model="departure" placeholder="Type a departure station" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control">
+            <input type="text" ng-model="departure" placeholder="Type a departure station" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control input-lg">
             </div>
             <div class="form-group">
                 <label for="destination">Destination station</label>
-                <input type="text" ng-model="destination" placeholder="Select a destination station" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control">
+                <input type="text" ng-model="destination" placeholder="Select a destination station" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control input-lg">
             </div>
             <hr/>
             <label for="destination">Choose your date</label>
-            <datepicker ng-model="mydate" show-weeks="true"></datepicker>
+            <datepicker ng-class="time" ng-model="mydate" show-weeks="false"></datepicker>
             <br/>
         </div>
         <div class="col-sm-6">
             <label for="destination">Pick a time</label>
             <select class="form-control input-lg timepicker" ng-model="timeoption">
-                <option value="arrive">Arrival at chosen hour</option>
                 <option value="depart">Departure at chosen hour</option>
+                <option value="arrive">Arrival at chosen hour</option>
             </select>
             <timepicker ng-model="mytime" ng-change="changed()" show-meridian="ismeridian"></timepicker>
             <hr/>
@@ -101,6 +101,10 @@
                 <br/>
                 You want to <strong>@{{timeoption}}</strong> at @{{mytime | date : 'HH:mm' }}.
             </h4>
+            <div ng-show="backintime">
+                <hr/>
+                <h4>You're trying to back in time? Good on ya.</h4>
+            </div>
             <hr/>
             <h5>@{{connections.length}} routes found. Tap the headers below to expand. We automatically expanded the optimal route.</h5>
             <div class="panel-group results" id="accordion">
