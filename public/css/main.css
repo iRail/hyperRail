@@ -2,8 +2,20 @@
 input.ng-invalid {
   border: 1px solid red !important; }
 
+.navbar-nav li a {
+  font-size: 1.1em; }
+
 .navbar-bottom {
   margin-bottom: 5px !important; }
+
+.navbar-brand {
+  padding-top: 12px !important;
+  padding-right: 20px !important;
+  padding-left: 5px !important;
+  padding-bottom: 0px !important; }
+
+.fa-12 {
+  font-size: 1.3em; }
 
 .container33 {
   display: inline-block;
@@ -91,3 +103,9 @@ input.ng-invalid {
 
 .badge {
   font-size: 1.3em; }
+
+.datepicker .btn-info.active {
+  background-color: #C72929 !important;
+  border-color: #C72929 !important; }
+  .datepicker .btn-info.active span.text-info {
+    color: #FFF !important; }
