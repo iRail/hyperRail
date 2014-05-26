@@ -62,15 +62,15 @@
 
                 $http.get(url)
                     .success(function(data) {
-                        // console.log(data);
                         $scope.parseResults(data);
-                        // The app is no longer loading content
+                        window.history.pushState("departure", "iRail.be", "?to=" + $scope.destination.id
+                            + '&from=' + $scope.departure.id
+                            + '&date=' + ($filter('date')($scope.mydate, 'ddMMyy'))
+                            + '&time=' + ($filter('date')($scope.mytime, 'HHmm'))
+                            + '&timeSel=' + $scope.timeoption
+                        );
                         $scope.loading = false;
-                        // Show results
                         $scope.results = true;
-                        // TODO: add time and date
-                        // TODO: Ensure that we don't push too many states to our window history!
-                        // window.history.pushState("departure", "iRail.be", "?from=" + $scope.departure.id + "&to=" + $scope.destination.id);
                     })
                     .error(function(){
                         $scope.error = true;

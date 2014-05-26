@@ -13,9 +13,9 @@ Route::get('/', 'HomeController@showWelcome');
 Route::get('/route', 'RouteController@index');
 Route::get('/stations', 'StationController@index');
 
-Route::get('/stations/{id}', function($id){ return $id; });
-Route::get('/stations/{id}/arrivals', function($id){ return $id; });
-Route::get('/stations/{id}/departures', function($id){ return $id; });
+Route::get('/stations/{id}', 'StationController@liveboard');
+Route::get('/stations/{id}/arrivals', 'StationController@arrivals');
+Route::get('/stations/{id}/departures', 'StationController@departures');
 
 /*
 |--------------------------------------------------------------------------

@@ -17,49 +17,51 @@ class RouteController extends \BaseController {
                 return View::make('route.planner');
                 break;
             case "application/ld+json":
-                // TODO: format JSON-LD
-                $from =  Input::get('from'); // required
-                $to = Input::get('to'); // required
-                $time = Input::get('time'); // optional, default to current time if null
-                $date = Input::get('date'); // optional, default to current date if null
-                $timeSel = Input::get('timeSel');
-                $lang = "nl"; // for this version, default to nl station names
-                $fromName = \hyperRail\StationString::convertToString($from)->name;
-                $toName = \hyperRail\StationString::convertToString($to)->name;
                 try{
-                    $json = trim(file_get_contents('http://api.irail.be/connections/?to=' . $toName . '&from=' . $fromName . '&date=' . $date . '&time=' . $time . '&timeSel=' . $timeSel . '&lang=NL&format=json'));
-                    $context = array(
-                        "connection" => "http://vocab.org/transit/terms/route",
-                    );
-                    // Next, encode the context as JSON
-                    $jsonContext = json_encode($context);
-                    $compacted = JsonLD::compact($json, $jsonContext);
-                    echo JsonLD::toString($compacted, true);
+                    $from =  Input::get('from'); // required
+                    $to = Input::get('to'); // required
+                    $data = json_decode($this::getJSON());
+                    return var_dump($data);
+                    // TODO: format JSON-LD
                 }
                 catch(ErrorException $ex){
                     return "We could not retrieve data. Ensure that you have provided all required parameters: to, from, date, time, timeSel.";
                 }
                 break;
             case "application/json":
-                $from =  Input::get('from'); // required
-                $to = Input::get('to'); // required
-                $time = Input::get('time'); // optional, default to current time if null
-                $date = Input::get('date'); // optional, default to current date if null
-                $timeSel = Input::get('timeSel');
-                $lang = "nl"; // for this version, default to nl station names
-                $fromName = \hyperRail\StationString::convertToString($from)->name;
-                $toName = \hyperRail\StationString::convertToString($to)->name;
-                try{
-                    $json = trim(file_get_contents('http://api.irail.be/connections/?to=' . $toName . '&from=' . $fromName . '&date=' . $date . '&time=' . $time . '&timeSel=' . $timeSel . '&lang=NL&format=json'));
-                    return $json;
-                }
-                catch(ErrorException $ex){
-                    return "We could not retrieve data. Ensure that you have provided all required parameters: to, from, date, time, timeSel.";
-                }
+                return $this::getJSON();
                 break;
             default:
                 return View::make('route.planner');
                 break;
         }
     }
+
+    static function getJSON(){
+        $from =  Input::get('from'); // required
+        $to = Input::get('to'); // required
+        $time = Input::get('time'); // optional, default to current time if null
+        if (!Input::get('time')){
+            $time = date("Hi", time());
+        }
+        $date = Input::get('date'); // optional, default to current date if null
+        if (!Input::get('date')){
+            $date = date("dmy", time());
+        }
+        $timeSel = Input::get('timeSel'); // optional, default to 'depart at hour' if null
+        if (!Input::get('timeSel')){
+            $timeSel = "depart";
+        }
+        $lang = Config::get('app.locale');
+        $fromName = \hyperRail\StationString::convertToString($from)->name;
+        $toName = \hyperRail\StationString::convertToString($to)->name;
+        try{
+            $json = file_get_contents('http://api.irail.be/connections/?to=' . $toName . '&from=' . $fromName . '&date=' . $date . '&time=' . $time . '&timeSel=' . $timeSel . '&lang=' . $lang . '&format=json');
+            return trim($json);
+        }
+        catch(ErrorException $ex){
+            return null;
+        }
+    }
+
 }

@@ -16,7 +16,7 @@ App::before(function($request)
     if (App::environment()=='production'){
         if (!Request::secure()) return Redirect::secure(Request::getRequestUri());
     }
-    $languages = array('nl','fr', 'en');
+    $languages = array('nl', 'en'); // TODO: add fr & de when translations have been done
     $locale = Input::get('lang');
     if(in_array($locale, $languages)){
         App::setLocale($locale);
@@ -24,7 +24,6 @@ App::before(function($request)
         $locale = null;
     }
 });
-
 
 App::after(function($request, $response)
 {
