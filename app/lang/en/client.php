@@ -1,6 +1,27 @@
 <?php
 
 return array(
+    // New translation strings
+    "planNewRoute" => "Plan new route",
+    "searchStations" => "Search stations",
+    "typeToStation" => "Type destination station name",
+    "typeFromStation" => "Type departure station name",
+    "chooseDate" => "Choose your preferred date",
+    "chooseTime" => "Pick your preferred time",
+    "confirmSearch" => "Find trains",
+    "departureAtHour" => "Departure at chosen hour",
+    "arrivalAtHour" => "Arrival at chosen hour",
+    "loadingHeader" => "Loading your results. Sit tight.",
+    "loadingSub" => "Your results will be available within a few seconds.",
+    "depart" => "depart",
+    "arrive" => "arrive",
+    "on" => "on",
+    "at" => "at",
+    "youWantTo" => "You want to",
+    "routesFoundDescription" => "routes found. The optimal route has been expanded. Tap or click the headers to expand them.",
+    "reverse" => "Reverse trip",
+    "planAnother" => "Plan another trip",
+    //
     "search"=>"Search",
     "departure_at" => "Departure",
     "arrival_at" => "Arrival",

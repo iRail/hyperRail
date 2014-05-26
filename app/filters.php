@@ -16,7 +16,13 @@ App::before(function($request)
     if (App::environment()=='production'){
         if (!Request::secure()) return Redirect::secure(Request::getRequestUri());
     }
-    // dd(App::environment());
+    $languages = array('nl','fr', 'en');
+    $locale = Input::get('lang');
+    if(in_array($locale, $languages)){
+        App::setLocale($locale);
+    }else{
+        $locale = null;
+    }
 });
 
 

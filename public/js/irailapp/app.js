@@ -70,7 +70,7 @@
                         $scope.results = true;
                         // TODO: add time and date
                         // TODO: Ensure that we don't push too many states to our window history!
-                        window.history.pushState("departure", "iRail.be", "?from=" + $scope.departure.id + "&to=" + $scope.destination.id);
+                        // window.history.pushState("departure", "iRail.be", "?from=" + $scope.departure.id + "&to=" + $scope.destination.id);
                     })
                     .error(function(){
                         $scope.error = true;

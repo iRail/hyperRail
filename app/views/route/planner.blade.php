@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="irailapp" ng-controller="PlannerCtrl">
+<html lang="{{Config::get('app.locale');}}" ng-app="irailapp" ng-controller="PlannerCtrl">
     @include('core.head')
 <body>
 <div class="wrapper">
@@ -14,28 +14,28 @@
                         </a>
                     </script>
                     <div class="form-group">
-                        <label for="departure">Departure station</label>
-                        <input type="text" ng-model="departure" placeholder="Type a departure station" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control input-lg">
+                        <label for="departure">{{Lang::get('client.fromStation')}}</label>
+                        <input type="text" ng-model="departure" placeholder="{{Lang::get('client.typeFromStation')}}" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control input-lg">
                     </div>
                     <div class="form-group">
-                        <label for="destination">Destination station</label>
-                        <input type="text" ng-model="destination" placeholder="Type a destination station" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control input-lg">
+                        <label for="destination">{{Lang::get('client.toStation')}}</label>
+                        <input type="text" ng-model="destination" placeholder="{{Lang::get('client.typeToStation')}}" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control input-lg">
                     </div>
-                    <label for="destination">Choose your date</label>
+                    <label for="destination">{{Lang::get('client.chooseDate')}}</label>
                     <div class="datepicker">
                         <datepicker ng-class="time" ng-model="mydate" show-weeks="false"></datepicker>
                     </div>
                     <br/>
                 </div>
                 <div class="col-sm-6">
-                    <label for="destination">Pick a time</label>
+                    <label for="destination">{{Lang::get('client.chooseTime')}}</label>
                     <select class="form-control input-lg timepicker" ng-model="timeoption">
-                        <option value="depart">Departure at chosen hour</option>
-                        <option value="arrive">Arrival at chosen hour</option>
+                        <option value="depart">{{Lang::get('client.departureAtHour')}}</option>
+                        <option value="arrive">{{Lang::get('client.arrivalAtHour')}}</option>
                     </select>
                     <timepicker ng-model="mytime" ng-change="changed()" show-meridian="ismeridian"></timepicker>
                     <br/>
-                    <input type="submit" class="btn btn-default btn-lg btn-primary btn-wide" ng-click="save()" value="Find trains">
+                    <input type="submit" class="btn btn-default btn-lg btn-primary btn-wide" ng-click="save()" value="{{Lang::get('client.confirmSearch')}}">
                     <div class="alert alert-danger" ng-show="data === null">
                         <p ng-show="stationnotfound === true">We could not translate your text to a station. <strong>Please check your input</strong>. We automatically suggest possible stations! :)</p>
                         <p ng-show="mytime === undefined">Don't forget to set the time.</p>
@@ -46,8 +46,8 @@
             <div class="row" ng-show="loading">
                 <div class="col-md-12 col-sm-12">
                     <div class="loader">Loading...</div>
-                    <h4 class="center lg">Loading your results! Sit tight.</h4>
-                    <p class="small center">Your results will be here in a few seconds.</p>
+                    <h4 class="center lg">{{Lang::get('client.loadingHeader')}}</h4>
+                    <p class="small center">{{Lang::get('client.loadingSub')}}</p>
                 </div>
             </div>
             <div class="row max-w5" ng-show="error" >
@@ -66,18 +66,17 @@
             <div class="row" ng-show="results">
                 <div class="col-md-9 col-sm-8">
                     <h4>
-                        From <strong>@{{departure.name}}</strong> to <strong>@{{destination.name}}</strong>
+                        {{Lang::get('client.from')}} <strong>@{{departure.name}}</strong> {{Lang::get('client.to')}} <strong>@{{destination.name}}</strong>
                         <br/>
-                        on <strong>@{{mydate | date}}</strong>.
+                        {{Lang::get('client.on')}} <strong>@{{mydate | date}}</strong>.
                         <br/>
-                        You want to <strong>@{{timeoption}}</strong> at @{{mytime | date : 'HH:mm' }}.
+                        {{Lang::get('client.youWantTo')}}
+                        <span ng-show="timeoption=='depart'"><strong>{{Lang::get('client.depart')}} </strong></span>
+                        <span ng-show="timeoption=='arrive'"><strong>{{Lang::get('client.arrive')}} </strong></span>
+                        {{Lang::get('client.at')}} @{{mytime | date : 'HH:mm' }}.
                     </h4>
-                    <div ng-show="backintime">
-                        <hr/>
-                        <h4>You're trying to back in time? Good on ya.</h4>
-                    </div>
                     <hr/>
-                    <h5>@{{connections.length}} routes found. Tap the headers below to expand. We automatically expanded the optimal route.</h5>
+                    <h5>@{{connections.length}} {{Lang::get('client.routesFoundDescription')}}</h5>
                     <div class="panel-group results" id="accordion">
                         <div class="panel panel-default" ng-repeat="conn in connections">
                             <div class="panel-heading">
@@ -152,15 +151,15 @@
                 <div class="col-md-3 col-sm-4 hidden-print">
                     <br/>
                     <div class="btn-group btn-wide btn-botm">
-                        <a class="btn btn-default btn-lg btn-50" ng-click="earlier()">&lt; Earlier</a>
-                        <a class="btn btn-default btn-lg btn-50" ng-click="later()">Later &gt;</a>
+                        <a class="btn btn-default btn-50" ng-click="earlier()">&lt; {{Lang::get('client.rideEarlier')}}</a>
+                        <a class="btn btn-default btn-50" ng-click="later()">{{Lang::get('client.rideLater')}} &gt;</a>
                     </div>
                     <div class="btn-group btn-wide btn-botm">
-                        <a class="btn btn-default btn-lg btn-50" ng-click="earliest()">&lt;&lt; Earliest</a>
-                        <a class="btn btn-default btn-lg btn-50" ng-click="latest()">Latest &gt;&gt;</a>
+                        <a class="btn btn-default btn-50" ng-click="earliest()">&lt;&lt; {{Lang::get('client.earliestRide')}}</a>
+                        <a class="btn btn-default btn-50" ng-click="latest()">{{Lang::get('client.latestRide')}} &gt;&gt;</a>
                     </div>
-                    <a class="btn btn-primary btn-wide btn-lg btn-botm" ng-click="reverse()"><i class="fa fa-exchange"></i> Reverse trip</a>
-                    <a class="btn btn-default btn-wide btn-lg btn-botm" ng-click="reset()"><i class="fa fa-undo"></i> Plan another trip</a>
+                    <a class="btn btn-primary btn-wide btn-lg btn-botm" ng-click="reverse()"><i class="fa fa-exchange"></i> {{Lang::get('client.reverse')}}</a>
+                    <a class="btn btn-default btn-wide btn-lg btn-botm" ng-click="reset()"><i class="fa fa-undo"></i> {{Lang::get('client.planAnother')}}</a>
                 </div>
             </div>
         </div>

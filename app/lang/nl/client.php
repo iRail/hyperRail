@@ -1,6 +1,27 @@
 <?php
 
 return array(
+    // New translation strings
+    "planNewRoute" => "Plan nieuwe route",
+    "searchStations" => "Zoek naar stations",
+    "typeToStation" => "Typ bestemming stationsnaam",
+    "typeFromStation" => "Typ vertrek stationsnaam",
+    "chooseDate" => "Kies uw gewenste datum",
+    "chooseTime" => "Kies uw gewenste tijdstip",
+    "confirmSearch" => "Zoek naar treinen",
+    "departureAtHour" => "Vertrek om gekozen uur",
+    "arrivalAtHour" => "Arriveren om gekozen uur",
+    "loadingHeader" => "Bezig met laden van resultaten.",
+    "loadingSub" => "Uw resultaten zullen binnenkort beschikbaar zijn.",
+    "depart" => "vertrekken",
+    "arrive" => "arriveren",
+    "on" => "op",
+    "at" => "om",
+    "youWantTo" => "U wilt",
+    "routesFoundDescription" => "routes gevonden. De optimale route is al uitgebreid. U kan op de andere routes klikken om ze uit te breiden.",
+    "reverse" => "Trip omkeren",
+    "planAnother" => "Andere trip plannen",
+    //
     "search"=>"Zoek route",
     "departure_at" => "Vertrek",
     "arrival_at" => "Aankomst",
