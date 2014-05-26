@@ -16,18 +16,6 @@ Route::get('/stations', 'StationController@index');
 Route::get('/stations/{id}', function($id){ return $id; });
 Route::get('/stations/{id}/arrivals', function($id){ return $id; });
 Route::get('/stations/{id}/departures', function($id){ return $id; });
-Route::get('/parkings/{location_id}', function($location_id){ return $location_id;});
-Route::get('/vehicle', function(){ });
-Route::get('/parkings', function(){ });
-
-/*
-|--------------------------------------------------------------------------
-| API tests
-|--------------------------------------------------------------------------
-|
-*/
-
-Route::get('/apitest', 'ApiController@test');
 
 /*
 |--------------------------------------------------------------------------

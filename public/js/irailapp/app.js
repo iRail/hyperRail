@@ -159,6 +159,8 @@
          * Resets the route planner to default values
          */
         $scope.reset = function(){
+            event.stopPropagation();
+            event.preventDefault();
             $scope.error = false;
             $scope.loading = false;
             $scope.results = false;
@@ -241,6 +243,17 @@
             }
         });
 
+    });
+
+    irailapp.controller('StationSearchCtrl', function($scope, $http, $filter, $timeout){
+
+        $http.get('data/stations.json').success(function(data) {
+            $scope.stations = data;
+        });
+
+        $scope.reset = function(){
+            // Should not do anything
+        }
     });
 
     function GetURLParameter(sParam){

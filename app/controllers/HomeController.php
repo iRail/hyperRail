@@ -12,23 +12,6 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-        $negotiator = new \Negotiation\FormatNegotiator();
-        $acceptHeader = Request::header('accept');
-        $priorities = array('text/html', 'application/json', '*/*');
-        $result = $negotiator->getBest($acceptHeader, $priorities);
-
-        $val = $result->getValue();
-
-        switch ($val){
-            case "text/html":
-                return View::make('hello');
-                break;
-            case "application/json":
-                JsonLDTest::doTest();
-                break;
-            default:
-                return View::make('hello');
-                break;
-        }
+        return Redirect::to('route');
 	}
 }

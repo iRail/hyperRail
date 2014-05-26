@@ -1,37 +1,28 @@
-@extends('layout')
-
-@section('title')
-Home
-@stop
-
-@section('content')
-
-<div class="row">
-    <div class="col-md-12">
-        <h1>Station search</h1>
-        <div class="form-group">
-            <label for="station">Station search</label>
-            <br/>
-            <?php
-            $json = file_get_contents('http://irail.dev/data/stations.json');
-            $data = json_decode($json);
-            ?>
-            <select class="chosen-select">
-                @foreach ($data->stations as $station)
-                <option value="{{$station->id}}">{{$station->name}}</option>
-                @endforeach
-            </select>
+<!DOCTYPE html>
+<html lang="en" ng-app="irailapp" ng-controller="StationSearchCtrl">
+@include('core.head')
+<body>
+<div class="wrapper">
+    <div id="main">
+        @include('core.navigation')
+        <div class="container">
+            <div class="row max-w5 routeplanner view1">
+                <div class="col-sm-12">
+                    <script type="text/ng-template" id="customTemplate.html">
+                        <a>
+                            <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+                        </a>
+                    </script>
+                    <div class="form-group">
+                        <label for="departure">Station name</label>
+                        <input type="text" ng-model="departure" placeholder="Type to search for a station" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control input-lg">
+                    </div>
+                    <input type="submit" class="btn btn-default btn-lg btn-primary btn-wide" ng-click="save()" value="Watch liveboard" ng-show="departure">
+                </div>
+            </div>
         </div>
-        {{ Form::open() }}
-        {{ Form::button('See station information', array('class' => 'btn btn-primary')) }}
-        {{ Form::button('See departures', array('class' => 'btn btn-default')) }}
-        {{ Form::button('See arrivals', array('class' => 'btn btn-default')) }}
-        {{ Form::close() }}
-        <hr/>
     </div>
 </div>
-<script>
-    $(".chosen-select").chosen();
-</script>
-
-@stop
+@include('core.footer')
+</body>
+</html>

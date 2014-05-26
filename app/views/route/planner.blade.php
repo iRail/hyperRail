@@ -1,41 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="irailapp" ng-controller="PlannerCtrl">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>iRail.be</title>
-    <link rel="stylesheet" href="{{ URL::asset('bower_components/bootstrap-sass/lib/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('bower_components/fontawesome/css/font-awesome.min.css') }}"/>
-    <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
-    <script src="{{ URL::asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ URL::asset('bower_components/angular/angular.min.js') }}"></script>
-    <script src="{{ URL::asset('bower_components/bootstrap-sass/dist/js/bootstrap.js') }}"></script>
-    <script src="{{ URL::asset('bower_components/angular-bootstrap/ui-bootstrap.min.js') }}"></script>
-    <script src="{{ URL::asset('js/irailapp/app.js') }}"></script>
-</head>
+    @include('core.head')
 <body>
 <div class="wrapper">
     <div id="main">
-        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#"><img src="images/logo.svg" /> <strong>iRail</strong> route planner</a>
-                </div>
-                <div class="navbar-collapse collapse navbar-right">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#" ng-click="reset()"><i class="fa fa-road fa-12"></i> Plan new route</a></li>
-                        <li><a href="{{ URL::to('/stations') }}"><i class="fa fa-search fa-12"></i> Search stations</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div>
-        </div>
+        @include('core.navigation')
         <div class="container">
             <div class="row routeplanner view1 well" ng-show="planning">
                 <div class="col-sm-6">
@@ -197,9 +166,6 @@
         </div>
     </div>
 </div>
-<footer class="footer container">
-    <hr/>
-    <p>&copy; 2014, OKFN Belgium. iRail is a part of <a href="http://okfn.be/" target="_blank">Open Knowledge Foundation Belgium</a>. </p>
-</footer>
+    @include('core.footer')
 </body>
 </html>
