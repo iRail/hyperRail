@@ -22,6 +22,13 @@ return array(
     "reverse" => "Trip omkeren",
     "planAnother" => "Andere trip plannen",
     //
+    "errorCheckInput" => "We konden je tekst niet omzetten naar een station. Gelieve je input te controleren. We suggereren automatisch stations! :)",
+    "error" => "Hmm, er is iets fout gegaan!",
+    "errorNoRoutes" => "We konden geen routes vinden.",
+    "errorExplanation" => "Dit gebeurt soms wanneer data niet beschikbaar is (b.v. datum in de verre toekomst). Gelieve opnieuw te proberen. Als dit probleem blijft duren,",
+    "errorReturn" => "Terug naar de planner",
+    "errorMail" => "mail ons",
+    //
     "search"=>"Zoek route",
     "departure_at" => "Vertrek",
     "arrival_at" => "Aankomst",

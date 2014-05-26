@@ -37,7 +37,7 @@
                     <br/>
                     <input type="submit" class="btn btn-default btn-lg btn-primary btn-wide" ng-click="save()" value="{{Lang::get('client.confirmSearch')}}">
                     <div class="alert alert-danger" ng-show="data === null">
-                        <p ng-show="stationnotfound === true">We could not translate your text to a station. <strong>Please check your input</strong>. We automatically suggest possible stations! :)</p>
+                        <p ng-show="stationnotfound === true">{{Lang::get('client.errorCheckInput')}}</p>
                         <p ng-show="mytime === undefined">Don't forget to set the time.</p>
                         <p ng-show="mydate === undefined">Don't forget to set the date.</p>
                     </div>
@@ -55,10 +55,10 @@
                     <div class="well">
                         <h1 class="center"><i class="fa fa-support fa-3x center"></i>
                         </h1>
-                        <h3>Something seems to have gone wrong. <strong>We could not find any routes</strong>.</h3>
-                        <p>This sometimes happens when data is unavailable (e.g. date far in the future). Please try again. If this problem persists, <a href="mailto:iRail@list.iRail.be">mail us</a>.</p>
+                        <h3>{{Lang::get('client.error')}} <strong>{{Lang::get('client.errorNoRoutes')}}</strong></h3>
+                        <p>{{Lang::get('client.errorExplanation')}} <a href="mailto:iRail@list.iRail.be">{{Lang::get('client.errorMail')}}</a>.</p>
                         <br/>
-                        <a href="#" ng-click="reset()" class="btn btn-danger btn-lg btn-wide"><i class="fa fa-chevron-left"></i> Return to planner</a>
+                        <a href="#" ng-click="reset()" class="btn btn-danger btn-lg btn-wide"><i class="fa fa-chevron-left"></i> {{Lang::get('client.errorReturn')}}</a>
                         <br/>
                     </div>
                 </div>
