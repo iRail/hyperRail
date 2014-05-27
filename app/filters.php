@@ -16,6 +16,9 @@ App::before(function($request)
     if (App::environment()=='production'){
         if (!Request::secure()) return Redirect::secure(Request::getRequestUri());
     }
+
+    // TODO: implement language negotiation as an alternative to get('lang')
+
     $languages = array('nl', 'en'); // TODO: add fr & de when translations have been done
     $locale = Input::get('lang');
     if(in_array($locale, $languages)){
