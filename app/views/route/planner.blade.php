@@ -33,7 +33,7 @@
                         <option value="depart">{{Lang::get('client.departureAtHour')}}</option>
                         <option value="arrive">{{Lang::get('client.arrivalAtHour')}}</option>
                     </select>
-                    <timepicker ng-model="mytime" ng-change="changed()" show-meridian="ismeridian"></timepicker>
+                    <timepicker ng-model="mytime" ng-change="changed()" minute-step="15" show-meridian="ismeridian"></timepicker>
                     <br/>
                     <input type="submit" class="btn btn-default btn-lg btn-primary btn-wide" ng-click="save()" value="{{Lang::get('client.confirmSearch')}}">
                     <div class="alert alert-danger" ng-show="data === null">

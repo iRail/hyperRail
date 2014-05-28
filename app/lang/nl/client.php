@@ -12,7 +12,7 @@ return array(
     "departureAtHour" => "Vertrek om gekozen uur",
     "arrivalAtHour" => "Arriveren om gekozen uur",
     "loadingHeader" => "Bezig met laden van resultaten.",
-    "loadingSub" => "Uw resultaten zullen binnenkort beschikbaar zijn.",
+    "loadingSub" => "Uw resultaten zullen over een seconde of twee beschikbaar zijn.",
     "depart" => "vertrekken",
     "arrive" => "arriveren",
     "on" => "op",
