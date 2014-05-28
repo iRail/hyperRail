@@ -6,4 +6,9 @@ class StationController extends \BaseController {
         return View::make('stations.search');
     }
 
+    public function liveboard($id){
+        // TODO: content delegation
+        return $id;
+    }
+
 }

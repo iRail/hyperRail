@@ -256,6 +256,16 @@
         }
     });
 
+    irailapp.controller('StationLiveboardCtrl', function($scope, $http, $filter, $timeout){
+
+
+
+        $scope.reset = function(){
+            // Should not do anything
+        }
+
+    });
+
     function GetURLParameter(sParam){
         var sPageURL = window.location.search.substring(1);
         var sURLVariables = sPageURL.split('&');

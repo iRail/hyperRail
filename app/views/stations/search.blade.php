@@ -17,7 +17,7 @@
                         <label for="departure">Station name</label>
                         <input type="text" ng-model="departure" placeholder="Type to search for a station" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control input-lg">
                     </div>
-                    <input type="submit" class="btn btn-default btn-lg btn-primary btn-wide" ng-click="save()" value="Watch liveboard" ng-show="departure">
+                    <a href="{{ URL::to('stations') }}/@{{departure.id}}" ng-show="departure.id" class="btn btn-primary btn-wide btn-lg">View liveboard</a>
                 </div>
             </div>
         </div>
