@@ -7,8 +7,12 @@ class StationController extends \BaseController {
     }
 
     public function liveboard($id){
-        // TODO: content delegation
-        return $id;
+
+        $stationStringName = \hyperRail\StationString::convertToString($id);
+
+        // TODO: fetch data from URL — currently the API is broken :(
+
+        return View::make('stations.liveboard');
     }
 
 }
