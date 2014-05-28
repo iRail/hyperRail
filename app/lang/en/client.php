@@ -25,6 +25,7 @@ return array(
     "errorCheckInput" => "We could not translate your text to a station. Please check your input. We automatically suggest possible stations! :)",
     "error" => "Something seems to have gone wrong.",
     "errorNoRoutes" => "We could not find any routes.",
+    "errorNoLiveboard" => "We could not find any liveboards",
     "errorExplanation" => "This sometimes happens when data is unavailable (e.g. date far in the future). Please try again. If this problem persists,",
     "errorReturn" => "Return to the planner",
     "errorMail" => "mail us",
