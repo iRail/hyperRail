@@ -28,6 +28,8 @@ return array(
     "errorExplanation" => "Dit gebeurt soms wanneer data niet beschikbaar is (b.v. datum in de verre toekomst). Gelieve opnieuw te proberen. Als dit probleem blijft duren,",
     "errorReturn" => "Terug naar de planner",
     "errorMail" => "mail ons",
+    "language" => "Taalkeuze",
+    "isPartOf" => "iRail is een onderdeel van",
     //
     "search"=>"Zoek route",
     "departure_at" => "Vertrek",

@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img src="{{ URL::asset('images/logo.svg')}}" /> <strong>iRail</strong> route planner</a>
+            <a class="navbar-brand" href="#"><img src="{{ URL::asset('images/logo.svg')}}" /> <strong>iRail</strong></a>
         </div>
         <div class="navbar-collapse collapse navbar-right">
             <ul class="nav navbar-nav">

@@ -28,6 +28,8 @@ return array(
     "errorExplanation" => "This sometimes happens when data is unavailable (e.g. date far in the future). Please try again. If this problem persists,",
     "errorReturn" => "Return to the planner",
     "errorMail" => "mail us",
+    "language" => "Language",
+    "isPartOf" => "iRail is a part of",
     //
     "search"=>"Search",
     "departure_at" => "Departure",

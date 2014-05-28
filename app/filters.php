@@ -19,13 +19,26 @@ App::before(function($request)
 
     // TODO: implement language negotiation as an alternative to get('lang')
 
-    $languages = array('nl', 'en'); // TODO: add fr & de when translations have been done
-    $locale = Input::get('lang');
-    if(in_array($locale, $languages)){
-        App::setLocale($locale);
+    if (Input::get('lang')){
+        $languages = array('nl', 'en', 'fr');
+        $locale = Input::get('lang');
+        if(in_array($locale, $languages)){
+            App::setLocale($locale);
+            Session::put('lang', $locale);
+        }else{
+            $locale = null;
+        }
     }else{
-        $locale = null;
+        $languages = array('nl', 'en', 'fr');
+        $locale = Session::get('lang');
+        if(in_array($locale, $languages)){
+            App::setLocale($locale);
+        }else{
+            $locale = null;
+        }
     }
+
+
 });
 
 App::after(function($request, $response)

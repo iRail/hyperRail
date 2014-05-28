@@ -109,3 +109,6 @@ input.ng-invalid {
   border-color: #C72929 !important; }
   .datepicker .btn-info.active span.text-info {
     color: #FFF !important; }
+
+.ul-lg li {
+  font-size: 1.4em; }

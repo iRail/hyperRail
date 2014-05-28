@@ -12,6 +12,10 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-        return Redirect::to('route');
+        if (!Session::get('lang')){
+            return View::make('language');
+        }else{
+            return Redirect::to('route');
+        }
 	}
 }
