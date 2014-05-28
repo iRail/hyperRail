@@ -14,10 +14,10 @@
                         </a>
                     </script>
                     <div class="form-group">
-                        <label for="departure">Station name</label>
-                        <input type="text" ng-model="departure" placeholder="Type to search for a station" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control input-lg">
+                        <label for="departure">{{Lang::get('client.stationName')}}</label>
+                        <input type="text" ng-model="departure" placeholder="{{Lang::get('client.stationSearchPlaceholder')}}" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control input-lg">
                     </div>
-                    <a href="{{ URL::to('stations') }}/@{{departure.id}}" ng-show="departure.id" class="btn btn-primary btn-wide btn-lg">View liveboard</a>
+                    <a href="{{ URL::to('stations') }}/@{{departure.id}}" ng-show="departure.id" class="btn btn-primary btn-wide btn-lg">{{Lang::get('client.viewLiveboard')}}</a>
                 </div>
             </div>
         </div>
