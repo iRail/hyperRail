@@ -4,7 +4,7 @@
      * SET UP AS ANGULAR APP
      *-------------------------------------------------------*/
 
-    var irailapp = angular.module('irailapp', ['ui.bootstrap']);
+    var irailapp = angular.module('irailapp', ['ui.bootstrap', 'ngAnimate']);
 
     irailapp.controller('PlannerCtrl', function ($scope, $http, $filter, $timeout) {
 

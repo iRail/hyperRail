@@ -163,6 +163,8 @@ input.ng-invalid {
 
 .navbar-name{
   font-size: 1.2em;
+  font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-weight: bold;
   }
 
 .irail-logo{
@@ -184,4 +186,22 @@ input.ng-invalid {
   li{
 	font-size: 1.4em;
 	}
+  }
+
+/* Animations */
+
+.row.ng-hide-remove {
+  -webkit-animation: fadeIn 0.7s;
+  animation: fadeIn 0.7s;
+  }
+
+
+.row.loading.ng-hide-remove {
+  -webkit-animation: bounceIn 0.7s;
+  animation: bounceIn 0.7s;
+  }
+
+.row.routeplanner.ng-hide-remove {
+  -webkit-animation: bounceIn 0.7s;
+  animation: bounceIn 0.7s;
   }

@@ -6,9 +6,11 @@
     <link rel="shortcut icon" href="{{ URL::asset('favicon.ico') }}"/>
     <link rel="stylesheet" href="{{ URL::asset('bower_components/bootstrap-sass/lib/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('bower_components/fontawesome/css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet" href="{{ URL::asset('bower_components/animate.css/animate.min.css') }}"/>
     <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
     <script src="{{ URL::asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('bower_components/angular/angular.min.js') }}"></script>
+    <script src="{{ URL::asset('bower_components/angular-animate/angular-animate.min.js') }}"></script>
     <script src="{{ URL::asset('bower_components/bootstrap-sass/dist/js/bootstrap.js') }}"></script>
     <script src="{{ URL::asset('bower_components/angular-bootstrap/ui-bootstrap.min.js') }}"></script>
     <script src="{{ URL::asset('js/irailapp/app.js') }}"></script>
