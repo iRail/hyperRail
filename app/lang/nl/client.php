@@ -31,6 +31,7 @@ return array(
     "errorReturnLiveboard" => "Terug naar stations zoeken",
     "errorMail" => "mail ons",
     "stationsIdentical" => "Uw vertrekstation en bestemmingsstation zijn hetzelfde! We kunnen geen route berekenen waar er geen is :)",
+    "quickFilter" => "Type hier om snel liveboard-resultaten te filteren",
     //
     "language" => "Taalkeuze",
     "isPartOf" => "iRail is een onderdeel van",

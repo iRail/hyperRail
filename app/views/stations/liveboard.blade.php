@@ -18,8 +18,10 @@
                     <p class="h1">Liveboard {{Lang::get('client.station')}} <strong>@{{liveboardData.station}}</strong></p>
                     <p>{{Lang::get('client.liveboardDescription')}}</p>
                     <hr/>
+                    <input class="input-lg form-control" ng-model="searchText" placeholder="{{Lang::get('client.quickFilter')}}">
+                    <br/>
                     <ul class="list-group">
-                        <li class="list-group-item" ng-repeat="dep in liveboardData.departures.departure">
+                        <li class="list-group-item" ng-repeat="dep in liveboardData.departures.departure | filter:searchText">
                               <span class="container33 liveboard-list">
                                     <span class="platform-left" ng-if="dep.platform">
                                         <span class="badge">@{{dep.platform}}</span>

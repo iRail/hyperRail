@@ -31,6 +31,7 @@ return array(
     "errorReturnLiveboard" => "Return to station search",
     "errorMail" => "mail us",
     "stationsIdentical" => "The departure and destination station are the same. We can't calculate a route where there is none :)",
+    "quickFilter" => "Type here to quickly filter liveboard results",
     //
     "language" => "Language",
     "isPartOf" => "iRail is a part of",
