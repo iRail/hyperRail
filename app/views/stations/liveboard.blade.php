@@ -6,7 +6,7 @@
     <div id="main">
         @include('core.navigation')
         <div class="container">
-            <div class="row loading" ng-hide="results">
+            <div class="row loading" ng-show="loading">
                 <div class="col-md-12 col-sm-12">
                     <div class="loader">Loading...</div>
                     <h4 class="center lg">{{Lang::get('client.loadingHeader')}}</h4>
@@ -15,7 +15,7 @@
             </div>
             <div class="row results" ng-show="results">
                 <div class="col-md-12 col-sm-12">
-                    <h1>Liveboard {{Lang::get('client.station')}} @{{liveboardData.station}}</h1>
+                    <p class="h1">Liveboard {{Lang::get('client.station')}} <strong>@{{liveboardData.station}}</strong></p>
                     <p>{{Lang::get('client.liveboardDescription')}}</p>
                     <hr/>
                     <ul class="list-group">
@@ -42,6 +42,19 @@
                                 </span>
                         </li>
                     </ul>
+                </div>
+            </div>
+            <div class="row max-w5" ng-show="error" >
+                <div class="col-md-12 col-sm-12">
+                    <div class="well">
+                        <h1 class="center"><i class="fa fa-support fa-3x center"></i>
+                        </h1>
+                        <h3>{{Lang::get('client.error')}} <strong>{{Lang::get('client.errorNoLiveboard')}}</strong></h3>
+                        <p>{{Lang::get('client.errorExplanation')}} <a href="mailto:iRail@list.iRail.be">{{Lang::get('client.errorMail')}}</a>.</p>
+                        <br/>
+                        <a href="/stations" class="btn btn-danger btn-lg btn-wide"><i class="fa fa-chevron-left"></i> {{Lang::get('client.errorReturnLiveboard')}}</a>
+                        <br/>
+                    </div>
                 </div>
             </div>
         </div>

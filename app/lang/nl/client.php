@@ -28,6 +28,7 @@ return array(
     "errorNoLiveboard" => "We konden geen liveboard data ontvangen.",
     "errorExplanation" => "Dit gebeurt soms wanneer data niet beschikbaar is (b.v. datum in de verre toekomst). Gelieve opnieuw te proberen. Als dit probleem blijft duren,",
     "errorReturn" => "Terug naar de planner",
+    "errorReturnLiveboard" => "Terug naar stations zoeken",
     "errorMail" => "mail ons",
     //
     "language" => "Taalkeuze",
