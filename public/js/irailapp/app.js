@@ -261,11 +261,15 @@
         $http.get('../data/stations.json').success(function(data) {
             $scope.stations = data;
             var location = document.URL;
+            // Figure out what the station name is
             var split = location.split('/stations/');
             var id = split[1].split('?');
             var stationName = $scope.findStationById(id[0]).name;
+            // Set up the request path
             url = "http://api.irail.be/liveboard/?station=" + stationName + "&lang=nl&format=json";
+            // Request the URL
             $http.get(url)
+                // If it works, show data
                 .success(function(data) {
                 $scope.liveboardData = data;
                 $scope.results = true;
@@ -273,12 +277,12 @@
                 $scope.error = false;
             }
             ).error(function(){
-                    $scope.results = false;
-                    $scope.loading = false;
-                    $scope.error = true;
-                });
+                // Otherwise, show other stuff
+                $scope.results = false;
+                $scope.loading = false;
+                $scope.error = true;
+            });
         });
-
         $scope.findStationById = function(suppliedIdentifierString){
             for (var i = 0, len = $scope.stations.stations.length; i < len; i++) {
                 if (($scope.stations.stations[i].id.toLowerCase()).indexOf(suppliedIdentifierString) != -1){

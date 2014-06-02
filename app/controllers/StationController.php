@@ -20,6 +20,11 @@ class StationController extends \BaseController {
             case "text/html":
                 return Response::view('stations.liveboard')->header('Content-Type', "text/html");
                 break;
+            case "application/json":
+                $stationStringName = \hyperRail\StationString::convertToString($id);
+                $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&lang=nl&format=json";
+                return $data = file_get_contents($URL);
+                break;
             default:
                 return Response::view('stations.liveboard')->header('Content-Type', "text/html");
                 break;
