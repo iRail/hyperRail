@@ -18,15 +18,19 @@ class StationController extends \BaseController {
 
         switch ($val){
             case "text/html":
-                return Response::view('stations.liveboard')->header('Content-Type', "text/html");
+                return Response::view('stations.liveboard')->header('Content-Type', "text/html")->header('Vary', 'accept');
                 break;
             case "application/json":
                 $stationStringName = \hyperRail\StationString::convertToString($id);
                 $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&lang=nl&format=json";
-                return $data = file_get_contents($URL);
+                $data = file_get_contents($URL);
+                $response = Response::make($data, 200);
+                $response->header('Content-Type', 'application/json');
+                $response->header('Vary', 'accept');
+                return $response;
                 break;
             default:
-                return Response::view('stations.liveboard')->header('Content-Type', "text/html");
+                return Response::view('stations.liveboard')->header('Content-Type', "text/html")->header('Vary', 'accept');
                 break;
         }
     }

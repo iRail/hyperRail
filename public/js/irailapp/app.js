@@ -63,11 +63,13 @@
                 $http.get(url)
                     .success(function(data) {
                         $scope.parseResults(data);
+                        console.log(data);
                         window.history.pushState("departure", "iRail.be", "?to=" + $scope.destination.id
                             + '&from=' + $scope.departure.id
                             + '&date=' + ($filter('date')($scope.mydate, 'ddMMyy'))
                             + '&time=' + ($filter('date')($scope.mytime, 'HHmm'))
                             + '&timeSel=' + $scope.timeoption
+                            + '&auto=true'
                         );
                         $scope.loading = false;
                         $scope.results = true;
@@ -104,7 +106,6 @@
                 data.connection.reverse();
             }
             $scope.connections = data.connection;
-
         };
 
         /**
@@ -258,6 +259,10 @@
     irailapp.controller('StationLiveboardCtrl', function($scope, $http, $filter, $timeout){
 
         $scope.loading = true;
+        var config = {headers: {
+            'Accept': 'application/json'
+        }
+        };
         $http.get('../data/stations.json').success(function(data) {
             $scope.stations = data;
             var location = document.URL;
@@ -266,9 +271,9 @@
             var id = split[1].split('?');
             var stationName = $scope.findStationById(id[0]).name;
             // Set up the request path
-            url = "http://api.irail.be/liveboard/?station=" + stationName + "&lang=nl&format=json";
+            // url = "http://api.irail.be/liveboard/?station=" + stationName + "&lang=nl&format=json";
             // Request the URL
-            $http.get(url)
+            $http.get(document.URL, config)
                 // If it works, show data
                 .success(function(data) {
                 $scope.liveboardData = data;

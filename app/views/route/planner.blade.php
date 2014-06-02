@@ -99,7 +99,7 @@
                                     </span>
                                     <span class="tcenter">
                                         <strong>
-                                            <i class="fa fa-clock-o"></i> @{{ ((conn.arrival.time-conn.departure.time))/60 }} min
+                                            <i class="fa fa-clock-o"></i> @{{ ((conn.arrival.time-conn.departure.time))/60 }}'
                                         </strong>
                                     </span>
                                     <span class="tright">
