@@ -263,6 +263,7 @@
         var config = {headers:{'Accept': 'application/json'}};
         $http.get(document.URL, config).success(function(data) {
             $scope.liveboardData = data;
+            $scope.results = true;
         });
         $scope.reset = function(){
             // Should not do anything
