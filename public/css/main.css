@@ -33,6 +33,31 @@ input.ng-invalid {
     float: left;
     width: 20%;
     text-align: center; }
+  .container33 .platform-left {
+    float: left;
+    width: 20%;
+    text-align: left; }
+  .container33 .time-right {
+    margin-top: 5px;
+    float: left;
+    width: 20%;
+    text-align: right; }
+  .container33 .station-middle {
+    margin-top: 5px;
+    float: left;
+    width: 50%;
+    text-align: left; }
+  .container33 .delay-right {
+    margin-top: 5px;
+    float: left;
+    width: 10%;
+    text-align: left; }
+
+.liveboard-list {
+  font-size: 1.4em; }
+
+.delay {
+  color: red; }
 
 .max-w5 {
   max-width: 480px !important;

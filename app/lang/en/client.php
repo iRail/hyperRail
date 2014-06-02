@@ -37,6 +37,10 @@ return array(
     "stationSearchPlaceholder" => "Type to search for a station",
     "viewLiveboard" => "View Liveboard",
     //
+    "platform" => "Platform",
+    "station" => "Station",
+    "liveboardDescription" => "Below you'll find a list of all trains departing for a certain station and their possible delay.",
+    //
     "search"=>"Search",
     "departure_at" => "Departure",
     "arrival_at" => "Arrival",

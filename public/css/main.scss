@@ -44,7 +44,38 @@ input.ng-invalid {
 	width: 20%;
 	text-align: center;
 	}
+  .platform-left{
+	float: left;
+	width: 20%;
+	text-align: left;
+	}
+  .time-right{
+	margin-top: 5px;
+	float: left;
+	width: 20%;
+	text-align: right;
+	}
+  .station-middle{
+	margin-top: 5px;
+	float: left;
+	width: 50%;
+	text-align: left;
+	}
+  .delay-right{
+	margin-top: 5px;
+	float: left;
+	width: 10%;
+	text-align: left;
+	}
 }
+
+.liveboard-list{
+  font-size: 1.4em;
+  }
+
+.delay{
+  color: red;
+  }
 
 .max-w5{
   max-width: 480px !important;

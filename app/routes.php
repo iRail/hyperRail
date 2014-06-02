@@ -14,7 +14,6 @@ Route::get('/route', 'RouteController@index');
 Route::get('/stations', 'StationController@index');
 
 Route::get('/language', 'LanguageController@index');
-
 Route::get('/stations/{id}', 'StationController@liveboard');
 Route::get('/stations/{id}/arrivals', 'StationController@arrivals');
 Route::get('/stations/{id}/departures', 'StationController@departures');

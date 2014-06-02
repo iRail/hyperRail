@@ -257,9 +257,13 @@
     });
 
     irailapp.controller('StationLiveboardCtrl', function($scope, $http, $filter, $timeout){
-
-
-
+        // Make request to the same URL
+        // Since content negotiation checks what to return
+        // It should return JSON in this specific case
+        var config = {headers:{'Accept': 'application/json'}};
+        $http.get(document.URL, config).success(function(data) {
+            $scope.liveboardData = data;
+        });
         $scope.reset = function(){
             // Should not do anything
         }

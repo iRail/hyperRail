@@ -37,6 +37,10 @@ return array(
     "stationSearchPlaceholder" => "Typ om te zoeken naar een station",
     "viewLiveboard" => "Liveboard bekijken",
     //
+    "platform" => "Perron",
+    "station" => "Station",
+    "liveboardDescription" => "Hier onder vind je een lijst met alle treinen die naar een bepaald station rijden en hun mogelijke vertragingen.",
+    //
     "search"=>"Zoek route",
     "departure_at" => "Vertrek",
     "arrival_at" => "Aankomst",
