@@ -6,7 +6,7 @@
     <div id="main">
         @include('core.navigation')
         <div class="container">
-            <div class="row routeplanner view1 well" ng-show="planning">
+            <div class="row routeplanner view1" ng-show="planning">
                 <div class="col-sm-6">
                     <script type="text/ng-template" id="customTemplate.html">
                         <a>
@@ -67,7 +67,7 @@
                         <h3>{{Lang::get('client.error')}} <strong>{{Lang::get('client.errorNoRoutes')}}</strong></h3>
                         <p>{{Lang::get('client.errorExplanation')}} <a href="mailto:iRail@list.iRail.be">{{Lang::get('client.errorMail')}}</a>.</p>
                         <br/>
-                        <a href="#" ng-click="reset()" class="btn btn-danger btn-lg btn-wide"><i class="fa fa-chevron-left"></i> {{Lang::get('client.errorReturn')}}</a>
+                        <a href="#" ng-click="resetplanner($event)" class="btn btn-danger btn-lg btn-wide"><i class="fa fa-chevron-left"></i> {{Lang::get('client.errorReturn')}}</a>
                         <br/>
                     </div>
                 </div>
@@ -168,7 +168,7 @@
                         <a class="btn btn-default btn-50" ng-click="latest()">{{Lang::get('client.latestRide')}} &gt;&gt;</a>
                     </div>
                     <a class="btn btn-primary btn-wide btn-lg btn-botm" ng-click="reverse()"><i class="fa fa-exchange"></i> {{Lang::get('client.reverse')}}</a>
-                    <a class="btn btn-default btn-wide btn-lg btn-botm" ng-click="reset()"><i class="fa fa-undo"></i> {{Lang::get('client.planAnother')}}</a>
+                    <a class="btn btn-default btn-wide btn-lg btn-botm" ng-click="resetplanner($event)"><i class="fa fa-undo"></i> {{Lang::get('client.planAnother')}}</a>
                 </div>
             </div>
         </div>

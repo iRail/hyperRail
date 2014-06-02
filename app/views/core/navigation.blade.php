@@ -11,7 +11,7 @@
         </div>
         <div class="navbar-collapse collapse navbar-right">
             <ul class="nav navbar-nav">
-                <li><a href="{{ URL::to('route') }}" ng-click="reset()"><i class="fa fa-road fa-12"></i> {{Lang::get('client.planNewRoute')}}</a></li>
+                <li><a href="{{ URL::to('route') }}" ng-click="resetplanner($event)"><i class="fa fa-road fa-12"></i> {{Lang::get('client.planNewRoute')}}</a></li>
                 <li><a href="{{ URL::to('stations') }}"><i class="fa fa-search fa-12"></i> {{Lang::get('client.searchStations')}}</a></li>
             </ul>
         </div><!--/.nav-collapse -->

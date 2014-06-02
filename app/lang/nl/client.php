@@ -4,8 +4,8 @@ return array(
     // New translation strings
     "planNewRoute" => "Plan nieuwe route",
     "searchStations" => "Zoek naar stations",
-    "typeToStation" => "Typ bestemming stationsnaam",
-    "typeFromStation" => "Typ vertrek stationsnaam",
+    "typeToStation" => "Typ bestemmingstation",
+    "typeFromStation" => "Typ vertrekstation",
     "chooseDate" => "Kies uw gewenste datum",
     "chooseTime" => "Kies uw gewenste tijdstip",
     "confirmSearch" => "Zoek naar treinen",

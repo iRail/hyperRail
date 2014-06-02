@@ -158,5 +158,5 @@ input.ng-invalid {
   animation: bounceIn 0.7s; }
 
 .row.routeplanner.ng-hide-remove {
-  -webkit-animation: bounceIn 0.7s;
-  animation: bounceIn 0.7s; }
+  -webkit-animation: fadeInDown 0.7s;
+  animation: fadeInDown 0.7s; }

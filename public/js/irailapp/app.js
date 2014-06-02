@@ -86,7 +86,6 @@
          * @param string
          */
         $scope.findStationById = function(suppliedIdentifierString){
-            console.log($scope.stations);
             for (var i = 0, len = $scope.stations.stations.length; i < len; i++) {
                 if (($scope.stations.stations[i].id.toLowerCase()).indexOf(suppliedIdentifierString) != -1){
                     return $scope.stations.stations[i];
@@ -158,9 +157,9 @@
         /**
          * Resets the route planner to default values
          */
-        $scope.reset = function(){
-            event.stopPropagation();
-            event.preventDefault();
+        $scope.resetplanner = function(e){
+            e.stopPropagation();
+            e.preventDefault();
             $scope.error = false;
             $scope.loading = false;
             $scope.results = false;
@@ -251,7 +250,7 @@
             $scope.stations = data;
         });
 
-        $scope.reset = function(){
+        $scope.resetplanner = function(){
             // Should not do anything
         }
     });
@@ -292,7 +291,7 @@
             }
         };
 
-        $scope.reset = function(){
+        $scope.resetplanner = function(){
             // Should not do anything
         }
 
