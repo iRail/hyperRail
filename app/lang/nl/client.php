@@ -30,6 +30,7 @@ return array(
     "errorReturn" => "Terug naar de planner",
     "errorReturnLiveboard" => "Terug naar stations zoeken",
     "errorMail" => "mail ons",
+    "stationsIdentical" => "Uw vertrekstation en bestemmingsstation zijn hetzelfde! We kunnen geen route berekenen waar er geen is :)",
     //
     "language" => "Taalkeuze",
     "isPartOf" => "iRail is een onderdeel van",

@@ -258,6 +258,7 @@
 
     irailapp.controller('StationLiveboardCtrl', function($scope, $http, $filter, $timeout){
 
+        $scope.loading = true;
         $http.get('../data/stations.json').success(function(data) {
             $scope.stations = data;
             var location = document.URL;

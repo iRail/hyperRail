@@ -30,6 +30,7 @@ return array(
     "errorReturn" => "Return to the planner",
     "errorReturnLiveboard" => "Return to station search",
     "errorMail" => "mail us",
+    "stationsIdentical" => "The departure and destination station are the same. We can't calculate a route where there is none :)",
     //
     "language" => "Language",
     "isPartOf" => "iRail is a part of",

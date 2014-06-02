@@ -3,7 +3,7 @@
 class StationController extends \BaseController {
 
 	public function index(){
-        // TODO: content delegation
+        // TODO: content delegation with list of all stations
         return View::make('stations.search');
     }
 

@@ -35,11 +35,14 @@
                     </select>
                     <timepicker ng-model="mytime" ng-change="changed()" minute-step="15" show-meridian="ismeridian"></timepicker>
                     <br/>
-                    <input type="submit" class="btn btn-default btn-lg btn-primary btn-wide" ng-click="save()" value="{{Lang::get('client.confirmSearch')}}">
+                    <input type="submit" class="btn btn-default btn-lg btn-primary btn-wide" ng-click="save()" value="{{Lang::get('client.confirmSearch')}}" ng-hide="departure == destination">
                     <div class="alert alert-danger" ng-show="data === null">
                         <p ng-show="stationnotfound === true">{{Lang::get('client.errorCheckInput')}}</p>
                         <p ng-show="mytime === undefined">Don't forget to set the time.</p>
                         <p ng-show="mydate === undefined">Don't forget to set the date.</p>
+                    </div>
+                    <div class="alert alert-danger" ng-show="departure == destination">
+                       <p>{{Lang::get('client.stationsIdentical')}}</p>
                     </div>
                 </div>
             </div>

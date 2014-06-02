@@ -21,8 +21,11 @@
                     <ul class="list-group">
                         <li class="list-group-item" ng-repeat="dep in liveboardData.departures.departure">
                               <span class="container33 liveboard-list">
-                                    <span class="platform-left">
+                                    <span class="platform-left" ng-if="dep.platform">
                                         <span class="badge">@{{dep.platform}}</span>
+                                    </span>
+                                    <span class="platform-left" ng-if="!dep.platform">
+                                        <span class="badge">?</span>
                                     </span>
                                     <span class="station-middle">
                                         <strong>
