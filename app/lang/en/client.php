@@ -32,6 +32,7 @@ return array(
     "errorMail" => "mail us",
     "stationsIdentical" => "The departure and destination station are the same. We can't calculate a route where there is none :)",
     "quickFilter" => "Type here to quickly filter liveboard results",
+    "noResultsFoundLiveboard" => "We're sorry. According to our data, there are no trains departing right now in this station.",
     //
     "language" => "Language",
     "isPartOf" => "iRail is a part of",

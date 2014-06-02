@@ -11,11 +11,13 @@
         <div class="col-sm-7 col-md-6">
             <h1><strong>iRail.be</strong></h1>
             <p class="h2">Welcome. Hallo. Bonjour.</p>
+            <hr/>
             <p>Gelieve uw taal te kiezen. Please choose your language. Choissisez votre langue s.v.p.</p>
+            <hr/>
             <ul class="ul-lg">
                 <li><a href="route?lang=nl">Nederlands</a></li>
                 <li><a href="route?lang=en">English</a></li>
-                <li><a href="route?lang=fr">français</a></li>
+                <!--<li><a href="route?lang=fr">français</a></li>-->
             </ul>
         </div>
     </div>

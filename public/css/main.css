@@ -130,6 +130,13 @@ input.ng-invalid {
 .badge {
   font-size: 1.3em; }
 
+.navbar-name {
+  font-size: 1.2em; }
+
+.irail-logo {
+  position: relative;
+  top: -3px; }
+
 .datepicker .btn-info.active {
   background-color: #C72929 !important;
   border-color: #C72929 !important; }

@@ -47,6 +47,9 @@
                                 </span>
                         </li>
                     </ul>
+                    <div class="alert alert-info" ng-show="liveboardData.departures == null">
+                        {{Lang::get('client.noResultsFoundLiveboard')}}
+                    </div>
                 </div>
             </div>
             <div class="row max-w5" ng-show="error" >
