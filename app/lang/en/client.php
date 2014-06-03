@@ -44,6 +44,8 @@ return array(
     "platform" => "Platform",
     "station" => "Station",
     "liveboardDescription" => "Below you'll find a list of all trains departing for a certain station and their possible delay.",
+    "waitBetween" => "Wait",
+    "mins" => "minutes before departure",
     //
     "search"=>"Search",
     "departure_at" => "Departure",

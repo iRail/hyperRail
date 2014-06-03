@@ -11,12 +11,14 @@ use ML\JsonLD\JsonLD;
 
 Route::get('/', 'HomeController@showWelcome');
 Route::get('/route', 'RouteController@index');
-Route::get('/stations', 'StationController@index');
+Route::get('/NMBS/stations', 'StationController@index');
 
 Route::get('/language', 'LanguageController@index');
-Route::get('/stations/{id}', 'StationController@liveboard');
-Route::get('/stations/{id}/arrivals', 'StationController@arrivals');
-Route::get('/stations/{id}/departures', 'StationController@departures');
+Route::get('/stations', 'StationController@redirectToNMBSStations');
+Route::get('/NMBS/stations/{id}', 'StationController@liveboard');
+Route::get('/NMBS/stations/{id}/{trainHash}', 'StationController@specificTrain');
+Route::get('/NMBS/stations/{id}/arrivals', 'StationController@arrivals');
+Route::get('/NMBS/stations/{id}/departures', 'StationController@departures');
 
 /*
 |--------------------------------------------------------------------------

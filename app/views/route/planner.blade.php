@@ -131,6 +131,13 @@
                                     <li class="list-group-item" ng-repeat="stop in conn.vias.via">
                                         &darr; @{{stop.vehicle.replace("BE.NMBS.","")}} <span class="small">(@{{stop.direction.name}})</span>
                                         <br/>
+                                        <span class="planner-time">
+                                            <strong>@{{(stop.arrival.time)*1000 | date:'HH:mm'}}</strong>
+                                        </span>
+                                        <br/>
+                                        &darr; @{{(stop.timeBetween/60)}} {{Lang::get('client.mins')}}
+
+                                        <br/>
                                         <span class="badge">@{{ stop.departure.platform }}</span>
                                     <span class="planner-time"><strong>
                                             @{{ (stop.departure.time)*1000 | date:'HH:mm' }}

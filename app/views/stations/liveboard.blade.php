@@ -43,8 +43,7 @@
                                         &nbsp;&nbsp;+@{{dep.delay/60}}
                                     </span>
                                   </span>
-
-                                </span>
+                              </span>
                         </li>
                     </ul>
                     <div class="alert alert-info" ng-show="liveboardData.departures == null">

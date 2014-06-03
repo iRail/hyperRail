@@ -94,7 +94,7 @@ class StationString {
              * TODO: check for multiple hits when using strpos()
              */
 
-            if ($station->id === $string) {
+            if (strpos($station->id,$string) !== false) {
                 return $station;
             }
         }

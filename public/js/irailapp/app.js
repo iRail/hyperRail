@@ -250,12 +250,11 @@
                 }
             }
         });
-
     });
 
     irailapp.controller('StationSearchCtrl', function($scope, $http, $filter, $timeout){
 
-        $http.get('data/stations.json').success(function(data) {
+        $http.get('../data/stations.json').success(function(data) {
             $scope.stations = data;
         });
 
@@ -271,13 +270,20 @@
             'Accept': 'application/json'
         }
         };
-        $http.get('../data/stations.json').success(function(data) {
+        $http.get('../../data/stations.json').success(function(data) {
             $scope.stations = data;
             var location = document.URL;
             // Figure out what the station name is
-            var split = location.split('/stations/');
+            var split = location.split('NMBS/stations/');
             var id = split[1].split('?');
-            var stationName = $scope.findStationById(id[0]).name;
+            try{
+                var stationName = $scope.findStationById(id[0]).name;
+            }
+            catch(ex){
+                $scope.results = false;
+                $scope.loading = false;
+                $scope.error = true;
+            }
             // Set up the request path
             // url = "http://api.irail.be/liveboard/?station=" + stationName + "&lang=nl&format=json";
             // Request the URL
