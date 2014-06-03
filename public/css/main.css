@@ -122,10 +122,17 @@ input.ng-invalid {
 .planner-time {
   font-size: 1.3em;
   color: #C72929;
-  margin-right: 15px; }
+  margin-right: 15px;
+  width: 50%; }
 
 .planner-station {
-  font-size: 1.2em; }
+  width: 50%;
+  font-size: 1.2em;
+  margin-right: 15px; }
+
+.delay-route {
+  font-size: 1.2em;
+  color: red; }
 
 .badge {
   font-size: 1.3em; }

@@ -217,7 +217,7 @@
                     $scope.destination = $scope.findStationById(des);
                     // Get date
                     var parts = /^(\d\d)(\d\d)(\d{2})$/.exec(dateparam);
-                    $scope.mydate = new Date( parts[3], parts[2]-1, parts[1] );
+                    $scope.mydate = new Date( 20 + parts[3], parts[2]-1, parts[1] );
                     // Get time
                     var dat = new Date, time = urltime.split(/^(\d\d)(\d\d)$/);
                     dat.setHours(time[1]);

@@ -104,6 +104,9 @@
                                     </span>
                                     <span class="tright">
                                         @{{ conn.vias.number }}
+                                        <span ng-if="connections.connections[0].departure.delay > 0">
+                                            @{{ connections.connections[0].departure.delay }}
+                                        </span>
                                     </span>
                                 </span>
                                     </a>
@@ -113,14 +116,17 @@
                                 <ul class="list-group">
                                     <li class="list-group-item">
                                         <span class="badge">@{{ conn.departure.platform }}</span>
-                                    <span class="planner-time"><strong>
+                                    <span class="planner-time">
+                                        <strong>
                                             @{{ (conn.departure.time)*1000 | date:'HH:mm' }}
                                         </strong>
                                     </span>
                                     <span class="planner-station">
                                         @{{ conn.departure.station}}
                                     </span>
-
+                                    <span class="delay-route" ng-if="conn.departure.delay > 0">
+                                            <i class="fa fa-exclamation-triangle"></i> + @{{ (conn.departure.delay)/60 }}'
+                                    </span>
                                     </li>
                                     <li class="list-group-item" ng-repeat="stop in conn.vias.via">
                                         &darr; @{{stop.vehicle.replace("BE.NMBS.","")}} <span class="small">(@{{stop.direction.name}})</span>
@@ -129,6 +135,9 @@
                                     <span class="planner-time"><strong>
                                             @{{ (stop.departure.time)*1000 | date:'HH:mm' }}
                                         </strong>
+                                    <span class="delay-route" ng-if="stop.departure.delay > 0">
+                                            <i class="fa fa-exclamation-triangle"></i> + @{{ (stop.departure.delay)/60 }}'
+                                    </span>
                                     </span>
                                     <span class="planner-station">
                                     @{{ stop.station}}
