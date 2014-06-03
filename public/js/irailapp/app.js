@@ -209,13 +209,21 @@
                 var dep = GetURLParameter('from');
                 var des = GetURLParameter('to');
                 var urltime = GetURLParameter('time');
-                var date = GetURLParameter('date');
+                var dateparam = GetURLParameter('date');
                 var timeoption = GetURLParameter('timeSel');
 
                 if (dep != "undefined" && des != "undefined"){
                     $scope.departure = $scope.findStationById(dep);
                     $scope.destination = $scope.findStationById(des);
                     // TODO: get time and date from parameters
+                    var parts = /^(\d\d)(\d\d)(\d{2})$/.exec(dateparam);
+                    $scope.mydate = new Date( parts[3], parts[2]-1, parts[1] );
+
+                    var dat = new Date, time = urltime.split(/^(\d\d)(\d\d)$/);
+                    dat.setHours(time[1]);
+                    dat.setMinutes(time[2]);
+                    $scope.mytime = dat;
+
                     if (timeoption === "arrive"){
                         $scope.timeoption = "arrive";
                     }
