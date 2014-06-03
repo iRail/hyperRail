@@ -203,6 +203,11 @@ input.ng-invalid {
   animation: fadeIn 0.7s;
   }
 
+a.bounceIn.ng-hide-remove {
+  -webkit-animation: bounceIn 0.7s;
+  animation: bounceIn 0.7s;
+  }
+
 
 .row.loading.ng-hide-remove {
   -webkit-animation: bounceIn 0.7s;
