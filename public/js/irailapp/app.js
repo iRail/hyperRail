@@ -267,7 +267,7 @@
 
         $scope.loading = true;
         var config = {headers: {
-            'Accept': 'application/json'
+            'Accept': 'application/ld+json'
         }
         };
         $http.get('../../data/stations.json').success(function(data) {
@@ -291,6 +291,7 @@
                 // If it works, show data
                 .success(function(data) {
                 $scope.liveboardData = data;
+                console.log(data);
                 $scope.results = true;
                 $scope.loading = false;
                 $scope.error = false;

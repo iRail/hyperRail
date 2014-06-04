@@ -17,7 +17,7 @@
             <ul class="ul-lg">
                 <li><a href="route?lang=nl">Nederlands</a></li>
                 <li><a href="route?lang=en">English</a></li>
-                <!--<li><a href="route?lang=fr">français</a></li>-->
+                <li><a href="route?lang=fr">français</a></li>
             </ul>
         </div>
     </div>

@@ -25,7 +25,7 @@ iRail doesn't use a classic API on another URL. There's no 'irail.be/api', inste
 
 You can also ask the application (iRail.be) for other kinds of resources. For example, you can ask for a JSON version of the data that the routeplanner serves.
 
-In order to ask the API to serve you JSON (and not just the plain HTML that you get when you visit irail.be in your browser), send a request to `irail.be/route` but specify the requested content-type in your accept headers, e.g. `application/ld+json` or `application/json`.
+In order to ask the API to serve you JSON (and not just the plain HTML that you get when you visit irail.be in your browser), send a request to `irail.be/route` but specify the requested content-type in your accept headers, e.g. `application/ld+json`.
 
 ### Hypermedia interface
 

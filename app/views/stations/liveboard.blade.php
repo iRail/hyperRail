@@ -15,13 +15,13 @@
             </div>
             <div class="row results" ng-show="results">
                 <div class="col-md-12 col-sm-12">
-                    <p class="h1">Liveboard {{Lang::get('client.station')}} <strong>@{{liveboardData.station}}</strong></p>
+                    <p class="h1">Liveboard {{Lang::get('client.station')}} <strong>{{$station->name }}</strong></p>
                     <p>{{Lang::get('client.liveboardDescription')}}</p>
                     <hr/>
                     <input class="input-lg form-control" ng-model="searchText" placeholder="{{Lang::get('client.quickFilter')}}">
                     <br/>
                     <ul class="list-group">
-                        <li class="list-group-item" ng-repeat="dep in liveboardData.departures.departure | filter:searchText">
+                        <li class="list-group-item" ng-repeat="dep in liveboardData['@graph'] | filter:searchText">
                               <span class="container33 liveboard-list">
                                     <span class="platform-left" ng-if="dep.platform">
                                         <span class="badge">@{{dep.platform}}</span>
@@ -31,11 +31,11 @@
                                     </span>
                                     <span class="station-middle">
                                         <strong>
-                                            @{{dep.station}}
+                                            @{{dep.headsign}}
                                         </strong>
                                     </span>
                                     <span class="time-right">
-                                        @{{dep.time*1000 | date:'HH:mm' }}
+                                        @{{dep.scheduledDepartureTime | date:'HH:mm' }}
 
                                     </span>
                                   <span class="delay-right">
@@ -46,7 +46,7 @@
                               </span>
                         </li>
                     </ul>
-                    <div class="alert alert-info" ng-show="liveboardData.departures == null">
+                    <div class="alert alert-info" ng-show="liveboardData['@graph'] == null">
                         {{Lang::get('client.noResultsFoundLiveboard')}}
                     </div>
                 </div>

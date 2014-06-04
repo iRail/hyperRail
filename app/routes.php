@@ -17,8 +17,6 @@ Route::get('/language', 'LanguageController@index');
 Route::get('/stations', 'StationController@redirectToNMBSStations');
 Route::get('/NMBS/stations/{id}', 'StationController@liveboard');
 Route::get('/NMBS/stations/{id}/{trainHash}', 'StationController@specificTrain');
-Route::get('/NMBS/stations/{id}/arrivals', 'StationController@arrivals');
-Route::get('/NMBS/stations/{id}/departures', 'StationController@departures');
 
 /*
 |--------------------------------------------------------------------------

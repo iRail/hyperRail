@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    // New translation strings
+    // START OF NEW TRANSLATION STRINGS
     "planNewRoute" => "Plan new route",
     "searchStations" => "Search stations",
     "typeToStation" => "Type destination station name",
@@ -21,7 +21,6 @@ return array(
     "routesFoundDescription" => "routes found. The optimal route has been expanded. Tap or click the headers to expand them.",
     "reverse" => "Reverse trip",
     "planAnother" => "Plan another trip",
-    //
     "errorCheckInput" => "We could not translate your text to a station. Please check your input. We automatically suggest possible stations! :)",
     "error" => "Something seems to have gone wrong.",
     "errorNoRoutes" => "We could not find any routes.",
@@ -33,20 +32,17 @@ return array(
     "stationsIdentical" => "The departure and destination station are the same. We can't calculate a route where there is none :)",
     "quickFilter" => "Type here to quickly filter liveboard results",
     "noResultsFoundLiveboard" => "We're sorry. According to our data, there are no trains departing right now in this station.",
-    //
     "language" => "Language",
     "isPartOf" => "iRail is a part of",
-    //
     "stationName" => "Station name",
     "stationSearchPlaceholder" => "Type to search for a station",
     "viewLiveboard" => "View Liveboard",
-    //
     "platform" => "Platform",
     "station" => "Station",
     "liveboardDescription" => "Below you'll find a list of all trains departing for a certain station and their possible delay.",
     "waitBetween" => "Wait",
     "mins" => "minutes before departure",
-    //
+    // END OF NEW TRANSLATION STRINGS
     "search"=>"Search",
     "departure_at" => "Departure",
     "arrival_at" => "Arrival",

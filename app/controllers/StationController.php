@@ -22,25 +22,17 @@ class StationController extends \BaseController {
 
         switch ($val){
             case "text/html":
-                return Response::view('stations.liveboard')->header('Content-Type', "text/html")->header('Vary', 'accept');
+                $station = \hyperRail\StationString::convertToString($id);
+                $data = array('station' => $station);
+                return Response::view('stations.liveboard', $data)->header('Content-Type', "text/html")->header('Vary', 'accept');
                 break;
             case "application/ld+json":
                 $stationStringName = \hyperRail\StationString::convertToString($id);
                 $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&fast=true&lang=nl&format=json";
                 $data = file_get_contents($URL);
-                \hyperRail\iRailFormatConverter::convertLiveboardData($data, $id);
-                $response = Response::make($data, 200);
-                $response->header('Content-Type', 'application/ld+json');
-                $response->header('Vary', 'accept');
-                break;
-            case "application/json":
-                $stationStringName = \hyperRail\StationString::convertToString($id);
-                $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&fast=true&lang=nl&format=json";
-                $data = file_get_contents($URL);
-                $response = Response::make($data, 200);
-                $response->header('Content-Type', 'application/json');
-                $response->header('Vary', 'accept');
-                return $response;
+                $newData = \hyperRail\iRailFormatConverter::convertLiveboardData($data, $id);
+                $jsonLD = (string)json_encode($newData);
+                return Response::make($jsonLD, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
                 break;
             default:
                 return Response::view('stations.liveboard')->header('Content-Type', "text/html")->header('Vary', 'accept');
