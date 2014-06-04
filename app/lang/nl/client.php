@@ -45,6 +45,7 @@ return array(
     "station" => "Station",
     "liveboardDescription" => "Hier onder vind je een lijst met alle treinen die naar een bepaald station rijden en hun mogelijke vertragingen.",
     //
+    "mins" => "minuten wachten tot vertrek",
     "404ErrorTitle" => "Pagina niet gevonden",
     "404Explanation" => "We konden deze pagina niet vinden. Als je denkt dat dit een fout is, ",
     "goHome" => "Ga terug naar de homepage",

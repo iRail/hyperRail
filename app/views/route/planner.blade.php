@@ -103,9 +103,11 @@
                                         </strong>
                                     </span>
                                     <span class="tright">
-                                        @{{ conn.vias.number }}
                                         <span class="delay-route" ng-if="conn.departure.delay > 0">
                                             <i class="fa fa-exclamation-triangle"></i>
+                                        </span>
+                                        <span ng-if="conn.vias.number > 0">
+                                            @{{ conn.vias.number }}x <img src="{{ URL::asset('images/stair.svg') }}" />
                                         </span>
                                     </span>
                                 </span>

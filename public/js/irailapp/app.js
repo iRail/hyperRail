@@ -63,7 +63,6 @@
                 $http.get(url)
                     .success(function(data) {
                         $scope.parseResults(data);
-                        console.log(data);
                         window.history.pushState("departure", "iRail.be", "?to=" + $scope.destination.id
                             + '&from=' + $scope.departure.id
                             + '&date=' + ($filter('date')($scope.mydate, 'ddMMyy'))
@@ -238,7 +237,7 @@
                     $scope.departure = $scope.findStationById(GetURLParameter('from'));
                 }
                 catch(ex){
-                    console('Could not link departure station from URL.');
+                    console.log('Could not link departure station from URL.');
                 }
             }
             if (GetURLParameter('to') !== 'undefined'){
@@ -246,7 +245,7 @@
                     $scope.destination = $scope.findStationById(GetURLParameter('to'));
                 }
                 catch(ex){
-                    console('Could not link destination station from URL.');
+                    console.log('Could not link destination station from URL.');
                 }
             }
         });
