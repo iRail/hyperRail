@@ -42,6 +42,9 @@ return array(
     "liveboardDescription" => "Below you'll find a list of all trains departing for a certain station and their possible delay.",
     "waitBetween" => "Wait",
     "mins" => "minutes before departure",
+    "404ErrorTitle" => "Page not found",
+    "404Explanation" => "We could not find this page. If you think this was a mistake, ",
+    "goHome" => "Go back to the homepage",
     // END OF NEW TRANSLATION STRINGS
     "search"=>"Search",
     "departure_at" => "Departure",

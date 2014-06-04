@@ -45,6 +45,10 @@ return array(
     "station" => "Station",
     "liveboardDescription" => "Hier onder vind je een lijst met alle treinen die naar een bepaald station rijden en hun mogelijke vertragingen.",
     //
+    "404ErrorTitle" => "Pagina niet gevonden",
+    "404Explanation" => "We konden deze pagina niet vinden. Als je denkt dat dit een fout is, ",
+    "goHome" => "Ga terug naar de homepage",
+    //
     "search"=>"Zoek route",
     "departure_at" => "Vertrek",
     "arrival_at" => "Aankomst",

@@ -9,6 +9,11 @@ use ML\JsonLD\JsonLD;
 |
 */
 
+App::missing(function($exception)
+{
+    return Response::view('errors.404', array(), 404);
+});
+
 Route::get('/', 'HomeController@showWelcome');
 Route::get('/route', 'RouteController@index');
 Route::get('/NMBS/stations', 'StationController@index');
