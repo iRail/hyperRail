@@ -50,23 +50,20 @@
                 $scope.planning = false;
                 $scope.loading = true;
 
-                var url = 'http://api.irail.be/connections/?to=' + $scope.destination.name
-                    + '&from=' + $scope.departure.name
+                window.history.pushState("departure", "iRail.be", "?to=" + $scope.destination.id
+                    + '&from=' + $scope.departure.id
                     + '&date=' + ($filter('date')($scope.mydate, 'ddMMyy'))
                     + '&time=' + ($filter('date')($scope.mytime, 'HHmm'))
                     + '&timeSel=' + $scope.timeoption
-                    + '&lang=NL&format=json';
+                    + '&auto=true'
+                );
 
-                $http.get(url)
+                $urlInWindow = document.URL;
+
+                $http.get($urlInWindow)
                     .success(function(data) {
                         $scope.parseResults(data);
-                        window.history.pushState("departure", "iRail.be", "?to=" + $scope.destination.id
-                            + '&from=' + $scope.departure.id
-                            + '&date=' + ($filter('date')($scope.mydate, 'ddMMyy'))
-                            + '&time=' + ($filter('date')($scope.mytime, 'HHmm'))
-                            + '&timeSel=' + $scope.timeoption
-                            + '&auto=true'
-                        );
+
                         $scope.loading = false;
                         $scope.results = true;
                     })
