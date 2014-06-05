@@ -50,9 +50,6 @@
                 $scope.planning = false;
                 $scope.loading = true;
 
-                // Send a request to the old iRail api
-                // TODO: ensure that this request goes over HTTPs! This has to be fixed at launch!
-
                 var url = 'http://api.irail.be/connections/?to=' + $scope.destination.name
                     + '&from=' + $scope.departure.name
                     + '&date=' + ($filter('date')($scope.mydate, 'ddMMyy'))

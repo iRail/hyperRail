@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="http://irail.be">
-    <meta name="twitter:creator" content="@irail">
+    <meta name="twitter:site" content="@iRail">
+    <meta name="twitter:creator" content="@iRail">
     <meta name="twitter:title" content="iRail | {{$departureStation->name}} to {{str_replace('[NMBS/SNCB]', '', $station['headsign'])}}">
+    <meta name="twitter:domain" content="https://iRail.be">
     <meta name="twitter:description" content="Train {{str_replace('[NMBS/SNCB]', '', $station['headsign'])}} departing at {{$departureStation->name}} leaves today at platform {{$station['platform']}} at {{date('H:i', strtotime($station['scheduledDepartureTime']))}}.">
     <meta name="twitter:image" content="{{ URL::asset('images/train.png') }}">
     <meta property="og:title" content="iRail.be" />
