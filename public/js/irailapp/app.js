@@ -272,19 +272,6 @@
         $http.get('../../data/stations.json').success(function(data) {
             $scope.stations = data;
             var location = document.URL;
-            // Figure out what the station name is
-            var split = location.split('NMBS/stations/');
-            var id = split[1].split('?');
-            try{
-                var stationName = $scope.findStationById(id[0]).name;
-            }
-            catch(ex){
-                $scope.results = false;
-                $scope.loading = false;
-                $scope.error = true;
-            }
-            // Set up the request path
-            // url = "http://api.irail.be/liveboard/?station=" + stationName + "&lang=nl&format=json";
             // Request the URL
             $http.get(document.URL, config)
                 // If it works, show data

@@ -8,8 +8,7 @@
         "easyrdf/easyrdf": "*",
         "semsol/arc2": "*",
         "ml/json-ld": "1.*",
-        "willdurand/negotiation": "@stable",
-        "fzaninotto/faker": "1.3"
+        "willdurand/negotiation": "@stable"
     },
     "require-dev": {
         "phpunit/phpunit": "4.0.*",

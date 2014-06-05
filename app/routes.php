@@ -18,8 +18,8 @@ Route::get('/NMBS/stations', 'StationController@index');
 
 Route::get('/language', 'LanguageController@index');
 Route::get('/stations', 'StationController@redirectToNMBSStations');
-Route::get('/NMBS/stations/{id}', 'StationController@liveboard');
-Route::get('/NMBS/stations/{id}/{trainHash}', 'StationController@specificTrain');
+Route::get('/stations/NMBS/{id}', 'StationController@liveboard');
+Route::get('/stations/NMBS/{id}/departures/{trainHash}', 'StationController@specificTrain');
 
 /*
 |--------------------------------------------------------------------------

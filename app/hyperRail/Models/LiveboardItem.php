@@ -16,14 +16,14 @@ class LiveboardItem {
 
     public function fill($stationId, $requestDate, $requestTime, $routeLabel, $headSign,
                                         $delay, $time, $platform){
-        $md5hash = md5($routeLabel . $headSign);
-        $this->stationURL = "http://" . _DOMAIN_ . "/NMBS/stations/" . $stationId . "/" . $requestDate . $requestTime . $md5hash;
+        $this->headsign = $headSign;
+        $this->routeLabel = preg_replace("/([A-Z]{1,2})(\d+)/", "$1 $2", $routeLabel);
+        $md5hash = md5($this->routeLabel . $this->headsign);
+        $this->stationURL = "http://" . _DOMAIN_ . "/stations/NMBS/" . $stationId . "/departures/" . $requestDate . $requestTime . $md5hash;
         $this->delay = $delay;
         $this->scheduledDepartureTime = $time;
         $this->platform = $platform;
-        $this->destinationURL = "http://" . _DOMAIN_ . "/NMBS/stations/" . $stationId;
-        $this->headsign = $headSign;
-        $this->routeLabel = $routeLabel;
+        $this->destinationURL = "http://" . _DOMAIN_ . "/stations/NMBS/" . $stationId . "/departures/";
     }
 
     public function toArray(){

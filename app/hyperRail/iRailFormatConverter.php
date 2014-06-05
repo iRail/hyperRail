@@ -26,7 +26,7 @@ class iRailFormatConverter {
             $time = $departure->time;
             $liveboardItem = new LiveboardItem();
             $date = date('Ymd', $time);
-            $time = date('His', $time);
+            $time = date('Hi', $time);
             $vehicleShort = explode("BE.NMBS.", $departure->vehicle);
             $liveboardItem->fill($station_id, $date, $time, $vehicleShort[1], $departure->station, $departure->delay, date('c', $departure->time), $departure->platform);
             array_push($liveboardCollection, $liveboardItem->toArray());
