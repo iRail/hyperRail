@@ -14,25 +14,13 @@ class RouteController extends \BaseController {
 
         switch ($val){
             case "text/html":
-                return View::make('route.planner');
-                break;
-            case "application/ld+json":
-                try{
-                    $from =  Input::get('from'); // required
-                    $to = Input::get('to'); // required
-                    $data = json_decode($this::getJSON());
-                    return var_dump($data);
-                    // TODO: format JSON-LD
-                }
-                catch(ErrorException $ex){
-                    return "We could not retrieve data. Ensure that you have provided all required parameters: to, from, date, time, timeSel.";
-                }
+                return Response::view('route.planner')->header('Content-Type', "text/html")->header('Vary', 'accept');
                 break;
             case "application/json":
-                return $this::getJSON();
+                return Response::make($this::getJSON())->header('Content-Type', "text/html")->header('Vary', 'accept');
                 break;
             default:
-                return View::make('route.planner');
+                return Response::view('route.planner')->header('Content-Type', "text/html")->header('Vary', 'accept');
                 break;
         }
     }

@@ -15,9 +15,9 @@
                     </script>
                     <div class="form-group">
                         <label for="departure">{{Lang::get('client.stationName')}}</label>
-                        <input type="text" ng-model="departure" placeholder="{{Lang::get('client.stationSearchPlaceholder')}}" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control input-lg">
+                        <input type="text" ng-model="departure" placeholder="{{Lang::get('client.stationSearchPlaceholder')}}" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control input-lg" typeahead-on-select='focus()'>
                     </div>
-                    <a href="{{ URL::to('stations/NMBS') }}/@{{departure.id}}" ng-show="departure.id" class="btn btn-primary btn-wide btn-lg bounceIn">{{Lang::get('client.viewLiveboard')}}</a>
+                    <a id="confirm" href="{{ URL::to('stations/NMBS') }}/@{{departure.id}}" ng-show="departure.id" class="btn btn-primary btn-wide btn-lg bounceIn">{{Lang::get('client.viewLiveboard')}}</a>
                 </div>
             </div>
         </div>

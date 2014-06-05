@@ -16,15 +16,12 @@
         // Init departure and destination as undefined
         $scope.departure = undefined;
         $scope.destination = undefined;
-
         // Time and date are automatically set
         $scope.mytime = new Date();
         $scope.mydate = new Date();
         // Timeoption defaults to arrive at set hour
         $scope.timeoption = 'depart';
-
         // Default states
-        // TODO: unless &auto is set (which automatically searches)
         $scope.planning = true; // When planning is set to true, you can enter stations and set time
         $scope.loading = false; // When loading is set to true, you see a spinner
         $scope.results = false; // When results is set to true, results are displayed
@@ -32,6 +29,12 @@
         /*--------------------------------------------------------
          * FUNCTIONS THAT CAN BE CALLED
          *-------------------------------------------------------*/
+
+        $(document).keypress(function(e) {
+            if(e.which == 13 && $scope.planning == true){
+                $scope.confirmRouteSearch();
+            }
+        });
 
         /**
          *  Check if we can dump the data
@@ -249,6 +252,12 @@
 
         $http.get('../data/stations.json').success(function(data) {
             $scope.stations = data;
+        });
+
+        $(document).keypress(function(e) {
+            if(e.which == 13){
+                $('#confirm').focus();
+            }
         });
 
         $scope.resetplanner = function(){
