@@ -14,7 +14,7 @@ App::missing(function($exception)
 
 Route::get('/', 'HomeController@showWelcome');
 Route::get('/route', 'RouteController@index');
-Route::get('/NMBS/stations', 'StationController@index');
+Route::get('/stations/NMBS', 'StationController@index');
 
 Route::get('/language', 'LanguageController@index');
 Route::get('/stations', 'StationController@redirectToNMBSStations');
