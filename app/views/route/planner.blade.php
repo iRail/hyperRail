@@ -43,7 +43,7 @@
                     </select>
                     <timepicker ng-model="mytime" ng-change="changed()" minute-step="15" show-meridian="ismeridian"></timepicker>
                     <br/>
-                    <input type="submit" id="submit" class="btn btn-default btn-lg btn-primary btn-wide" ng-click="save()" value="{{Lang::get('client.confirmSearch')}}" ng-hide="departure == destination">
+                    <input type="submit" id="confirm" class="btn btn-default btn-lg btn-primary btn-wide" ng-click="save()" value="{{Lang::get('client.confirmSearch')}}" ng-hide="departure == destination">
                     <div class="alert alert-danger" ng-show="data === null">
                         <p ng-show="stationnotfound === true">{{Lang::get('client.errorCheckInput')}}</p>
                     </div>

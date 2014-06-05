@@ -35,9 +35,12 @@ class iRailFormatConverter {
             "delay" =>  "http://semweb.mmlab.be/ns/rplod/delay",
             "platform" => "http://semweb.mmlab.be/ns/rplod/platform",
             "scheduledDepartureTime" => "http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime",
-            "stop" => "http://semweb.mmlab.be/ns/rplod/stop",
             "headsign" => "http://vocab.org/transit/terms/headsign",
             "routeLabel" => "http://semweb.mmlab.be/ns/rplod/routeLabel",
+            "stop" => array(
+                "@id" => "http://semweb.mmlab.be/ns/rplod/stop",
+                "@type" => "@id"
+            ),
         );
         return array("@context" => $context, "@graph" => $liveboardCollection);
     }

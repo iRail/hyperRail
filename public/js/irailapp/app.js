@@ -32,7 +32,7 @@
 
         $(document).keypress(function(e) {
             if(e.which == 13 && $scope.planning == true){
-                $scope.confirmRouteSearch();
+                $('#confirm').focus();
             }
         });
 

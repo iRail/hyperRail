@@ -79,7 +79,15 @@ class StationController extends \BaseController {
                     $newData = \hyperRail\iRailFormatConverter::convertLiveboardData($data, $station_id);
                     foreach ($newData['@graph'] as $graph){
                         if (strpos($graph['@id'],$liveboard_id) !== false) {
-                            return $graph;
+                            $context = array(
+                                "delay" =>  "http://semweb.mmlab.be/ns/rplod/delay",
+                                "platform" => "http://semweb.mmlab.be/ns/rplod/platform",
+                                "scheduledDepartureTime" => "http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime",
+                                "stop" => "http://semweb.mmlab.be/ns/rplod/stop",
+                                "headsign" => "http://vocab.org/transit/terms/headsign",
+                                "routeLabel" => "http://semweb.mmlab.be/ns/rplod/routeLabel",
+                            );
+                            return array("@context" => $context, "@graph" => $graph);
                         }
                     }
                     return View::make('stations.expired');

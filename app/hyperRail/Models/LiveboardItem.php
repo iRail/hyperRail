@@ -23,7 +23,7 @@ class LiveboardItem {
         $this->delay = $delay;
         $this->scheduledDepartureTime = $time;
         $this->platform = $platform;
-        $this->destinationURL = "http://" . _DOMAIN_ . "/stations/NMBS/" . $stationId . "/departures/";
+        $this->destinationURL = "http://" . _DOMAIN_ . "/stations/NMBS/" . $stationId;
     }
 
     public function toArray(){
