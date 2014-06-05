@@ -17,7 +17,7 @@
                         <label for="departure">{{Lang::get('client.fromStation')}}</label>
                         <div class="input-group">
                         <input type="text" ng-model="departure" placeholder="{{Lang::get('client.typeFromStation')}}" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control input-lg" tabindex=1>
-                        <a class="input-group-addon" ng-show="departure.id" href="stations/@{{departure.id}}" target="_blank" data-toggle="tooltip" data-placement="left" title="{{Lang::get('client.viewLiveboard')}}"><i class="fa fa-clock-o"></i></a>
+                        <a class="input-group-addon" ng-show="departure.id" href="stations/NMBS/@{{departure.id}}" target="_blank" data-toggle="tooltip" data-placement="left" title="{{Lang::get('client.viewLiveboard')}}"><i class="fa fa-clock-o"></i></a>
                         <span class="input-group-addon" ng-hide="departure.id"></span>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                         <label for="destination">{{Lang::get('client.toStation')}}</label>
                         <div class="input-group">
                             <input type="text" ng-model="destination" placeholder="{{Lang::get('client.typeToStation')}}" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control input-lg" tabindex=2>
-                            <a class="input-group-addon btn" ng-show="destination.id" href="stations/@{{destination.id}}" target="_blank" data-toggle="tooltip" data-placement="left" title="{{Lang::get('client.viewLiveboard')}}"><i class="fa fa-clock-o"></i></a>
+                            <a class="input-group-addon btn" ng-show="destination.id" href="stations/NMBS/@{{destination.id}}" target="_blank" data-toggle="tooltip" data-placement="left" title="{{Lang::get('client.viewLiveboard')}}"><i class="fa fa-clock-o"></i></a>
                             <span class="input-group-addon" ng-hide="destination.id"></span>
                         </div>
                     </div>
