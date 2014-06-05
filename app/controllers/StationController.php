@@ -26,9 +26,14 @@ class StationController extends \BaseController {
                 $stationStringName = \hyperRail\StationString::convertToString($id);
                 $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&fast=true&lang=nl&format=json";
                 $data = file_get_contents($URL);
-                $newData = \hyperRail\iRailFormatConverter::convertLiveboardData($data, $id);
-                $jsonLD = (string)json_encode($newData);
-                return Response::make($jsonLD, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
+                try{
+                    $newData = \hyperRail\iRailFormatConverter::convertLiveboardData($data, $id);
+                    $jsonLD = (string)json_encode($newData);
+                    return Response::make($jsonLD, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
+                }catch(Exception $ex){
+                    $error = (string)json_encode(array('error' => 'We could not get any data for you!'));
+                    return Response::make($error, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
+                }
                 break;
             /*case "text/turtle":
                 $stationStringName = \hyperRail\StationString::convertToString($id);
