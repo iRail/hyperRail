@@ -124,7 +124,7 @@
                                         </strong>
                                     </span>
                                     <span class="planner-station">
-                                        @{{ conn.departure.station}}
+                                        <strong>@{{ conn.departure.station}}</strong>
                                     </span>
                                     <span class="delay-route" ng-if="conn.departure.delay > 0">
                                             <i class="fa fa-exclamation-triangle"></i> + @{{ (conn.departure.delay)/60 }}'
@@ -137,7 +137,7 @@
                                             <strong>@{{(stop.arrival.time)*1000 | date:'HH:mm'}}</strong>
                                         </span>
                                         <br/>
-                                        &darr; @{{(stop.timeBetween/60)}} {{Lang::get('client.mins')}}
+                                        &rarr; <span class="small">@{{(stop.timeBetween/60)}} {{Lang::get('client.mins')}}</span>
 
                                         <br/>
                                         <span class="badge">@{{ stop.departure.platform }}</span>
@@ -149,7 +149,7 @@
                                     </span>
                                     </span>
                                     <span class="planner-station">
-                                    @{{ stop.station}}
+                                    <strong>@{{ stop.station}}</strong>
                                     </span>
                                         <br/>
                                     </li>
@@ -161,7 +161,7 @@
                                             @{{ (conn.arrival.time)*1000 | date:'HH:mm' }}
                                         </strong></span>
                                     <span class="planner-station">
-                                        @{{ conn.arrival.station}}
+                                        <strong>@{{ conn.arrival.station}}</strong>
                                     </span>
                                     </li>
                                 </ul>
