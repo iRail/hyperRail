@@ -49,6 +49,9 @@ return array(
     "404ErrorTitle" => "Pagina niet gevonden",
     "404Explanation" => "We konden deze pagina niet vinden. Als je denkt dat dit een fout is, ",
     "goHome" => "Ga terug naar de homepage",
+    "ExpiredErrorTitle" => "Deze trein heeft het station reeds verlaten!",
+    "ExpiredExplanation" => "Deze trein heeft het station reeds verlaten, en is niet meer beschikbaar. Om meer te weten te komen over deze trein kan je onze data-archieven bekijken op ",
+    "delay" => "vertraging",
     //
     "search"=>"Zoek route",
     "departure_at" => "Vertrek",

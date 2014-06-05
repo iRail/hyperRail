@@ -45,6 +45,9 @@ return array(
     "404ErrorTitle" => "Page not found",
     "404Explanation" => "We could not find this page. If you think this was a mistake, ",
     "goHome" => "Go back to the homepage",
+    "ExpiredErrorTitle" => "This train has left the station!",
+    "ExpiredExplanation" => "This train has left the station, and is no longer available. To learn more about this train, visit ",
+    "delay" => "delay",
     // END OF NEW TRANSLATION STRINGS
     "search"=>"Search",
     "departure_at" => "Departure",

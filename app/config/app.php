@@ -26,7 +26,8 @@ return array(
 	|
 	*/
 
-	'url' => 'http://irail.dev',
+	'url' => 'http://irail.dev',    // with http
+    'url-short' => 'irail.dev',     // without http
 
 	/*
 	|--------------------------------------------------------------------------

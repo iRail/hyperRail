@@ -171,3 +171,6 @@ a.bounceIn.ng-hide-remove {
 .row.routeplanner.ng-hide-remove {
   -webkit-animation: fadeInDown 0.7s;
   animation: fadeInDown 0.7s; }
+
+.label-lg {
+  font-size: 1.5em; }

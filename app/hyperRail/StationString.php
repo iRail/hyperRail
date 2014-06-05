@@ -3,7 +3,6 @@
 namespace hyperRail;
 
 class StationString {
-
     /**
      * Converts a station string to a station id. If the string cannot be converted,
      * null is returned.

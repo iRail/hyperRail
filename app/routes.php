@@ -1,7 +1,5 @@
 <?php
 
-use ML\JsonLD\JsonLD;
-
 /*
 |--------------------------------------------------------------------------
 | New hypermedia powered routes
@@ -39,4 +37,4 @@ Route::get('/board/{station}', 'ClassicRedirectController@redirectBoardSingleSta
 // Classic: irail.be/board/Station/StationTwo
 Route::get('/board/{station}/{station2}', 'ClassicRedirectController@redirectBoardTwoStations');
 // Classic: irail.be/settings
-Route::get('/settings', 'ClassicRedirectController@redirectSettings');
+// Route::get('/settings', 'ClassicRedirectController@redirectSettings');

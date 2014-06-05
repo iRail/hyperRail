@@ -21,12 +21,12 @@ class iRailFormatConverter {
         // Set globals
         // (which data applies to all possible LiveboardItems we are going to create?)
         $stationName = $initialData->stationinfo->name;
-        $timestamp = $initialData->timestamp;
         // Convert timestamp to date
-        $date = date('Ymd', $timestamp);
-        $time = date('His', $timestamp);
         foreach ($initialData->departures->departure as $departure){
+            $time = $departure->time;
             $liveboardItem = new LiveboardItem();
+            $date = date('Ymd', $time);
+            $time = date('His', $time);
             $vehicleShort = explode("BE.NMBS.", $departure->vehicle);
             $liveboardItem->fill($station_id, $date, $time, $vehicleShort[1], $departure->station, $departure->delay, date('c', $departure->time), $departure->platform);
             array_push($liveboardCollection, $liveboardItem->toArray());

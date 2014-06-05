@@ -45,6 +45,9 @@ return array(
     "404ErrorTitle" => "Page pas trouvé",
     "404Explanation" => "Nous n'avons pas trouvé ce page. Si le problème persiste et vous pensez que c'est un erreur, ",
     "goHome" => "Retournez à page d’accueil",
+    "ExpiredErrorTitle" => "Ce train a déjà quitté la gare!",
+    "ExpiredExplanation" => "Ce train a déjà quitté la gare, et n'est plus disponible. Pour obtenir plus d'information sur ce train vous pouvez consulter nos archives de données à ",
+    "delay" => "retard",
     // END OF NEW TRANSLATION STRINGS
     "search"=>"Chercher",
     "departure_at" => "Départ",

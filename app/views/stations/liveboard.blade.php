@@ -20,8 +20,8 @@
                     <hr/>
                     <input class="input-lg form-control" ng-model="searchText" placeholder="{{Lang::get('client.quickFilter')}}">
                     <br/>
-                    <ul class="list-group">
-                        <li class="list-group-item" ng-repeat="dep in liveboardData['@graph'] | filter:searchText">
+                    <div class="list-group">
+                        <a class="list-group-item" ng-repeat="dep in liveboardData['@graph'] | filter:searchText" ng-href="@{{dep['@id']}}">
                               <span class="container33 liveboard-list">
                                     <span class="platform-left" ng-if="dep.platform">
                                         <span class="badge">@{{dep.platform}}</span>
@@ -44,8 +44,8 @@
                                     </span>
                                   </span>
                               </span>
-                        </li>
-                    </ul>
+                        </a>
+                    </div>
                     <div class="alert alert-info" ng-show="liveboardData['@graph'] == null">
                         {{Lang::get('client.noResultsFoundLiveboard')}}
                     </div>

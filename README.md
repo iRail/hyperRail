@@ -36,3 +36,8 @@ Data returned through the API (when specifically requesting `application/ld+json
 ### Data dumps
 
 Data dumps and the data that is used (and will be used and queryable in the future) are available at <a href="http://archive.irail.be">http://archive.irail.be</a>.
+
+
+### Thanks to
+
+Special attribution to Melih Bilgil for the icon set. (http://picol.org/icon_library.php)
