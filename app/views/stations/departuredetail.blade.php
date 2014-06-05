@@ -9,8 +9,11 @@
     <meta name="twitter:creator" content="@iRail">
     <meta name="twitter:title" content="iRail | {{$departureStation->name}} to {{str_replace('[NMBS/SNCB]', '', $station['headsign'])}}">
     <meta name="twitter:domain" content="https://iRail.be">
-    <meta name="twitter:description" content="Train {{str_replace('[NMBS/SNCB]', '', $station['headsign'])}} departing at {{$departureStation->name}} leaves today at platform {{$station['platform']}} at {{date('H:i', strtotime($station['scheduledDepartureTime']))}}.">
-    <meta name="twitter:image" content="{{ URL::asset('images/train.png') }}">
+    <meta name="twitter:description" content="Train to {{str_replace(' [NMBS/SNCB]', '', $station['headsign'])}} departing at {{$departureStation->name}} leaves today at platform {{$station['platform']}} at {{date('H:i', strtotime($station['scheduledDepartureTime']))}} <?php
+    if ($station['delay'] > 0){
+        echo "with a delay of " . ($station['delay']/60) . ' minutes';
+    }?>.">
+    <meta name="twitter:image" content="{{ URL::asset('images/train.jpg') }}">
     <meta property="og:title" content="iRail.be" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://irail.be" />
