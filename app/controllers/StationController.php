@@ -3,16 +3,14 @@
 class StationController extends \BaseController {
 
     public function index(){
-        // TODO: content delegation with list of all stations
         return View::make('stations.search');
     }
 
     public function redirectToNMBSStations(){
-        return Redirect::to('/NMBS/stations');
+        return Redirect::to('stations/NMBS/');
     }
 
     public function liveboard($id){
-
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
         $priorities = array('text/html', 'application/json', '*/*');

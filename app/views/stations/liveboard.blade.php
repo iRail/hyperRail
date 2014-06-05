@@ -59,7 +59,7 @@
                         <h3>{{Lang::get('client.error')}} <strong>{{Lang::get('client.errorNoLiveboard')}}</strong></h3>
                         <p>{{Lang::get('client.errorExplanation')}} <a href="mailto:iRail@list.iRail.be">{{Lang::get('client.errorMail')}}</a>.</p>
                         <br/>
-                        <a href="/stations" class="btn btn-danger btn-lg btn-wide"><i class="fa fa-chevron-left"></i> {{Lang::get('client.errorReturnLiveboard')}}</a>
+                        <a href="/stations/NMBS" class="btn btn-danger btn-lg btn-wide"><i class="fa fa-chevron-left"></i> {{Lang::get('client.errorReturnLiveboard')}}</a>
                         <br/>
                     </div>
                 </div>
