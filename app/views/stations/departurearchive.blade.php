@@ -41,7 +41,7 @@
                 <div class="col-sm-6">
                     <br/>
                     <br/>
-                    <p class="label label-info label-lg">Archived</p>
+                    <p class="label label-info label-lg">{{Lang::get('client.archived')}}</p>
                     <p class="label label-primary label-lg">{{date('H:i', strtotime($station->scheduledDepartureTime))}}</p>
                     <br/>
                     <br/>
@@ -56,7 +56,7 @@
                         }
                     }else{
                         echo "<hr/>";
-                        echo "<p>Historical delays</p>";
+                        echo "<p>" . Lang::get('client.historicalDelays'). "</p>";
                         foreach($station->delay as $delay){
                             echo "<li class='delay label label-lg'>" . $delay/60 . " min</li>";
                         }

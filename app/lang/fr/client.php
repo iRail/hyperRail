@@ -48,6 +48,8 @@ return array(
     "ExpiredErrorTitle" => "Ce train a déjà quitté la gare!",
     "ExpiredExplanation" => "Ce train a déjà quitté la gare et n'est plus disponible. Pour obtenir plus d'information sur ce train vous pouvez consulter nos archives de données à ",
     "delay" => "de retard",
+    "historicalDelays" => "Histoire de retard",
+    "archived" => "Archivée",
     // END OF NEW TRANSLATION STRINGS
     "search"=>"Chercher",
     "departure_at" => "Départ",

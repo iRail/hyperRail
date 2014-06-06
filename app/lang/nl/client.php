@@ -52,6 +52,8 @@ return array(
     "ExpiredErrorTitle" => "Deze trein heeft het station reeds verlaten!",
     "ExpiredExplanation" => "Deze trein heeft het station reeds verlaten, en is niet meer beschikbaar. Om meer te weten te komen over deze trein kan je onze data-archieven bekijken op ",
     "delay" => "vertraging",
+    "historicalDelays" => "Geschiedenis van vertragingen",
+    "archived" => "Gearchiveerd",
     //
     "search"=>"Zoek route",
     "departure_at" => "Vertrek",

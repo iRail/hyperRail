@@ -48,6 +48,8 @@ return array(
     "ExpiredErrorTitle" => "This train has left the station!",
     "ExpiredExplanation" => "This train has left the station, and is no longer available. To learn more about this train, visit ",
     "delay" => "delay",
+    "historicalDelays" => "Historical delays",
+    "archived" => "Archived",
     // END OF NEW TRANSLATION STRINGS
     "search"=>"Search",
     "departure_at" => "Departure",
