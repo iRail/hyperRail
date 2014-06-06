@@ -17,6 +17,6 @@
     <script src="{{ URL::asset('bower_components/angular/angular.min.js') }}"></script>
     <script src="{{ URL::asset('bower_components/angular-animate/angular-animate.min.js') }}"></script>
     <script src="{{ URL::asset('bower_components/bootstrap-sass/dist/js/bootstrap.js') }}"></script>
-    <script src="{{ URL::asset('bower_components/angular-bootstrap/ui-bootstrap.min.js') }}"></script>
+    <script src="{{ URL::asset('bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js') }}"></script>
     <script src="{{ URL::asset('js/irailapp/app.js') }}"></script>
 </head>

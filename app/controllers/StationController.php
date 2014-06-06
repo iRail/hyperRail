@@ -9,7 +9,7 @@ class StationController extends \BaseController {
     }
 
     public function redirectToNMBSStations(){
-        return Redirect::to('stations/NMBS/');
+        return Redirect::to('stations/NMBS');
     }
 
     public function liveboard($id){

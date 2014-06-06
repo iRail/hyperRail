@@ -17,11 +17,14 @@ Route::get('/route', 'RouteController@index');
 
 Route::get('/language', 'LanguageController@index');
 
-Route::get('/stations', 'StationController@redirectToNMBSStations');
-
+Route::get('/stations/', 'StationController@redirectToNMBSStations');
 Route::get('/stations/NMBS', 'StationController@index');
 Route::get('/stations/NMBS/{id}', 'StationController@liveboard');
 Route::get('/stations/NMBS/{id}/departures/{trainHash}', 'StationController@specificTrain');
+
+Route::get('/stations/nmbs', 'StationController@index');
+Route::get('/stations/nmbs/{id}', 'StationController@liveboard');
+Route::get('/stations/nmbs/{id}/departures/{trainHash}', 'StationController@specificTrain');
 
 /*
 |--------------------------------------------------------------------------
