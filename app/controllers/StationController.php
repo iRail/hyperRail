@@ -20,34 +20,68 @@ class StationController extends \BaseController {
         $val = $result->getValue();
         switch ($val){
             case "text/html":
-                $station = \hyperRail\StationString::convertToString($id);
-                $data = array('station' => $station);
-                return Response::view('stations.liveboard', $data)->header('Content-Type', "text/html")->header('Vary', 'accept');
+                try{
+                    $station = \hyperRail\StationString::convertToString($id);
+                    if ($station == null){
+                        throw new StationConversionFailureException();
+                    }
+                    $data = array('station' => $station);
+                    return Response::view('stations.liveboard', $data)->header('Content-Type', "text/html")->header('Vary', 'accept');
+                    break;
+                }
+                catch(StationConversionFailureException $ex){
+                    App::abort(404);
+                }
                 break;
             case "application/json":
-                $stationStringName = \hyperRail\StationString::convertToString($id);
-                $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&fast=true&lang=nl&format=json";
-                $data = file_get_contents($URL);
-                return Response::make($data, 200)->header('Content-Type', 'application/json')->header('Vary', 'accept');
+                try{
+                    $stationStringName = \hyperRail\StationString::convertToString($id);
+                    if ($stationStringName == null){
+                        throw new StationConversionFailureException();
+                    }
+                    $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&fast=true&lang=nl&format=json";
+                    $data = file_get_contents($URL);
+                    return Response::make($data, 200)->header('Content-Type', 'application/json')->header('Vary', 'accept');
+                }catch(StationConversionFailureException $ex){
+                    $error = (string)json_encode(array('error' => 'This station does not exist!'));
+                    return Response::make($error, 200)->header('Content-Type', 'application/json')->header('Vary', 'accept');
+                }
                 break;
             case "application/ld+json":
-                $stationStringName = \hyperRail\StationString::convertToString($id);
-                $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&fast=true&lang=nl&format=json";
-                $data = file_get_contents($URL);
                 try{
-                    $newData = \hyperRail\iRailFormatConverter::convertLiveboardData($data, $id);
-                    $jsonLD = (string)json_encode($newData);
-                    return Response::make($jsonLD, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
-                }catch(Exception $ex){
-                    $error = (string)json_encode(array('error' => 'We could not get any data for you!'));
+                    $stationStringName = \hyperRail\StationString::convertToString($id);
+                    if ($stationStringName == null){
+                        throw new StationConversionFailureException();
+                    }
+                    $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&fast=true&lang=nl&format=json";
+                    $data = file_get_contents($URL);
+                    try{
+                        $newData = \hyperRail\iRailFormatConverter::convertLiveboardData($data, $id);
+                        $jsonLD = (string)json_encode($newData);
+                        return Response::make($jsonLD, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
+                    }catch(Exception $ex){
+                        $error = (string)json_encode(array('error' => 'We could not get any data for you!'));
+                        return Response::make($error, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
+                    }
+                }
+                catch(StationConversionFailureException $ex){
+                    $error = (string)json_encode(array('error' => 'This station does not exist!'));
                     return Response::make($error, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
                 }
                 break;
             default:
-                $station = \hyperRail\StationString::convertToString($id);
-                $data = array('station' => $station);
-                return Response::view('stations.liveboard', $data)->header('Content-Type', "text/html")->header('Vary', 'accept');
-                break;
+                try{
+                    $station = \hyperRail\StationString::convertToString($id);
+                    if ($station == null){
+                        throw new StationConversionFailureException();
+                    }
+                    $data = array('station' => $station);
+                    return Response::view('stations.liveboard', $data)->header('Content-Type', "text/html")->header('Vary', 'accept');
+                    break;
+                }
+                catch(StationConversionFailureException $ex){
+                    App::abort(404);
+                }
         }
     }
 
@@ -197,14 +231,14 @@ class StationController extends \BaseController {
                 }
                 break;
             default:
-// Convert id to string for interpretation by old API
+                // Convert id to string for interpretation by old API
                 $stationStringName = \hyperRail\StationString::convertToString($station_id);
                 // Set up path to old api
                 $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&fast=true&lang=nl&format=json";
                 // Get the contents of this path
                 $data = file_get_contents($URL);
                 // Convert the data to the new liveboard object
-                $newData = \hyperRail\iRailFormatConverter::convertLiveboardData($data, $station_id);
+                    $newData = \hyperRail\iRailFormatConverter::convertLiveboardData($data, $station_id);
                 // Read new liveboard object and return the page but load data
                 foreach ($newData['@graph'] as $graph){
                     if (strpos($graph['@id'],$liveboard_id) !== false) {
