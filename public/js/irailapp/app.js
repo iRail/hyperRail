@@ -277,16 +277,13 @@
             var location = document.URL;
             // Request the URL
             $http.get(document.URL, config)
-                // If it works, show data
                 .success(function(data) {
                 $scope.liveboardData = data;
-                console.log(data);
                 $scope.results = true;
                 $scope.loading = false;
                 $scope.error = false;
             }
-            ).error(function(){
-                // Otherwise, show other stuff
+            ).error(function(ex){
                 $scope.results = false;
                 $scope.loading = false;
                 $scope.error = true;
