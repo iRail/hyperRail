@@ -1,6 +1,6 @@
 <footer class="footer container">
     <hr/>
-    <p class="small"><a href="{{ URL::to('language') }}">{{Lang::get('client.language')}}</a> | &copy; 2014, OKFN Belgium. {{Lang::get('client.isPartOf')}} <a href="http://okfn.be/" target="_blank">Open Knowledge Foundation Belgium</a>. </p>
+    <p class="small"><a href="{{ URL::to('language') }}">{{Lang::get('client.language')}}</a> | &copy; 2014, OKFN Belgium. <a href="http://hello.iRail.be" target="_blank">{{Lang::get('client.isPartOf')}}</a> <a href="http://okfn.be/" target="_blank">Open Knowledge Foundation Belgium</a>. </p>
 </footer>
 <script>
     var _gaq = [['_setAccount', 'UA-263695-8'], ['_trackPageview']];
