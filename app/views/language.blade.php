@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html manifest="appcache.mf">
 @include('core.head')
 <body>
 <div class="container">

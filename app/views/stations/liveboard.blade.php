@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{Config::get('app.locale');}}" ng-app="irailapp" ng-controller="StationLiveboardCtrl">
+<html lang="{{Config::get('app.locale');}}" ng-app="irailapp" ng-controller="StationLiveboardCtrl" manifest="appcache.mf">
 @include('core.head')
 <body>
 <div class="wrapper">
