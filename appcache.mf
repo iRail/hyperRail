@@ -1,0 +1,12 @@
+CACHE MANIFEST
+#v1 - 2014-06-15
+
+CACHE:
+bower_components/
+images/
+css/
+data/
+
+NETWORK:
+route/
+stations/
