@@ -1,0 +1,29 @@
+module.exports = function(grunt) {
+
+	////////////////////////////////////////////////////////////////////
+	/////////////////////////////// COMMANDS ///////////////////////////
+	////////////////////////////////////////////////////////////////////
+
+	grunt.registerTask('default', 'Build assets for local', [
+		'js',
+	]);
+
+	grunt.registerTask('production', 'Build assets for production', [
+		'js',
+		'concat',
+		'minify'
+	]);
+
+	// Flow
+	////////////////////////////////////////////////////////////////////
+
+	grunt.registerTask('minify', 'Minify assets', [
+		'uglify',
+	]);
+
+	grunt.registerTask('js', 'Build scripts', [
+		'jshint',
+		'concat:js',
+	]);
+
+};

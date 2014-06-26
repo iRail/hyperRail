@@ -1,0 +1,16 @@
+{
+  "name": "hyperRail",
+  "dependencies": {
+    "bower": "*",
+    "grunt": "*",
+    "grunt-cli": "*",
+    "glob": "*"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "jit-grunt": "*"
+  }
+}
