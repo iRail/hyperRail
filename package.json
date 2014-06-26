@@ -11,6 +11,11 @@
     "grunt-contrib-jshint": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-sass": "*",
+    "grunt-autoprefixer": "*",
+    "grunt-contrib-compass": "~0.9.0",
+    "grunt-contrib-copy": "*",
     "jit-grunt": "*"
   }
 }

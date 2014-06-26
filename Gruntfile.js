@@ -33,21 +33,27 @@ module.exports = function (grunt) {
 		grunt     : '.grunt',
 		app       : 'public/app',
 		builds    : 'public/builds',
-		components: 'public/bower_components',
+		components: 'public/components',
 
 		paths: {
 			original: {
 				css       : '<%= app %>/css',
 				js        : '<%= app %>/js',
 				sass      : '<%= app %>/sass',
+				fonts     : '<%= app %>/fonts',
 			},
 			compiled  : {
 				css  : '<%= builds %>/css',
 				js   : '<%= builds %>/js',
+				fonts: '<%= builds %>/fonts',
 			},
 			components: {
 				jquery   : '<%= components %>/jquery/dist/jquery.js',
 				angular  : '<%= components %>/angular/angular.js',
+				bootstrap : {
+					fonts : '<%= components %>/bootstrap-sass-official/vendor/assets/fonts/bootstrap',
+					js    : '<%= components %>/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js',
+				}
 			}
 		},
 	};

@@ -1,14 +1,27 @@
-/bootstrap/compiled.php
-/vendor
+# Dependencies
+node_modules
+public/components
+vendor
+
+# Cache and compiled
+app/database/testing.sqlite
+.sass-cache
+bootstrap/compiled.php
 composer.phar
-composer.lock
-.env.local.php
+docs/api.apib
+public/app/js
+public/builds
+public/styleguide
+app/tests/meta/coverage
+
+# Development
+.idea
+.sublimets
+sftp-config.json
+.env.*.php
 .env.php
+.vagrant
+
+# Dotfiles
 .DS_Store
 Thumbs.db
-app/config/production
-app/config/local
-app/config/vagrant
-
-node_modules
-.vagrant
