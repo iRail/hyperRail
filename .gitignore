@@ -9,3 +9,5 @@ Thumbs.db
 app/config/production
 app/config/local
 app/config/vagrant
+
+.vagrant
