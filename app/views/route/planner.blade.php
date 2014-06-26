@@ -99,7 +99,12 @@
                                     </span>
                                     <span class="tcenter">
                                         <strong>
+<<<<<<< HEAD
                                             <i class="fa fa-clock-o"></i> @{{ ((conn.arrival.time-conn.departure.time))/60 }}'
+=======
+                                            <i class="fa fa-clock-o"></i> 
+                                            <span ng-show="(conn.arrival.time-conn.departure.time) >= 3600">@{{ ((conn.arrival.time-conn.departure.time) - (conn.arrival.time-conn.departure.time) % 3600) / 3600}}:<span ng-show="(conn.arrival.time-conn.departure.time) % 3600 / 60 <= 9">0</span></span>@{{ (conn.arrival.time-conn.departure.time) % 3600 / 60 }}'
+>>>>>>> 037634e... display duration as H:mm if one hour or longer
                                         </strong>
                                     </span>
                                     <span class="tright">
