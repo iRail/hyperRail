@@ -1,4 +1,4 @@
-AddType text/cache-manifest appcache.mf
+AddType text/cache-manifest .appcache
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews

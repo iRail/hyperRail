@@ -1,9 +1,0 @@
-CACHE MANIFEST
-#v1 - 2014-06-15
-
-CACHE:
-*
-
-NETWORK:
-route/
-stations/

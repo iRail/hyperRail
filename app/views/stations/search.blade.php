@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="irailapp" ng-controller="StationSearchCtrl">
+<html lang="en" ng-app="irailapp" ng-controller="StationSearchCtrl" manifest="/.appcache">
 @include('core.head')
 <body>
 <div class="wrapper">

@@ -17,7 +17,13 @@ class StationController extends \BaseController {
         $acceptHeader = Request::header('accept');
         $priorities = array('text/html', 'application/json', '*/*');
         $result = $negotiator->getBest($acceptHeader, $priorities);
-        $val = $result->getValue();
+
+        $val = "text/html";
+        //unless the negotiator has found something better for us
+        if (isset($result)) {
+            $val = $result->getValue();
+        }
+
         switch ($val){
             case "text/html":
                 try{
