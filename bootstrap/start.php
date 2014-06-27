@@ -34,8 +34,6 @@ $env = $app->detectEnvironment( function() {
     if ($isDevelopment) return "development";
     if ($isTest) return "test";
     if ($isProduction) return "production";
-
-    return 'local';
 });
 
 /*
