@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#v1 - 2014-06-15
+#v2 - 2014-06-27
 
 CACHE:
 builds/css/main.css
@@ -12,4 +12,5 @@ images/logoLarge.svg
 
 NETWORK:
 route
+stations
 *
