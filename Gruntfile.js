@@ -51,8 +51,8 @@ module.exports = function (grunt) {
 				jquery   : '<%= components %>/jquery/dist/jquery.js',
 				angular  : '<%= components %>/angular/angular.js',
 				bootstrap : {
-					fonts : '<%= components %>/bootstrap-sass-official/vendor/assets/fonts/bootstrap',
-					js    : '<%= components %>/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js',
+					fonts : '<%= components %>/bootstrap-sass-official/assets/fonts/bootstrap',
+					js    : '<%= components %>/bootstrap-sass-official/assets/javascripts/bootstrap.js',
 				}
 			}
 		},
