@@ -17,17 +17,10 @@
     <meta property="og:image" content="{{ URL::asset('apple-touch-icon-precomposed.png') }}" />
     <title>iRail | {{$departureStation->name}} to {{str_replace('[NMBS/SNCB]', '', $station->headsign)}}</title>
     <link rel="shortcut icon" href="{{ URL::asset('favicon.ico') }}"/>
-    <link rel="stylesheet" href="{{ URL::asset('bower_components/bootstrap-sass/lib/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('bower_components/fontawesome/css/font-awesome.min.css') }}"/>
-    <link rel="stylesheet" href="{{ URL::asset('bower_components/animate.css/animate.min.css') }}"/>
-    <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('builds/css/main.css') }}">
 
-    <script src="{{ URL::asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ URL::asset('bower_components/angular/angular.min.js') }}"></script>
-    <script src="{{ URL::asset('bower_components/angular-animate/angular-animate.min.js') }}"></script>
-    <script src="{{ URL::asset('bower_components/bootstrap-sass/dist/js/bootstrap.js') }}"></script>
-    <script src="{{ URL::asset('bower_components/angular-bootstrap/ui-bootstrap.min.js') }}"></script>
-    <script src="{{ URL::asset('js/irailapp/app.js') }}"></script>
+    <script src="{{ URL::asset('builds/js/scripts.js') }}"></script>
+
 </head>
 <body>
 <div class="wrapper">
