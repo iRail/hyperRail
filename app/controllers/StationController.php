@@ -40,19 +40,6 @@ class StationController extends \BaseController {
                 }
                 break;
             case "application/json":
-                try{
-                    $stationStringName = \hyperRail\StationString::convertToString($id);
-                    if ($stationStringName == null){
-                        throw new StationConversionFailureException();
-                    }
-                    $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&fast=true&lang=nl&format=json";
-                    $data = file_get_contents($URL);
-                    return Response::make($data, 200)->header('Content-Type', 'application/json')->header('Vary', 'accept');
-                }catch(StationConversionFailureException $ex){
-                    $error = (string)json_encode(array('error' => 'This station does not exist!'));
-                    return Response::make($error, 200)->header('Content-Type', 'application/json')->header('Vary', 'accept');
-                }
-                break;
             case "application/ld+json":
                 try{
                     $stationStringName = \hyperRail\StationString::convertToString($id);
