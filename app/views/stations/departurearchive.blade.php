@@ -36,6 +36,11 @@
                     <br/>
                     <p class="label label-info label-lg">{{Lang::get('client.archived')}}</p>
                     <p class="label label-primary label-lg">{{date('H:i', strtotime($station->scheduledDepartureTime))}}</p>
+                    <?php
+                        if (is_array($station->delay) && sizeof($station->delay)>1) {
+                                echo "<p class='label label-warning label-lg'>" . "cancelled" . " </p>";
+                        }
+                    ?>
                     <br/>
                     <br/>
                     <p class="h2">{{Lang::get('client.platform')}} {{$station->platform}}</p>
@@ -43,14 +48,14 @@
                     <p class="h2">{{Lang::get('client.to')}}</p>
                     <p class="h1"><strong>{{str_replace("[NMBS/SNCB]", "", $station->headsign);}}</strong></p>
                     <?php
-                    if (!is_array($station->delay)){
+                    if (!is_array($station->delay)) {
                         if ($station->delay > 0){
                             echo "<p class='label label-warning label-lg'>+" . ($station->delay/60) . "' " . Lang::get('client.delay') . '</p>';
                         }
-                    }else{
+                    } else {
                         echo "<hr/>";
-                        echo "<p>" . Lang::get('client.historicalDelays'). "</p>";
-                        foreach($station->delay as $delay){
+                        echo "<p>" . Lang::get('client.historicalDelays') . "</p>";
+                        foreach ($station->delay as $delay) {
                             echo "<li class='delay label label-lg'>" . $delay/60 . " min</li>";
                         }
                     }

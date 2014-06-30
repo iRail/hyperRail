@@ -37,7 +37,11 @@
                     <?php
                     if ($station['delay'] > 0){
                         echo "<p class='label label-warning label-lg'>+" . ($station['delay']/60) . "' " . Lang::get('client.delay') . '</p>';
-                    }?>
+                    }   
+                    if (is_array($station['delay']) && sizeof($station['delay'])>1) {
+                        echo "<p class='label label-warning label-lg'>" . "cancelled" . " </p>";
+                    }
+                    ?>			
                     <br/>
                     <br/>
                     <p class="h2">{{Lang::get('client.platform')}} {{$station['platform']}}</p>

@@ -1,16 +1,5 @@
 CACHE MANIFEST
 #v3 - 2014-06-27
 
-CACHE:
-builds/css/main.css
-builds/js/scripts.js
-images/logo.svg
-images/stair.svg
-builds/fonts/glyphicons-halflings-regular.woff
-builds/fonts/fontawesome-webfont.woff?v=4.1.0
-images/logoLarge.svg
-
 NETWORK:
-route
-stations
 *

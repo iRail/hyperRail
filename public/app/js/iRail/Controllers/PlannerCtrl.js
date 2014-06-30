@@ -3,7 +3,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
     /*--------------------------------------------------------
      * INITIAL VARIABLES & SETUP
      *-------------------------------------------------------*/
-    var automatic = GetURLParameter('auto');
+    var automatic = new GetURLParameter("auto");
 
     // Init departure and destination as undefined
     $scope.departure = undefined;
@@ -12,7 +12,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
     $scope.mytime = new Date();
     $scope.mydate = new Date();
     // Timeoption defaults to arrive at set hour
-    $scope.timeoption = 'depart';
+    $scope.timeoption = "depart";
     // Default states
     $scope.planning = true; // When planning is set to true, you can enter stations and set time
     $scope.loading = false; // When loading is set to true, you see a spinner
@@ -22,22 +22,23 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
      * FUNCTIONS THAT CAN BE CALLED
      *-------------------------------------------------------*/
 
-    $(document).keypress(function(e) {
-        if(e.which == 13 && $scope.planning == true){
-            $('#confirm').focus();
+    $(document).keypress(function (e) {
+        if(e.which === 13 && $scope.planning === true){
+            $("#confirm").focus();
         }
     });
 
     /**
      *  Check if we can dump the data
-      */
-    $scope.confirmRouteSearch = function(){
-        if('id' in $scope.departure && 'id' in $scope.destination){
+     */
+    /*jshint quotmark: double */
+    $scope.confirmRouteSearch = function () {
+        if ("id" in $scope.departure && "id" in $scope.destination) {
             $scope.data = {
                 "departure" : $scope.departure,
                 "destination" : $scope.destination,
-                "date" : $filter('date')($scope.mydate, 'shortDate'),
-                "time" : $filter('date')($scope.mytime, 'HH:mm'),
+                "date" : $filter("date")($scope.mydate, "shortDate"),
+                "time" : $filter("date")($scope.mytime, "HH:mm"),
                 "timeoption" : $scope.timeoption
             };
             // Set app as loading
@@ -46,23 +47,23 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
             $scope.loading = true;
 
             window.history.pushState("departure", "iRail.be", "?to=" + $scope.destination.id
-                + '&from=' + $scope.departure.id
-                + '&date=' + ($filter('date')($scope.mydate, 'ddMMyy'))
-                + '&time=' + ($filter('date')($scope.mytime, 'HHmm'))
-                + '&timeSel=' + $scope.timeoption
-                + '&auto=true'
+                + "&from=" + $scope.departure.id
+                + "&date=" + ($filter("date")($scope.mydate, "ddMMyy"))
+                + "&time=" + ($filter("date")($scope.mytime, "HHmm"))
+                + "&timeSel=" + $scope.timeoption
+                + "&auto=true"
             );
 
-            $urlInWindow = document.URL;
+            var $urlInWindow = document.URL;
 
             $http.get($urlInWindow)
-                .success(function(data) {
+                .success(function (data) {
                     $scope.parseResults(data);
 
                     $scope.loading = false;
                     $scope.results = true;
                 })
-                .error(function(){
+                .error(function () {
                     $scope.error = true;
                     $scope.loading = false;
                     $scope.results = false;
@@ -75,9 +76,9 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
      * Used to interpret the new station id
      * @param string
      */
-    $scope.findStationById = function(suppliedIdentifierString){
-        for (var i = 0, len = $scope.stations.stations.length; i < len; i++) {
-            if (($scope.stations.stations[i].id.toLowerCase()).indexOf(suppliedIdentifierString) != -1){
+    $scope.findStationById = function (suppliedIdentifierString) {
+        for (var i = 0, len = $scope.stations.stations.length; i < len; i=i+1) {
+            if (($scope.stations.stations[i].id.toLowerCase()).indexOf(suppliedIdentifierString) !== -1) {
                 return $scope.stations.stations[i];
             }
         }
@@ -87,8 +88,8 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
      * Parse the results
      * @param data
      */
-    $scope.parseResults = function(data){
-        if ($scope.timeoption === "arrive"){
+    $scope.parseResults = function (data) {
+        if ($scope.timeoption === "arrive") {
             // Reverse connections
             // First result should be close to your set time
             data.connection.reverse();
@@ -99,43 +100,43 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
     /**
      * Save the entered data and request
      */
-    $scope.save = function(){
+    $scope.save = function () {
         // Check if time and date are set
-        if ($scope.mydate === undefined){
+        if ($scope.mydate === undefined) {
             $scope.data = null;
             return;
         }
-        if ($scope.mytime === undefined){
+        if ($scope.mytime === undefined) {
             $scope.data = null;
             return;
         }
         // Check if departure and destination are bound
-        try{
+        try {
             $scope.confirmRouteSearch();
         }
         // If not bound, try to bind data (1 attempt)
-        catch(ex){
-                for (var i = 0, len = $scope.stations.stations.length; i < len; i++) {
-                    try{
-                        if (($scope.stations.stations[i].name.toLowerCase()).indexOf($scope.departure.toLowerCase()) != -1){
+        catch (ex) {
+                for (var i = 0, len = $scope.stations.stations.length; i < len; i=i+1) {
+                    try {
+                        if (($scope.stations.stations[i].name.toLowerCase()).indexOf($scope.departure.toLowerCase()) !== -1) {
                             arr = $scope.stations.stations;
                             $scope.departure = arr[i];
                         }
                     }
-                    catch(ex){
+                    catch (ex) {
                     }
-                    try{
-                        if(($scope.stations.stations[i].name.toLowerCase()).indexOf($scope.destination.toLowerCase()) != -1){
+                    try {
+                        if (($scope.stations.stations[i].name.toLowerCase()).indexOf($scope.destination.toLowerCase()) !== -1) {
                             arr = $scope.stations.stations;
                             $scope.destination = arr[i];
                         }
                     }
-                    catch(ex){
+                    catch (ex) {
                     }
                 }
-                try{
+                try {
                     $scope.confirmRouteSearch();
-                }catch(ex){
+                } catch (ex) {
                     $scope.stationnotfound = true;
                     $scope.data = null;
                 }
@@ -146,7 +147,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
     /**
      * Resets the route planner to default values
      */
-    $scope.resetplanner = function(e){
+    $scope.resetplanner = function (e) {
         e.stopPropagation();
         e.preventDefault();
         $scope.error = false;
@@ -155,33 +156,33 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
         $scope.planning = true;
     };
 
-    $scope.reverse = function(){
+    $scope.reverse = function () {
         var destination = $scope.destination;
         $scope.destination = $scope.departure;
         $scope.departure = destination;
         $scope.confirmRouteSearch();
     };
 
-    $scope.earlier = function(){
+    $scope.earlier = function () {
         var itime = $scope.mytime;
         $scope.mytime = new Date(itime.setHours(itime.getHours()-1));
         $scope.confirmRouteSearch();
     };
 
-    $scope.later = function(){
+    $scope.later = function () {
         var itime = $scope.mytime;
         $scope.mytime = new Date(itime.setHours(itime.getHours()+1));
         $scope.confirmRouteSearch();
     };
 
-    $scope.earliest = function(){
+    $scope.earliest = function () {
         var itime = $scope.mytime;
         $scope.timeoption = "depart";
         $scope.mytime = new Date(itime.setHours(0, 0, 0));
         $scope.confirmRouteSearch();
     };
 
-    $scope.latest = function(){
+    $scope.latest = function () {
         var itime = $scope.mytime;
         $scope.timeoption = "arrive";
         $scope.mytime = new Date(itime.setHours(23, 59, 0));
@@ -189,17 +190,17 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
     };
 
     // Fetch stations via HTTP GET request
-    $http.get('data/stations.json').success(function(data) {
+    $http.get("data/stations.json").success(function (data) {
         $scope.stations = data;
         // Check if we were redirected for automatic results!
-        if (automatic === 'true'){
+        if (automatic === "true") {
             // Check if URL params are set
-            var dep = GetURLParameter('from');
-            var des = GetURLParameter('to');
-            var urltime = GetURLParameter('time');
-            var dateparam = GetURLParameter('date');
-            var timeoption = GetURLParameter('timeSel');
-            if (dep != "undefined" && des != "undefined"){
+            var dep = new GetURLParameter("from");
+            var des = new GetURLParameter("to");
+            var urltime = new GetURLParameter("time");
+            var dateparam = new GetURLParameter("date");
+            var timeoption = new GetURLParameter("timeSel");
+            if (dep !== "undefined" && des !== "undefined"){
                 // Get departure and destination id from URL
                 $scope.departure = $scope.findStationById(dep);
                 $scope.destination = $scope.findStationById(des);
@@ -207,44 +208,44 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
                 var parts = /^(\d\d)(\d\d)(\d{2})$/.exec(dateparam);
                 $scope.mydate = new Date( 20 + parts[3], parts[2]-1, parts[1] );
                 // Get time
-                var dat = new Date, time = urltime.split(/^(\d\d)(\d\d)$/);
+                var dat = new Date(), time = urltime.split(/^(\d\d)(\d\d)$/);
                 dat.setHours(time[1]);
                 dat.setMinutes(time[2]);
                 $scope.mytime = dat;
                 // Get time option
-                if (timeoption === "arrive"){
+                if (timeoption === "arrive") {
                     $scope.timeoption = "arrive";
                 }
-                else{
+                else {
                     $scope.timeoption = "depart";
                 }
                 $scope.confirmRouteSearch();
             }
         }
-        if (GetURLParameter('from') !== 'undefined'){
-            try{
-                $scope.departure = $scope.findStationById(GetURLParameter('from'));
+        if (new GetURLParameter("from") !== "undefined") {
+            try {
+                $scope.departure = $scope.findStationById(new GetURLParameter("from"));
             }
-            catch(ex){
-                console.log('Could not link departure station from URL.');
+            catch (ex) {
+                console.log("Could not link departure station from URL.");
             }
         }
-        if (GetURLParameter('to') !== 'undefined'){
-            try{
-                $scope.destination = $scope.findStationById(GetURLParameter('to'));
+        if (new GetURLParameter("to") !== "undefined") {
+            try {
+                $scope.destination = $scope.findStationById(new GetURLParameter("to"));
             }
-            catch(ex){
-                console.log('Could not link destination station from URL.');
+            catch (ex) {
+                console.log("Could not link destination station from URL.");
             }
         }
     });
-}
+};
 
-angular.module('irailapp.controllers')
-    .controller('PlannerCtrl', [
-        '$scope',
-        '$http',
-        '$filter',
-        '$timeout',
+angular.module("irailapp.controllers")
+    .controller("PlannerCtrl", [
+        "$scope",
+        "$http",
+        "$filter",
+        "$timeout",
         PlannerCtrl
     ]);
