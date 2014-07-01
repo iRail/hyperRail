@@ -37,6 +37,14 @@ Data returned through the API (when specifically requesting `application/ld+json
 
 Data dumps and the data that is used (and will be used and queryable in the future) are available at <a href="http://archive.irail.be">http://archive.irail.be</a>.
 
+### Authentication interface
+
+OAuth URI namespace: 
+In order to log in with a oAuth provider, send a request to 'irail.be/oauth/{provider}' (supported provider: 'google'). 
+
+The LoginController checks what provider it is and executes the corresponding login()-method of the specific provider. Every provider has it's own Provider-class which implements an OAuthProvider-interface.
+
+Inside the login()-method of a Provider-class happens the oAuth-process. 
 
 ### Thanks to
 
