@@ -39,7 +39,7 @@ Data dumps and the data that is used (and will be used and queryable in the futu
 
 ### Authentication interface
 
-OAuth URI namespace: 
+OAuth URI namespace (WIP): 
 In order to log in with a oAuth provider, send a request to 'irail.be/oauth/{provider}' (supported provider: 'google'). 
 
 The LoginController checks what provider it is and executes the corresponding login()-method of the specific provider. Every provider has it's own Provider-class which implements an OAuthProvider-interface.
