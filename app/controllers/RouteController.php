@@ -18,12 +18,10 @@ class RouteController extends \BaseController {
         }
         
         switch ($val){
-            case "text/html":
-                return Response::view('route.planner')->header('Content-Type', "text/html")->header('Vary', 'accept');
-                break;
             case "application/json":
-                return Response::make($this::getJSON())->header('Content-Type', "text/html")->header('Vary', 'accept');
+                return Response::make($this::getJSON())->header('Content-Type', "application/json")->header('Vary', 'accept');
                 break;
+            case "text/html":
             default:
                 return Response::view('route.planner')->header('Content-Type', "text/html")->header('Vary', 'accept');
                 break;
