@@ -15,41 +15,47 @@ class TwitterProvider implements IOAuthProvider{
 	 * 
 	 * @return mixed
 	 */
-	public function login() {
+	public function getLogin() {
 		// get data from input
-        $code = Input::get('code');
-
+        $code = Input::get('oauth_token');
+        $verifier = Input::get('oauth_verifier');
+        // dd('test');
         // get google service
-        $twitterService = OAuth::consumer("Twitter", "http://irail.dev/");
-
+        $twitterService = OAuth::consumer("Twitter","http://test.be/oauth/twitter");
+        // dd('test');
         if (!empty($code)) {
-
-            // This was a callback request from google, get the token
-            $token = $twitterService->requestAccessToken($code);
-
+            // This was a callback request from Twitter, get the token
+            $token = $twitterService->requestAccessToken($code, $verifier);
+            //dd($token);
             // Send a request with it
             $result = json_decode($twitterService->request('account/verify_credentials.json'));
 
-            echo 'result: <pre>' . print_r($result, true) . '</pre>';
+            //echo 'result: <pre>' . print_r($result, true) . '</pre>';
 
-            // $user = DB::select('select id from users where email = ?', array($result['email']));
+            /*
+            *   Save in database
+            */
+            //die();
 
-            // if (empty($user)) {
-            //     $data = new User;
-            //     $data->Username = $result['name'];
-            //     $data->email = $result['email'];
-            //     $data->first_name = $result['given_name'];
-            //     $data->last_name = $result['family_name'];
-            //     $data->save();
-            // }
-            // if (Auth::attempt(array('email' => $result['email']))) {
+            $user = User::where('email', $result->screen_name)->first();
 
-            // return Redirect::to('/');
-            // }  else {
-            // echo 'error';    
-            // }
+            if (empty($user)) {
+                dd($token);
+                $data = new User;
+                $data->token = (string) $token;
+                $data->departure = '';
+                $data->name = $result->name;
+                $data->email = $result->screen_name;
+                //$data->first_name = $result['given_name'];
+                //$data->last_name = $result['family_name'];
+                $data->save();
+            }
 
-            dd($result);
+            if (Auth::attempt(array('email' => $result->screen_name))) {
+                return Redirect::to('/');
+            }  else {
+            echo 'error';    
+            }
         }
         // if not ask for permission first
         else {
@@ -60,11 +66,11 @@ class TwitterProvider implements IOAuthProvider{
             $url = $twitterService->getAuthorizationUri(array('oauth_token' => $token->getRequestToken()));
 
             //dd($url);
-
-            //return Redirect::to((string) $url);
-            header('Location: ' . $url);
+           // dd((string) $url);
+            header('Location: ' . (string) $url);
+            die();
         }
     }
-	}
+}  
 
 ?>

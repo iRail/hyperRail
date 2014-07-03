@@ -15,7 +15,7 @@ class GoogleProvider implements IOAuthProvider{
 	 * 
 	 * @return mixed
 	 */
-	public function login() {
+	public function getLogin() {
 		// get data from input
         $code = Input::get('code');
 

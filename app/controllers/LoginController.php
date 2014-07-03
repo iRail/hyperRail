@@ -9,7 +9,9 @@ use ML\JsonLD\JsonLD;
  */
 class LoginController extends BaseController {
 
-	public function redirect($provider){
+	public function getLogin($provider){
+        // dd(Config::get('database'));
+        
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
         $priorities = array('text/html', 'application/json', '*/*');
@@ -28,14 +30,10 @@ class LoginController extends BaseController {
                     break;  
             	}
 
-                $prov->login();
-                // get user id, name from provider
-                //$data = array('user' => 'p'); 
-
-                // save in database  ...             
-
+                $prov->getLogin();
+        
                 // response view of travelguide
-                //return Response::view('travelguide.travelGuide', $data)->header('Content-Type', "text/html")->header('Vary', 'accept');;
+                return View::make('travelguide.travelGuide');
         	break;
 
             case "application/ld+json":
@@ -44,6 +42,10 @@ class LoginController extends BaseController {
             default:
             break;
         }
+    }
+
+    public function postLogin(){
+
     }
 }
 
