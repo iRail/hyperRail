@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="{{Config::get('app.locale');}}" ng-app="irailapp" ng-controller="PlannerCtrl" manifest=".appcache">
-    @include('core.head')
-<body>
-<div class="wrapper">
+@extends('layouts.default')
+@section('content')
     <div id="main">
         @include('core.navigation')
         <div class="container">
@@ -198,3 +195,5 @@
 </script>
 </body>
 </html>
+
+@stop
