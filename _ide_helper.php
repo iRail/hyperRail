@@ -3083,684 +3083,6 @@ namespace {
 			return \Illuminate\Database\DatabaseManager::__call($method, $parameters);
 		 }
 
-		/**
-		 * Get a schema builder instance for the connection.
-		 *
-		 * @return \Illuminate\Database\Schema\MySqlBuilder
-		 * @static 
-		 */
-		 public static function getSchemaBuilder(){
-			//Method inherited from \Illuminate\Database\MySqlConnection
-			return \Illuminate\Database\MySqlConnection::getSchemaBuilder();
-		 }
-
-		/**
-		 * Set the query grammar to the default implementation.
-		 *
-		 * @return void
-		 * @static 
-		 */
-		 public static function useDefaultQueryGrammar(){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::useDefaultQueryGrammar();
-		 }
-
-		/**
-		 * Set the schema grammar to the default implementation.
-		 *
-		 * @return void
-		 * @static 
-		 */
-		 public static function useDefaultSchemaGrammar(){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::useDefaultSchemaGrammar();
-		 }
-
-		/**
-		 * Set the query post processor to the default implementation.
-		 *
-		 * @return void
-		 * @static 
-		 */
-		 public static function useDefaultPostProcessor(){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::useDefaultPostProcessor();
-		 }
-
-		/**
-		 * Begin a fluent query against a database table.
-		 *
-		 * @param string  $table
-		 * @return \Illuminate\Database\Query\Builder
-		 * @static 
-		 */
-		 public static function table($table){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::table($table);
-		 }
-
-		/**
-		 * Get a new raw query expression.
-		 *
-		 * @param mixed  $value
-		 * @return \Illuminate\Database\Query\Expression
-		 * @static 
-		 */
-		 public static function raw($value){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::raw($value);
-		 }
-
-		/**
-		 * Run a select statement and return a single result.
-		 *
-		 * @param string  $query
-		 * @param array   $bindings
-		 * @return mixed
-		 * @static 
-		 */
-		 public static function selectOne($query, $bindings = array()){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::selectOne($query, $bindings);
-		 }
-
-		/**
-		 * Run a select statement against the database.
-		 *
-		 * @param string  $query
-		 * @param array   $bindings
-		 * @return array
-		 * @static 
-		 */
-		 public static function select($query, $bindings = array()){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::select($query, $bindings);
-		 }
-
-		/**
-		 * Run an insert statement against the database.
-		 *
-		 * @param string  $query
-		 * @param array   $bindings
-		 * @return bool
-		 * @static 
-		 */
-		 public static function insert($query, $bindings = array()){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::insert($query, $bindings);
-		 }
-
-		/**
-		 * Run an update statement against the database.
-		 *
-		 * @param string  $query
-		 * @param array   $bindings
-		 * @return int
-		 * @static 
-		 */
-		 public static function update($query, $bindings = array()){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::update($query, $bindings);
-		 }
-
-		/**
-		 * Run a delete statement against the database.
-		 *
-		 * @param string  $query
-		 * @param array   $bindings
-		 * @return int
-		 * @static 
-		 */
-		 public static function delete($query, $bindings = array()){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::delete($query, $bindings);
-		 }
-
-		/**
-		 * Execute an SQL statement and return the boolean result.
-		 *
-		 * @param string  $query
-		 * @param array   $bindings
-		 * @return bool
-		 * @static 
-		 */
-		 public static function statement($query, $bindings = array()){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::statement($query, $bindings);
-		 }
-
-		/**
-		 * Run an SQL statement and get the number of rows affected.
-		 *
-		 * @param string  $query
-		 * @param array   $bindings
-		 * @return int
-		 * @static 
-		 */
-		 public static function affectingStatement($query, $bindings = array()){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::affectingStatement($query, $bindings);
-		 }
-
-		/**
-		 * Run a raw, unprepared query against the PDO connection.
-		 *
-		 * @param string  $query
-		 * @return bool
-		 * @static 
-		 */
-		 public static function unprepared($query){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::unprepared($query);
-		 }
-
-		/**
-		 * Prepare the query bindings for execution.
-		 *
-		 * @param array  $bindings
-		 * @return array
-		 * @static 
-		 */
-		 public static function prepareBindings($bindings){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::prepareBindings($bindings);
-		 }
-
-		/**
-		 * Execute a Closure within a transaction.
-		 *
-		 * @param Closure  $callback
-		 * @return mixed
-		 * @throws \Exception
-		 * @static 
-		 */
-		 public static function transaction($callback){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::transaction($callback);
-		 }
-
-		/**
-		 * Start a new database transaction.
-		 *
-		 * @return void
-		 * @static 
-		 */
-		 public static function beginTransaction(){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::beginTransaction();
-		 }
-
-		/**
-		 * Commit the active database transaction.
-		 *
-		 * @return void
-		 * @static 
-		 */
-		 public static function commit(){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::commit();
-		 }
-
-		/**
-		 * Rollback the active database transaction.
-		 *
-		 * @return void
-		 * @static 
-		 */
-		 public static function rollBack(){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::rollBack();
-		 }
-
-		/**
-		 * Get the number of active transactions.
-		 *
-		 * @return int
-		 * @static 
-		 */
-		 public static function transactionLevel(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::transactionLevel();
-		 }
-
-		/**
-		 * Execute the given callback in "dry run" mode.
-		 *
-		 * @param Closure  $callback
-		 * @return array
-		 * @static 
-		 */
-		 public static function pretend($callback){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::pretend($callback);
-		 }
-
-		/**
-		 * Log a query in the connection's query log.
-		 *
-		 * @param string  $query
-		 * @param array   $bindings
-		 * @param $time
-		 * @return void
-		 * @static 
-		 */
-		 public static function logQuery($query, $bindings, $time = null){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::logQuery($query, $bindings, $time);
-		 }
-
-		/**
-		 * Register a database query listener with the connection.
-		 *
-		 * @param Closure  $callback
-		 * @return void
-		 * @static 
-		 */
-		 public static function listen($callback){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::listen($callback);
-		 }
-
-		/**
-		 * Get a Doctrine Schema Column instance.
-		 *
-		 * @param string  $table
-		 * @param string  $column
-		 * @return \Doctrine\DBAL\Schema\Column
-		 * @static 
-		 */
-		 public static function getDoctrineColumn($table, $column){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getDoctrineColumn($table, $column);
-		 }
-
-		/**
-		 * Get the Doctrine DBAL schema manager for the connection.
-		 *
-		 * @return \Doctrine\DBAL\Schema\AbstractSchemaManager
-		 * @static 
-		 */
-		 public static function getDoctrineSchemaManager(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getDoctrineSchemaManager();
-		 }
-
-		/**
-		 * Get the Doctrine DBAL database connection instance.
-		 *
-		 * @return \Doctrine\DBAL\Connection
-		 * @static 
-		 */
-		 public static function getDoctrineConnection(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getDoctrineConnection();
-		 }
-
-		/**
-		 * Get the current PDO connection.
-		 *
-		 * @return PDO
-		 * @static 
-		 */
-		 public static function getPdo(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getPdo();
-		 }
-
-		/**
-		 * Get the current PDO connection used for reading.
-		 *
-		 * @return PDO
-		 * @static 
-		 */
-		 public static function getReadPdo(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getReadPdo();
-		 }
-
-		/**
-		 * Set the PDO connection.
-		 *
-		 * @param PDO  $pdo
-		 * @return \Illuminate\Database\Connection
-		 * @static 
-		 */
-		 public static function setPdo($pdo){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::setPdo($pdo);
-		 }
-
-		/**
-		 * Set the PDO connection used for reading.
-		 *
-		 * @param PDO  $pdo
-		 * @return \Illuminate\Database\Connection
-		 * @static 
-		 */
-		 public static function setReadPdo($pdo){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::setReadPdo($pdo);
-		 }
-
-		/**
-		 * Get the database connection name.
-		 *
-		 * @return string|null
-		 * @static 
-		 */
-		 public static function getName(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getName();
-		 }
-
-		/**
-		 * Get an option from the configuration options.
-		 *
-		 * @param string  $option
-		 * @return mixed
-		 * @static 
-		 */
-		 public static function getConfig($option){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getConfig($option);
-		 }
-
-		/**
-		 * Get the PDO driver name.
-		 *
-		 * @return string
-		 * @static 
-		 */
-		 public static function getDriverName(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getDriverName();
-		 }
-
-		/**
-		 * Get the query grammar used by the connection.
-		 *
-		 * @return \Illuminate\Database\Query\Grammars\Grammar
-		 * @static 
-		 */
-		 public static function getQueryGrammar(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getQueryGrammar();
-		 }
-
-		/**
-		 * Set the query grammar used by the connection.
-		 *
-		 * @param \Illuminate\Database\Query\Grammars\Grammar
-		 * @return void
-		 * @static 
-		 */
-		 public static function setQueryGrammar($grammar){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::setQueryGrammar($grammar);
-		 }
-
-		/**
-		 * Get the schema grammar used by the connection.
-		 *
-		 * @return \Illuminate\Database\Query\Grammars\Grammar
-		 * @static 
-		 */
-		 public static function getSchemaGrammar(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getSchemaGrammar();
-		 }
-
-		/**
-		 * Set the schema grammar used by the connection.
-		 *
-		 * @param \Illuminate\Database\Schema\Grammars\Grammar
-		 * @return void
-		 * @static 
-		 */
-		 public static function setSchemaGrammar($grammar){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::setSchemaGrammar($grammar);
-		 }
-
-		/**
-		 * Get the query post processor used by the connection.
-		 *
-		 * @return \Illuminate\Database\Query\Processors\Processor
-		 * @static 
-		 */
-		 public static function getPostProcessor(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getPostProcessor();
-		 }
-
-		/**
-		 * Set the query post processor used by the connection.
-		 *
-		 * @param \Illuminate\Database\Query\Processors\Processor
-		 * @return void
-		 * @static 
-		 */
-		 public static function setPostProcessor($processor){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::setPostProcessor($processor);
-		 }
-
-		/**
-		 * Get the event dispatcher used by the connection.
-		 *
-		 * @return \Illuminate\Events\Dispatcher
-		 * @static 
-		 */
-		 public static function getEventDispatcher(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getEventDispatcher();
-		 }
-
-		/**
-		 * Set the event dispatcher instance on the connection.
-		 *
-		 * @param \Illuminate\Events\Dispatcher
-		 * @return void
-		 * @static 
-		 */
-		 public static function setEventDispatcher($events){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::setEventDispatcher($events);
-		 }
-
-		/**
-		 * Get the paginator environment instance.
-		 *
-		 * @return \Illuminate\Pagination\Environment
-		 * @static 
-		 */
-		 public static function getPaginator(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getPaginator();
-		 }
-
-		/**
-		 * Set the pagination environment instance.
-		 *
-		 * @param \Illuminate\Pagination\Environment|\Closure  $paginator
-		 * @return void
-		 * @static 
-		 */
-		 public static function setPaginator($paginator){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::setPaginator($paginator);
-		 }
-
-		/**
-		 * Get the cache manager instance.
-		 *
-		 * @return \Illuminate\Cache\CacheManager
-		 * @static 
-		 */
-		 public static function getCacheManager(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getCacheManager();
-		 }
-
-		/**
-		 * Set the cache manager instance on the connection.
-		 *
-		 * @param \Illuminate\Cache\CacheManager|\Closure  $cache
-		 * @return void
-		 * @static 
-		 */
-		 public static function setCacheManager($cache){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::setCacheManager($cache);
-		 }
-
-		/**
-		 * Determine if the connection in a "dry run".
-		 *
-		 * @return bool
-		 * @static 
-		 */
-		 public static function pretending(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::pretending();
-		 }
-
-		/**
-		 * Get the default fetch mode for the connection.
-		 *
-		 * @return int
-		 * @static 
-		 */
-		 public static function getFetchMode(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getFetchMode();
-		 }
-
-		/**
-		 * Set the default fetch mode for the connection.
-		 *
-		 * @param int  $fetchMode
-		 * @return int
-		 * @static 
-		 */
-		 public static function setFetchMode($fetchMode){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::setFetchMode($fetchMode);
-		 }
-
-		/**
-		 * Get the connection query log.
-		 *
-		 * @return array
-		 * @static 
-		 */
-		 public static function getQueryLog(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getQueryLog();
-		 }
-
-		/**
-		 * Clear the query log.
-		 *
-		 * @return void
-		 * @static 
-		 */
-		 public static function flushQueryLog(){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::flushQueryLog();
-		 }
-
-		/**
-		 * Enable the query log on the connection.
-		 *
-		 * @return void
-		 * @static 
-		 */
-		 public static function enableQueryLog(){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::enableQueryLog();
-		 }
-
-		/**
-		 * Disable the query log on the connection.
-		 *
-		 * @return void
-		 * @static 
-		 */
-		 public static function disableQueryLog(){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::disableQueryLog();
-		 }
-
-		/**
-		 * Determine whether we're logging queries.
-		 *
-		 * @return bool
-		 * @static 
-		 */
-		 public static function logging(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::logging();
-		 }
-
-		/**
-		 * Get the name of the connected database.
-		 *
-		 * @return string
-		 * @static 
-		 */
-		 public static function getDatabaseName(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getDatabaseName();
-		 }
-
-		/**
-		 * Set the name of the connected database.
-		 *
-		 * @param string  $database
-		 * @return string
-		 * @static 
-		 */
-		 public static function setDatabaseName($database){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::setDatabaseName($database);
-		 }
-
-		/**
-		 * Get the table prefix for the connection.
-		 *
-		 * @return string
-		 * @static 
-		 */
-		 public static function getTablePrefix(){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::getTablePrefix();
-		 }
-
-		/**
-		 * Set the table prefix in use by the connection.
-		 *
-		 * @param string  $prefix
-		 * @return void
-		 * @static 
-		 */
-		 public static function setTablePrefix($prefix){
-			//Method inherited from \Illuminate\Database\Connection
-			 \Illuminate\Database\MySqlConnection::setTablePrefix($prefix);
-		 }
-
-		/**
-		 * Set the table prefix and return the grammar.
-		 *
-		 * @param \Illuminate\Database\Grammar  $grammar
-		 * @return \Illuminate\Database\Grammar
-		 * @static 
-		 */
-		 public static function withTablePrefix($grammar){
-			//Method inherited from \Illuminate\Database\Connection
-			return \Illuminate\Database\MySqlConnection::withTablePrefix($grammar);
-		 }
-
 	}
 	class Eloquent extends \Illuminate\Database\Eloquent\Model{
 		/**
@@ -8631,88 +7953,6 @@ namespace {
 		 }
 
 	}
-	class Password extends \Illuminate\Support\Facades\Password{
-		/**
-		 * Create a new password broker instance.
-		 *
-		 * @param \Illuminate\Auth\Reminders\ReminderRepositoryInterface  $reminders
-		 * @param \Illuminate\Auth\UserProviderInterface  $users
-		 * @param \Illuminate\Mail\Mailer  $mailer
-		 * @param string  $reminderView
-		 * @return void
-		 * @static 
-		 */
-		 public static function __construct($reminders, $users, $mailer, $reminderView){
-			//Method inherited from \Illuminate\Auth\Reminders\PasswordBroker
-			 \Illuminate\Auth\Reminders\PasswordBroker::__construct($reminders, $users, $mailer, $reminderView);
-		 }
-
-		/**
-		 * Send a password reminder to a user.
-		 *
-		 * @param array    $credentials
-		 * @param Closure  $callback
-		 * @return string
-		 * @static 
-		 */
-		 public static function remind($credentials, $callback = null){
-			//Method inherited from \Illuminate\Auth\Reminders\PasswordBroker
-			return \Illuminate\Auth\Reminders\PasswordBroker::remind($credentials, $callback);
-		 }
-
-		/**
-		 * Send the password reminder e-mail.
-		 *
-		 * @param \Illuminate\Auth\Reminders\RemindableInterface  $user
-		 * @param string   $token
-		 * @param Closure  $callback
-		 * @return int
-		 * @static 
-		 */
-		 public static function sendReminder($user, $token, $callback = null){
-			//Method inherited from \Illuminate\Auth\Reminders\PasswordBroker
-			return \Illuminate\Auth\Reminders\PasswordBroker::sendReminder($user, $token, $callback);
-		 }
-
-		/**
-		 * Reset the password for the given token.
-		 *
-		 * @param array    $credentials
-		 * @param Closure  $callback
-		 * @return mixed
-		 * @static 
-		 */
-		 public static function reset($credentials, $callback){
-			//Method inherited from \Illuminate\Auth\Reminders\PasswordBroker
-			return \Illuminate\Auth\Reminders\PasswordBroker::reset($credentials, $callback);
-		 }
-
-		/**
-		 * Set a custom password validator.
-		 *
-		 * @param \Closure  $callback
-		 * @return void
-		 * @static 
-		 */
-		 public static function validator($callback){
-			//Method inherited from \Illuminate\Auth\Reminders\PasswordBroker
-			 \Illuminate\Auth\Reminders\PasswordBroker::validator($callback);
-		 }
-
-		/**
-		 * Get the user for the given credentials.
-		 *
-		 * @param array  $credentials
-		 * @return \Illuminate\Auth\Reminders\RemindableInterface
-		 * @throws \UnexpectedValueException
-		 * @static 
-		 */
-		 public static function getUser($credentials){
-			//Method inherited from \Illuminate\Auth\Reminders\PasswordBroker
-			return \Illuminate\Auth\Reminders\PasswordBroker::getUser($credentials);
-		 }
-
-	}
 	class Queue extends \Illuminate\Support\Facades\Queue{
 		/**
 		 * Create a new queue manager instance.
@@ -11180,155 +10420,6 @@ namespace {
 		 }
 
 	}
-	class Schema extends \Illuminate\Support\Facades\Schema{
-		/**
-		 * Determine if the given table exists.
-		 *
-		 * @param string  $table
-		 * @return bool
-		 * @static 
-		 */
-		 public static function hasTable($table){
-			//Method inherited from \Illuminate\Database\Schema\MySqlBuilder
-			return \Illuminate\Database\Schema\MySqlBuilder::hasTable($table);
-		 }
-
-		/**
-		 * Get the column listing for a given table.
-		 *
-		 * @param string  $table
-		 * @return array
-		 * @static 
-		 */
-		 public static function getColumnListing($table){
-			//Method inherited from \Illuminate\Database\Schema\MySqlBuilder
-			return \Illuminate\Database\Schema\MySqlBuilder::getColumnListing($table);
-		 }
-
-		/**
-		 * Create a new database Schema manager.
-		 *
-		 * @param \Illuminate\Database\Connection  $connection
-		 * @return void
-		 * @static 
-		 */
-		 public static function __construct($connection){
-			//Method inherited from \Illuminate\Database\Schema\Builder
-			 \Illuminate\Database\Schema\MySqlBuilder::__construct($connection);
-		 }
-
-		/**
-		 * Determine if the given table has a given column.
-		 *
-		 * @param string  $table
-		 * @param string  $column
-		 * @return bool
-		 * @static 
-		 */
-		 public static function hasColumn($table, $column){
-			//Method inherited from \Illuminate\Database\Schema\Builder
-			return \Illuminate\Database\Schema\MySqlBuilder::hasColumn($table, $column);
-		 }
-
-		/**
-		 * Modify a table on the schema.
-		 *
-		 * @param string   $table
-		 * @param Closure  $callback
-		 * @return \Illuminate\Database\Schema\Blueprint
-		 * @static 
-		 */
-		 public static function table($table, $callback){
-			//Method inherited from \Illuminate\Database\Schema\Builder
-			return \Illuminate\Database\Schema\MySqlBuilder::table($table, $callback);
-		 }
-
-		/**
-		 * Create a new table on the schema.
-		 *
-		 * @param string   $table
-		 * @param Closure  $callback
-		 * @return \Illuminate\Database\Schema\Blueprint
-		 * @static 
-		 */
-		 public static function create($table, $callback){
-			//Method inherited from \Illuminate\Database\Schema\Builder
-			return \Illuminate\Database\Schema\MySqlBuilder::create($table, $callback);
-		 }
-
-		/**
-		 * Drop a table from the schema.
-		 *
-		 * @param string  $table
-		 * @return \Illuminate\Database\Schema\Blueprint
-		 * @static 
-		 */
-		 public static function drop($table){
-			//Method inherited from \Illuminate\Database\Schema\Builder
-			return \Illuminate\Database\Schema\MySqlBuilder::drop($table);
-		 }
-
-		/**
-		 * Drop a table from the schema if it exists.
-		 *
-		 * @param string  $table
-		 * @return \Illuminate\Database\Schema\Blueprint
-		 * @static 
-		 */
-		 public static function dropIfExists($table){
-			//Method inherited from \Illuminate\Database\Schema\Builder
-			return \Illuminate\Database\Schema\MySqlBuilder::dropIfExists($table);
-		 }
-
-		/**
-		 * Rename a table on the schema.
-		 *
-		 * @param string  $from
-		 * @param string  $to
-		 * @return \Illuminate\Database\Schema\Blueprint
-		 * @static 
-		 */
-		 public static function rename($from, $to){
-			//Method inherited from \Illuminate\Database\Schema\Builder
-			return \Illuminate\Database\Schema\MySqlBuilder::rename($from, $to);
-		 }
-
-		/**
-		 * Get the database connection instance.
-		 *
-		 * @return \Illuminate\Database\Connection
-		 * @static 
-		 */
-		 public static function getConnection(){
-			//Method inherited from \Illuminate\Database\Schema\Builder
-			return \Illuminate\Database\Schema\MySqlBuilder::getConnection();
-		 }
-
-		/**
-		 * Set the database connection instance.
-		 *
-		 * @param \Illuminate\Database\Connection
-		 * @return \Illuminate\Database\Schema\Builder
-		 * @static 
-		 */
-		 public static function setConnection($connection){
-			//Method inherited from \Illuminate\Database\Schema\Builder
-			return \Illuminate\Database\Schema\MySqlBuilder::setConnection($connection);
-		 }
-
-		/**
-		 * Set the Schema Blueprint resolver callback.
-		 *
-		 * @param \Closure  $resolver
-		 * @return void
-		 * @static 
-		 */
-		 public static function blueprintResolver($resolver){
-			//Method inherited from \Illuminate\Database\Schema\Builder
-			 \Illuminate\Database\Schema\MySqlBuilder::blueprintResolver($resolver);
-		 }
-
-	}
 	class Seeder extends \Illuminate\Database\Seeder{
 	}
 	class Session extends \Illuminate\Support\Facades\Session{
@@ -12823,6 +11914,508 @@ namespace {
 		 public static function consumer($service, $url = null, $scope = null){
 			//Method inherited from \Artdarek\OAuth\OAuth
 			return \Artdarek\OAuth\OAuth::consumer($service, $url, $scope);
+		 }
+
+	}
+	class Sentry extends \Cartalyst\Sentry\Facades\Laravel\Sentry{
+		/**
+		 * Create a new Sentry object.
+		 *
+		 * @param \Cartalyst\Sentry\Users\ProviderInterface $userProvider
+		 * @param \Cartalyst\Sentry\Groups\ProviderInterface $groupProvider
+		 * @param \Cartalyst\Sentry\Throttling\ProviderInterface $throttleProvider
+		 * @param \Cartalyst\Sentry\Sessions\SessionInterface $session
+		 * @param \Cartalyst\Sentry\Cookies\CookieInterface $cookie
+		 * @param string $ipAddress
+		 * @return void
+		 * @static 
+		 */
+		 public static function __construct($userProvider = null, $groupProvider = null, $throttleProvider = null, $session = null, $cookie = null, $ipAddress = null){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::__construct($userProvider, $groupProvider, $throttleProvider, $session, $cookie, $ipAddress);
+		 }
+
+		/**
+		 * Registers a user by giving the required credentials
+		 * and an optional flag for whether to activate the user.
+		 *
+		 * @param array  $credentials
+		 * @param bool   $activate
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @static 
+		 */
+		 public static function register($credentials, $activate = false){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::register($credentials, $activate);
+		 }
+
+		/**
+		 * Attempts to authenticate the given user
+		 * according to the passed credentials.
+		 *
+		 * @param array  $credentials
+		 * @param bool   $remember
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @throws \Cartalyst\Sentry\Throttling\UserBannedException
+		 * @throws \Cartalyst\Sentry\Throttling\UserSuspendedException
+		 * @throws \Cartalyst\Sentry\Users\LoginRequiredException
+		 * @throws \Cartalyst\Sentry\Users\PasswordRequiredException
+		 * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+		 * @static 
+		 */
+		 public static function authenticate($credentials, $remember = false){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::authenticate($credentials, $remember);
+		 }
+
+		/**
+		 * Alias for authenticating with the remember flag checked.
+		 *
+		 * @param array  $credentials
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @static 
+		 */
+		 public static function authenticateAndRemember($credentials){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::authenticateAndRemember($credentials);
+		 }
+
+		/**
+		 * Check to see if the user is logged in and activated, and hasn't been banned or suspended.
+		 *
+		 * @return bool
+		 * @static 
+		 */
+		 public static function check(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::check();
+		 }
+
+		/**
+		 * Logs in the given user and sets properties
+		 * in the session.
+		 *
+		 * @param \Cartalyst\Sentry\Users\UserInterface  $user
+		 * @param bool  $remember
+		 * @return void
+		 * @throws \Cartalyst\Sentry\Users\UserNotActivatedException
+		 * @static 
+		 */
+		 public static function login($user, $remember = false){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::login($user, $remember);
+		 }
+
+		/**
+		 * Alias for logging in and remembering.
+		 *
+		 * @param \Cartalyst\Sentry\Users\UserInterface  $user
+		 * @static 
+		 */
+		 public static function loginAndRemember($user){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::loginAndRemember($user);
+		 }
+
+		/**
+		 * Logs the current user out.
+		 *
+		 * @return void
+		 * @static 
+		 */
+		 public static function logout(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::logout();
+		 }
+
+		/**
+		 * Sets the user to be used by Sentry.
+		 *
+		 * @param \Cartalyst\Sentry\Users\UserInterface
+		 * @return void
+		 * @static 
+		 */
+		 public static function setUser($user){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::setUser($user);
+		 }
+
+		/**
+		 * Returns the current user being used by Sentry, if any.
+		 *
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @static 
+		 */
+		 public static function getUser(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::getUser();
+		 }
+
+		/**
+		 * Sets the session driver for Sentry.
+		 *
+		 * @param \Cartalyst\Sentry\Sessions\SessionInterface  $session
+		 * @return void
+		 * @static 
+		 */
+		 public static function setSession($session){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::setSession($session);
+		 }
+
+		/**
+		 * Gets the session driver for Sentry.
+		 *
+		 * @return \Cartalyst\Sentry\Sessions\SessionInterface
+		 * @static 
+		 */
+		 public static function getSession(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::getSession();
+		 }
+
+		/**
+		 * Sets the cookie driver for Sentry.
+		 *
+		 * @param \Cartalyst\Sentry\Cookies\CookieInterface  $cookie
+		 * @return void
+		 * @static 
+		 */
+		 public static function setCookie($cookie){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::setCookie($cookie);
+		 }
+
+		/**
+		 * Gets the cookie driver for Sentry.
+		 *
+		 * @return \Cartalyst\Sentry\Cookies\CookieInterface
+		 * @static 
+		 */
+		 public static function getCookie(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::getCookie();
+		 }
+
+		/**
+		 * Sets the group provider for Sentry.
+		 *
+		 * @param \Cartalyst\Sentry\Groups\ProviderInterface
+		 * @return void
+		 * @static 
+		 */
+		 public static function setGroupProvider($groupProvider){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::setGroupProvider($groupProvider);
+		 }
+
+		/**
+		 * Gets the group provider for Sentry.
+		 *
+		 * @return \Cartalyst\Sentry\Groups\ProviderInterface
+		 * @static 
+		 */
+		 public static function getGroupProvider(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::getGroupProvider();
+		 }
+
+		/**
+		 * Sets the user provider for Sentry.
+		 *
+		 * @param \Cartalyst\Sentry\Users\ProviderInterface
+		 * @return void
+		 * @static 
+		 */
+		 public static function setUserProvider($userProvider){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::setUserProvider($userProvider);
+		 }
+
+		/**
+		 * Gets the user provider for Sentry.
+		 *
+		 * @return \Cartalyst\Sentry\Users\ProviderInterface
+		 * @static 
+		 */
+		 public static function getUserProvider(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::getUserProvider();
+		 }
+
+		/**
+		 * Sets the throttle provider for Sentry.
+		 *
+		 * @param \Cartalyst\Sentry\Throttling\ProviderInterface
+		 * @return void
+		 * @static 
+		 */
+		 public static function setThrottleProvider($throttleProvider){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::setThrottleProvider($throttleProvider);
+		 }
+
+		/**
+		 * Gets the throttle provider for Sentry.
+		 *
+		 * @return \Cartalyst\Sentry\Throttling\ProviderInterface
+		 * @static 
+		 */
+		 public static function getThrottleProvider(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::getThrottleProvider();
+		 }
+
+		/**
+		 * Sets the IP address Sentry is bound to.
+		 *
+		 * @param string  $ipAddress
+		 * @return void
+		 * @static 
+		 */
+		 public static function setIpAddress($ipAddress){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::setIpAddress($ipAddress);
+		 }
+
+		/**
+		 * Gets the IP address Sentry is bound to.
+		 *
+		 * @return string
+		 * @static 
+		 */
+		 public static function getIpAddress(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::getIpAddress();
+		 }
+
+		/**
+		 * Find the group by ID.
+		 *
+		 * @param int  $id
+		 * @return \Cartalyst\Sentry\Groups\GroupInterface  $group
+		 * @throws \Cartalyst\Sentry\Groups\GroupNotFoundException
+		 * @static 
+		 */
+		 public static function findGroupById($id){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findGroupById($id);
+		 }
+
+		/**
+		 * Find the group by name.
+		 *
+		 * @param string  $name
+		 * @return \Cartalyst\Sentry\Groups\GroupInterface  $group
+		 * @throws \Cartalyst\Sentry\Groups\GroupNotFoundException
+		 * @static 
+		 */
+		 public static function findGroupByName($name){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findGroupByName($name);
+		 }
+
+		/**
+		 * Returns all groups.
+		 *
+		 * @return array  $groups
+		 * @static 
+		 */
+		 public static function findAllGroups(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findAllGroups();
+		 }
+
+		/**
+		 * Creates a group.
+		 *
+		 * @param array  $attributes
+		 * @return \Cartalyst\Sentry\Groups\GroupInterface
+		 * @static 
+		 */
+		 public static function createGroup($attributes){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::createGroup($attributes);
+		 }
+
+		/**
+		 * Finds a user by the given user ID.
+		 *
+		 * @param mixed  $id
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+		 * @static 
+		 */
+		 public static function findUserById($id){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findUserById($id);
+		 }
+
+		/**
+		 * Finds a user by the login value.
+		 *
+		 * @param string  $login
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+		 * @static 
+		 */
+		 public static function findUserByLogin($login){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findUserByLogin($login);
+		 }
+
+		/**
+		 * Finds a user by the given credentials.
+		 *
+		 * @param array  $credentials
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+		 * @static 
+		 */
+		 public static function findUserByCredentials($credentials){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findUserByCredentials($credentials);
+		 }
+
+		/**
+		 * Finds a user by the given activation code.
+		 *
+		 * @param string  $code
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @throws \RuntimeException
+		 * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+		 * @static 
+		 */
+		 public static function findUserByActivationCode($code){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findUserByActivationCode($code);
+		 }
+
+		/**
+		 * Finds a user by the given reset password code.
+		 *
+		 * @param string  $code
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @throws \RuntimeException
+		 * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+		 * @static 
+		 */
+		 public static function findUserByResetPasswordCode($code){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findUserByResetPasswordCode($code);
+		 }
+
+		/**
+		 * Returns an all users.
+		 *
+		 * @return array
+		 * @static 
+		 */
+		 public static function findAllUsers(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findAllUsers();
+		 }
+
+		/**
+		 * Returns all users who belong to
+		 * a group.
+		 *
+		 * @param \Cartalyst\Sentry\Groups\GroupInterface  $group
+		 * @return array
+		 * @static 
+		 */
+		 public static function findAllUsersInGroup($group){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findAllUsersInGroup($group);
+		 }
+
+		/**
+		 * Returns all users with access to
+		 * a permission(s).
+		 *
+		 * @param string|array  $permissions
+		 * @return array
+		 * @static 
+		 */
+		 public static function findAllUsersWithAccess($permissions){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findAllUsersWithAccess($permissions);
+		 }
+
+		/**
+		 * Returns all users with access to
+		 * any given permission(s).
+		 *
+		 * @param array  $permissions
+		 * @return array
+		 * @static 
+		 */
+		 public static function findAllUsersWithAnyAccess($permissions){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findAllUsersWithAnyAccess($permissions);
+		 }
+
+		/**
+		 * Creates a user.
+		 *
+		 * @param array  $credentials
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @static 
+		 */
+		 public static function createUser($credentials){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::createUser($credentials);
+		 }
+
+		/**
+		 * Returns an empty user object.
+		 *
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @static 
+		 */
+		 public static function getEmptyUser(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::getEmptyUser();
+		 }
+
+		/**
+		 * Finds a throttler by the given user ID.
+		 *
+		 * @param mixed   $id
+		 * @param string  $ipAddress
+		 * @return \Cartalyst\Sentry\Throttling\ThrottleInterface
+		 * @static 
+		 */
+		 public static function findThrottlerByUserId($id, $ipAddress = null){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findThrottlerByUserId($id, $ipAddress);
+		 }
+
+		/**
+		 * Finds a throttling interface by the given user login.
+		 *
+		 * @param string  $login
+		 * @param string  $ipAddress
+		 * @return \Cartalyst\Sentry\Throttling\ThrottleInterface
+		 * @static 
+		 */
+		 public static function findThrottlerByUserLogin($login, $ipAddress = null){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findThrottlerByUserLogin($login, $ipAddress);
+		 }
+
+		/**
+		 * Handle dynamic method calls into the method.
+		 *
+		 * @param string  $method
+		 * @param array   $parameters
+		 * @return mixed
+		 * @throws \BadMethodCallException
+		 * @static 
+		 */
+		 public static function __call($method, $parameters){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::__call($method, $parameters);
 		 }
 
 	}

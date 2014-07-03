@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "023b34c8f92a2d5138c96884b896f462",
+    "hash": "7f5b8d3b142fe6c63a53451fa29d4c13",
     "packages": [
         {
             "name": "artdarek/oauth-4-laravel",
@@ -53,6 +53,53 @@
                 "php"
             ],
             "time": "2014-05-27 05:56:20"
+        },
+        {
+            "name": "bshaffer/oauth2-server-php",
+            "version": "v1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bshaffer/oauth2-server-php.git",
+                "reference": "95e731e0855b8156a161b93dc3f1909a8dd98abe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bshaffer/oauth2-server-php/zipball/95e731e0855b8156a161b93dc3f1909a8dd98abe",
+                "reference": "95e731e0855b8156a161b93dc3f1909a8dd98abe",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "suggest": {
+                "predis/predis": "Required to use the Redis storage engine",
+                "thobbs/phpcassa": "Required to use the Cassandra storage engine"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "OAuth2": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brent Shaffer",
+                    "email": "bshafs@gmail.com",
+                    "homepage": "http://brentertainment.com"
+                }
+            ],
+            "description": "OAuth2 Server for PHP",
+            "homepage": "http://github.com/bshaffer/oauth2-server-php",
+            "keywords": [
+                "auth",
+                "oauth",
+                "oauth2"
+            ],
+            "time": "2014-02-27 13:40:40"
         },
         {
             "name": "cartalyst/sentry",
