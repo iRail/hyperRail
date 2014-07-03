@@ -27,15 +27,15 @@ class LoginController extends BaseController {
                         $prov = new TwitterProvider;
                     break;  
             	}
-                
+
                 $prov->login();
                 // get user id, name from provider
-                $data = array('user' => 'p'); 
+                //$data = array('user' => 'p'); 
 
                 // save in database  ...             
 
                 // response view of travelguide
-                return Response::view('travelguide.travelGuide', $data)->header('Content-Type', "text/html")->header('Vary', 'accept');;
+                //return Response::view('travelguide.travelGuide', $data)->header('Content-Type', "text/html")->header('Vary', 'accept');;
         	break;
 
             case "application/ld+json":
