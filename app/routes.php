@@ -26,7 +26,7 @@ Route::get('/stations/nmbs', 'StationController@index');
 Route::get('/stations/nmbs/{id}', 'StationController@liveboard');
 Route::get('/stations/nmbs/{id}/departures/{trainHash}', 'StationController@specificTrain');
 
-Route::get('/oauth/{provider}', 'LoginController@redirect');
+Route::get('/oauth/{provider}', 'LoginController@getLogin');
 
 /*
 |--------------------------------------------------------------------------

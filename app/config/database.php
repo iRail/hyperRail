@@ -54,8 +54,8 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => '127.0.0.1',
-			'database'  => 'hyperRail',
+			'host'      => 'localhost',
+			'database'  => 'database',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',
@@ -65,7 +65,7 @@ return array(
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
-			'host'     => '127.0.0.1',
+			'host'     => 'localhost',
 			'database' => 'database',
 			'username' => 'root',
 			'password' => '',
