@@ -37,7 +37,7 @@ class TwitterProvider implements IOAuthProvider{
             */
             //die();
 
-            $user = User::where('email', $result->screen_name)->first();
+            $user = Twitter::where('email', $result->screen_name)->first();
 
             if (empty($user)) {
                 dd($token);

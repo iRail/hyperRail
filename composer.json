@@ -9,7 +9,8 @@
         "semsol/arc2": "*",
         "ml/json-ld": "1.*",
         "willdurand/negotiation": "@stable",
-        "artdarek/oauth-4-laravel": "dev-master"
+        "artdarek/oauth-4-laravel": "dev-master",
+        "cartalyst/sentry": "2.1.*"
     },
     "require-dev": {
         "phpunit/phpunit": "4.0.*",

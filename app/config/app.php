@@ -109,6 +109,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Artdarek\OAuth\OAuthServiceProvider',
+        'Cartalyst\Sentry\SentryServiceProvider',
         // 'Way\Generators\GeneratorsServiceProvider',
 	),
 
@@ -176,6 +177,8 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'OAuth' 		  => 'Artdarek\OAuth\Facade\OAuth',
+		'Sentry' 		  => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+
 	),
 
 );

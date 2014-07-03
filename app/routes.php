@@ -26,7 +26,18 @@ Route::get('/stations/nmbs', 'StationController@index');
 Route::get('/stations/nmbs/{id}', 'StationController@liveboard');
 Route::get('/stations/nmbs/{id}/departures/{trainHash}', 'StationController@specificTrain');
 
-Route::get('/oauth/{provider}', 'LoginController@getLogin');
+Route::get('/oauth/{provider}', 'OAuthLoginController@getLogin');
+
+Route::get('/register', 'IRailLoginController@getRegister');
+Route::get('/login', 'IRailLoginController@getLogin');
+
+Route::post('/login', 'IRailLoginController@postLogin');
+Route::post('/register', 'IRailLoginController@postRegister');
+
+Route::group(array('before' => 'auth'), function(){
+	Route::get('/admin', 'AdminController@index');
+	Route::get('/logout', 'IRailLoginController@logout');
+});
 
 /*
 |--------------------------------------------------------------------------
