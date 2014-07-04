@@ -26,8 +26,32 @@ Route::get('/stations/nmbs', 'StationController@index');
 Route::get('/stations/nmbs/{id}', 'StationController@liveboard');
 Route::get('/stations/nmbs/{id}/departures/{trainHash}', 'StationController@specificTrain');
 
+// OAuth via external provider
 Route::get('/oauth/{provider}', 'OAuthLoginController@getLogin');
 
+
+Route::post('foo/bar', function() 
+{
+exit('successfull');
+});
+
+Route::get('foo/bar', function() 
+{
+return 'successhgjhgffull';
+});
+
+// OAuth server iRail
+// issue: when sending a POST request to /token, it automatically takes the GET route -> can't get a token
+Route::get('/tokenform', function()
+	{
+		return View::make('tokenform');
+	});
+Route::post('/token', 'TokenController@postToken');
+Route::get('/resource', 'ResourceController@getResource');
+Route::get('/authorize', 'AuthorizeController@authorize');
+//Route::post('/authorize', 'AuthorizeController@authorize');
+
+// iRail login-functionality
 Route::get('/register', 'IRailLoginController@getRegister');
 Route::get('/login', 'IRailLoginController@getLogin');
 

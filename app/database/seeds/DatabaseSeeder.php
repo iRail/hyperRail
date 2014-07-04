@@ -11,7 +11,11 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		$this->call('UsersTableSeeder');
+		//$this->call('TwitterTableSeeder');
+
+		// OAuth-server
+		$this->call('OAuthClientsSeeder');
+		$this->call('OAuthUsersSeeder');
 	}
 
 }
