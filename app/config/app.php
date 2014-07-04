@@ -110,6 +110,7 @@ return array(
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Artdarek\OAuth\OAuthServiceProvider',
         'Cartalyst\Sentry\SentryServiceProvider',
+        
         // 'Way\Generators\GeneratorsServiceProvider',
 	),
 

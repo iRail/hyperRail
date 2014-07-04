@@ -35,9 +35,10 @@ class TwitterProvider implements IOAuthProvider{
             /*
             *   Save in database
             */
-            //die();
 
-            $user = Twitter::where('email', $result->screen_name)->first();
+            // for testing, left the email-column for saving the screen_name
+            // doesnt work because twitteruser model has to be made 
+            $user = twitter::where('email', $result->screen_name)->first();
 
             if (empty($user)) {
                 dd($token);

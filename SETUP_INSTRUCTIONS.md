@@ -37,6 +37,10 @@ In /app/config/app.php set the following to your personal hostname/preferences:
 
 php artisan migrate --package=cartalyst/sentry
 
+### Step 6: Setup database config for OAuth2.0-server database
+
+Change in the file app/Server.php to your own database-configuration: 
+$storage = new OAuth2\Storage\Pdo(array('dsn' => 'mysql:dbname=hyperrail;host=localhost', 'username' => 'root', 'password' => 'root'));
 
 ## Step 5: You're ready!
 
