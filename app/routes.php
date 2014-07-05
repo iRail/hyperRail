@@ -49,7 +49,7 @@ Route::get('/tokenform', function()
 Route::post('/token', 'TokenController@postToken');
 Route::get('/resource', 'ResourceController@getResource');
 Route::get('/authorize', 'AuthorizeController@authorize');
-//Route::post('/authorize', 'AuthorizeController@authorize');
+Route::post('/authorize', 'AuthorizeController@authorize');
 
 // iRail login-functionality
 Route::get('/register', 'IRailLoginController@getRegister');
