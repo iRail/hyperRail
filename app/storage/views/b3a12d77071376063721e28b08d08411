@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="<?php echo Config::get('app.locale');; ?>" ng-app="irailapp" ng-controller="PlannerCtrl" manifest=".appcache">
+    <?php echo $__env->make('core.head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<body>
+	<?php echo $__env->yieldContent('content'); ?>
+	<?php echo HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'); ?>
+	<?php echo HTML::script('//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'); ?>
+</body>
+</html>
