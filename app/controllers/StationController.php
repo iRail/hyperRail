@@ -15,10 +15,11 @@ class StationController extends \BaseController {
         if (isset($result)) {
             $val = $result->getValue();
         }
+
         switch ($val){
             case "application/json":
             case "application/ld+json":
-                return Response::make($error, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
+                return Response::make(file_get_contents("stations.json"), 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
             break;
             case "text/html":
             default:
