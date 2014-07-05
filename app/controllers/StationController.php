@@ -25,20 +25,6 @@ class StationController extends \BaseController {
         }
 
         switch ($val){
-            case "text/html":
-                try{
-                    $station = \hyperRail\StationString::convertToString($id);
-                    if ($station == null){
-                        throw new StationConversionFailureException();
-                    }
-                    $data = array('station' => $station);
-                    return Response::view('stations.liveboard', $data)->header('Content-Type', "text/html")->header('Vary', 'accept');
-                    break;
-                }
-                catch(StationConversionFailureException $ex){
-                    App::abort(404);
-                }
-                break;
             case "application/json":
             case "application/ld+json":
                 try{
@@ -62,6 +48,7 @@ class StationController extends \BaseController {
                     return Response::make($error, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
                 }
                 break;
+            case "text/html":
             default:
                 try{
                     $station = \hyperRail\StationString::convertToString($id);
