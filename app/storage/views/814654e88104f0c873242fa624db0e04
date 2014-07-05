@@ -1,0 +1,32 @@
+
+<?php $__env->startSection('content'); ?>
+
+<div class="col-md-4 col-md-offset-4">
+      <div class="panel panel-info">
+        <div class="panel-heading">Please Login</div>
+        <div class="panel-body">
+            <?php echo Form::open(array('url' => 'login')); ?>
+            <?php if($errors->has('login')): ?>
+                <div class="alert alert-danger">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <?php echo $errors->first('login', ':message'); ?>
+                </div>
+            <?php endif; ?>
+            <div class="form-group">
+                <?php echo Form::label('email', 'Email Address'); ?>
+                <?php echo Form::text('email', '', array('class' => 'form-control', 'placeholder' => 'Email Address')); ?>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('password', 'Password'); ?>
+                <?php echo Form::password('password', array('class' => 'form-control', 'placeholder' => 'Password')); ?>
+            </div>
+            <div class="form-group">
+                <?php echo Form::submit('Login', array('class' => 'btn btn-success')); ?>
+                <?php echo HTML::link('/', 'Cancel', array('class' => 'btn btn-danger')); ?>
+            </div>
+            <?php echo Form::close(); ?>
+        </div>
+      </div>
+</div>
+
+<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
