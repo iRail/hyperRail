@@ -15,7 +15,7 @@ class StationString {
 
         $json = \File::get(app_path() . "/stations.json");
         $data = json_decode($json);
-        $alternates = [];
+        //$alternates = array();
         // For each station in the array of stations, attempt comparison
 
         foreach($data->{"@graph"} as $station){
