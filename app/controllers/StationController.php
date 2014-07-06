@@ -19,13 +19,15 @@ class StationController extends \BaseController {
         switch ($val){
             case "application/json":
             case "application/ld+json":
-                return Response::make(file_get_contents("stations.json"), 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
+                return Response::make(File::get(app_path() . '/stations.json'), 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
             break;
             case "text/html":
             default:
                 return View::make('stations.search');
             break;
+        }
     }
+    
 
     public function redirectToNMBSStations(){
         return Redirect::to('stations/NMBS');

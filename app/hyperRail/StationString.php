@@ -11,17 +11,17 @@ class StationString {
      */
     public static function convertToId($string){
 
-        // Fetch stations list by Nicola to compare the station string with
+        // Fetch stations list by http://github.com/iRail/stations to compare the station string with
 
-        $json = file_get_contents('http://' . _DOMAIN_ . '/data/stations.json');
+        $json = \File::get(app_path() . "/stations.json");
         $data = json_decode($json);
-
+        $alternates = [];
         // For each station in the array of stations, attempt comparison
 
-        foreach($data->stations as $station){
+        foreach($data->{"@graph"} as $station){
 
             /*
-             * TODO: write an array with station name alternates
+             * Write an array with station name alternates
              *
              * This also solves multilanguage issues since the strings are simply converted
              * to the proper id :) This way, we can make iRail multilanguage!
@@ -30,19 +30,23 @@ class StationString {
              * "Gent-Sint-Pieters" => array('Ghent-Sint-Pieters', 'Gent Sint Pieters', 'Ghent Sint Pieters')
              * )
              */
+            $alternates[$stations->name] = array();
+            foreach($stations->altentative as $alternate){
+                $alternates[$stations->name][] = $alternate->{"@value"};
+            }
 
             /*
              * Assuming we have a list of station name alternates, we can do even more
              * comparisons to ensure that this process is functional.
              * TODO: write a function that loops through station name alternates
              */
+            
 
-            /* If we can find the station name in the string of Nicola's records,
+            /* If we can find the station name in the string,
              * we can return the station data if we get a hit!
              * Arguably we need to check if there are multiple hits:
              * TODO: check for multiple hits when using strpos()
              */
-
             if (strpos($station->name,$string) !== false) {
                 return $station;
             }
@@ -63,12 +67,12 @@ class StationString {
 
         // Fetch stations list by Nicola to compare the station string with
 
-        $json = file_get_contents('http://' . _DOMAIN_ . '/data/stations.json');
+        $json = \File::get(app_path() . "/stations.json");
         $data = json_decode($json);
 
         // For each station in the array of stations, attempt comparison
 
-        foreach($data->stations as $station){
+        foreach($data->{"@graph"} as $station){
 
             /*
              * TODO: write an array with station name alternates
@@ -93,7 +97,7 @@ class StationString {
              * TODO: check for multiple hits when using strpos()
              */
 
-            if (strpos($station->id,$string) !== false) {
+            if (strpos($station->{"@id"},$string) !== false) {
                 return $station;
             }
         }

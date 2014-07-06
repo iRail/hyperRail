@@ -77,10 +77,10 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
      * @param string
      */
     $scope.findStationById = function (suppliedIdentifierString) {
-        for (var i = 0, len = $scope.stations.stations.length; i < len; i=i+1) {
-            if (($scope.stations.stations[i].id.toLowerCase()).indexOf(suppliedIdentifierString) !== -1) {
-                return $scope.stations.stations[i];
-            }
+        for (var i = 0, len = $scope.stations['@graph'].length; i < len; i=i+1) {
+          if (($scope.stations["@graph"][i]["@id"].toLowerCase()).indexOf(suppliedIdentifierString) !== -1) {
+                return $scope.stations["@graph"][i];
+          }
         }
     };
 
@@ -116,18 +116,18 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
         }
         // If not bound, try to bind data (1 attempt)
         catch (ex) {
-                for (var i = 0, len = $scope.stations.stations.length; i < len; i=i+1) {
+                for (var i = 0, len = $scope.stations["@graph"].length; i < len; i=i+1) {
                     try {
-                        if (($scope.stations.stations[i].name.toLowerCase()).indexOf($scope.departure.toLowerCase()) !== -1) {
-                            arr = $scope.stations.stations;
+                        if (($scope.stations["@graph"][i].name.toLowerCase()).indexOf($scope.departure.toLowerCase()) !== -1) {
+                            arr = $scope.stations["@graph"];
                             $scope.departure = arr[i];
                         }
                     }
                     catch (ex) {
                     }
                     try {
-                        if (($scope.stations.stations[i].name.toLowerCase()).indexOf($scope.destination.toLowerCase()) !== -1) {
-                            arr = $scope.stations.stations;
+                        if (($scope.stations["@graph"][i].name.toLowerCase()).indexOf($scope.destination.toLowerCase()) !== -1) {
+                            arr = $scope.stations["@graph"];
                             $scope.destination = arr[i];
                         }
                     }
@@ -190,7 +190,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
     };
 
     // Fetch stations via HTTP GET request
-    $http.get("data/stations.json").success(function (data) {
+  $http.get("stations/NMBS",{header:{"Accept":"application/json"}}).success(function (data) {
         $scope.stations = data;
         // Check if we were redirected for automatic results!
         if (automatic === "true") {
