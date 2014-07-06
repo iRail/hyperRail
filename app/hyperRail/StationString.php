@@ -65,13 +65,13 @@ class StationString {
      */
     public static function convertToString($string){
 
-        // Fetch stations list by Nicola to compare the station string with
+        // Fetch stations list to compare the station string with
 
         $json = \File::get(app_path() . "/stations.json");
         $data = json_decode($json);
 
         // For each station in the array of stations, attempt comparison
-
+        
         foreach($data->{"@graph"} as $station){
 
             /*
@@ -96,7 +96,7 @@ class StationString {
              * Arguably we need to check if there are multiple hits:
              * TODO: check for multiple hits when using strpos()
              */
-
+            
             if (strpos($station->{"@id"},$string) !== false) {
                 return $station;
             }
