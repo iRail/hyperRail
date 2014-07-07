@@ -24,6 +24,7 @@ sftp-config.json
 app/config/testing
 app/config/development
 app/config/production
+app/storage
 
 # Dotfiles
 .DS_Store
