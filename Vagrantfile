@@ -89,6 +89,10 @@ Vagrant.configure("2") do |config|
     # Prevent VMs running on Ubuntu to lose internet connection
     # vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     # vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+
+
+  # Setup databases for OAuth2.0 and Sentry
+  config.vm.provision "shell", path: "database-setup.sh"
  
   end
  
@@ -144,8 +148,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "https://raw.github.com/#{github_username}/#{github_repo}/#{github_branch}/scripts/mysql.sh", args: [mysql_root_password, mysql_version, mysql_enable_remote]
  
   config.vm.provision "shell", path: "https://raw.githubusercontent.com/madewithlove/vaprobash-scripts/master/mysql-db.sh", args: [mysql_root_password, mysql_database]
- 
- 
+  
   ####
   # Frameworks and Tooling
   ##########
