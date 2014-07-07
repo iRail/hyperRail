@@ -15,10 +15,6 @@ class AuthorizeController extends BaseController
         $request = OAuth2\Request::createFromGlobals();
         $response = new OAuth2\Response();
 
-        //$name = Input::get('client_id');
-
-        // dd($name);
-
         // validate the authorize request
         if (!$server->validateAuthorizeRequest($request, $response)) {
             $response->send();
@@ -32,8 +28,15 @@ class AuthorizeController extends BaseController
               <input type="submit" name="authorized" value="yes">
               <input type="submit" name="authorized" value="no">
             </form>');
-        }
 
+          // $response_type = Input::get('response_type');
+          // $client_id = Input::get('client_id');
+          // $redirect_uri = Input::get('redirect_uri');
+          // $state = Input::get('state');
+
+          // exit( View::make('tokenform')->with('response_type', $response_type)->with('client_id',$client_id)->with('redirect_uri',$redirect_uri)->with('state',$state));
+        }
+        dd('test');
         // print the authorization code if the user has authorized your client
         $is_authorized = ($_POST['authorized'] === 'yes');
         $server->handleAuthorizeRequest($request, $response, $is_authorized);
@@ -41,9 +44,10 @@ class AuthorizeController extends BaseController
           // this is only here so that you get to see your code in the cURL request. Otherwise, we'd redirect back to the client
           $code = substr($response->getHttpHeader('Location'), strpos($response->getHttpHeader('Location'), 'code=')+5, 40);
           
-          //$server->handleTokenRequest(OAuth2\Request::createFromGlobals())->send();
+          header('Location: ' . (string) $code);
+          die();
 
-          exit("SUCCESS! Authorization Code: $code");
+          //exit("SUCCESS! Authorization Code: $code");
 
         }
         $response->send();
