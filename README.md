@@ -46,6 +46,24 @@ The LoginController checks what provider it is and executes the corresponding lo
 
 Inside the login()-method of a Provider-class happens the oAuth-process.
 
+### Connect to vagrant database
+
+* Open MySQL Workbench or any other tool you like.
+* Connect to a new database using the following settings:
+
+```bash
+Connection Method: Standard TCP/IP over SSH
+SSH Hostname: 127.0.0.1:2222
+SSH Username: root
+SSH Keyfile: select ~/.vagrant.d/insecure_private_key
+MySQL hostname: 127.0.0.1
+MySQL Server Port: 3306
+Username: root
+Password: root
+port: 3306
+```
+
+
 ### Thanks to
 
 Special attribution to Melih Bilgil for the icon set. (http://picol.org/icon_library.php)

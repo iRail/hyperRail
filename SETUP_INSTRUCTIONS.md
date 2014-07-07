@@ -15,6 +15,13 @@ git clone https://github.com/iRail/hyperRail.git
 ## Step 1: Install dependencies
 
 Run `composer update`. If you do not yet have composer, get it here: http://getcomposer.org
+If you get any errors concerning MCRYPT, please refer to the following links:
+
+* Mac OSX: http://stackoverflow.com/questions/16830405/laravel-requires-the-mcrypt-php-extension
+* Ubuntu: ```bash
+			sudo apt-get install php5-mcrypt
+			```
+
 
 ## Step 2: Update bootstrap/start.php for environments
 
@@ -33,15 +40,26 @@ In /app/config/app.php set the following to your personal hostname/preferences:
 	'url' => 'http://irail.dev',    // with http
    	'url-short' => 'irail.dev',     // without http
 
-### Step 5: Set up sentry for the user database
+## Step 5: Set up vagrant
 
-php artisan migrate --package=cartalyst/sentry
+If 'vagrant' is not yet installed on your machine, get it here: https://www.vagrantup.com/downloads
 
-### Step 6: Setup database config for OAuth2.0-server database
+```bash
+vagrant up
+```
+This may take some time, but afterwards you can connect to the virtual database.
 
-Change in the file app/Server.php to your own database-configuration: 
-$storage = new OAuth2\Storage\Pdo(array('dsn' => 'mysql:dbname=hyperrail;host=localhost', 'username' => 'root', 'password' => 'root'));
+## Step 6: Grunt
+If 'grunt' is not installed on your machine, please visit: http://gruntjs.com/getting-started
+Grunt also requires 'compass' so if this is also not installed, please visit: http://compass-style.org/install/
 
+Now run the following command in the root directory of Hyperrail:
+
+```bash
+npm install
+bower install
+grunt 
+```
 ## Step 7: You're ready!
 
 Usually you should be ready to get started by visiting the hostname you have set up. If it does not work, log an [issue](https://github.com/iRail/hyperRail/issues/new). We'll help you out and fix the documentation for everyone else.
