@@ -66,8 +66,6 @@ class TwitterProvider implements IOAuthProvider{
             // get twitterService authorization
             $url = $twitterService->getAuthorizationUri(array('oauth_token' => $token->getRequestToken()));
 
-            //dd($url);
-           // dd((string) $url);
             header('Location: ' . (string) $url);
             die();
         }

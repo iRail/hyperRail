@@ -46,7 +46,9 @@ Route::get('/tokenform', function()
 	{
 		return View::make('tokenform');
 	});
+
 Route::post('/token', 'TokenController@postToken');
+Route::get('/token', 'TokenController@postToken');
 Route::get('/resource', 'ResourceController@getResource');
 Route::get('/authorize', 'AuthorizeController@authorize');
 Route::post('/authorize', 'AuthorizeController@authorize');
