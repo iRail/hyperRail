@@ -42,6 +42,6 @@ php artisan migrate --package=cartalyst/sentry
 Change in the file app/Server.php to your own database-configuration: 
 $storage = new OAuth2\Storage\Pdo(array('dsn' => 'mysql:dbname=hyperrail;host=localhost', 'username' => 'root', 'password' => 'root'));
 
-## Step 5: You're ready!
+## Step 7: You're ready!
 
 Usually you should be ready to get started by visiting the hostname you have set up. If it does not work, log an [issue](https://github.com/iRail/hyperRail/issues/new). We'll help you out and fix the documentation for everyone else.

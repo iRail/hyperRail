@@ -6,8 +6,8 @@
         $host = Config::get("database.connections.{$defaultdriver}.host");
 
         $dsn      = "{$defaultdriver}:dbname={$dbname};host={$host}";
-        $username = Config::get("database.connections.{$defaultdriver}.username");;
-        $password = Config::get("database.connections.{$defaultdriver}.password");;
+        $username = Config::get("database.connections.{$defaultdriver}.username");
+        $password = Config::get("database.connections.{$defaultdriver}.password");
 
         // error reporting (this is a demo, after all!)
         ini_set('display_errors',1);error_reporting(E_ALL);

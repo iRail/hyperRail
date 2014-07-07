@@ -69,7 +69,7 @@ class IRailLoginController extends BaseController {
 		}
 		catch (\Exception $e)
 		{
-			return Redirect::to('login')->withErrors(array('login' => $e->getMessages()));
+			return Redirect::to('/login')->withErrors(array('login' => 'Error'));
 		}
 	}
 
