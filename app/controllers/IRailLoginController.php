@@ -29,7 +29,7 @@ class IRailLoginController extends BaseController {
 
 
 	public function postRegister()
-	{
+	{	
 		try
 		{
 			$user = Sentry::createUser(array(
@@ -44,7 +44,7 @@ class IRailLoginController extends BaseController {
 
 		catch (Cartalyst\Sentry\Users\UserExistsException $e)
 		{
-			echo 'User Already Exists';
+			return Redirect::to('/register')->withErrors(array('login' => Lang::get('client.userAlreadyExists')));
 		}
 	}
 
@@ -69,7 +69,7 @@ class IRailLoginController extends BaseController {
 		}
 		catch (\Exception $e)
 		{
-			return Redirect::to('/login')->withErrors(array('login' => 'Error'));
+			return Redirect::to('/login')->withErrors(array('login' => Lang::get('client.wrongUsernameOrPassword')));
 		}
 	}
 
