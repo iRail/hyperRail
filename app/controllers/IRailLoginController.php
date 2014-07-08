@@ -40,6 +40,7 @@ class IRailLoginController extends BaseController {
 				'activated' => true,
 
 				));
+			Redirect::to('/login');
 		}
 
 		catch (Cartalyst\Sentry\Users\UserExistsException $e)

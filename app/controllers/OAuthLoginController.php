@@ -34,10 +34,24 @@ class OAuthLoginController extends BaseController {
                     break;  
             	}
 
-                $prov->getLogin();
+                $credentials = $prov->getLogin();
         
-                // response view of travelguide
-                return View::make('travelguide.travelGuide');
+                try{
+
+                    $user = Sentry::authenticate($credentials, false);
+
+                    if($user)
+                    {
+                        return Redirect::to('/admin');
+                    }
+
+                }
+                catch (\Exception $e)
+                {
+                    return Redirect::to('/login');
+                }
+
+
         	break;
 
             case "application/ld+json":
