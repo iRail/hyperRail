@@ -752,17 +752,17 @@
         },
         {
             "name": "ml/json-ld",
-            "version": "1.0.0",
+            "version": "1.0.2",
             "target-dir": "ML/JsonLD",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lanthaler/JsonLD.git",
-                "reference": "7fa16d5c0cacee0a184683d8b3c2172a84842997"
+                "reference": "a5289f418ea60d7c8155e0e9853183f782f6eb00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lanthaler/JsonLD/zipball/7fa16d5c0cacee0a184683d8b3c2172a84842997",
-                "reference": "7fa16d5c0cacee0a184683d8b3c2172a84842997",
+                "url": "https://api.github.com/repos/lanthaler/JsonLD/zipball/a5289f418ea60d7c8155e0e9853183f782f6eb00",
+                "reference": "a5289f418ea60d7c8155e0e9853183f782f6eb00",
                 "shasum": ""
             },
             "require": {
@@ -797,7 +797,7 @@
                 "JSON-LD",
                 "jsonld"
             ],
-            "time": "2014-03-19 22:57:09"
+            "time": "2014-07-07 15:10:43"
         },
         {
             "name": "monolog/monolog",

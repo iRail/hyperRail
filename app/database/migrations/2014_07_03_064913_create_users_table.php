@@ -12,13 +12,10 @@ class CreateUsersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('twitterUsers', function(Blueprint $table) {
-			$table->increments('id');
-			$table->string('token');
-			$table->string('departure');
-			$table->string('name');
-			$table->string('email');
-			$table->timestamps();
+		Schema::table('users', function($table)
+		{
+		    $table->text('provider');
+		    $table->text('token');
 		});
 	}
 
@@ -29,7 +26,8 @@ class CreateUsersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('twitterUsers');
+		//Schema::drop('users');
 	}
+	
 
 }
