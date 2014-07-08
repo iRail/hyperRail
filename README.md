@@ -40,7 +40,7 @@ Data dumps and the data that is used (and will be used and queryable in the futu
 ### Authentication interface
 
 OAuth URI namespace: 
-In order to log in with a oAuth provider, send a request to 'irail.be/oauth/{provider}' (supported provider: 'twitter'). 
+In order to log in with a oAuth provider, send a request to 'irail.be/oauth/{provider}' (supported provider: 'Twitter'). 
 
 The LoginController checks what provider it is and executes the corresponding login()-method of the specific provider. Every provider has it's own Provider-class which implements an OAuthProvider-interface.
 
@@ -83,7 +83,14 @@ Username: root
 Password: root
 port: 3306
 ```
+### OAuth2.0-server API (WIP)
 
+First of all your application has to be registered in our database with a client-id, clientsecret and redirect-url of your application. Contact us if you want to use our API.
+
+A token can easily be asked by going to:
+https://irail.be/authorize?response_type=token&client_id="yourid"&redirect_uri="yoursite"&state=xyz
+
+The token can be parsed from the query-parameter "access_token".
 
 ### Thanks to
 

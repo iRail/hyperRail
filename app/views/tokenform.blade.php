@@ -1,13 +1,20 @@
-<!-- app/views/tokenform.blade.php -->
+@extends('layouts.default')
+@section('content')
+    <div id="main">
+        @include('core.navigation')
+        <div class="container">
+        	<form action="/authorize\?response_type={{ $response_type }}&client_id={{ $client_id }}&redirect_uri={{ $redirect_uri }}&state={{ $state }}" method="post">
+              <label>Do You Authorize iRail?</label><br />
+              <input type="submit" name="authorized" value="yes">
+              <input type="submit" name="authorized" value="no">
+            </form>
+        </div>
+   	</div>
+@include('core.footer')
+<script>
+    $("[data-toggle='tooltip']").tooltip();
+</script>
+</body>
+</html>
 
-{{ Form::open(array(
-	'url' 			=> '/token?grant_type=authorization_code'
-)) }}
-
-	<h3> Enter your authentication code </h3>
- 	<input name="_token" type="hidden" >
- 	<input name="code" type="text">
-
- 	<input type="submit" text="submit">
-
-{{ Form::close() }}
+@stop
