@@ -46,6 +46,27 @@ The LoginController checks what provider it is and executes the corresponding lo
 
 Inside the login()-method of a Provider-class happens the oAuth-process.
 
+
+### Modify database.php 
+Vagrant automatically uses 'root' as username and password. For this reason you should go to app/config and create a folder named 'productie' and copy database.php in it.
+Also put this folder in .gitignore.
+Next, you open that file in 'productie' and modify the mysql section to this:
+
+```bash
+		'mysql' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'hyperrail',
+			'username'  => 'root',
+			'password'  => 'root',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
+```
+
+Later when entering production, modify the vagrant file and app/config/database.php.
+
 ### Connect to vagrant database
 
 * Open MySQL Workbench or any other tool you like.

@@ -7,5 +7,4 @@
 
 	{{ HTML::link('logout', 'Logout', array('class' => 'btn btn-warning'))}}
 
-
 @stop

@@ -12,7 +12,7 @@ class CreateUsersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('twitter', function(Blueprint $table) {
+		Schema::create('twitterUsers', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('token');
 			$table->string('departure');
@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('twitter');
+		Schema::drop('twitterUsers');
 	}
 
 }
