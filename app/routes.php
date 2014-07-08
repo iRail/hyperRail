@@ -36,26 +36,9 @@ Route::get('/stations/nmbs/{id}/departures/{trainHash}', 'StationController@spec
 // OAuth via external provider
 Route::get('/oauth/{provider}', 'OAuthLoginController@getLogin');
 
-
-Route::post('foo/bar', function() 
-{
-exit('successfull');
-});
-
-Route::get('foo/bar', function() 
-{
-return 'successhgjhgffull';
-});
-
 // OAuth server iRail
-// issue: when sending a POST request to /token, it automatically takes the GET route -> can't get a token
-Route::get('/tokenform', function()
-	{
-		return View::make('tokenform');
-	});
-
-Route::post('/token', 'TokenController@postToken');
-Route::get('/token', 'TokenController@postToken');
+//Route::post('/token', 'TokenController@postToken');
+//Route::get('/token', 'TokenController@postToken');
 Route::get('/resource', 'ResourceController@getResource');
 Route::get('/authorize', 'AuthorizeController@getAuthorize');
 Route::post('/authorize', 'AuthorizeController@postAuthorize');
@@ -71,6 +54,9 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('/admin', 'AdminController@index');
 	Route::get('/logout', 'IRailLoginController@logout');
 });
+
+// Social media-providers API (currently only Twitter)
+Route::get('/{provider}/{id}/friends', 'OAuthResourceController@getFriends');
 
 /*
 |--------------------------------------------------------------------------
