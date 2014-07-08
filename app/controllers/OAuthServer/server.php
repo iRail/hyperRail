@@ -13,7 +13,7 @@
         ini_set('display_errors',1);error_reporting(E_ALL);
 
         // Autoloading composer
-        require_once('/vagrant/vendor/autoload.php');
+        require_once(app_path() . '/../vendor/autoload.php');
 
         // $dsn is the Data Source Name for your database, for exmaple "mysql:dbname=my_oauth2_db;host=localhost"
         $storage = new OAuth2\Storage\Pdo(array('dsn' => $dsn, 'username' => $username, 'password' => $password));
