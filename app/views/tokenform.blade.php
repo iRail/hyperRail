@@ -3,7 +3,7 @@
     <div id="main">
         @include('core.navigation')
         <div class="container">
-        	<form action="/authorize\?response_type={{ $response_type }}&client_id={{ $client_id }}&redirect_uri={{ $redirect_uri }}&state={{ $state }}" method="post">
+        	<form action="{{ $url }}" method="post">
               <label>Do You Authorize iRail?</label><br />
               <input type="submit" name="authorized" value="yes">
               <input type="submit" name="authorized" value="no">

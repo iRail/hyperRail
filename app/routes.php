@@ -12,6 +12,13 @@ App::missing(function($exception)
     return Response::view('errors.404', array(), 404);
 });
 
+Route::filter('after', function($response)
+{
+// No caching for pages
+$response->header("Pragma", "no-cache");
+$response->header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+});
+
 Route::get('/', 'HomeController@showWelcome');
 Route::get('/route', 'RouteController@index');
 
@@ -50,8 +57,8 @@ Route::get('/tokenform', function()
 Route::post('/token', 'TokenController@postToken');
 Route::get('/token', 'TokenController@postToken');
 Route::get('/resource', 'ResourceController@getResource');
-Route::get('/authorize', 'AuthorizeController@authorize');
-Route::post('/authorize', 'AuthorizeController@authorize');
+Route::get('/authorize', 'AuthorizeController@getAuthorize');
+Route::post('/authorize', 'AuthorizeController@postAuthorize');
 
 // iRail login-functionality
 Route::get('/register', 'IRailLoginController@getRegister');
