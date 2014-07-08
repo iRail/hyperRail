@@ -36,7 +36,7 @@ class AuthorizeController extends BaseController
 
           // exit( View::make('tokenform')->with('response_type', $response_type)->with('client_id',$client_id)->with('redirect_uri',$redirect_uri)->with('state',$state));
         }
-        dd('test');
+        
         // print the authorization code if the user has authorized your client
         $is_authorized = ($_POST['authorized'] === 'yes');
         $server->handleAuthorizeRequest($request, $response, $is_authorized);

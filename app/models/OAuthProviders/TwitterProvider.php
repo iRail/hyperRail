@@ -29,7 +29,7 @@ class TwitterProvider implements IOAuthProvider{
             //dd($token);
             // Send a request with it
             $result = json_decode($twitterService->request('account/verify_credentials.json'));
-
+            dd($result);
             //echo 'result: <pre>' . print_r($result, true) . '</pre>';
 
             /*
