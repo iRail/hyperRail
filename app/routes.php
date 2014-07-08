@@ -65,6 +65,11 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('/logout', 'IRailLoginController@logout');
 });
 
+// Adding a favorite
+Route::get('favorite/{departure}', function($departure)
+{
+    return FavoriteController::store($departure);
+});
 /*
 |--------------------------------------------------------------------------
 | Classic iRail redirection messages

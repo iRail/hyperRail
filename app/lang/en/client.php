@@ -64,6 +64,7 @@ return array(
     "nearby" => "Nearby",
     "most_used" => "Most used",
     "log_in" => "Log in",
+    "log_out" => "Log out",
     "register" => "Register",
     "username" => "Username",
     "password" => "Password",

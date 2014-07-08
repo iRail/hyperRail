@@ -34,8 +34,10 @@ class OAuthLoginController extends BaseController {
                     break;  
             	}
 
+                //Get credentials from provider
                 $credentials = $prov->getLogin();
         
+                //Authenticate user and redirect to /admin in case of success
                 try{
 
                     $user = Sentry::authenticate($credentials, false);
