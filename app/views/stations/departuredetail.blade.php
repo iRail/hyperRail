@@ -41,6 +41,10 @@
                     if (is_array($station['delay']) && sizeof($station['delay'])>1) {
                         echo "<p class='label label-warning label-lg'>" . "cancelled" . " </p>";
                     }
+                    if (Sentry::check()) {
+                        $departure = explode('/', $station['@id']);
+                        echo '<a href="/favorite/'. $departure[count($departure)-1] .'" class=\'label label-success label-lg\' style="margin-left: 20px;"">Favorite</a>';
+                    }
                     ?>			
                     <br/>
                     <br/>
