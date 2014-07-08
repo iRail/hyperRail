@@ -30,9 +30,6 @@ class TwitterProvider implements IOAuthProvider{
             // Send a request with it
             $result = json_decode($twitterService->request('account/verify_credentials.json'));
 
-
-            // for testing, left the email-column for saving the screen_name
-            // doesnt work because twitteruser model has to be made 
             $twitteruser = DB::table('users')->where('email', $result->screen_name)->first();
 
             if (empty($twitteruser)) {
