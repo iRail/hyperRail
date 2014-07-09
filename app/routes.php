@@ -58,10 +58,10 @@ Route::group(array('before' => 'auth'), function(){
 // Social media-providers API (currently only Twitter)
 Route::get('/{provider}/{id}/friends', 'OAuthResourceController@getFriends');
 
-// Adding a favorite
-Route::get('favorite/{departure}', function($departure)
+// Adding a check in
+Route::get('checkin/{departure}/{stop}', function($departure, $stop)
 {
-    return FavoriteController::store($departure);
+    return CheckinController::store($departure, $stop);
 });
 
 /*
