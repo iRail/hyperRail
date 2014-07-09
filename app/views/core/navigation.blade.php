@@ -13,7 +13,11 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{ URL::to('route') }}" ng-click="resetplanner($event)"><i class="fa fa-road fa-12"></i> {{Lang::get('client.planNewRoute')}}</a></li>
                 <li><a href="{{ URL::to('stations/NMBS') }}"><i class="fa fa-search fa-12"></i> {{Lang::get('client.searchStations')}}</a></li>
-                <li><a href="{{ URL::to('login') }}"><i class="fa fa-user fa-12"></i> {{Lang::get('client.log_in')}}</a></li>
+                @if (Sentry::check())
+                    <li><a href="{{ URL::to('logout') }}"><i class="fa fa-sign-out fa-12"></i> {{Lang::get('client.log_out')}}</a></li>
+                @else
+                    <li><a href="{{ URL::to('login') }}"><i class="fa fa-sign-in fa-12"></i> {{Lang::get('client.log_in')}}</a></li>
+                @endif
             </ul>
         </div><!--/.nav-collapse -->
     </div>
