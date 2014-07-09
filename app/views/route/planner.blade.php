@@ -165,7 +165,10 @@
                                     <li class="list-group-item" style="text-align: right;">
                                         <a href="/favorite/" class="btn btn-info">check in</a>
                                     </li>
-                                    @{{ conn }}
+                                    <li class="list-group-item">
+                                        test=
+                                        @{{ conn }}
+                                    </li>
 
                                     
 
