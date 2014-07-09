@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="irailapp" ng-controller="StationSearchCtrl">
-@include('core.head')
-<body>
-<div class="wrapper">
+@extends('layouts.default')
+@section('content')
+<div class="wrapper" ng-app="irailapp" ng-controller="StationSearchCtrl">
     <div id="main">
-        @include('core.navigation')
         <div class="container">
             <div class="row max-w5 routeplanner view1">
                 <div class="col-sm-12">
@@ -23,6 +20,4 @@
         </div>
     </div>
 </div>
-@include('core.footer')
-</body>
-</html>
+@stop
