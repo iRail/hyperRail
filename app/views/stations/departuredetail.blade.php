@@ -43,7 +43,7 @@
                     }
                     if (Sentry::check()) {
                         $departure = explode('/', $station['@id']);
-                        echo '<a href="/favorite/'. $departure[count($departure)-1] .'" class=\'label label-success label-lg\' style="margin-left: 20px;"">Favorite</a>';
+                        echo '<a href="/checkin/'. $departure[7] .'/'. $departure[5] .'/" class=\'label label-success label-lg\' style="margin-left: 20px;"">Check in</a>';
                     }
                     ?>			
                     <br/>
