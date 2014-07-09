@@ -141,7 +141,7 @@ namespace {
 		 }
 
 		/**
-		 * Get the registered service provider instnace if it exists.
+		 * Get the registered service provider instance if it exists.
 		 *
 		 * @param \Illuminate\Support\ServiceProvider|string  $provider
 		 * @return \Illuminate\Support\ServiceProvider|null
@@ -176,7 +176,7 @@ namespace {
 		 }
 
 		/**
-		 * Register a deffered provider and service.
+		 * Register a deferred provider and service.
 		 *
 		 * @param string  $provider
 		 * @param string  $service
@@ -730,12 +730,12 @@ namespace {
 		 * @param string               $abstract
 		 * @param Closure|string|null  $concrete
 		 * @param bool                 $shared
-		 * @return bool
+		 * @return void
 		 * @static 
 		 */
 		 public static function bindIf($abstract, $concrete = null, $shared = false){
 			//Method inherited from \Illuminate\Container\Container
-			return \Illuminate\Foundation\Application::bindIf($abstract, $concrete, $shared);
+			 \Illuminate\Foundation\Application::bindIf($abstract, $concrete, $shared);
 		 }
 
 		/**
@@ -1141,7 +1141,7 @@ namespace {
 		 *
 		 * @param InputInterface  $input  An Input instance
 		 * @param OutputInterface $output An Output instance
-		 * @return int     0 if everything went fine, or an error code
+		 * @return int 0 if everything went fine, or an error code
 		 * @throws \Exception When doRun returns Exception
 		 * @api 
 		 * @static 
@@ -1156,7 +1156,7 @@ namespace {
 		 *
 		 * @param InputInterface  $input  An Input instance
 		 * @param OutputInterface $output An Output instance
-		 * @return int     0 if everything went fine, or an error code
+		 * @return int 0 if everything went fine, or an error code
 		 * @static 
 		 */
 		 public static function doRun($input, $output){
@@ -1225,7 +1225,7 @@ namespace {
 		/**
 		 * Sets whether to catch exceptions or not during commands execution.
 		 *
-		 * @param bool    $boolean Whether to catch exceptions or not during commands execution
+		 * @param bool $boolean Whether to catch exceptions or not during commands execution
 		 * @api 
 		 * @static 
 		 */
@@ -1337,7 +1337,7 @@ namespace {
 		 * Returns true if the command exists, false otherwise.
 		 *
 		 * @param string $name The command name or alias
-		 * @return bool    true if the command exists, false otherwise
+		 * @return bool true if the command exists, false otherwise
 		 * @api 
 		 * @static 
 		 */
@@ -1419,8 +1419,8 @@ namespace {
 		/**
 		 * Returns a text representation of the Application.
 		 *
-		 * @param string  $namespace An optional namespace name
-		 * @param bool    $raw       Whether to return raw command list
+		 * @param string $namespace An optional namespace name
+		 * @param bool   $raw       Whether to return raw command list
 		 * @return string A string representing the Application
 		 * @deprecated Deprecated since version 2.3, to be removed in 3.0.
 		 * @static 
@@ -1433,8 +1433,8 @@ namespace {
 		/**
 		 * Returns an XML representation of the Application.
 		 *
-		 * @param string  $namespace An optional namespace name
-		 * @param bool    $asDom     Whether to return a DOM or an XML string
+		 * @param string $namespace An optional namespace name
+		 * @param bool   $asDom     Whether to return a DOM or an XML string
 		 * @return string|\DOMDocument An XML string representing the Application
 		 * @deprecated Deprecated since version 2.3, to be removed in 3.0.
 		 * @static 
@@ -4223,13 +4223,13 @@ namespace {
 		/**
 		 * Retrieve the "count" result of the query.
 		 *
-		 * @param string  $column
+		 * @param string  $columns
 		 * @return int
 		 * @static 
 		 */
-		 public static function count($column = '*'){
+		 public static function count($columns = '*'){
 			//Method inherited from \Illuminate\Database\Query\Builder
-			return \Illuminate\Database\Query\Builder::count($column);
+			return \Illuminate\Database\Query\Builder::count($columns);
 		 }
 
 		/**
@@ -5157,12 +5157,13 @@ namespace {
 		 * @param string  $name
 		 * @param string  $selected
 		 * @param array   $options
+		 * @param string  $format
 		 * @return string
 		 * @static 
 		 */
-		 public static function selectMonth($name, $selected = null, $options = array()){
+		 public static function selectMonth($name, $selected = null, $options = array(), $format = '%B'){
 			//Method inherited from \Illuminate\Html\FormBuilder
-			return \Illuminate\Html\FormBuilder::selectMonth($name, $selected, $options);
+			return \Illuminate\Html\FormBuilder::selectMonth($name, $selected, $options, $format);
 		 }
 
 		/**
@@ -5826,7 +5827,7 @@ namespace {
 		 }
 
 		/**
-		 * Determine if the request contains a non-emtpy value for an  input item.
+		 * Determine if the request contains a non-emtpy value for an input item.
 		 *
 		 * @param string|array  $key
 		 * @return bool
@@ -7255,7 +7256,7 @@ namespace {
 		 }
 
 		/**
-		 * Set the fallback locale being used.
+		 * Get the fallback locale being used.
 		 *
 		 * @return string
 		 * @static 
@@ -8558,7 +8559,7 @@ namespace {
 		 }
 
 		/**
-		 * Determine if the request contains a non-emtpy value for an  input item.
+		 * Determine if the request contains a non-emtpy value for an input item.
 		 *
 		 * @param string|array  $key
 		 * @return bool
@@ -10292,6 +10293,18 @@ namespace {
 		 }
 
 		/**
+		 * Alias for the "currentRouteNamed" method.
+		 *
+		 * @param dynamic  string
+		 * @return bool
+		 * @static 
+		 */
+		 public static function is(){
+			//Method inherited from \Illuminate\Routing\Router
+			return \Illuminate\Routing\Router::is();
+		 }
+
+		/**
 		 * Determine if the current route matches a given name.
 		 *
 		 * @param string  $name
@@ -10312,6 +10325,18 @@ namespace {
 		 public static function currentRouteAction(){
 			//Method inherited from \Illuminate\Routing\Router
 			return \Illuminate\Routing\Router::currentRouteAction();
+		 }
+
+		/**
+		 * Alias for the "currentRouteUses" method.
+		 *
+		 * @param dynamic  string
+		 * @return bool
+		 * @static 
+		 */
+		 public static function isAction(){
+			//Method inherited from \Illuminate\Routing\Router
+			return \Illuminate\Routing\Router::isAction();
 		 }
 
 		/**
@@ -11827,6 +11852,570 @@ namespace {
 		 public static function getNames(){
 			//Method inherited from \Illuminate\View\Environment
 			return \Illuminate\View\Environment::getNames();
+		 }
+
+	}
+	class OAuth extends \Artdarek\OAuth\Facade\OAuth{
+		/**
+		 * Constructor
+		 *
+		 * @param ServiceFactory $serviceFactory - (Dependency injection) If not provided, a ServiceFactory instance will be constructed.
+		 * @static 
+		 */
+		 public static function __construct($serviceFactory = null){
+			//Method inherited from \Artdarek\OAuth\OAuth
+			 \Artdarek\OAuth\OAuth::__construct($serviceFactory);
+		 }
+
+		/**
+		 * Detect config and set data from it
+		 *
+		 * @param string $service
+		 * @static 
+		 */
+		 public static function setConfig($service){
+			//Method inherited from \Artdarek\OAuth\OAuth
+			 \Artdarek\OAuth\OAuth::setConfig($service);
+		 }
+
+		/**
+		 * Create storage instance
+		 *
+		 * @param string $storageName
+		 * @return OAuth\Common\\Storage
+		 * @static 
+		 */
+		 public static function createStorageInstance($storageName){
+			//Method inherited from \Artdarek\OAuth\OAuth
+			return \Artdarek\OAuth\OAuth::createStorageInstance($storageName);
+		 }
+
+		/**
+		 * Set the http client object
+		 *
+		 * @param string $httpClientName
+		 * @return void
+		 * @static 
+		 */
+		 public static function setHttpClient($httpClientName){
+			//Method inherited from \Artdarek\OAuth\OAuth
+			 \Artdarek\OAuth\OAuth::setHttpClient($httpClientName);
+		 }
+
+		/**
+		 * 
+		 *
+		 * @param string $service
+		 * @param string $url
+		 * @param array  $scope
+		 * @return \OAuth\Common\Service\AbstractService
+		 * @static 
+		 */
+		 public static function consumer($service, $url = null, $scope = null){
+			//Method inherited from \Artdarek\OAuth\OAuth
+			return \Artdarek\OAuth\OAuth::consumer($service, $url, $scope);
+		 }
+
+	}
+	class Sentry extends \Cartalyst\Sentry\Facades\Laravel\Sentry{
+		/**
+		 * Create a new Sentry object.
+		 *
+		 * @param \Cartalyst\Sentry\Users\ProviderInterface $userProvider
+		 * @param \Cartalyst\Sentry\Groups\ProviderInterface $groupProvider
+		 * @param \Cartalyst\Sentry\Throttling\ProviderInterface $throttleProvider
+		 * @param \Cartalyst\Sentry\Sessions\SessionInterface $session
+		 * @param \Cartalyst\Sentry\Cookies\CookieInterface $cookie
+		 * @param string $ipAddress
+		 * @return void
+		 * @static 
+		 */
+		 public static function __construct($userProvider = null, $groupProvider = null, $throttleProvider = null, $session = null, $cookie = null, $ipAddress = null){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::__construct($userProvider, $groupProvider, $throttleProvider, $session, $cookie, $ipAddress);
+		 }
+
+		/**
+		 * Registers a user by giving the required credentials
+		 * and an optional flag for whether to activate the user.
+		 *
+		 * @param array  $credentials
+		 * @param bool   $activate
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @static 
+		 */
+		 public static function register($credentials, $activate = false){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::register($credentials, $activate);
+		 }
+
+		/**
+		 * Attempts to authenticate the given user
+		 * according to the passed credentials.
+		 *
+		 * @param array  $credentials
+		 * @param bool   $remember
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @throws \Cartalyst\Sentry\Throttling\UserBannedException
+		 * @throws \Cartalyst\Sentry\Throttling\UserSuspendedException
+		 * @throws \Cartalyst\Sentry\Users\LoginRequiredException
+		 * @throws \Cartalyst\Sentry\Users\PasswordRequiredException
+		 * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+		 * @static 
+		 */
+		 public static function authenticate($credentials, $remember = false){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::authenticate($credentials, $remember);
+		 }
+
+		/**
+		 * Alias for authenticating with the remember flag checked.
+		 *
+		 * @param array  $credentials
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @static 
+		 */
+		 public static function authenticateAndRemember($credentials){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::authenticateAndRemember($credentials);
+		 }
+
+		/**
+		 * Check to see if the user is logged in and activated, and hasn't been banned or suspended.
+		 *
+		 * @return bool
+		 * @static 
+		 */
+		 public static function check(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::check();
+		 }
+
+		/**
+		 * Logs in the given user and sets properties
+		 * in the session.
+		 *
+		 * @param \Cartalyst\Sentry\Users\UserInterface  $user
+		 * @param bool  $remember
+		 * @return void
+		 * @throws \Cartalyst\Sentry\Users\UserNotActivatedException
+		 * @static 
+		 */
+		 public static function login($user, $remember = false){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::login($user, $remember);
+		 }
+
+		/**
+		 * Alias for logging in and remembering.
+		 *
+		 * @param \Cartalyst\Sentry\Users\UserInterface  $user
+		 * @static 
+		 */
+		 public static function loginAndRemember($user){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::loginAndRemember($user);
+		 }
+
+		/**
+		 * Logs the current user out.
+		 *
+		 * @return void
+		 * @static 
+		 */
+		 public static function logout(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::logout();
+		 }
+
+		/**
+		 * Sets the user to be used by Sentry.
+		 *
+		 * @param \Cartalyst\Sentry\Users\UserInterface
+		 * @return void
+		 * @static 
+		 */
+		 public static function setUser($user){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::setUser($user);
+		 }
+
+		/**
+		 * Returns the current user being used by Sentry, if any.
+		 *
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @static 
+		 */
+		 public static function getUser(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::getUser();
+		 }
+
+		/**
+		 * Sets the session driver for Sentry.
+		 *
+		 * @param \Cartalyst\Sentry\Sessions\SessionInterface  $session
+		 * @return void
+		 * @static 
+		 */
+		 public static function setSession($session){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::setSession($session);
+		 }
+
+		/**
+		 * Gets the session driver for Sentry.
+		 *
+		 * @return \Cartalyst\Sentry\Sessions\SessionInterface
+		 * @static 
+		 */
+		 public static function getSession(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::getSession();
+		 }
+
+		/**
+		 * Sets the cookie driver for Sentry.
+		 *
+		 * @param \Cartalyst\Sentry\Cookies\CookieInterface  $cookie
+		 * @return void
+		 * @static 
+		 */
+		 public static function setCookie($cookie){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::setCookie($cookie);
+		 }
+
+		/**
+		 * Gets the cookie driver for Sentry.
+		 *
+		 * @return \Cartalyst\Sentry\Cookies\CookieInterface
+		 * @static 
+		 */
+		 public static function getCookie(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::getCookie();
+		 }
+
+		/**
+		 * Sets the group provider for Sentry.
+		 *
+		 * @param \Cartalyst\Sentry\Groups\ProviderInterface
+		 * @return void
+		 * @static 
+		 */
+		 public static function setGroupProvider($groupProvider){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::setGroupProvider($groupProvider);
+		 }
+
+		/**
+		 * Gets the group provider for Sentry.
+		 *
+		 * @return \Cartalyst\Sentry\Groups\ProviderInterface
+		 * @static 
+		 */
+		 public static function getGroupProvider(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::getGroupProvider();
+		 }
+
+		/**
+		 * Sets the user provider for Sentry.
+		 *
+		 * @param \Cartalyst\Sentry\Users\ProviderInterface
+		 * @return void
+		 * @static 
+		 */
+		 public static function setUserProvider($userProvider){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::setUserProvider($userProvider);
+		 }
+
+		/**
+		 * Gets the user provider for Sentry.
+		 *
+		 * @return \Cartalyst\Sentry\Users\ProviderInterface
+		 * @static 
+		 */
+		 public static function getUserProvider(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::getUserProvider();
+		 }
+
+		/**
+		 * Sets the throttle provider for Sentry.
+		 *
+		 * @param \Cartalyst\Sentry\Throttling\ProviderInterface
+		 * @return void
+		 * @static 
+		 */
+		 public static function setThrottleProvider($throttleProvider){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::setThrottleProvider($throttleProvider);
+		 }
+
+		/**
+		 * Gets the throttle provider for Sentry.
+		 *
+		 * @return \Cartalyst\Sentry\Throttling\ProviderInterface
+		 * @static 
+		 */
+		 public static function getThrottleProvider(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::getThrottleProvider();
+		 }
+
+		/**
+		 * Sets the IP address Sentry is bound to.
+		 *
+		 * @param string  $ipAddress
+		 * @return void
+		 * @static 
+		 */
+		 public static function setIpAddress($ipAddress){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			 \Cartalyst\Sentry\Sentry::setIpAddress($ipAddress);
+		 }
+
+		/**
+		 * Gets the IP address Sentry is bound to.
+		 *
+		 * @return string
+		 * @static 
+		 */
+		 public static function getIpAddress(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::getIpAddress();
+		 }
+
+		/**
+		 * Find the group by ID.
+		 *
+		 * @param int  $id
+		 * @return \Cartalyst\Sentry\Groups\GroupInterface  $group
+		 * @throws \Cartalyst\Sentry\Groups\GroupNotFoundException
+		 * @static 
+		 */
+		 public static function findGroupById($id){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findGroupById($id);
+		 }
+
+		/**
+		 * Find the group by name.
+		 *
+		 * @param string  $name
+		 * @return \Cartalyst\Sentry\Groups\GroupInterface  $group
+		 * @throws \Cartalyst\Sentry\Groups\GroupNotFoundException
+		 * @static 
+		 */
+		 public static function findGroupByName($name){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findGroupByName($name);
+		 }
+
+		/**
+		 * Returns all groups.
+		 *
+		 * @return array  $groups
+		 * @static 
+		 */
+		 public static function findAllGroups(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findAllGroups();
+		 }
+
+		/**
+		 * Creates a group.
+		 *
+		 * @param array  $attributes
+		 * @return \Cartalyst\Sentry\Groups\GroupInterface
+		 * @static 
+		 */
+		 public static function createGroup($attributes){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::createGroup($attributes);
+		 }
+
+		/**
+		 * Finds a user by the given user ID.
+		 *
+		 * @param mixed  $id
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+		 * @static 
+		 */
+		 public static function findUserById($id){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findUserById($id);
+		 }
+
+		/**
+		 * Finds a user by the login value.
+		 *
+		 * @param string  $login
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+		 * @static 
+		 */
+		 public static function findUserByLogin($login){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findUserByLogin($login);
+		 }
+
+		/**
+		 * Finds a user by the given credentials.
+		 *
+		 * @param array  $credentials
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+		 * @static 
+		 */
+		 public static function findUserByCredentials($credentials){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findUserByCredentials($credentials);
+		 }
+
+		/**
+		 * Finds a user by the given activation code.
+		 *
+		 * @param string  $code
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @throws \RuntimeException
+		 * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+		 * @static 
+		 */
+		 public static function findUserByActivationCode($code){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findUserByActivationCode($code);
+		 }
+
+		/**
+		 * Finds a user by the given reset password code.
+		 *
+		 * @param string  $code
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @throws \RuntimeException
+		 * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+		 * @static 
+		 */
+		 public static function findUserByResetPasswordCode($code){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findUserByResetPasswordCode($code);
+		 }
+
+		/**
+		 * Returns an all users.
+		 *
+		 * @return array
+		 * @static 
+		 */
+		 public static function findAllUsers(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findAllUsers();
+		 }
+
+		/**
+		 * Returns all users who belong to
+		 * a group.
+		 *
+		 * @param \Cartalyst\Sentry\Groups\GroupInterface  $group
+		 * @return array
+		 * @static 
+		 */
+		 public static function findAllUsersInGroup($group){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findAllUsersInGroup($group);
+		 }
+
+		/**
+		 * Returns all users with access to
+		 * a permission(s).
+		 *
+		 * @param string|array  $permissions
+		 * @return array
+		 * @static 
+		 */
+		 public static function findAllUsersWithAccess($permissions){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findAllUsersWithAccess($permissions);
+		 }
+
+		/**
+		 * Returns all users with access to
+		 * any given permission(s).
+		 *
+		 * @param array  $permissions
+		 * @return array
+		 * @static 
+		 */
+		 public static function findAllUsersWithAnyAccess($permissions){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findAllUsersWithAnyAccess($permissions);
+		 }
+
+		/**
+		 * Creates a user.
+		 *
+		 * @param array  $credentials
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @static 
+		 */
+		 public static function createUser($credentials){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::createUser($credentials);
+		 }
+
+		/**
+		 * Returns an empty user object.
+		 *
+		 * @return \Cartalyst\Sentry\Users\UserInterface
+		 * @static 
+		 */
+		 public static function getEmptyUser(){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::getEmptyUser();
+		 }
+
+		/**
+		 * Finds a throttler by the given user ID.
+		 *
+		 * @param mixed   $id
+		 * @param string  $ipAddress
+		 * @return \Cartalyst\Sentry\Throttling\ThrottleInterface
+		 * @static 
+		 */
+		 public static function findThrottlerByUserId($id, $ipAddress = null){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findThrottlerByUserId($id, $ipAddress);
+		 }
+
+		/**
+		 * Finds a throttling interface by the given user login.
+		 *
+		 * @param string  $login
+		 * @param string  $ipAddress
+		 * @return \Cartalyst\Sentry\Throttling\ThrottleInterface
+		 * @static 
+		 */
+		 public static function findThrottlerByUserLogin($login, $ipAddress = null){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::findThrottlerByUserLogin($login, $ipAddress);
+		 }
+
+		/**
+		 * Handle dynamic method calls into the method.
+		 *
+		 * @param string  $method
+		 * @param array   $parameters
+		 * @return mixed
+		 * @throws \BadMethodCallException
+		 * @static 
+		 */
+		 public static function __call($method, $parameters){
+			//Method inherited from \Cartalyst\Sentry\Sentry
+			return \Cartalyst\Sentry\Sentry::__call($method, $parameters);
 		 }
 
 	}

@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="{{Config::get('app.locale');}}" ng-app="irailapp" ng-controller="PlannerCtrl" manifest=".appcache">
-    @include('core.head')
-<body>
-<div class="wrapper">
+@extends('layouts.default')
+@section('content')
     <div id="main">
         @include('core.navigation')
         <div class="container">
@@ -164,6 +161,17 @@
                                         <strong>@{{ conn.arrival.station}}</strong>
                                     </span>
                                     </li>
+
+                                    <li class="list-group-item" style="text-align: right;">
+                                        <a href="/favorite/" class="btn btn-info">check in</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        test=
+                                        @{{ conn }}
+                                    </li>
+
+                                    
+
                                 </ul>
                             </div>
                         </div>
@@ -198,3 +206,5 @@
 </script>
 </body>
 </html>
+
+@stop

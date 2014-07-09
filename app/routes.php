@@ -12,6 +12,13 @@ App::missing(function($exception)
     return Response::view('errors.404', array(), 404);
 });
 
+Route::filter('after', function($response)
+{
+// No caching for pages
+$response->header("Pragma", "no-cache");
+$response->header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+});
+
 Route::get('/', 'HomeController@showWelcome');
 Route::get('/route', 'RouteController@index');
 
@@ -25,6 +32,34 @@ Route::get('/stations/NMBS/{id}/departures/{trainHash}', 'StationController@spec
 Route::get('/stations/nmbs', 'StationController@index');
 Route::get('/stations/nmbs/{id}', 'StationController@liveboard');
 Route::get('/stations/nmbs/{id}/departures/{trainHash}', 'StationController@specificTrain');
+
+// OAuth via external provider
+Route::get('/oauth/{provider}', 'OAuthLoginController@getLogin');
+
+// OAuth server iRail
+//Route::post('/token', 'TokenController@postToken');
+//Route::get('/token', 'TokenController@postToken');
+Route::get('/resource', 'ResourceController@getResource');
+Route::get('/authorize', 'AuthorizeController@getAuthorize');
+Route::post('/authorize', 'AuthorizeController@postAuthorize');
+
+// iRail login-functionality
+Route::get('/register', 'IRailLoginController@getRegister');
+Route::get('/login', 'IRailLoginController@getLogin');
+
+Route::post('/login', 'IRailLoginController@postLogin');
+Route::post('/register', 'IRailLoginController@postRegister');
+
+Route::group(array('before' => 'auth'), function(){
+	Route::get('/logout', 'IRailLoginController@logout');
+});
+
+// Social media-providers API (currently only Twitter)
+Route::get('/{provider}/{id}/friends', 'OAuthResourceController@getFriends');
+
+// Adding a check in
+Route::get('checkin/{departure}', 'CheckinController@store');
+Route::get('checkout/{departure}', 'CheckinController@delete');
 
 /*
 |--------------------------------------------------------------------------
