@@ -13,7 +13,7 @@ public/app/js
 public/builds
 public/styleguide
 app/tests/meta/coverage
-
+.grunt/*
 # Development
 .idea
 .sublimets
