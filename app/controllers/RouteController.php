@@ -19,16 +19,11 @@ class RouteController extends \BaseController {
         
         switch ($val){
             case "text/html":
-            if (Sentry::check()) {
-                return Response::view('admin.index')->header('Content-Type', "text/html")->header('Vary', 'accept');
-            } else {
                 return Response::view('route.planner')->header('Content-Type', "text/html")->header('Vary', 'accept');
-            }
                 break;
             case "application/json":
-                return Response::make($this::getJSON())->header('Content-Type', "application/json")->header('Vary', 'accept');
+                return Response::make($this::getJSON())->header('Content-Type', "text/html")->header('Vary', 'accept');
                 break;
-            case "text/html":
             default:
                 return Response::view('route.planner')->header('Content-Type', "text/html")->header('Vary', 'accept');
                 break;
@@ -37,8 +32,8 @@ class RouteController extends \BaseController {
 
     static function getJSON(){
         if(Input::get('from') && Input::get('to')) {
-            $from =  urldecode(Input::get('from')); // required
-            $to = urldecode(Input::get('to')); // required
+            $from =  Input::get('from'); // required
+            $to = Input::get('to'); // required
             $time = Input::get('time'); // optional, default to current time if null
             if (!Input::get('time')){
                 $time = date("Hi", time());
@@ -52,12 +47,10 @@ class RouteController extends \BaseController {
                 $timeSel = "depart";
             }
             $lang = Config::get('app.locale');
-            
-            $fromId = str_replace("http://irail.be/stations/NMBS/","",$from);
-            $toId = str_replace("http://irail.be/stations/NMBS/","",$to);
-            
+            $fromName = \hyperRail\StationString::convertToString($from)->name;
+            $toName = \hyperRail\StationString::convertToString($to)->name;
             try{
-                $json = file_get_contents('http://api.irail.be/connections/?to=' . $toId . '&from=' . $fromId . '&date=' . $date . '&time=' . $time . '&timeSel=' . $timeSel . '&lang=' . $lang . '&format=json');
+                $json = file_get_contents('http://api.irail.be/connections/?to=' . $toName . '&from=' . $fromName . '&date=' . $date . '&time=' . $time . '&timeSel=' . $timeSel . '&lang=' . $lang . '&format=json');
                 return trim($json);
             }
             catch(ErrorException $ex){
@@ -65,20 +58,7 @@ class RouteController extends \BaseController {
             }
         } else {
             // Show the HYDRA JSON-LD for doing a request to the right URI
-            /** Structure this RDF as follows (early draft):
-<https://irail.be/route> 
-    void:uriLookupEndpoint "https://irail.be/route{?from,to}";
-    hydra:search _:route.
-_:route hydra:template "https://irail.be/route{?from,to}";
-    hydra:mapping _:from, _:to.
-_:from hydra:variable "from";
-    hydra:required true ;
-    hydra:property <http://semweb.mmlab.be/ns/rplod/stop> .
-_:to hydra:variable "to" ;
-    hydra:required true ;
-    hydra:property <http://semweb.mmlab.be/ns/rplod/stop> .
-
-             */
+            
             
         }
     }
