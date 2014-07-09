@@ -19,15 +19,15 @@
         $storage = new OAuth2\Storage\Pdo(array('dsn' => $dsn, 'username' => $username, 'password' => $password));
 
         // Pass a storage object or array of storage objects to the OAuth2 server class
-        $server = new OAuth2\Server($storage);
+        $server = new OAuth2\Server($storage, [
+            //allow implicit use of /authorize to obtain an access token
+            'allow_implicit' => true,
+            // access_tokens are non-expiring
+            'access_lifetime' => false
+        ]);
 
         // Add the "Client Credentials" grant type (it is the simplest of the grant types)
         $server->addGrantType(new OAuth2\GrantType\ClientCredentials($storage));
 
         // Add the "Authorization Code" grant type (this is where the oauth magic happens)
         $server->addGrantType(new OAuth2\GrantType\AuthorizationCode($storage));
-
-        // create the server, and configure it to allow implicit
-        $server = new OAuth2\Server($storage, array(
-            'allow_implicit' => true,
-        ));
