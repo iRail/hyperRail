@@ -51,12 +51,15 @@ Route::post('/login', 'IRailLoginController@postLogin');
 Route::post('/register', 'IRailLoginController@postRegister');
 
 Route::group(array('before' => 'auth'), function(){
-	Route::get('/admin', 'AdminController@index');
 	Route::get('/logout', 'IRailLoginController@logout');
 });
 
 // Social media-providers API (currently only Twitter)
 Route::get('/{provider}/{id}/friends', 'OAuthResourceController@getFriends');
+
+// Adding a check in
+Route::get('checkin/{departure}', 'CheckinController@store');
+Route::get('checkout/{departure}', 'CheckinController@delete');
 
 /*
 |--------------------------------------------------------------------------

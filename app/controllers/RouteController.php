@@ -18,6 +18,13 @@ class RouteController extends \BaseController {
         }
         
         switch ($val){
+            case "text/html":
+            if (Sentry::check()) {
+                return Response::view('admin.index')->header('Content-Type', "text/html")->header('Vary', 'accept');
+            } else {
+                return Response::view('route.planner')->header('Content-Type', "text/html")->header('Vary', 'accept');
+            }
+                break;
             case "application/json":
                 return Response::make($this::getJSON())->header('Content-Type', "application/json")->header('Vary', 'accept');
                 break;

@@ -68,6 +68,7 @@ return array(
     "nearby" => "Dichtbij",
     "most_used" => "Gebruikte",
     "log_in" => "Aanmelden",
+    "log_out" => "Afmelden",
     "register" => "Registreer",
     "username" => "Gebruikersnaam",
     "password" => "Wachtwoord",
