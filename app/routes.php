@@ -51,7 +51,6 @@ Route::post('/login', 'IRailLoginController@postLogin');
 Route::post('/register', 'IRailLoginController@postRegister');
 
 Route::group(array('before' => 'auth'), function(){
-	Route::get('/admin', 'AdminController@index');
 	Route::get('/logout', 'IRailLoginController@logout');
 });
 
@@ -59,10 +58,7 @@ Route::group(array('before' => 'auth'), function(){
 Route::get('/{provider}/{id}/friends', 'OAuthResourceController@getFriends');
 
 // Adding a check in
-Route::get('checkin/{departure}/{stop}', function($departure, $stop)
-{
-    return CheckinController::store($departure, $stop);
-});
+Route::get('checkin/{departure}/{stop}/{status}', 'CheckinController@store');
 
 /*
 |--------------------------------------------------------------------------

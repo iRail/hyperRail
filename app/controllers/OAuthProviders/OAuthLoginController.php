@@ -40,7 +40,7 @@ class OAuthLoginController extends BaseController {
 
                     if($user)
                     {
-                        return Redirect::to('/admin');
+                        return Redirect::to('/route');
                     }
 
                 }
