@@ -58,8 +58,8 @@ Route::group(array('before' => 'auth'), function(){
 Route::get('/{provider}/{id}/friends', 'OAuthResourceController@getFriends');
 
 // Adding a check in
-Route::get('checkin/{departure}', 'CheckinController@store');
-Route::get('checkout/{departure}', 'CheckinController@delete');
+Route::get('checkin', 'CheckinController@store');
+Route::get('checkout', 'CheckinController@delete');
 
 /*
 |--------------------------------------------------------------------------
