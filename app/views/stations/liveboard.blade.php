@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{Config::get('app.locale');}}" ng-app="irailapp" ng-controller="StationLiveboardCtrl">
-@include('core.head')
-<body>
-<div class="wrapper">
+@extends('layouts.default')
+@section('content')
+<div class="wrapper" ng-app="irailapp" ng-controller="StationLiveboardCtrl">
     <div id="main">
-        @include('core.navigation')
         <div class="container">
             <div class="row loading" ng-show="loading">
                 <div class="col-md-12 col-sm-12">
@@ -67,6 +64,4 @@
         </div>
     </div>
 </div>
-@include('core.footer')
-</body>
-</html>
+@stop

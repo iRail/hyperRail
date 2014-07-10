@@ -10,4 +10,5 @@
         g.src = '//www.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g, s);
     }(document, 'script'));
+    $("[data-toggle='tooltip']").tooltip();
 </script>
