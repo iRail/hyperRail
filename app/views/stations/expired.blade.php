@@ -1,6 +1,10 @@
-@extends('layouts.default')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>iRail.be</title>
     <link rel="shortcut icon" href="{{ URL::asset('favicon.ico') }}"/>
     <link rel="stylesheet" href="{{ URL::asset('bower_components/bootstrap-sass/lib/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('bower_components/fontawesome/css/font-awesome.min.css') }}"/>
@@ -14,8 +18,10 @@
     <script src="{{ URL::asset('bower_components/angular-bootstrap/ui-bootstrap.min.js') }}"></script>
     <script src="{{ URL::asset('js/irailapp/app.js') }}"></script>
 </head>
+<body>
 <div class="wrapper">
     <div id="main">
+        @include('core.navigation')
         <div class="container">
             <div class="row max-w5" >
                 <div class="col-md-12 col-sm-12">
@@ -33,4 +39,6 @@
         </div>
     </div>
 </div>
-@stop
+@include('core.footer')
+</body>
+</html>
