@@ -13,32 +13,25 @@ class ResourceController extends BaseController
         // include our OAuth2 Server object
         require_once __DIR__.'/server.php';
 
-        // Handle a request for an OAuth2.0 Access Token and send the response to the client
-        if (!$server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
+        $request = OAuth2\Request::createFromGlobals();
+        $response = new OAuth2\Response();
+
+        // Verify that the access_token is not expired
+        if (!$server->verifyResourceRequest($request)) {
             $server->getResponse()->send();
             die;
+        } else {
+            //echo json_encode(array('success' => true, 'message' => 'You accessed my APIs!'));
+            // return a fake API response - not that exciting
+            // @TODO return something more valuable, like the name of the logged in user
+            $api_response = array(
+                'friends' => array(
+                    'Sam',
+                    'Brecht',
+                    'Michiel'
+                )
+            );
+            return json_encode($api_response);
         }
-        echo json_encode(array('success' => true, 'message' => 'You accessed my APIs!'));
-
-        // // get the oauth server (configured in src/OAuth2Demo/Server/Server.php)
-        // $server = $app['oauth_server'];
-
-        // // get the oauth response (configured in src/OAuth2Demo/Server/Server.php)
-        // $response = $app['oauth_response'];
-
-        // if (!$server->verifyResourceRequest($app['request'], $response)) {
-        //     return $server->getResponse();
-        // } else {
-        //     // return a fake API response - not that exciting
-        //     // @TODO return something more valuable, like the name of the logged in user
-        //     $api_response = array(
-        //         'friends' => array(
-        //             'john',
-        //             'matt',
-        //             'jane'
-        //         )
-        //     );
-        //     return new Response(json_encode($api_response));
-        // }
-    }
+   }
 }

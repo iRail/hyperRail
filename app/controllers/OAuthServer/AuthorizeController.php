@@ -50,20 +50,23 @@ class AuthorizeController extends BaseController
         $request = OAuth2\Request::createFromGlobals();
         $response = new OAuth2\Response();
 
-        // validate the authorize request
+       // validate the authorize request
         if (!$server->validateAuthorizeRequest($request, $response)) {
             $response->send();
             die;
         }
 
         // If the user has clicked 'yes', redirect with access_token as queryparameter
-        $is_authorized = ($_POST['authorized'] === 'yes');
+        $is_authorized = ($_POST['authorized'] === 'Yes');
         $server->handleAuthorizeRequest($request, $response, $is_authorized);
         if ($is_authorized) {
-            // this is only here so that you get to see your code in the cURL request. Otherwise, we'd redirect back to the client
-            $access_token = substr($response->getHttpHeader('Location'), strpos($response->getHttpHeader('Location'), 'code=')+5, 40);
-            $redirect_uri = substr($response->getHttpHeader('Location'), 0, strpos($response->getHttpHeader('Location'),'?'));
+            // url = redirect_uri#access_token=...&otherparameters
+            $url = $response->getHttpHeader('Location');
+            // parse the access_token
+            $access_token_length = strpos($url,'&') - strpos($url, '=')-1;
+            $access_token = substr($url, strpos($url, '=')+1, $access_token_length);
 
+            $redirect_uri = substr($url, 0, strpos($url,'#'));
             $returnpage = (string) $redirect_uri . '?access_token=' . (string) $access_token;
 
             header('Location: ' . $returnpage);
