@@ -1,5 +1,7 @@
-@extends('layouts.default')
-@section('content')
+<!DOCTYPE html>
+<html lang="{{Config::get('app.locale');}}" ng-app="irailapp" ng-controller="">
+    @include('core.head')
+<body>
 <div class="wrapper">
     <div id="main">
         @include('core.navigation')
@@ -8,4 +10,9 @@
         </div>
     </div>
 </div>
-@stop
+    @include('core.footer')
+<script>
+    $("[data-toggle='tooltip']").tooltip();
+</script>
+</body>
+</html>

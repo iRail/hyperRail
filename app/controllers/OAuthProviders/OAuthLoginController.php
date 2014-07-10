@@ -13,7 +13,7 @@ use ML\JsonLD\JsonLD;
  */
 class OAuthLoginController extends BaseController {
 
-    public function getLogin($provider){        
+	public function getLogin($provider){        
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
         $priorities = array('text/html', 'application/json', '*/*');
@@ -23,15 +23,15 @@ class OAuthLoginController extends BaseController {
         switch ($val){
             case "text/html":
                 // which provider the user wants to login with
-                switch ($provider) {
-                    case "google":
-                        $prov = new GoogleProvider;
-                    break;
+            	switch ($provider) {
+            		case "google":
+            			$prov = new GoogleProvider;
+            		break;
                     case "twitter":
                         $prov = new TwitterProvider;
                     break;  
-                }
-                
+            	}
+
                 $credentials = $prov->getLogin();
         
                 try{
@@ -40,7 +40,7 @@ class OAuthLoginController extends BaseController {
 
                     if($user)
                     {
-                        return Redirect::to('/admin');
+                        return Redirect::to('/route');
                     }
 
                 }
@@ -50,7 +50,7 @@ class OAuthLoginController extends BaseController {
                 }
 
 
-            break;
+        	break;
 
             case "application/ld+json":
             break;

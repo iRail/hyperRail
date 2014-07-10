@@ -1,7 +1,10 @@
-@extends('layouts.default')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+@include('core.head')
+<body>
 <div class="wrapper">
     <div id="main">
+        @include('core.navigation')
         <div class="container">
             <div class="row max-w5" >
                 <div class="col-md-12 col-sm-12">
@@ -19,4 +22,6 @@
         </div>
     </div>
 </div>
-@stop
+@include('core.footer')
+</body>
+</html>

@@ -1,14 +1,13 @@
-@extends('layouts.default')
-@section('content')
-<div class="wrapper">
-    <div id="main">
-        <div class="container">
-			<h2>Password Reset</h2>
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<h2>Password Reset</h2>
 
-			<div>
-				To reset your password, complete this form: {{ URL::to('password/reset', array($token)) }}.
-			</div>
+		<div>
+			To reset your password, complete this form: {{ URL::to('password/reset', array($token)) }}.
 		</div>
-	</div>
-</div>
-@stop
+	</body>
+</html>
