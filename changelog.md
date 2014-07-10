@@ -28,3 +28,8 @@ Later work on the display:
 extra to-do:
 --------------------
 * bootstrap modal
+
+
+Pieter: er is geen check meer of access_token vervallen is (normaal na 30sec al door gebruik van refreshtokens).
+(In OAuth2\Controller\ResourceController.php : getAccessTokenData())
+Later kijken voor refresh_tokens weer te gebruiken voor veiligheid.
