@@ -24,8 +24,9 @@ sftp-config.json
 app/config/testing
 app/config/development
 app/config/production
-!app/storage/.gitkeep
+app/storage/.gitkeep
 app/storage/*
+_ide_helper.php
 
 # Dotfiles
 .DS_Store
