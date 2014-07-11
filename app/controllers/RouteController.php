@@ -22,12 +22,8 @@ class RouteController extends \BaseController {
                 return Response::make($this::getJSON())->header('Content-Type', "application/json")->header('Vary', 'accept');
                 break;
             case "text/html":
-            default:
-                if (Sentry::check()) {
-                    return Response::view('admin.index')->header('Content-Type', "text/html")->header('Vary', 'accept');
-                } else {
-                    return Response::view('route.planner')->header('Content-Type', "text/html")->header('Vary', 'accept');
-                }
+            default:            
+                return Response::view('route.planner')->header('Content-Type', "text/html")->header('Vary', 'accept');
                 break;
         }
     }
