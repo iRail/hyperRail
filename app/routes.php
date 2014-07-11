@@ -61,9 +61,11 @@ Route::group(array('before' => 'auth'), function(){
 Route::get('checkin', 'CheckinController@store');
 Route::get('checkout', 'CheckinController@destroy');
 
-// displaying train diary
-Route::post('/checkins', 'CheckinController@postIndex');
-Route::get('/checkins', 'CheckinController@getIndex');
+// return all checkins from user
+Route::get('/checkins', 'CheckinController@index');
+Route::get('/checkins/{id}', 'CheckinController@show');
+
+//
 
 /*
 |--------------------------------------------------------------------------
