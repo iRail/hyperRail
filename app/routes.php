@@ -36,12 +36,15 @@ Route::get('/stations/nmbs/{id}/departures/{trainHash}', 'StationController@spec
 // OAuth via external provider
 Route::get('/oauth/{provider}', 'OAuthLoginController@getLogin');
 
-// OAuth server iRail
-//Route::post('/token', 'TokenController@postToken');
-//Route::get('/token', 'TokenController@postToken');
-Route::get('/resource', 'ResourceController@getResource');
+// OAuth server
 Route::get('/authorize', 'AuthorizeController@getAuthorize');
 Route::post('/authorize', 'AuthorizeController@postAuthorize');
+
+// Resource-API. Types: checkins
+Route::get('/resource/{type}', 'ResourceController@getResource');
+// Social media-providers API (currently only Twitter)
+Route::get('/resource/{provider}/getFriends', 'OAuthResourceController@getFriends');
+
 
 // iRail login-functionality
 Route::get('/register', 'IRailLoginController@getRegister');
@@ -53,9 +56,6 @@ Route::post('/register', 'IRailLoginController@postRegister');
 Route::group(array('before' => 'auth'), function(){
 	Route::get('/logout', 'IRailLoginController@logout');
 });
-
-// Social media-providers API (currently only Twitter)
-Route::get('/{provider}/getFriends', 'OAuthResourceController@getFriends');
 
 // Adding a check in
 Route::get('checkin', 'CheckinController@store');
