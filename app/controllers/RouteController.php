@@ -23,12 +23,8 @@ class RouteController extends \BaseController {
                 break;
             case "text/html":
             default:
-                if (Sentry::check()) {
-                    return Response::view('admin.index')->header('Content-Type', "text/html")->header('Vary', 'accept');
-                } else {
-                    return Response::view('route.planner')->header('Content-Type', "text/html")->header('Vary', 'accept');
-                }
-                break;
+                return Response::view('route.planner')->header('Content-Type', "text/html")->header('Vary', 'accept');
+            break;
         }
     }
 

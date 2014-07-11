@@ -18,6 +18,8 @@ class OAuthResourceController extends BaseController {
             break;  
     	}
 
+        
+
         $prov->getFriends();
 
 	}

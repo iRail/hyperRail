@@ -48,7 +48,7 @@ class ResourceController extends BaseController
 
 
                 default
-                    return json_encode("No correct parameter given. irail.dev/resource/checkins");
+                    return "No correct parameter given. irail.dev/resource/checkins" ;
                 break;  
         }
         
