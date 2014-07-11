@@ -61,9 +61,12 @@ Route::group(array('before' => 'auth'), function(){
 Route::get('checkin', 'CheckinController@store');
 Route::get('checkout', 'CheckinController@destroy');
 
-// return all checkins from user
+
 Route::get('/checkins', 'CheckinController@index');
+// return all checkins from user
 Route::get('/checkins/{id}', 'CheckinController@show');
+// destroy specified resource
+Route::get('/checkins/destroy/{departure}', 'CheckinController@destroy');
 
 //
 

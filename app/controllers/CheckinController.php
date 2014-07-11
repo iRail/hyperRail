@@ -9,12 +9,22 @@ class CheckinController extends BaseController {
 	 */
 	public function index()
 	{
+		//TODO: remove code duplication and put this in BaseController
+        $negotiator = new \Negotiation\FormatNegotiator();
+        $acceptHeader = Request::header('accept');
+        $priorities = array('text/html', 'application/json', '*/*');
+        $result = $negotiator->getBest($acceptHeader, $priorities);
+        $val = "text/html";
+        //unless the negotiator has found something better for us
+        if (isset($result)) {
+            $val = $result->getValue();
+        }
 
        	if (Sentry::check()) {
 			$user = Sentry::getUser();
-			$checkins = Checkin::all();
-			$data = null;
-			dd($checkins);
+			$checkins = Checkin::where('user_id', $user->id)->get();
+		} else{
+			return Redirect::to('/login');
 		}
 
         switch ($val){
@@ -28,7 +38,7 @@ class CheckinController extends BaseController {
             break;
             case "text/html":
             default:
-				return View::make('checkins.index');
+				return View::make('checkins.index', array('checkins' => $checkins));
             break;
 		}
 	}
@@ -51,7 +61,8 @@ class CheckinController extends BaseController {
             $val = $result->getValue();
         }
 
-		$checkins = Checkin::where('user_id', '=', $id)->get()->toJson();
+		$checkins = Checkin::where('user_id', $id)->get()->toJson();
+
 		switch ($val){
             case "application/json":
             case "application/ld+json":
@@ -101,7 +112,7 @@ class CheckinController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public static function destroy() {
+	public static function destroy($departure) {
 		$departure = Input::get('departure');
 
 		if (!Sentry::check()) {
