@@ -68,38 +68,11 @@ class TwitterProvider implements IOAuthProvider{
     }
 
     /**
-     * Save Twitter-user in userstable
-     * 
-     * @return void
-     */
-    private function saveUser($result, $request_token, $access_token){
-        $twitteruser = DB::table('users')->where('email', $result->screen_name)->first();
-
-        if (empty($twitteruser)) {
-            $data = new User;
-            
-            $data->provider = 'twitter';
-            $data->token = $access_token;
-            $data->email = $result->screen_name;
-            $data->first_name = $result->name;
-            $data->password = Hash::make($request_token);
-            $data->activated = 1;
-       
-            $data->save();
-        }
-    }
-
-    /**
      * Get Twitter-friends of the current logged in user
      * 
      * @return mixed
      */
-    public function getFriends() {    
-        if ( Sentry::check()){
-            // get ID of current logged in user
-            $user_id = Auth::user()->id;
-            dd($user_id);
-
+    public function getFriends($user_id) {    
             // check if user is logged in with Twitter
             $results = DB::select('select * from users where id = ? and provider = "twitter"', array($user_id));
 

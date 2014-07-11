@@ -6,7 +6,7 @@
     |   
     |   Access resources of the requested provider
     | 
-    |   Route: "irail.dev/{provider}/getFriends"
+    |   Route: "irail.dev/resource/{provider}/getFriends"
     |--------------------------------------------------------------------------
  */
 class OAuthResourceController extends BaseController {
