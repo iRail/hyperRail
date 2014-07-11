@@ -37,7 +37,7 @@
                     <?php
                     if ($station['delay'] > 0){
                         echo "<p class='label label-warning label-lg'>+" . ($station['delay']/60) . "' " . Lang::get('client.delay') . '</p>';
-                    }   
+                    }
                     if (is_array($station['delay']) && sizeof($station['delay'])>1) {
                         echo "<p class='label label-warning label-lg'>" . "cancelled" . " </p>";
                     }
@@ -47,12 +47,12 @@
                         $departure = str_replace(":", "%3A", $departure);
 
                         if (!CheckinController::isAlreadyCheckedIn($departure, Sentry::getUser())) {
-                            echo '<a href="/checkin/'.$departure.'" class="label label-success label-lg" style="margin-left: 20px;"">Check in</a>';
+                            echo '<a href="/checkin?departure='.$departure.'" class="label label-success label-lg" style="margin-left: 20px;"">Check in</a>';
                         } else {
-                            echo '<a href="/checkout/'.$departure.'" class="label label-warning label-lg" style="margin-left: 20px;"">Check out</a>';
+                            echo '<a href="/checkout?departure='.$departure.'" class="label label-warning label-lg" style="margin-left: 20px;"">Check out</a>';
                         }
                     }
-                    ?>			
+                    ?>
                     <br/>
                     <br/>
                     <p class="h2">{{Lang::get('client.platform')}} {{$station['platform']}}</p>
