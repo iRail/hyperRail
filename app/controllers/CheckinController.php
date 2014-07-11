@@ -7,21 +7,39 @@ class CheckinController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function postIndex()
+	public function index()
 	{
-		if(Request::isJson()){
-			$checkin = new Checkin;
-			$data = Request::getContent();
-			return json_decode($data);
 
+       	if (Sentry::check()) {
+			$user = Sentry::getUser();
+			$checkins = Checkin::all();
+			$data = null;
+			dd($checkins);
 		}
-		return Response::make("Bad Request", 400);
 
+        switch ($val){
+            case "application/json":
+            case "application/ld+json":
+            	if (Sentry::check()) {
+            		$data = json_encode($data);
+            		return Response::make($data, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
+            	}
+            	return Response::make("Unauthorized Access", 403);
+            break;
+            case "text/html":
+            default:
+				return View::make('checkins.index');
+            break;
+		}
 	}
 
-	public function getIndex()
+	/**
+	 * Display a listing of resources of an id
+	 *
+	 * @return  response
+	 */
+	public function show($id)
 	{
-
 		//TODO: remove code duplication and put this in BaseController
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
@@ -33,32 +51,19 @@ class CheckinController extends BaseController {
             $val = $result->getValue();
         }
 
-       	if (Sentry::check()) {
-			$user = Sentry::getUser();
-			$entries = DB::table('checkins')->get();
-			$data = array();
-
-			foreach ($entries as $entry) {
-				if ($entry->user_id == $user->id) {
-					array_push($data, $entry);
-				}
-			}
-			$data = json_encode($data);
-		}
-
-        switch ($val){
+		$checkins = Checkin::where('user_id', '=', $id)->get()->toJson();
+		switch ($val){
             case "application/json":
             case "application/ld+json":
-            	if (Sentry::check()) {
-            		return Response::make($data, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
-            	}
-            	return Response::make("Unauthorized Access", 403);
+            	return Response::make($checkins, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
             break;
             case "text/html":
             default:
-				return View::make('checkins.index');
+            	return View::make('checkins.show')->with('checkins', $checkins);
             break;
 		}
+
+
 	}
 
 
@@ -112,8 +117,5 @@ class CheckinController extends BaseController {
 	public static function isAlreadyCheckedIn($departure, $user) {
 		return (count(Checkin::where('user_id', $user->id)->where('departure', $departure)->first()) > 0);
 	}
-
-
-
 
 }

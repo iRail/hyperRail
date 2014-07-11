@@ -7,7 +7,8 @@
         <div id="main">
             @include('core.navigation')
             <div class="container">
-
+				<div>
+				</div>
             </div>
         </div>
     </div>
