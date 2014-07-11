@@ -16,7 +16,7 @@ class TwitterProvider implements IOAuthProvider{
      * @return mixed
      */
     public function getLogin() {
-        $twitterService = OAuth::consumer("Twitter","irail.dev");
+        $twitterService = OAuth::consumer("Twitter","irail.dev/oauth/twitter");
 
         // get data from input
         $code = Input::get('oauth_token');
@@ -46,7 +46,7 @@ class TwitterProvider implements IOAuthProvider{
             $token = $twitterService->requestRequestToken();
 
             // get twitterService authorization
-            $url = $twitterService->getAuthorizationUri(array('oauth_token' => $token));
+            $url = $twitterService->getAuthorizationUri(array('oauth_token' => $token->getRequestToken()));
 
             header('Location: ' . (string) $url);
             die();
