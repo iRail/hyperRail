@@ -16,21 +16,18 @@ class RouteController extends \BaseController {
         if (isset($result)) {
             $val = $result->getValue();
         }
-        
+
         switch ($val){
-            case "text/html":
-            if (Sentry::check()) {
-                return Response::view('admin.index')->header('Content-Type', "text/html")->header('Vary', 'accept');
-            } else {
-                return Response::view('route.planner')->header('Content-Type', "text/html")->header('Vary', 'accept');
-            }
-                break;
             case "application/json":
                 return Response::make($this::getJSON())->header('Content-Type', "application/json")->header('Vary', 'accept');
                 break;
             case "text/html":
             default:
-                return Response::view('route.planner')->header('Content-Type', "text/html")->header('Vary', 'accept');
+                if (Sentry::check()) {
+                    return Response::view('admin.index')->header('Content-Type', "text/html")->header('Vary', 'accept');
+                } else {
+                    return Response::view('route.planner')->header('Content-Type', "text/html")->header('Vary', 'accept');
+                }
                 break;
         }
     }
@@ -52,10 +49,10 @@ class RouteController extends \BaseController {
                 $timeSel = "depart";
             }
             $lang = Config::get('app.locale');
-            
+
             $fromId = str_replace("http://irail.be/stations/NMBS/","",$from);
             $toId = str_replace("http://irail.be/stations/NMBS/","",$to);
-            
+
             try{
                 $json = file_get_contents('http://api.irail.be/connections/?to=' . $toId . '&from=' . $fromId . '&date=' . $date . '&time=' . $time . '&timeSel=' . $timeSel . '&lang=' . $lang . '&format=json');
                 return trim($json);
@@ -66,7 +63,7 @@ class RouteController extends \BaseController {
         } else {
             // Show the HYDRA JSON-LD for doing a request to the right URI
             /** Structure this RDF as follows (early draft):
-<https://irail.be/route> 
+<https://irail.be/route>
     void:uriLookupEndpoint "https://irail.be/route{?from,to}";
     hydra:search _:route.
 _:route hydra:template "https://irail.be/route{?from,to}";
@@ -79,8 +76,11 @@ _:to hydra:variable "to" ;
     hydra:property <http://semweb.mmlab.be/ns/rplod/stop> .
 
              */
-            
+
         }
     }
+
+
+    
 
 }
