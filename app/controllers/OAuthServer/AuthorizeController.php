@@ -46,7 +46,12 @@ class AuthorizeController extends BaseController
         }
         // If logged in, ask to authorize 
         else {
-            return View::make('tokenform')->with('url', $url);
+            // application name from database corresponding with the client_id
+            $results = DB::select('select * from oauth_clients where client_id = ?', array($client_id))[0];
+
+            $appName = $results->application_name;
+
+            return View::make('tokenform')->with('url', $url)->with('appName',$appName);
         }
     }
 
