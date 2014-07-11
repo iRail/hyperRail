@@ -19,7 +19,6 @@
 
 
                 @if (Sentry::check())
-                    <h1>hello</h1>
                     <li><a href="{{ URL::to('logout') }}"><i class="fa fa-sign-out fa-12"></i> {{Lang::get('client.log_out')}}</a></li>
                 @else
                     <li><a href="{{ URL::to('login') }}"><i class="fa fa-sign-in fa-12"></i> {{Lang::get('client.log_in')}}</a></li>
