@@ -59,7 +59,11 @@ Route::get('/{provider}/getFriends', 'OAuthResourceController@getFriends');
 
 // Adding a check in
 Route::get('checkin', 'CheckinController@store');
-Route::get('checkout', 'CheckinController@delete');
+Route::get('checkout', 'CheckinController@destroy');
+
+// displaying train diary
+Route::post('/checkins', 'CheckinController@postIndex');
+Route::get('/checkins', 'CheckinController@getIndex');
 
 /*
 |--------------------------------------------------------------------------

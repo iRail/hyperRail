@@ -1,4 +1,7 @@
 @extends('layouts.default')
+@section('header')
+    @parent
+@stop
 @section('content')
 <div class="container">
     <br/>

@@ -69,8 +69,8 @@ return array(
     "username" => "Username",
     "password" => "Password",
     "noAccount" => "Not yet an account",
-    "wrongUsernameOrPassword" => "Wrong username or password", 
-    "userAlreadyExists" => "This user already exists", 
+    "wrongUsernameOrPassword" => "Wrong username or password",
+    "userAlreadyExists" => "This user already exists",
     "err404_FirstParagraph" => "We're so sorry!",
     "err404_SecondParagraph" => "Something went wrong on our servers",
     "go_back" => "Go back",
@@ -113,5 +113,6 @@ return array(
     "ofStation" => "Select station",
     "to_optionalStation" => "Click here for destination (optional)",
     "refreshBoard" => "Refresh",
-    "marketLink" => "Download the official app"
+    "marketLink" => "Download the official app",
+    "traveldiary" => "Travel Diary"
 );

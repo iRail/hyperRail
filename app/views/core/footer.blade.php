@@ -12,3 +12,4 @@
     }(document, 'script'));
     $("[data-toggle='tooltip']").tooltip();
 </script>
+<script src="{{ URL::asset('builds/js/scripts.js') }}"></script>

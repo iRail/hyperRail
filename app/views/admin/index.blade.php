@@ -1,61 +1,61 @@
-<!DOCTYPE html>
-<html lang="{{Config::get('app.locale');}}" ng-app="irailapp" ng-controller="PlannerCtrl" manifest=".appcache">
-@include('core.head')
-<body>
-    <div class="wrapper">
-        <div id="main">
-            @include('core.navigation')
-            <div class="container">
-                <div class="row routeplanner view1" ng-show="planning">
-                    <div class="col-sm-4">
-                        <script type="text/ng-template" id="customTemplate.html">
-                            <a>
-                                <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
-                            </a>
-                        </script>
-                        <div class="form-group">
-                            <label for="departure">{{Lang::get('client.fromStation')}}</label>
-                            <div class="input-group">
-                                <input type="text" ng-model="departure" placeholder="{{Lang::get('client.typeFromStation')}}" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control input-lg" tabindex="1">
-                                <a class="input-group-addon" ng-show="departure.id" href="stations/NMBS/@{{departure.id}}" target="_blank" data-toggle="tooltip" data-placement="left" title="{{Lang::get('client.viewLiveboard')}}"><i class="fa fa-clock-o"></i></a>
-                                <span class="input-group-addon" ng-hide="departure.id"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="destination">{{Lang::get('client.toStation')}}</label>
-                            <div class="input-group">
-                                <input type="text" ng-model="destination" placeholder="{{Lang::get('client.typeToStation')}}" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" typeahead-on-select='focusOnConfirm()' class="form-control input-lg" tabindex="2">
-                                <a class="input-group-addon btn" ng-show="destination.id" href="stations/NMBS/@{{destination.id}}" target="_blank" data-toggle="tooltip" data-placement="left" title="{{Lang::get('client.viewLiveboard')}}"><i class="fa fa-clock-o"></i></a>
-                                <span class="input-group-addon" ng-hide="destination.id"></span>
-                            </div>
-                        </div>
-                        <label for="destination">{{Lang::get('client.chooseDate')}}</label>
-                        <div class="datepicker">
-                            <datepicker ng-class="time" ng-model="mydate" show-weeks="false" ></datepicker>
-                        </div>
-                        <br/>
+@extends('layouts.default')
+@section('header')
+@parent
+@stop
+@section('content')
+<div id="main" ng-app="irailapp" ng-controller="PlannerCtrl">
+    @include('core.navigation')
+    <div class="container">
+        <div class="row routeplanner view1" ng-show="planning">
+            <div class="col-sm-4">
+                <script type="text/ng-template" id="customTemplate.html">
+                    <a>
+                        <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+                    </a>
+                </script>
+                <div class="form-group">
+                    <label for="departure">{{Lang::get('client.fromStation')}}</label>
+                    <div class="input-group">
+                        <input type="text" ng-model="departure" placeholder="{{Lang::get('client.typeFromStation')}}" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control input-lg" tabindex="1">
+                        <a class="input-group-addon" ng-show="departure.id" href="stations/NMBS/@{{departure.id}}" target="_blank" data-toggle="tooltip" data-placement="left" title="{{Lang::get('client.viewLiveboard')}}"><i class="fa fa-clock-o"></i></a>
+                        <span class="input-group-addon" ng-hide="departure.id"></span>
                     </div>
-                    <div class="col-sm-4">
-                        <label for="destination">{{Lang::get('client.chooseTime')}}</label>
-                        <select class="form-control input-lg timepicker" ng-model="timeoption">
-                            <option value="depart">{{Lang::get('client.departureAtHour')}}</option>
-                            <option value="arrive">{{Lang::get('client.arrivalAtHour')}}</option>
-                        </select>
-                        <timepicker ng-model="mytime" ng-change="changed()" minute-step="15" show-meridian="ismeridian"></timepicker>
-                        <br/>
-                        <input type="submit" id="confirm" class="btn btn-default btn-lg btn-primary btn-wide" ng-click="save()" value="{{Lang::get('client.confirmSearch')}}" ng-hide="departure == destination">
-                        <div class="alert alert-danger" ng-show="data === null">
-                            <p ng-show="stationnotfound === true">{{Lang::get('client.errorCheckInput')}}</p>
-                        </div>
-                        <div class="alert alert-info" ng-show="departure == destination && departure != null && destination != null">
-                           <p>{{Lang::get('client.stationsIdentical')}}</p>
-                       </div>
-                   </div>
-                   <div class="col-sm-4">
-                      <div class="panel panel-info">
-                        <div class="panel-heading">What are your friends doing?</div>
-                        <div class="panel-body">
-                           <ul class="list-group">
+                </div>
+                <div class="form-group">
+                    <label for="destination">{{Lang::get('client.toStation')}}</label>
+                    <div class="input-group">
+                        <input type="text" ng-model="destination" placeholder="{{Lang::get('client.typeToStation')}}" typeahead="station as station.name for station in stations.stations | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" typeahead-on-select='focusOnConfirm()' class="form-control input-lg" tabindex="2">
+                        <a class="input-group-addon btn" ng-show="destination.id" href="stations/NMBS/@{{destination.id}}" target="_blank" data-toggle="tooltip" data-placement="left" title="{{Lang::get('client.viewLiveboard')}}"><i class="fa fa-clock-o"></i></a>
+                        <span class="input-group-addon" ng-hide="destination.id"></span>
+                    </div>
+                </div>
+                <label for="destination">{{Lang::get('client.chooseDate')}}</label>
+                <div class="datepicker">
+                    <datepicker ng-class="time" ng-model="mydate" show-weeks="false" ></datepicker>
+                </div>
+                <br/>
+            </div>
+            <div class="col-sm-4">
+                <label for="destination">{{Lang::get('client.chooseTime')}}</label>
+                <select class="form-control input-lg timepicker" ng-model="timeoption">
+                    <option value="depart">{{Lang::get('client.departureAtHour')}}</option>
+                    <option value="arrive">{{Lang::get('client.arrivalAtHour')}}</option>
+                </select>
+                <timepicker ng-model="mytime" ng-change="changed()" minute-step="15" show-meridian="ismeridian"></timepicker>
+                <br/>
+                <input type="submit" id="confirm" class="btn btn-default btn-lg btn-primary btn-wide" ng-click="save()" value="{{Lang::get('client.confirmSearch')}}" ng-hide="departure == destination">
+                <div class="alert alert-danger" ng-show="data === null">
+                    <p ng-show="stationnotfound === true">{{Lang::get('client.errorCheckInput')}}</p>
+                </div>
+                <div class="alert alert-info" ng-show="departure == destination && departure != null && destination != null">
+                    <p>{{Lang::get('client.stationsIdentical')}}</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">What are your friends doing?</div>
+                    <div class="panel-body">
+                        <ul class="list-group">
                             <li class="list-group-item">
                                 <strong>
                                     Brecht Van de Vyvere:
@@ -211,16 +211,11 @@
                             <a href="/favorite/" class="btn btn-info">check in</a>
                         </li>
 
+
                     </ul>
                 </div>
             </div>
         </div>
-
-        <a class="twitter-timeline"  href="https://twitter.com/iRail"  data-widget-id="487216852498513921">Tweets van @iRail</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-
-
         <div class="visible-print">
             <br/>
             <p>
@@ -242,12 +237,9 @@
         <a class="btn btn-default btn-wide btn-lg btn-botm" ng-click="resetplanner($event)"><i class="fa fa-undo"></i> {{Lang::get('client.planAnother')}}</a>
     </div>
 </div>
-</div>
-</div>
-</div>
-@include('core.footer')
+@stop
+@section('pageScripts')
 <script>
     $("[data-toggle='tooltip']").tooltip();
 </script>
-</body>
-</html>
+@stop
