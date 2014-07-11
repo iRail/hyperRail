@@ -25,7 +25,8 @@ class TwitterProvider implements IOAuthProvider{
         if (!empty($code)) {
             // This was a callback request from Twitter, get the token
             $token = $twitterService->requestAccessToken($code, $verifier);
-            $token = $token->getRequestTokenSecret();
+            $request_token = $token->getRequestTokenSecret();
+            $access_token = $token->getAccessToken();
 
             // Send a request with it
             $result = json_decode($twitterService->request('account/verify_credentials.json'));
@@ -36,10 +37,10 @@ class TwitterProvider implements IOAuthProvider{
                 $data = new User;
                 
                 $data->provider = 'twitter';
-                $data->token = $token;
+                $data->token = $access_token;
                 $data->email = $result->screen_name;
                 $data->first_name = $result->name;
-                $data->password = Hash::make($token);
+                $data->password = Hash::make($request_token);
                 $data->activated = 1;
            
                 $data->save();
@@ -47,7 +48,7 @@ class TwitterProvider implements IOAuthProvider{
                
                 $credentials = array(
                     'email' => $result->screen_name,
-                    'password' => $token
+                    'password' => $request_token
                 );
 
                return $credentials;
