@@ -33,3 +33,19 @@ extra to-do:
 Pieter: er is geen check meer of access_token vervallen is (normaal na 30sec al door gebruik van refreshtokens).
 (In OAuth2\Controller\ResourceController.php : getAccessTokenData())
 Later kijken voor refresh_tokens weer te gebruiken voor veiligheid.
+
+Workflow authentication OAuth-resources:
+----------------------------------------
+
+- Server ontvangt een token -> checken of die cliënt geauthenticeerd is om gegevens van mensen met waar ze ingechecked zijn op te vragen.
+
+- Om niet een compleet authenticatiesysteem te schrijven, willen we gebruik maken van Sentry:
+De OAuth-cliënt moet daarom ook als User-record opgeslagen worden in de users-table van Sentry.
+Dan kunnen we volgende functie gebruiken:
+	$user = Sentry::authenticate($credentials, false);
+Credentials: email->testclient paswoord->token
+
+Vervolgens een extra kolom invoegen bij oauth_clients om bij te houden of de cliënt bevoegd is om alle checkin-gegevens op te vragen. Indien bevoegd, gegevens vrijgeven.
+
+
+

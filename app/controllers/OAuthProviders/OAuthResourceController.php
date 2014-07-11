@@ -6,20 +6,19 @@
     |   
     |   Access resources of the requested provider
     | 
-    |   Route: "irail.dev/{provider}/{id}/friends"
+    |   Route: "irail.dev/{provider}/getFriends"
     |--------------------------------------------------------------------------
  */
 class OAuthResourceController extends BaseController {
 
-	public function getFriends($provider, $id){
+	public function getFriends($provider){
 		switch ($provider) {
-            		case "google":
-            			$prov = new GoogleProvider;
-            		break;
-                    case "twitter":
-                        $prov = new TwitterProvider;
-                    break;  
-            	}
+            case "twitter":
+                $prov = new TwitterProvider;
+            break;  
+    	}
+
+        $prov->getFriends();
 
 	}
 

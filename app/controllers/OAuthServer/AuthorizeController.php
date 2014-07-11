@@ -40,7 +40,14 @@ class AuthorizeController extends BaseController
             $url .= '&';
         }
 
-        return View::make('tokenform')->with('url', $url);
+        // If user is not logged in, redirect to login
+        if (!Sentry::check()) {
+            return Redirect::to('login');
+        }
+        // If logged in, ask to authorize 
+        else {
+            return View::make('tokenform')->with('url', $url);
+        }
     }
 
     public function postAuthorize(){
@@ -60,7 +67,6 @@ class AuthorizeController extends BaseController
         $is_authorized = ($_POST['authorized'] === 'Yes');
         $server->handleAuthorizeRequest($request, $response, $is_authorized);
         if ($is_authorized) {
-            // url = redirect_uri#access_token=...&otherparameters
             $url = $response->getHttpHeader('Location');
             // parse the access_token
             $access_token_length = strpos($url,'&') - strpos($url, '=')-1;
@@ -69,8 +75,20 @@ class AuthorizeController extends BaseController
             $redirect_uri = substr($url, 0, strpos($url,'#'));
             $returnpage = (string) $redirect_uri . '?access_token=' . (string) $access_token;
 
+
+            // access_token is already placed in oauth_clients table with the corresponding client_id
+            $results = DB::select('select * from oauth_access_tokens where access_token = ?',array($access_token));
+
+            // get current logged in user
+            $user = Sentry::getUser();
+
+            // update user-record with access_token
+            DB::update('update users set access_token = ? where id = ?', array($access_token, $user->id));            
+
             header('Location: ' . $returnpage);
             die();
         }                   
     }
+
+    
 }
