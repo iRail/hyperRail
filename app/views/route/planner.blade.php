@@ -161,13 +161,10 @@
                                         <strong>@{{ conn.arrival.station}}</strong>
                                     </span>
                                     </li>
-
                                     <li class="list-group-item" style="text-align: right;">
-                                        <a href="/favorite/" class="btn btn-info">check in</a>
+                                        <a href='#' ng-click="checkin($event)" class="btn btn-info" data-id="@{{connections.indexOf(conn)}}">check in (@{{connections.indexOf(conn)}})</a>
                                     </li>
                                     <li class="list-group-item">
-                                        test=
-                                        @{{ conn }}
                                     </li>
 
                                     
@@ -206,5 +203,7 @@
 </script>
 </body>
 </html>
+
+
 
 @stop
