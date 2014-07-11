@@ -55,7 +55,6 @@ class IRailLoginController extends BaseController {
 		$credentials = array(
 			'email' => Input::get('email'),
 			'password' => Input::get('password'),
-
 			);
 
 		try{
@@ -64,6 +63,7 @@ class IRailLoginController extends BaseController {
 
 			if($user)
 			{
+    			$user->save();
 				return Redirect::to('/route');
 			}
 

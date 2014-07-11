@@ -92,12 +92,12 @@ To make an oauth_client, execute following example SQL-command:
 INSERT INTO oauth_clients (client_id, client_secret, redirect_uri) VALUES ("testclient", "testpass", "http://fake/");
 
 A token can easily be asked by going to:
-https://irail.be/authorize?response_type=token&client_id="yourid"&redirect_uri="yoursite"&state=xyz
+https://irail.be/authorize?response_type=token&client_id={yourid}&redirect_uri={yoursite}&state=xyz
 
 This will redirect you to the configured redirect_uri. The token can be parsed from the query-parameter "access_token".
 
 Now you can access the iRail-resources with this token:
-https://irail.be/resource?access_token="yourtoken"
+https://irail.be/resource?access_token={yourtoken}
 
 ### Thanks to
 

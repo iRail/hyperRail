@@ -55,7 +55,7 @@ Route::group(array('before' => 'auth'), function(){
 });
 
 // Social media-providers API (currently only Twitter)
-Route::get('/{provider}/{id}/friends', 'OAuthResourceController@getFriends');
+Route::get('/{provider}/getFriends', 'OAuthResourceController@getFriends');
 
 // Adding a check in
 Route::get('checkin', 'CheckinController@store');

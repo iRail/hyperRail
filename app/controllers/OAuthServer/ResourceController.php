@@ -16,19 +16,24 @@ class ResourceController extends BaseController
         $request = OAuth2\Request::createFromGlobals();
         $response = new OAuth2\Response();
 
-        // Verify that the access_token is not expired
+        // Verify that the access_token is valid
         if (!$server->verifyResourceRequest($request)) {
             $server->getResponse()->send();
             die;
-        } else {
-            //echo json_encode(array('success' => true, 'message' => 'You accessed my APIs!'));
-            // return a fake API response - not that exciting
-            // @TODO return something more valuable, like the name of the logged in user
+        } 
+        // response resource of the user corresponding with that token
+        else {
+            $access_token = Input::get('access_token');
+
+            $userarray = DB::select('select * from users where access_token = ?',array($access_token));
+
+            $user = $userarray[0];
+
             $api_response = array(
-                'friends' => array(
-                    'Sam',
-                    'Brecht',
-                    'Michiel'
+                'userdata' => array(
+                    $user->id,
+                    $user->first_name,
+                    $user->last_name
                 )
             );
             return json_encode($api_response);
