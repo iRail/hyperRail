@@ -1,6 +1,9 @@
 @extends('layouts.default')
+@section('header')
+    @parent
+@stop
 @section('content')
-    <div id="main">
+    <div id="main"  ng-app="irailapp" ng-controller="PlannerCtrl">
         @include('core.navigation')
         <div class="container">
             <div class="row routeplanner view1" ng-show="planning">
@@ -170,7 +173,7 @@
                                         @{{ conn }}
                                     </li>
 
-                                    
+
 
                                 </ul>
                             </div>
@@ -199,12 +202,9 @@
             </div>
         </div>
     </div>
-</div>
-    @include('core.footer')
-<script>
-    $("[data-toggle='tooltip']").tooltip();
-</script>
-</body>
-</html>
-
+@stop
+@section('pageScripts')
+    <script>
+        $("[data-toggle='tooltip']").tooltip();
+    </script>
 @stop
