@@ -31179,6 +31179,64 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
   };
 
   /**
+   * Save the entered data and request
+   */
+  $scope.checkin = function (e) {
+    var con = $scope.connections[$(e.target).data('id')];
+
+    var veh = con['departure']['vehicle'].split(".");
+    var vehicle = veh[veh.length-1];
+    // Make url this = $scope.departure['@id']
+ 
+    $http({method: 'GET', url: 'https://irail.dev/stations/NMBS/008833209', headers: {'Accept': 'application/ld+json'}}).
+    success(function(data, status, headers, config) {
+      // this callback will be called asynchronously
+      // when the response is available
+
+      //scheduledDepartureTime: "2014-07-10T15:12:00+02:00"
+      //console.log($scope.departure);
+      
+      for (var i = 0; i < data['@graph'].length; i++) {
+        
+        if (data['@graph'][i]['routeLabel'].replace(' ', '') == vehicle) {
+          var departure = data['@graph'][i];
+          break;
+        }
+        
+      }
+        console.log(departure);
+
+        /**
+          Send post request with complete URI of departure and id of user for storage in DB
+        */
+        var request = $http({
+                    method: "post",
+                    headers: {'content-type': 'application/json'},
+                    url: "/checkins",
+                    data: {
+                        id: 1,
+                        uri: "http://test.be"
+                    }
+                });
+                // Store the data-dump of the FORM scope.
+                request.success(
+                    function( html ) {
+                        console.log("succes!!!!");
+                    }
+                );
+
+    }).
+    error(function(data, status, headers, config) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+      console.log('failure');
+    });
+
+    
+  
+  };
+
+  /**
    * Resets the route planner to default values
    */
   $scope.resetplanner = function (e) {

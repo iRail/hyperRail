@@ -43,13 +43,11 @@
                     }
                     if (Sentry::check()) {
                         $departure = $station['@id'];
-                        $departure = str_replace("/", "%2F", $departure);
-                        $departure = str_replace(":", "%3A", $departure);
 
                         if (!CheckinController::isAlreadyCheckedIn($departure, Sentry::getUser())) {
-                            echo '<a href="/checkin/'.$departure.'" class="label label-success label-lg" style="margin-left: 20px;"">Check in</a>';
+                            echo '<a href="/checkin?departure='.$departure.'" class="label label-success label-lg" style="margin-left: 20px;"">Check in</a>';
                         } else {
-                            echo '<a href="/checkout/'.$departure.'" class="label label-warning label-lg" style="margin-left: 20px;"">Check out</a>';
+                            echo '<a href="/checkout?departure='.$departure.'" class="label label-warning label-lg" style="margin-left: 20px;"">Check out</a>';
                         }
                     }
                     ?>			
