@@ -40,15 +40,27 @@ class ResourceController extends BaseController
                 case "checkins":
                     $controller = new CheckinController;
 
+                    $url = 'https://irail.dev/'. $type . '/' . $user_id;
+                    //$data = array('key1' => 'value1', 'key2' => 'value2');
+
+                    // use key 'http' even if you send the request to https://...
+                    $options = array(
+                        'http' => array(
+                            'header'  => "accept: application/json",
+                            'method'  => 'GET',
+                            //'content' => http_build_query($data),
+                            ),
+                        );
+                    $context  = stream_context_create($options);
+                    $result = file_get_contents($url, false, $context);
+                    
                     // response resource of the user corresponding with that token
-                    return json_encode($controller.getIndex($user_id));
+                    return $result;
                 break;
 
 
-
-
-                default
-                    return "No correct parameter given. irail.dev/resource/checkins" ;
+                default:
+                    return Response::make("No correct parameter given. irail.dev/resource/checkins") ;
                 break;  
         }
         

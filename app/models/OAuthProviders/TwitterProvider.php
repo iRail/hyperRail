@@ -84,7 +84,7 @@ class TwitterProvider implements IOAuthProvider{
             //$result2 = json_decode($twitterService->request('friends/list.json?cursor=-1&screen_name=brechtvdv&skip_status=true&include_user_entities=false'));
               
             dd($result2);   
-        }  
+        
     } 
 
 } 
