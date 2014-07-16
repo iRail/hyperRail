@@ -12,7 +12,7 @@
             <h1><strong>iRail.be</strong></h1>
             <p class="h2">Welcome. Bonjour. Hallo.</p>
             <hr/>
-            <p>Gelieve uw taal te kiezen. Choissisez votre langue s.v.p. Please choose your language.</p>
+            <p>Gelieve uw taal te kiezen. Choisissez votre langue s.v.p. Please choose your language.</p>
             <hr/>
             <ul class="ul-lg">
                 <li><a href="route?lang=nl">Nederlands</a></li>
