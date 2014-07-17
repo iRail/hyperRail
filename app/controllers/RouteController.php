@@ -7,7 +7,7 @@ class RouteController extends \BaseController {
 
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
-        $priorities = array('text/html', 'application/json', '*/*');
+        $priorities = array('application/json','text/html', '*/*');
 
         $result = $negotiator->getBest($acceptHeader, $priorities);
 
@@ -18,12 +18,12 @@ class RouteController extends \BaseController {
         }
         
         switch ($val){
-            case "application/json":
-                return Response::make($this::getJSON())->header('Content-Type', "application/json")->header('Vary', 'accept');
-                break;
             case "text/html":
-            default:
                 return Response::view('route.planner')->header('Content-Type', "text/html")->header('Vary', 'accept');
+                break;
+            case "application/json":
+            default:
+                return Response::make($this::getJSON())->header('Content-Type', "application/json")->header('Vary', 'accept');
                 break;
         }
     }
