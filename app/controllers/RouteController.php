@@ -7,7 +7,7 @@ class RouteController extends \BaseController {
 
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
-        $priorities = array('text/html', 'application/json', '*/*');
+        $priorities = array('application/json','text/html', '*/*');
 
         $result = $negotiator->getBest($acceptHeader, $priorities);
 

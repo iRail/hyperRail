@@ -8,7 +8,7 @@ class StationController extends \BaseController {
         //TODO: remove code duplication and put this in BaseController
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
-        $priorities = array('text/html', 'application/json', '*/*');
+        $priorities = array('application/json','text/html','*/*');
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = "text/html";
         //unless the negotiator has found something better for us
@@ -36,7 +36,7 @@ class StationController extends \BaseController {
     public function liveboard($id){
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
-        $priorities = array('text/html', 'application/json', '*/*');
+        $priorities = array('application/json', 'text/html', '*/*');
         $result = $negotiator->getBest($acceptHeader, $priorities);
 
         $val = "text/html";
@@ -88,7 +88,7 @@ class StationController extends \BaseController {
     public function specificTrain($station_id, $liveboard_id){
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
-        $priorities = array('text/html', 'application/json', '*/*');
+        $priorities = array('application/json', 'text/html', '*/*');
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = $result->getValue();
         switch ($val){
