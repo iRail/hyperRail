@@ -27,6 +27,8 @@ app/config/production
 app/storage/.gitkeep
 app/storage/*
 _ide_helper.php
+app/config/packages/artdarek
+app/config/packages/cartalyst
 
 # Dotfiles
 .DS_Store
