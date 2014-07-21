@@ -2,7 +2,8 @@
 
 class ResourceController extends BaseController
 {
-    /**
+    /** NOT USED ANYMORE
+     *
      * This is called by the client app once the client has obtained an access
      * token for the current user.  If the token is valid, the resource (in this
      * case, the "checkins" of the current user) will be returned to the client

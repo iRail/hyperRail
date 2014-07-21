@@ -179,7 +179,7 @@ class StationController extends \BaseController {
                                 "@type" => "@id"
                             ),
                         );
-                        return array("@context" => $context, "@graph" => $graph);
+                        return Response::make(array("@context" => $context, "@graph" => $graph))->header('Access-Control-Allow-Origin', 'https://irail.dev');
                     }
                 }
                 // If no match is found, attempt to look in the archive
@@ -229,7 +229,7 @@ class StationController extends \BaseController {
                 $stationDataFallback = json_decode(JsonLD::toString($compacted, true));
                 foreach ($stationDataFallback->{'@graph'} as $graph){
                     if (strpos($graph->{'@id'},$urlToFind) !== false) {
-                        return array("@context" => $context, "@graph" => $graph);
+                        return Response::make(array("@context" => $context, "@graph" => $graph))->header('Access-Control-Allow-Origin', 'https://irail.dev');
                     }
                 }
                 break;
