@@ -89,7 +89,7 @@ port: 3306
 First of all your application has to be registered in our database with a client-id, clientsecret and redirect-url of your application. Contact us if you want to use our API.
 
 To make an oauth_client, execute following example SQL-command:
-INSERT INTO oauth_clients (client_id, client_secret, redirect_uri) VALUES ("testclient", "testpass", "http://fake/");
+INSERT INTO oauth_clients (client_id, client_secret, redirect_uri, application_name) VALUES ("testclient", "testpass", "http://fake/", "testapplication");
 
 A token can easily be asked by going to:
 https://irail.be/authorize?response_type=token&client_id={yourid}&redirect_uri={yoursite}&state=xyz
