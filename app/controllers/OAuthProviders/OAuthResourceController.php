@@ -2,7 +2,7 @@
 
  /*
     |--------------------------------------------------------------------------
-    |   OAuthResourceController
+    |   OAuthResourceController - todo
     |   
     |   Access resources of the requested provider
     | 
