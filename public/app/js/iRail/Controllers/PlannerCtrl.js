@@ -132,7 +132,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
 
   /**
    * Save the entered data and request
-   */
+   *
   $scope.checkin = function (e) {
     var con = $scope.connections[$(e.target).data('id')];
 
@@ -140,7 +140,8 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
     var vehicle = veh[veh.length-1];
     // Make url this = $scope.departure['@id']
  
-    $http({method: 'GET', url: 'https://irail.dev/stations/NMBS/008833209', headers: {'Accept': 'application/ld+json'}}).
+
+    $http({method: 'GET', url: $scope.departure['@id'].replace('.be', '.dev').replace('http://', 'https://'), headers: {'Accept': 'application/ld+json'}}).
     success(function(data, status, headers, config) {
       // this callback will be called asynchronously
       // when the response is available
@@ -149,25 +150,25 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
       //console.log($scope.departure);
       
       for (var i = 0; i < data['@graph'].length; i++) {
-        
         if (data['@graph'][i]['routeLabel'].replace(' ', '') == vehicle) {
-          var departure = data['@graph'][i];
+          var dep = data['@graph'][i];
           break;
         }
         
       }
-        console.log(departure);
+        //console.log("DEP = " + dep);
 
         /**
           Send post request with complete URI of departure and id of user for storage in DB
-        */
+          Currently we use get but in future switch to post
+        *
         var request = $http({
                     method: "post",
                     headers: {'content-type': 'application/json'},
                     url: "/checkins",
                     data: {
-                        id: 1,
-                        uri: "http://test.be"
+                        departure: dep['@id'],
+                        url: "https://irail.dev/checkins/
                     }
                 });
                 // Store the data-dump of the FORM scope.
@@ -176,6 +177,36 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
                         console.log("succes!!!!");
                     }
                 );
+
+        
+
+
+        /**
+          Ugly way to solve this problem but due to lack of time, this is the way we do it
+          We will solve this in future
+        
+
+        var request = $http({
+                    method: "get",
+                    url: "https://irail.dev/checkin?departure=" + dep['@id']
+                });
+                // Store the data-dump of the FORM scope.
+                request.success(
+                    function( html ) {
+                        console.log("succes!!!!");
+                    }
+                );
+
+                // Change css class and text
+                $(e.target).toggleClass('label-warning');
+                if ($(e.target)[0]['innerHTML'] == 'Check in') {
+                  $(e.target)[0]['innerHTML'] = 'Check out';
+                } else {
+                  $(e.target)[0]['innerHTML'] = 'Check in';
+                }
+
+        
+
 
     }).
     error(function(data, status, headers, config) {
@@ -188,6 +219,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
   
   };
 
+*/
   /**
    * Resets the route planner to default values
    */

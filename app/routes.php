@@ -55,16 +55,17 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('/logout', 'IRailLoginController@logout');
 });
 
-// Adding a check in
-Route::get('checkin', 'CheckinController@store');
-Route::get('checkout', 'CheckinController@destroy');
 
+// Storing a check in
+Route::post('checkins', 'CheckinController@store');
 
+// Show all checkins
 Route::get('/checkins', 'CheckinController@index');
-// destroy specified resource
-//Route::get('/checkins/destroy/{departure}', 'CheckinController@destroy');
 
-//
+// Destroy specified resource
+Route::delete('/checkins/{departure}', 'CheckinController@destroy')->where('departure', '(.*)');
+
+
 
 /*
 |--------------------------------------------------------------------------

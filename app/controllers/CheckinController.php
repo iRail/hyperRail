@@ -107,7 +107,9 @@ class CheckinController extends BaseController {
 			}
 	    }
 
-	    return Redirect::to($departure);
+	    $departure = str_replace("http://", "https://", $departure);
+
+	    return Redirect::to($departure)->header('Access-Control-Allow-Origin', 'https://irail.dev');
 	}
 
 	/**
@@ -116,8 +118,7 @@ class CheckinController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public static function destroy() {
-		$departure = Input::get('departure');
+	public static function destroy($departure) {
 
 		if (!Sentry::check()) {
 			return Redirect::to('login');
@@ -126,7 +127,9 @@ class CheckinController extends BaseController {
 	    	Checkin::where('user_id', $user->id)->where('departure', $departure)->delete();
 	    }
 
-	    return Redirect::to($departure);
+	    $departure = str_replace("http://", "https://", $departure);
+
+	    return Redirect::to('/checkins/', '303')->header('Access-Control-Allow-Origin', 'https://irail.dev');
 	}
 
 	public static function isAlreadyCheckedIn($departure, $user) {
