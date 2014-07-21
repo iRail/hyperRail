@@ -15,25 +15,28 @@
                 	<div class="row results" ng-show="results">
             			<div class="col-md-12 col-sm-12">
 	                        <p class="h1">Traveldiary</strong></p>
-
-							<div class="list-group">
-	                            <a class="list-group-item" ng-repeat="checkin in checkins" ng-href="@{{checkin['departure']}}">
-	                                  <span class="container33 liveboard-list">
-	                                        <span class="platform-left" >
-	                                            <span class="badge">@{{$checkin}}</span>
-	                                        </span>
-	                                  </span>
-	                            </a>
-	                        </div>
-
-
-	                        
+	                        <p>Below you'll find a list of all trains you have taken</p>
 	                        <div class="list-group">
 	                        	@foreach ($checkins as $checkin)
-	                        		<a class="list-group-item" href="{{$checkin->departure}}">
+	                        		<a class="list-group-item" href="{{$checkin['@id']}}">
 		                                <span class="container33">
-											<p>{{$checkin}}</p>
-		                                </span>
+		                                	<span class="platform-left">
+	                                            <span class="badge">{{ $checkin['platform'] }}</span>
+	                                        </span>
+	                                        <span class="station-middle">
+	                                            <strong>
+	                                                {{ $checkin['headsign']}}
+	                                            </strong>
+	                                        </span>
+	                                        <span class="time-right">
+	                                        	{{ $checkin['scheduledDepartureTime']}}
+	                                        </span>
+	                                      	<span class="delay-right">
+		                                        <span class="delay">
+		                                        	&nbsp;&nbsp;{{ $checkin['delay']/60}}
+		                                        </span>
+	                                      	</span>
+			                            </span>
 		                            </a>
 	                        	@endforeach
 	                        </div>

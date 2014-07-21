@@ -11,7 +11,7 @@ class CheckinController extends BaseController {
 	{
 		// OAuth API
 		if(Input::has('access_token')){
-				// include our OAuth2 Server object
+			// include our OAuth2 Server object
 			require_once __DIR__.'/OAuthServer/server.php';
 
 			$request = OAuth2\Request::createFromGlobals();
@@ -21,7 +21,7 @@ class CheckinController extends BaseController {
 			if (!$server->verifyResourceRequest($request)) {
 				$server->getResponse()->send();
 				die;
-			} 
+			}
 
 			$access_token = Input::get('access_token');
 
@@ -35,49 +35,76 @@ class CheckinController extends BaseController {
 
 	        // checkins in JSON-format
 			$checkins = Checkin::where('user_id', $user->id)->get();
-
 			$val = "application/json";
-		}
-		else{
-				//TODO: remove code duplication and put this in BaseController
-			$negotiator = new \Negotiation\FormatNegotiator();
-			$acceptHeader = Request::header('accept');
-			$priorities = array('text/html', 'application/json', '*/*');
-			$result = $negotiator->getBest($acceptHeader, $priorities);
-			$val = "text/html";
-	        //unless the negotiator has found something better for us
-			if (isset($result)) {
-				$val = $result->getValue();
-			}
 
+		} else{
 			if (Sentry::check()) {
-				$user = Sentry::getUser();
-				$checkins = Checkin::where('user_id', $user->id)->get();
+				$user_id = Sentry::getUser()->id;
+				$checkins = Checkin::where('user_id', $user_id)->get();
 			} else{
-				return Redirect::to('/login');
+				return Redirect::to("/login");
 			}
 		}
 
-		// parse the departures in an array
-		$data = "[";
-		foreach($checkins as $checkin) {
-			$data .= "{ \"departure\": '". "$checkin->departure" . "'},";
+		//TODO: remove code duplication and put this in BaseController
+		$negotiator = new \Negotiation\FormatNegotiator();
+		$acceptHeader = Request::header('accept');
+		$priorities = array('text/html', 'application/json', '*/*');
+		$result = $negotiator->getBest($acceptHeader, $priorities);
+		$val = "text/html";
+        //unless the negotiator has found something better for us
+		if (isset($result)) {
+			$val = $result->getValue();
 		}
-		$data = substr_replace($data, '', -1); // to get rid of extra comma
-		$data .= "]";
+
+		if (isset($checkins[0])) {
+			// set curl options
+			$ch = curl_init();
+			$request_headers[] = 'Accept: application/json';
+	        curl_setopt($ch, CURLOPT_HTTPHEADER, $request_headers);
+	        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+	        // ignore certificate
+	        curl_setopt($ch , CURLOPT_SSL_VERIFYPEER , false );
+			curl_setopt($ch , CURLOPT_SSL_VERIFYHOST , false );
+
+			// make array to store results
+			$results = array();
+
+			// iterate over every checkin
+			foreach ($checkins as $checkin) {
+
+				// get the departure url from the checkin
+				$specificStationUrl = $checkin['original']['departure'];
+				// replace http with https
+				$specificStationUrl = substr_replace($specificStationUrl, 's', 4, 0);
+				// set url curl request
+				curl_setopt($ch, CURLOPT_URL, $specificStationUrl);
+				$r = curl_exec($ch);
+				$r = json_decode($r, true);
+				$r['@graph']['scheduledDepartureTime'] = date("H:i:s d-m-Y", strtotime($r['@graph']['scheduledDepartureTime']));
+				array_push($results, $r['@graph']);
+			}
+			curl_close($ch);
+
+			$checkins = $results;
+		} else{
+			$checkins = [];
+		}
 
 		switch ($val){
 			case "application/json":
 			case "application/ld+json":
-			if (Sentry::check()) {
-				return Response::make($data, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
-			}
-			return Response::make("Unauthorized Access", 403);
-			break;
+				if (Sentry::check()) {
+					return Response::make($checkins, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
+				}
+				return Response::make("Unauthorized Access", 403);
+				break;
 			case "text/html":
 			default:
-			return View::make('checkins.index', array('checkins' => $checkins));
-			break;
+				return View::make('checkins.index', compact('checkins'));
+				break;
 		}
 	}
 
@@ -132,7 +159,7 @@ class CheckinController extends BaseController {
 			if (!$server->verifyResourceRequest($request)) {
 				$server->getResponse()->send();
 				die;
-			} 
+			}
 
 			$access_token = Input::get('access_token');
 
