@@ -82,6 +82,17 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
     }
   };
 
+
+  $scope.getStations = function(query) {
+    return $http.get('/stations/NMBS/', {
+      params: {
+        q: query
+      }
+    }).then(function(res){
+      return res["data"]["@graph"];
+    });
+  };
+
   /**
    * Parse the results
    * @param data

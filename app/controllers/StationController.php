@@ -40,8 +40,8 @@ class StationController extends \BaseController {
             $newstations->{"@graph"} = array();
 
             // dashes are the same as spaces
-            $query = str_replace("-","[- ]",$query);
-            $query = str_replace(" ","[- ]",$query);
+            $query = str_replace("\-","[\- ]",$query);
+            $query = str_replace(" ","[\- ]",$query);
 
             foreach($stations->{"@graph"} as $station) {
                 if(preg_match('/.*'. $query . '.*/i',$station->{"name"}, $match)){
@@ -61,7 +61,7 @@ class StationController extends \BaseController {
                     }
                 }
             }
-            return json_encode($newstations);
+            return json_encode($newstations,JSON_UNESCAPED_SLASHES);
         }else{
             return File::get(app_path() . '/stations.json');
         }
