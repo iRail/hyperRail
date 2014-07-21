@@ -14,7 +14,7 @@ class StationController extends \BaseController {
         //unless the negotiator has found something better for us
         if (isset($result)) {
             $val = $result->getValue();
-        }
+        }        
 
         switch ($val){
             case "text/html":
@@ -23,11 +23,50 @@ class StationController extends \BaseController {
             case "application/json":
             case "application/ld+json":
             default:
-                return Response::make(File::get(app_path() . '/stations.json'), 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
+                return Response::make($this->getStations(Input::get("q")), 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
             break;
         }
     }
-    
+
+    private function getStations($query = "") {
+        if ($query && $query !== "") {
+            //filter the stations on name match
+            $stations = json_decode(File::get(app_path() . '/stations.json'));
+            
+            $newstations = new \stdClass;
+            //could be implemented more efficiently using REDIS if we have more data later on. For now, this will do fine.
+            $newstations->{"@id"} = $stations->{"@id"};
+            $newstations->{"@context"} = $stations->{"@context"};
+            $newstations->{"@graph"} = array();
+
+            // dashes are the same as spaces
+            $query = str_replace("\-","[\- ]",$query);
+            $query = str_replace(" ","[\- ]",$query);
+
+            foreach($stations->{"@graph"} as $station) {
+                if(preg_match('/.*'. $query . '.*/i',$station->{"name"}, $match)){
+                    $newstations->{"@graph"}[] = $station;
+                }else if (isset($station->alternative)) {
+                    if(is_array($station->alternative)) {
+                        foreach($station->alternative as $alternative) {
+                            if(preg_match('/.*('. $query . ').*/i',$alternative->{"@value"},$match)){
+                                $newstations->{"@graph"}[] = $station;
+                                break;
+                            }
+                        }
+                    } else {
+                        if(preg_match('/.*'. $query . '.*/i',$station->alternative->{"@value"})){
+                            $newstations->{"@graph"}[] = $station;
+                        }
+                    }
+                }
+            }
+            return json_encode($newstations,JSON_UNESCAPED_SLASHES);
+        }else{
+            return File::get(app_path() . '/stations.json');
+        }
+    }
+        
 
     public function redirectToNMBSStations(){
         return Redirect::to('stations/NMBS');
@@ -67,7 +106,15 @@ class StationController extends \BaseController {
                     if ($stationStringName == null){
                         throw new StationConversionFailureException();
                     }
-                    $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&fast=true&lang=nl&format=json";
+                    //Check for optional time parameters
+                    $datetime = Input::get("datetime");
+                    if (isset($datetime) && strtotime($datetime)) {
+                        $datetime = strtotime($datetime);
+                    } else {
+                        $datetime = strtotime("now");
+                    }
+                    
+                    $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&fast=true&lang=nl&format=json&date=" . date("mmddyy" ,$datetime)  . "&time=" . date("Hi", $datetime);
                     $data = file_get_contents($URL);
                     try{
                         $newData = \hyperRail\iRailFormatConverter::convertLiveboardData($data, $id);
@@ -91,13 +138,18 @@ class StationController extends \BaseController {
         $priorities = array('application/json', 'text/html', '*/*');
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = $result->getValue();
+        //mktime ([ int $hour = date("H") [, int $minute = date("i") [, int $second = date("s") [, int $month = date("n") [, int $day = date("j") [, int $year = date("Y") [, int $is_dst = -1 ]]]]]]] )
+        //get the right 
+        $datetime = substr($liveboard_id, 0,12);
+        $datetime = strtotime($datetime);
+
         switch ($val){
 
             case "text/html":
                 // Convert id to string for interpretation by old API
                 $stationStringName = \hyperRail\StationString::convertToString($station_id);
                 // Set up path to old api
-                $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&fast=true&lang=nl&format=json";
+                $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&fast=true&lang=nl&format=json&date=" . date("mmddyy" ,$datetime)  . "&time=" . date("Hi", $datetime);
                 // Get the contents of this path
                 $data = file_get_contents($URL);
                 // Convert the data to the new liveboard object
@@ -163,7 +215,7 @@ class StationController extends \BaseController {
             case "application/ld+json":
             default:
                 $stationStringName = \hyperRail\StationString::convertToString($station_id);
-                $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&fast=true&lang=nl&format=json";
+                $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&fast=true&lang=nl&format=json&date=" . date("mmddyy" ,$datetime)  . "&time=" . date("Hi", $datetime);
                 $data = file_get_contents($URL);
                 $newData = \hyperRail\iRailFormatConverter::convertLiveboardData($data, $station_id);
                 foreach ($newData['@graph'] as $graph){
