@@ -40,10 +40,8 @@ Route::get('/oauth/{provider}', 'OAuthLoginController@getLogin');
 Route::get('/authorize', 'AuthorizeController@getAuthorize');
 Route::post('/authorize', 'AuthorizeController@postAuthorize');
 
-// Resource-API. Types: checkins
-Route::get('/resource/{type}', 'ResourceController@getResource');
 // Social media-providers API (currently only Twitter)
-Route::get('/resource/{provider}/getFriends', 'OAuthResourceController@getFriends');
+//Route::get('/oauth/{provider}/getFriends', 'OAuthResourceController@getFriends');
 
 
 // iRail login-functionality
@@ -57,18 +55,17 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('/logout', 'IRailLoginController@logout');
 });
 
-// Adding a check in
-Route::get('checkin', 'CheckinController@store');
-Route::get('checkout', 'CheckinController@destroy');
 
+// Storing a check in
+Route::post('checkins', 'CheckinController@store');
 
+// Show all checkins
 Route::get('/checkins', 'CheckinController@index');
-// return all checkins from user
-Route::get('/checkins/{id}', 'CheckinController@show');
-// destroy specified resource
-Route::get('/checkins/destroy/{departure}', 'CheckinController@destroy');
 
-//
+// Destroy specified resource
+Route::delete('/checkins/{departure}', 'CheckinController@destroy')->where('departure','(.*)');
+
+
 
 /*
 |--------------------------------------------------------------------------

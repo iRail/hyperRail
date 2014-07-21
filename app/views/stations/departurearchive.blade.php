@@ -57,6 +57,5 @@
         </div>
     </div>
 </div>
-@include('core.footer')
 </body>
 </html>
