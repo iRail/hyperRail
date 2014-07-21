@@ -9,6 +9,7 @@ class CheckinController extends BaseController {
 	 */
 	public function index()
 	{
+		// OAuth API
 		if(Input::has('access_token')){
 				// include our OAuth2 Server object
 	        require_once __DIR__.'/OAuthServer/server.php';
@@ -27,30 +28,15 @@ class CheckinController extends BaseController {
 	        $userarray = DB::select('select * from users where access_token = ?', array($access_token));
 
 	        if (!count($userarray)) {
-	                    return json_encode("No correct parameter given. irail.dev/resource/checkins");
+	                    return json_encode("No correct parameter given. irail.dev/checkins?access_token=...");
 	        }
 
 	        $user = $userarray[0];
 
-	        $user_id = $user->id;
+	        // checkins in JSON-format
+	        $checkins = Checkin::where('user_id', $user->id)->get();
 
-	        $url = 'https://irail.dev/checkins/' . $user_id;
-                    //$data = array('key1' => 'value1', 'key2' => 'value2');
-
-                    // use key 'http' even if you send the request to https://...
-                    $options = array(
-                        'http' => array(
-                            'header'  => "accept: application/json",
-                            'method'  => 'GET',
-                            //'content' => http_build_query($data),
-                            ),
-                        );
-                    $context  = stream_context_create($options);
-                    $result = file_get_contents($url, false, $context);
-                    
-                    // response resource of the user corresponding with that token
-            return $result;
-	       
+	        $val = "application/json";
 		}
 		else{
 				//TODO: remove code duplication and put this in BaseController
@@ -70,13 +56,21 @@ class CheckinController extends BaseController {
 			} else{
 				return Redirect::to('/login');
 			}
+		}
 
-	        switch ($val){
+		// parse the departures in an array
+       	$data = "[";
+		foreach($checkins as $checkin) {
+		    $data .= "{ departure: '". "$checkin->departure" . "'},";
+		}
+		$data = substr_replace($data, '', -1); // to get rid of extra comma
+		$data .= "]";
+
+		switch ($val){
 	            case "application/json":
 	            case "application/ld+json":
 	            	if (Sentry::check()) {
-	            		$data = json_encode($data);
-	            		return Response::make($data, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
+	               		return Response::make($data, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
 	            	}
 	            	return Response::make("Unauthorized Access", 403);
 	            break;
@@ -84,42 +78,7 @@ class CheckinController extends BaseController {
 	            default:
 					return View::make('checkins.index', array('checkins' => $checkins));
 	            break;
-			}
 		}
-		
-	}
-
-	/**
-	 * Display a listing of resources of an id
-	 *
-	 * @return  response
-	 */
-	public function show($id)
-	{
-		//TODO: remove code duplication and put this in BaseController
-        $negotiator = new \Negotiation\FormatNegotiator();
-        $acceptHeader = Request::header('accept');
-        $priorities = array('text/html', 'application/json', '*/*');
-        $result = $negotiator->getBest($acceptHeader, $priorities);
-        $val = "text/html";
-        //unless the negotiator has found something better for us
-        if (isset($result)) {
-            $val = $result->getValue();
-        }
-		$checkins = Checkin::where('user_id', $id)->get()->toJson();
-
-		switch ($val){
-            case "application/json":
-            case "application/ld+json":
-            	return Response::make($checkins, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
-            break;
-            case "text/html":
-            default:
-            	return View::make('checkins.show')->with('checkins', $checkins);
-            break;
-		}
-
-
 	}
 
 

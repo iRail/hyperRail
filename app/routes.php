@@ -40,8 +40,6 @@ Route::get('/oauth/{provider}', 'OAuthLoginController@getLogin');
 Route::get('/authorize', 'AuthorizeController@getAuthorize');
 Route::post('/authorize', 'AuthorizeController@postAuthorize');
 
-// Resource-API. Types: checkins
-Route::get('oauth/{type}', 'ResourceController@getResource');
 // Social media-providers API (currently only Twitter)
 //Route::get('/oauth/{provider}/getFriends', 'OAuthResourceController@getFriends');
 
@@ -63,8 +61,6 @@ Route::get('checkout', 'CheckinController@destroy');
 
 
 Route::get('/checkins', 'CheckinController@index');
-// return all checkins from user
-Route::get('/checkins/{id}', 'CheckinController@show');
 // destroy specified resource
 //Route::get('/checkins/destroy/{departure}', 'CheckinController@destroy');
 
