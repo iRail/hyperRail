@@ -9,38 +9,84 @@ class CheckinController extends BaseController {
 	 */
 	public function index()
 	{
-		//TODO: remove code duplication and put this in BaseController
-        $negotiator = new \Negotiation\FormatNegotiator();
-        $acceptHeader = Request::header('accept');
-        $priorities = array('text/html', 'application/json', '*/*');
-        $result = $negotiator->getBest($acceptHeader, $priorities);
-        $val = "text/html";
-        //unless the negotiator has found something better for us
-        if (isset($result)) {
-            $val = $result->getValue();
-        }
+		if(Input::has('access_token')){
+				// include our OAuth2 Server object
+	        require_once __DIR__.'/OAuthServer/server.php';
 
-       	if (Sentry::check()) {
-			$user = Sentry::getUser();
-			$checkins = Checkin::where('user_id', $user->id)->get();
-		} else{
-			return Redirect::to('/login');
-		}
+	        $request = OAuth2\Request::createFromGlobals();
+	        $response = new OAuth2\Response();
 
-        switch ($val){
-            case "application/json":
-            case "application/ld+json":
-            	if (Sentry::check()) {
-            		$data = json_encode($data);
-            		return Response::make($data, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
-            	}
-            	return Response::make("Unauthorized Access", 403);
-            break;
-            case "text/html":
-            default:
-				return View::make('checkins.index', array('checkins' => $checkins));
-            break;
+	        // Verify that the access_token is valid
+	        if (!$server->verifyResourceRequest($request)) {
+	            $server->getResponse()->send();
+	            die;
+	        } 
+	        
+	        $access_token = Input::get('access_token');
+
+	        $userarray = DB::select('select * from users where access_token = ?', array($access_token));
+
+	        if (!count($userarray)) {
+	                    return json_encode("No correct parameter given. irail.dev/resource/checkins");
+	        }
+
+	        $user = $userarray[0];
+
+	        $user_id = $user->id;
+
+	        $url = 'https://irail.dev/checkins/' . $user_id;
+                    //$data = array('key1' => 'value1', 'key2' => 'value2');
+
+                    // use key 'http' even if you send the request to https://...
+                    $options = array(
+                        'http' => array(
+                            'header'  => "accept: application/json",
+                            'method'  => 'GET',
+                            //'content' => http_build_query($data),
+                            ),
+                        );
+                    $context  = stream_context_create($options);
+                    $result = file_get_contents($url, false, $context);
+                    
+                    // response resource of the user corresponding with that token
+            return $result;
+	       
 		}
+		else{
+				//TODO: remove code duplication and put this in BaseController
+	        $negotiator = new \Negotiation\FormatNegotiator();
+	        $acceptHeader = Request::header('accept');
+	        $priorities = array('text/html', 'application/json', '*/*');
+	        $result = $negotiator->getBest($acceptHeader, $priorities);
+	        $val = "text/html";
+	        //unless the negotiator has found something better for us
+	        if (isset($result)) {
+	            $val = $result->getValue();
+	        }
+
+	       	if (Sentry::check()) {
+				$user = Sentry::getUser();
+				$checkins = Checkin::where('user_id', $user->id)->get();
+			} else{
+				return Redirect::to('/login');
+			}
+
+	        switch ($val){
+	            case "application/json":
+	            case "application/ld+json":
+	            	if (Sentry::check()) {
+	            		$data = json_encode($data);
+	            		return Response::make($data, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
+	            	}
+	            	return Response::make("Unauthorized Access", 403);
+	            break;
+	            case "text/html":
+	            default:
+					return View::make('checkins.index', array('checkins' => $checkins));
+	            break;
+			}
+		}
+		
 	}
 
 	/**
@@ -60,7 +106,6 @@ class CheckinController extends BaseController {
         if (isset($result)) {
             $val = $result->getValue();
         }
-
 		$checkins = Checkin::where('user_id', $id)->get()->toJson();
 
 		switch ($val){
@@ -112,7 +157,7 @@ class CheckinController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public static function destroy($departure) {
+	public static function destroy() {
 		$departure = Input::get('departure');
 
 		if (!Sentry::check()) {
