@@ -15,6 +15,19 @@
                 	<div class="row results" ng-show="results">
             			<div class="col-md-12 col-sm-12">
 	                        <p class="h1">Traveldiary</strong></p>
+
+							<div class="list-group">
+	                            <a class="list-group-item" ng-repeat="checkin in checkins" ng-href="@{{checkin['departure']}}">
+	                                  <span class="container33 liveboard-list">
+	                                        <span class="platform-left" >
+	                                            <span class="badge">@{{$checkin}}</span>
+	                                        </span>
+	                                  </span>
+	                            </a>
+	                        </div>
+
+
+	                        
 	                        <div class="list-group">
 	                        	@foreach ($checkins as $checkin)
 	                        		<a class="list-group-item" href="{{$checkin->departure}}">
