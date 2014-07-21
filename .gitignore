@@ -9,7 +9,6 @@ app/database/testing.sqlite
 bootstrap/compiled.php
 composer.phar
 docs/api.apib
-public/app/js
 public/builds
 public/styleguide
 app/tests/meta/coverage
