@@ -120,7 +120,7 @@ class CheckinController extends BaseController {
 	 */
 	public static function destroy($departure) {
 
-// OAuth API
+		// OAuth API
 		if(Input::has('access_token')){
 				// include our OAuth2 Server object
 			require_once __DIR__.'/OAuthServer/server.php';

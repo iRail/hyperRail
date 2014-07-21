@@ -96,8 +96,13 @@ https://irail.be/authorize?response_type=token&client_id={yourid}&redirect_uri={
 
 This will redirect you to the configured redirect_uri. The token can be parsed from the query-parameter "access_token".
 
-Now you can access the iRail-resources with this token:
-https://irail.be/resource?access_token={yourtoken}
+Access check-in resources with token:
+https://irail.be/checkins?access_token=TOKEN
+
+### Reminder
+
+When going in production, you have to set the right credentials for OAuth-providers in:
+app/config/packages/artdarek/oauth-4-laravel/config.php
 
 ### Thanks to
 
