@@ -132,23 +132,18 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
 
   /**
    * Save the entered data and request
-   *
+   */
   $scope.checkin = function (e) {
     var con = $scope.connections[$(e.target).data('id')];
 
     var veh = con['departure']['vehicle'].split(".");
     var vehicle = veh[veh.length-1];
-    // Make url this = $scope.departure['@id']
  
 
     $http({method: 'GET', url: $scope.departure['@id'].replace('.be', '.dev').replace('http://', 'https://'), headers: {'Accept': 'application/ld+json'}}).
     success(function(data, status, headers, config) {
-      // this callback will be called asynchronously
-      // when the response is available
 
-      //scheduledDepartureTime: "2014-07-10T15:12:00+02:00"
-      //console.log($scope.departure);
-      
+      //Look for correct departure      
       for (var i = 0; i < data['@graph'].length; i++) {
         if (data['@graph'][i]['routeLabel'].replace(' ', '') == vehicle) {
           var dep = data['@graph'][i];
@@ -156,47 +151,20 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
         }
         
       }
-        //console.log("DEP = " + dep);
-
+       
         /**
           Send post request with complete URI of departure and id of user for storage in DB
           Currently we use get but in future switch to post
-        *
-        var request = $http({
-                    method: "post",
-                    headers: {'content-type': 'application/json'},
-                    url: "/checkins",
-                    data: {
-                        departure: dep['@id'],
-                        url: "https://irail.dev/checkins/
-                    }
-                });
-                // Store the data-dump of the FORM scope.
-                request.success(
-                    function( html ) {
-                        console.log("succes!!!!");
-                    }
-                );
-
-        
-
-
-        /**
-          Ugly way to solve this problem but due to lack of time, this is the way we do it
-          We will solve this in future
-        
+        */
 
         var request = $http({
-                    method: "get",
-                    url: "https://irail.dev/checkin?departure=" + dep['@id']
-                });
-                // Store the data-dump of the FORM scope.
-                request.success(
-                    function( html ) {
-                        console.log("succes!!!!");
-                    }
-                );
-
+            method: "post",
+            headers: {'content-type': 'application/json'},
+            url: "https://irail.dev/checkins",
+            data: {
+                departure: dep['@id']
+            }
+        }).success(function(response){
                 // Change css class and text
                 $(e.target).toggleClass('label-warning');
                 if ($(e.target)[0]['innerHTML'] == 'Check in') {
@@ -205,7 +173,13 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
                   $(e.target)[0]['innerHTML'] = 'Check in';
                 }
 
-        
+
+
+        }).error(function(error){
+
+        });
+
+
 
 
     }).
@@ -219,7 +193,67 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
   
   };
 
-*/
+  $scope.isCheckedIn = function (e) {
+    console.log("yop");
+    var con = $scope.connections[$(e.target).data('id')];
+
+    var veh = con['departure']['vehicle'].split(".");
+    var vehicle = veh[veh.length-1];
+ 
+
+    $http({method: 'GET', url: $scope.departure['@id'].replace('.be', '.dev').replace('http://', 'https://'), headers: {'Accept': 'application/ld+json'}}).
+    success(function(data, status, headers, config) {
+
+      //Look for correct departure      
+      for (var i = 0; i < data['@graph'].length; i++) {
+        if (data['@graph'][i]['routeLabel'].replace(' ', '') == vehicle) {
+          var dep = data['@graph'][i];
+          break;
+        }
+        
+      }
+       
+        /**
+          Send post request with complete URI of departure and id of user for storage in DB
+          Currently we use get but in future switch to post
+        */
+
+        var request = $http({
+            method: "get",
+            headers: {'content-type': 'application/json'},
+            url: "https://irail.dev/checkins",
+        }).success(function(response){
+          // Check if checked in
+
+          for (var i = 0; i < response.length; i++) {
+            if (response[i]['@id'] == dep['@id']) {
+                $(e.target).toggleClass('label-warning');
+                if ($(e.target)[0]['innerHTML'] == 'Check in') {
+                  $(e.target)[0]['innerHTML'] = 'Check out';
+                } else {
+                  $(e.target)[0]['innerHTML'] = 'Check in';
+                }
+            }
+          }
+        }).error(function(error){
+          console.log('ERROR');
+        });
+
+
+
+
+    }).
+    error(function(data, status, headers, config) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+      console.log('failure');
+    });
+
+    
+  
+  };
+
+
   /**
    * Resets the route planner to default values
    */
