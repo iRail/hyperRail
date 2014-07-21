@@ -2,7 +2,7 @@
 
 class TokenController extends BaseController
 {
-    /**
+    /** NOT USED
      * This is called by the client app once the client has obtained
      * an authorization code from the Authorize Controller (@see OAuthServer\AuthorizeController).
      * If the request is valid, an access token will be returned

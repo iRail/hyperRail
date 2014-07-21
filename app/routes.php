@@ -63,7 +63,7 @@ Route::post('checkins', 'CheckinController@store');
 Route::get('/checkins', 'CheckinController@index');
 
 // Destroy specified resource
-Route::delete('/checkins/{departure}', 'CheckinController@destroy')->where('departure', '(.*)');
+Route::delete('/checkins/{departure}', 'CheckinController@destroy')->where('departure','(.*)');
 
 
 
