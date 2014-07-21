@@ -31,15 +31,6 @@
                     } else if ($station['delay'] === 'cancel') {
                         echo "<p class='label label-warning label-lg'>" . "cancelled" . " </p>";
                     }
-                    if (Sentry::check()) {
-                        $departure = $station['@id'];
-
-                        if (!CheckinController::isAlreadyCheckedIn($departure, Sentry::getUser())) {
-                            echo '<a href="#" class="label label-success label-lg" style="margin-left: 20px;" ng-click="checkin(\''. $departure .'\')">Check in</a>';
-                        } else {
-                            echo '<a href="#" class="label label-warning label-lg" style="margin-left: 20px;" ng-click="checkout(\''. $departure .'\')">Check out</a>';
-                        }
-                    }
                     ?>
                     <br/>
                     <br/>
@@ -47,6 +38,21 @@
                     <p class="h1"><strong>{{$departureStation->name}}</strong></p>
                     <p class="h2">{{Lang::get('client.to')}}</p>
                     <p class="h1"><strong>{{str_replace("[NMBS/SNCB]", "", $station['headsign']);}}</strong></p>
+
+                    <div id="checkin-button" style="text-align: center;">
+                        <?php
+                        if (Sentry::check()) {
+                            $departure = $station['@id'];
+
+                            if (!CheckinController::isAlreadyCheckedIn($departure, Sentry::getUser())) {
+                                echo '<a href="#" class="btn btn-default btn-lg btn-success btn-wide label-lg" ng-click="checkin($event, \''. $departure .'\')">Check in</a>';
+                            } else {
+                                echo '<a href="#" class="btn btn-default btn-lg btn-warning btn-wide label-lg" ng-click="checkout($event, \''. $departure .'\')">Check out</a>';
+                            }
+                        }
+                        ?>
+                     </div>
+
                 </div>
             </div>
         </div>

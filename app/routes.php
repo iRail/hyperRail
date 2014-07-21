@@ -57,7 +57,7 @@ Route::group(array('before' => 'auth'), function(){
 
 
 // Storing a check in
-Route::post('checkins', 'CheckinController@store');
+Route::post('/checkins', 'CheckinController@store');
 
 // Show all checkins
 Route::get('/checkins', 'CheckinController@index');
