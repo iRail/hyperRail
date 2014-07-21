@@ -8,7 +8,7 @@ class StationController extends \BaseController {
         //TODO: remove code duplication and put this in BaseController
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
-        $priorities = array('text/html', 'application/json', '*/*');
+        $priorities = array('application/json','text/html','*/*');
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = "text/html";
         //unless the negotiator has found something better for us
@@ -17,13 +17,13 @@ class StationController extends \BaseController {
         }
 
         switch ($val){
+            case "text/html":
+                return View::make('stations.search');
+            break;
             case "application/json":
             case "application/ld+json":
-                return Response::make(File::get(app_path() . '/stations.json'), 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
-            break;
-            case "text/html":
             default:
-                return View::make('stations.search');
+                return Response::make(File::get(app_path() . '/stations.json'), 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
             break;
         }
     }
@@ -36,7 +36,7 @@ class StationController extends \BaseController {
     public function liveboard($id){
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
-        $priorities = array('text/html', 'application/json', '*/*');
+        $priorities = array('application/json', 'text/html', '*/*');
         $result = $negotiator->getBest($acceptHeader, $priorities);
 
         $val = "text/html";
@@ -46,8 +46,22 @@ class StationController extends \BaseController {
         }
 
         switch ($val){
+            case "text/html":
+                try{
+                    $station = \hyperRail\StationString::convertToString($id);
+                    if ($station == null){
+                        throw new StationConversionFailureException();
+                    }
+                    $data = array('station' => $station);
+                    return Response::view('stations.liveboard', $data)->header('Content-Type', "text/html")->header('Vary', 'accept');
+                    break;
+                } catch(StationConversionFailureException $ex){
+                    App::abort(404);
+                }
+            break;
             case "application/json":
             case "application/ld+json":
+            default:
                 try{
                     $stationStringName = \hyperRail\StationString::convertToString($id);
                     if ($stationStringName == null){
@@ -68,105 +82,18 @@ class StationController extends \BaseController {
                 return Response::make($error, 404)->header('Content-Type', 'application/json')->header('Vary', 'accept');
             }
             break;
-            case "text/html":
-            default:
-                try{
-                    $station = \hyperRail\StationString::convertToString($id);
-                    if ($station == null){
-                        throw new StationConversionFailureException();
-                    }
-                    $data = array('station' => $station);
-                    return Response::view('stations.liveboard', $data)->header('Content-Type', "text/html")->header('Vary', 'accept');
-                    break;
-                } catch(StationConversionFailureException $ex){
-                    App::abort(404);
-                }
-            break;
         }
     }
 
     public function specificTrain($station_id, $liveboard_id){
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
-        $priorities = array('text/html', 'application/json', '*/*');
+        $priorities = array('application/json', 'text/html', '*/*');
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = $result->getValue();
         switch ($val){
-            case "application/json":
-            case "application/ld+json":
-                $stationStringName = \hyperRail\StationString::convertToString($station_id);
-                $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&fast=true&lang=nl&format=json";
-                $data = file_get_contents($URL);
-                $newData = \hyperRail\iRailFormatConverter::convertLiveboardData($data, $station_id);
-                foreach ($newData['@graph'] as $graph){
-                    if (strpos($graph['@id'],$liveboard_id) !== false) {
-                        $context = array(
-                            "delay" =>  "http://semweb.mmlab.be/ns/rplod/delay",
-                            "platform" => "http://semweb.mmlab.be/ns/rplod/platform",
-                            "scheduledDepartureTime" => "http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime",
-                            "headsign" => "http://vocab.org/transit/terms/headsign",
-                            "routeLabel" => "http://semweb.mmlab.be/ns/rplod/routeLabel",
-                            "stop" => array(
-                                "@id" => "http://semweb.mmlab.be/ns/rplod/stop",
-                                "@type" => "@id"
-                            ),
-                        );
-                        return array("@context" => $context, "@graph" => $graph);
-                    }
-                }
-                // If no match is found, attempt to look in the archive
-                // Fetch file using curl
-                $ch = curl_init("http://archive.irail.be/" . 'irail?subject=' . urlencode('http://irail.be/stations/NMBS/' . $station_id . '/departures/' . $liveboard_id));
-                curl_setopt($ch, CURLOPT_HEADER, 0);
-                $request_headers[] = 'Accept: text/turtle';
-                curl_setopt($ch, CURLOPT_HTTPHEADER, $request_headers);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                $turtle = (curl_exec($ch));
-                curl_close($ch);
-                // Convert turtle to json-ld
-                // Create a new graph
-                $graph = new EasyRdf_Graph();
-                if (empty($_REQUEST['data'])) {
-                    // Load the sample information
-                    $graph->parse($turtle, 'turtle');
-                }
-                // Export to JSON LD
-                $format = EasyRdf_Format::getFormat('jsonld');
-                $output = $graph->serialise($format);
-                if (!is_scalar($output)) {
-                    $output = var_export($output, true);
-                }
-                // First, define the context
-                $context = array(
-                    "delay" =>  "http://semweb.mmlab.be/ns/rplod/delay",
-                    "platform" => "http://semweb.mmlab.be/ns/rplod/platform",
-                    "scheduledDepartureTime" => "http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime",
-                    "headsign" => "http://vocab.org/transit/terms/headsign",
-                    "routeLabel" => "http://semweb.mmlab.be/ns/rplod/routeLabel",
-                    "stop" => array(
-                        "@id" => "http://semweb.mmlab.be/ns/rplod/stop",
-                        "@type" => "@id"
-                    ),
-                    "seeAlso" => array(
-                        "@id" => "http://www.w3.org/2000/01/rdf-schema#seeAlso",
-                        "@type" => "@id",
-                    )
-                );
-                // Next, encode the context as JSON
-                $jsonContext = json_encode($context);
-                // Compact the JsonLD by using @context
-                $compacted = JsonLD::compact($output, $jsonContext);
-                // Print the resulting JSON-LD!
-                $urlToFind = 'NMBS/' . $station_id . '/departures/' . $liveboard_id;
-                $stationDataFallback = json_decode(JsonLD::toString($compacted, true));
-                foreach ($stationDataFallback->{'@graph'} as $graph){
-                    if (strpos($graph->{'@id'},$urlToFind) !== false) {
-                        return array("@context" => $context, "@graph" => $graph);
-                    }
-                }
-                break;
-           case "text/html": 
-           default:
+
+            case "text/html":
                 // Convert id to string for interpretation by old API
                 $stationStringName = \hyperRail\StationString::convertToString($station_id);
                 // Set up path to old api
@@ -229,6 +156,80 @@ class StationController extends \BaseController {
                 foreach ($stationDataFallback->{'@graph'} as $graph){
                     if (strpos($graph->{'@id'},$urlToFind) !== false) {
                         return View::make('stations.departurearchive')->with('station', $graph)->with('departureStation', $stationStringName);
+                    }
+                }
+            break;
+            case "application/json":
+            case "application/ld+json":
+            default:
+                $stationStringName = \hyperRail\StationString::convertToString($station_id);
+                $URL = "http://api.irail.be/liveboard/?station=" . $stationStringName->name . "&fast=true&lang=nl&format=json";
+                $data = file_get_contents($URL);
+                $newData = \hyperRail\iRailFormatConverter::convertLiveboardData($data, $station_id);
+                foreach ($newData['@graph'] as $graph){
+                    if (strpos($graph['@id'],$liveboard_id) !== false) {
+                        $context = array(
+                            "delay" =>  "http://semweb.mmlab.be/ns/rplod/delay",
+                            "platform" => "http://semweb.mmlab.be/ns/rplod/platform",
+                            "scheduledDepartureTime" => "http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime",
+                            "headsign" => "http://vocab.org/transit/terms/headsign",
+                            "routeLabel" => "http://semweb.mmlab.be/ns/rplod/routeLabel",
+                            "stop" => array(
+                                "@id" => "http://semweb.mmlab.be/ns/rplod/stop",
+                                "@type" => "@id"
+                            ),
+                        );
+                        return Response::make(array("@context" => $context, "@graph" => $graph))->header('Access-Control-Allow-Origin', 'https://irail.dev');
+                    }
+                }
+                // If no match is found, attempt to look in the archive
+                // Fetch file using curl
+                $ch = curl_init("http://archive.irail.be/" . 'irail?subject=' . urlencode('http://irail.be/stations/NMBS/' . $station_id . '/departures/' . $liveboard_id));
+                curl_setopt($ch, CURLOPT_HEADER, 0);
+                $request_headers[] = 'Accept: text/turtle';
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $request_headers);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                $turtle = (curl_exec($ch));
+                curl_close($ch);
+                // Convert turtle to json-ld
+                // Create a new graph
+                $graph = new EasyRdf_Graph();
+                if (empty($_REQUEST['data'])) {
+                    // Load the sample information
+                    $graph->parse($turtle, 'turtle');
+                }
+                // Export to JSON LD
+                $format = EasyRdf_Format::getFormat('jsonld');
+                $output = $graph->serialise($format);
+                if (!is_scalar($output)) {
+                    $output = var_export($output, true);
+                }
+                // First, define the context
+                $context = array(
+                    "delay" =>  "http://semweb.mmlab.be/ns/rplod/delay",
+                    "platform" => "http://semweb.mmlab.be/ns/rplod/platform",
+                    "scheduledDepartureTime" => "http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime",
+                    "headsign" => "http://vocab.org/transit/terms/headsign",
+                    "routeLabel" => "http://semweb.mmlab.be/ns/rplod/routeLabel",
+                    "stop" => array(
+                        "@id" => "http://semweb.mmlab.be/ns/rplod/stop",
+                        "@type" => "@id"
+                    ),
+                    "seeAlso" => array(
+                        "@id" => "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+                        "@type" => "@id",
+                    )
+                );
+                // Next, encode the context as JSON
+                $jsonContext = json_encode($context);
+                // Compact the JsonLD by using @context
+                $compacted = JsonLD::compact($output, $jsonContext);
+                // Print the resulting JSON-LD!
+                $urlToFind = 'NMBS/' . $station_id . '/departures/' . $liveboard_id;
+                $stationDataFallback = json_decode(JsonLD::toString($compacted, true));
+                foreach ($stationDataFallback->{'@graph'} as $graph){
+                    if (strpos($graph->{'@id'},$urlToFind) !== false) {
+                        return Response::make(array("@context" => $context, "@graph" => $graph))->header('Access-Control-Allow-Origin', 'https://irail.dev');
                     }
                 }
                 break;

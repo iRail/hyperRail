@@ -14,7 +14,7 @@
                         <div class="panel-body">
                             <form action="{{ $url }}" method="post">
                                 <div class="form-group" style="text-align:center;">
-                                    <h3>Do you authorize iRail?</h3>
+                                    <h3>Do you authorize {{ $appName }}?</h3>
                                 </div>
                                 <div class="form-group" style="text-align:center;">
                                     <input type="submit" class="btn btn-info btn-lg" name="authorized" value="Yes">

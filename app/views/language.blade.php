@@ -11,9 +11,9 @@
         </div>
         <div class="col-sm-7 col-md-6">
             <h1><strong>iRail.be</strong></h1>
-            <p class="h2">Welcome. Hallo. Bonjour.</p>
+            <p class="h2">Welcome. Bonjour. Hallo.</p>
             <hr/>
-            <p>Gelieve uw taal te kiezen. Please choose your language. Choissisez votre langue s.v.p.</p>
+            <p>Gelieve uw taal te kiezen. Choisissez votre langue s.v.p. Please choose your language.</p>
             <hr/>
             <ul class="ul-lg">
                 <li><a href="route?lang=nl">Nederlands</a></li>

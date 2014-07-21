@@ -132,7 +132,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
 
   /**
    * Save the entered data and request
-   */
+   *
   $scope.checkin = function (e) {
     var con = $scope.connections[$(e.target).data('id')];
 
@@ -161,7 +161,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
         /**
           Send post request with complete URI of departure and id of user for storage in DB
           Currently we use get but in future switch to post
-        */
+        *
         var request = $http({
                     method: "post",
                     headers: {'content-type': 'application/json'},
@@ -205,7 +205,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
                   $(e.target)[0]['innerHTML'] = 'Check in';
                 }
 
-        */
+        
 
 
     }).
@@ -219,6 +219,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
   
   };
 
+*/
   /**
    * Resets the route planner to default values
    */

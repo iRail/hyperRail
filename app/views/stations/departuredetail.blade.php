@@ -13,7 +13,7 @@
 <title>iRail | {{$departureStation->name}} to {{str_replace('[NMBS/SNCB]', '', $station['headsign'])}}</title>
 @stop
 @section('content')
-<div class="wrapper">
+<div class="wrapper" ng-app="irailapp" ng-controller="DepartureDetailCtrl">
     <div id="main">
         @include('core.navigation')
         <div class="container">
@@ -28,17 +28,16 @@
                     <?php
                     if ($station['delay'] > 0){
                         echo "<p class='label label-warning label-lg'>+" . ($station['delay']/60) . "' " . Lang::get('client.delay') . '</p>';
-                    }
-                    if (is_array($station['delay']) && sizeof($station['delay'])>1) {
+                    } else if ($station['delay'] === 'cancel') {
                         echo "<p class='label label-warning label-lg'>" . "cancelled" . " </p>";
                     }
                     if (Sentry::check()) {
                         $departure = $station['@id'];
 
                         if (!CheckinController::isAlreadyCheckedIn($departure, Sentry::getUser())) {
-                            echo '<a href="/checkin?departure='.$departure.'" class="label label-success label-lg" style="margin-left: 20px;"">Check in</a>';
+                            echo '<a href="#" class="label label-success label-lg" style="margin-left: 20px;" ng-click="checkin(\''. $departure .'\')">Check in</a>';
                         } else {
-                            echo '<a href="/checkout?departure='.$departure.'" class="label label-warning label-lg" style="margin-left: 20px;"">Check out</a>';
+                            echo '<a href="#" class="label label-warning label-lg" style="margin-left: 20px;" ng-click="checkout(\''. $departure .'\')">Check out</a>';
                         }
                     }
                     ?>

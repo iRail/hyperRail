@@ -7,21 +7,8 @@ class CheckinController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function postIndex()
+	public function index()
 	{
-		if(Request::isJson()){
-			$checkin = new Checkin;
-			$data = Request::getContent();
-			return json_decode($data);
-
-		}
-		return Response::make("Bad Request", 400);
-
-	}
-
-	public function getIndex()
-	{
-
 		//TODO: remove code duplication and put this in BaseController
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
@@ -35,30 +22,59 @@ class CheckinController extends BaseController {
 
        	if (Sentry::check()) {
 			$user = Sentry::getUser();
-			$entries = DB::table('checkins')->get();
-			$data = array();
-
-			foreach ($entries as $entry) {
-				if ($entry->user_id == $user->id) {
-					array_push($data, $entry);
-				}
-			}
-			$data = json_encode($data);
+			$checkins = Checkin::where('user_id', $user->id)->get();
+		} else{
+			return Redirect::to('/login');
 		}
 
         switch ($val){
             case "application/json":
             case "application/ld+json":
             	if (Sentry::check()) {
-            		return Response::make($data, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
+            		$data = json_encode($data);
+            		return Response::make($data, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept')->header('Access-Control-Allow-Origin', 'https://irail.dev');
             	}
             	return Response::make("Unauthorized Access", 403);
             break;
             case "text/html":
             default:
-				return View::make('checkins.index');
+				return View::make('checkins.index', array('checkins' => $checkins));
             break;
 		}
+	}
+
+	/**
+	 * Display a listing of resources of an id
+	 *
+	 * @return  response
+	 */
+	public function show($id)
+	{
+		//TODO: remove code duplication and put this in BaseController
+        $negotiator = new \Negotiation\FormatNegotiator();
+        $acceptHeader = Request::header('accept');
+        $priorities = array('text/html', 'application/json', '*/*');
+        $result = $negotiator->getBest($acceptHeader, $priorities);
+        $val = "text/html";
+        //unless the negotiator has found something better for us
+        if (isset($result)) {
+            $val = $result->getValue();
+        }
+
+		$checkins = Checkin::where('user_id', $id)->get()->toJson();
+
+		switch ($val){
+            case "application/json":
+            case "application/ld+json":
+            	return Response::make($checkins, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
+            break;
+            case "text/html":
+            default:
+            	return View::make('checkins.show')->with('checkins', $checkins);
+            break;
+		}
+
+
 	}
 
 
@@ -87,7 +103,9 @@ class CheckinController extends BaseController {
 			}
 	    }
 
-	    return Redirect::to($departure);
+	    $departure = str_replace("http://", "https://", $departure);
+
+	    return Redirect::to($departure)->header('Access-Control-Allow-Origin', 'https://irail.dev');
 	}
 
 	/**
@@ -96,8 +114,7 @@ class CheckinController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public static function destroy() {
-		$departure = Input::get('departure');
+	public static function destroy($departure) {
 
 		if (!Sentry::check()) {
 			return Redirect::to('login');
@@ -106,14 +123,13 @@ class CheckinController extends BaseController {
 	    	Checkin::where('user_id', $user->id)->where('departure', $departure)->delete();
 	    }
 
-	    return Redirect::to($departure);
+	    $departure = str_replace("http://", "https://", $departure);
+
+	    return Redirect::to('/checkins/', '303')->header('Access-Control-Allow-Origin', 'https://irail.dev');
 	}
 
 	public static function isAlreadyCheckedIn($departure, $user) {
 		return (count(Checkin::where('user_id', $user->id)->where('departure', $departure)->first()) > 0);
 	}
-
-
-
 
 }
