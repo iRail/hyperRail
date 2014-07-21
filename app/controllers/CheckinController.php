@@ -27,18 +27,51 @@ class CheckinController extends BaseController {
 			return Redirect::to('/login');
 		}
 
+		if (isset($checkins[0])) {
+			// set curl options
+			$ch = curl_init();
+			$request_headers[] = 'Accept: application/json';
+	        curl_setopt($ch, CURLOPT_HTTPHEADER, $request_headers);
+	        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+	        // ignore certificate
+	        curl_setopt($ch , CURLOPT_SSL_VERIFYPEER , false );
+			curl_setopt($ch , CURLOPT_SSL_VERIFYHOST , false );
+
+			// make array to store results
+			$results = array();
+
+			// iterate over every checkin
+			foreach ($checkins as $checkin) {
+
+				// get the departure url from the checkin
+				$specificStationUrl = $checkin['original']['departure'];
+				// replace http with https
+				$specificStationUrl = substr_replace($specificStationUrl, 's', 4, 0);
+				// set url curl request
+				curl_setopt($ch, CURLOPT_URL, $specificStationUrl);
+				$r = curl_exec($ch);
+				$r = json_decode($r, true);
+				$r['@graph']['scheduledDepartureTime'] = date("H:i:s d-m-Y", strtotime($r['@graph']['scheduledDepartureTime']));
+				array_push($results, $r['@graph']);
+			}
+			curl_close($ch);
+		}
+
+		$checkins = $results;
+
         switch ($val){
             case "application/json":
             case "application/ld+json":
             	if (Sentry::check()) {
-            		$data = json_encode($data);
-            		return Response::make($data, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
+            		return Response::make(json_encode($checkins), 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
             	}
             	return Response::make("Unauthorized Access", 403);
             break;
             case "text/html":
             default:
-				return View::make('checkins.index', array('checkins' => $checkins));
+				return View::make('checkins.index', compact('checkins'));
             break;
 		}
 	}
