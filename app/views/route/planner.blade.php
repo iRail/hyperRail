@@ -165,9 +165,12 @@
                             </span>
                         </li>
                         @if(Sentry::check())
-                        <li class="list-group-item" style="text-align: right;">
-                            <a href='#' ng-click="checkin($event)" class="btn btn-info" data-id="@{{connections.indexOf(conn)}}">Check in</a>
-                        </li>
+
+                        <div id="checkin-button" style="text-align: center;">
+                            <li class="list-group-item" style="text-align: right;">
+                                <a href='#' ng-click="checkin($event)" class="btn btn-info" data-id="@{{connections.indexOf(conn)}}">Check in</a>
+                            </li>
+                        </div>
                         @endif
                         <li class="list-group-item">
                         </li>
@@ -206,4 +209,5 @@
 <script>
     $("[data-toggle='tooltip']").tooltip();
 </script>
+
 @stop
