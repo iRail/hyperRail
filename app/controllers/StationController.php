@@ -14,7 +14,7 @@ class StationController extends \BaseController {
         //unless the negotiator has found something better for us
         if (isset($result)) {
             $val = $result->getValue();
-        }
+        }        
 
         switch ($val){
             case "text/html":
@@ -23,11 +23,50 @@ class StationController extends \BaseController {
             case "application/json":
             case "application/ld+json":
             default:
-                return Response::make(File::get(app_path() . '/stations.json'), 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
+                return Response::make($this->getStations(Input::get("q")), 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
             break;
         }
     }
-    
+
+    private function getStations($query = "") {
+        if ($query && $query !== "") {
+            //filter the stations on name match
+            $stations = json_decode(File::get(app_path() . '/stations.json'));
+            
+            $newstations = new \stdClass;
+            //could be implemented more efficiently using REDIS if we have more data later on. For now, this will do fine.
+            $newstations->{"@id"} = $stations->{"@id"};
+            $newstations->{"@context"} = $stations->{"@context"};
+            $newstations->{"@graph"} = array();
+
+            // dashes are the same as spaces
+            $query = str_replace("-","[- ]",$query);
+            $query = str_replace(" ","[- ]",$query);
+
+            foreach($stations->{"@graph"} as $station) {
+                if(preg_match('/.*'. $query . '.*/i',$station->{"name"}, $match)){
+                    $newstations->{"@graph"}[] = $station;
+                }else if (isset($station->alternative)) {
+                    if(is_array($station->alternative)) {
+                        foreach($station->alternative as $alternative) {
+                            if(preg_match('/.*('. $query . ').*/i',$alternative->{"@value"},$match)){
+                                $newstations->{"@graph"}[] = $station;
+                                break;
+                            }
+                        }
+                    } else {
+                        if(preg_match('/.*'. $query . '.*/i',$station->alternative->{"@value"})){
+                            $newstations->{"@graph"}[] = $station;
+                        }
+                    }
+                }
+            }
+            return json_encode($newstations);
+        }else{
+            return File::get(app_path() . '/stations.json');
+        }
+    }
+        
 
     public function redirectToNMBSStations(){
         return Redirect::to('stations/NMBS');
