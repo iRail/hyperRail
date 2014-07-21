@@ -61,7 +61,7 @@ class StationController extends \BaseController {
                     }
                 }
             }
-            return json_encode($newstations,JSON_UNESCAPED_SLASHES);
+            return json_encode($newstations);
         }else{
             return File::get(app_path() . '/stations.json');
         }
