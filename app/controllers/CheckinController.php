@@ -35,6 +35,8 @@ class CheckinController extends BaseController {
 
 	        // checkins in JSON-format
 			$checkins = Checkin::where('user_id', $user->id)->get();
+
+
 			$val = "application/json";
 
 		} else{
@@ -92,6 +94,16 @@ class CheckinController extends BaseController {
 		} else{
 			$checkins = [];
 		}
+		
+		// Sort checkins by departuretime
+		function sortByDepartureTime($a, $b) {
+    		return strtotime($a['scheduledDepartureTime']) - strtotime($b['scheduledDepartureTime']);
+		}
+
+		usort($checkins, 'sortByDepartureTime');
+			
+
+
 
 		switch ($val){
 			case "application/json":
