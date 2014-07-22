@@ -60,6 +60,21 @@ npm install
 bower install
 grunt 
 ```
-## Step 7: You're ready!
+
+### Step 7: Access tokens lifetime
+
+Bshaffer's library works with refresh tokens. To disable that, you need to comment in /vendor/bshaffer/oauth2-server-php/src/OAuth2/Controller/ResourceController.php:
+public function getAccessTokenData(RequestInterface $request, ResponseInterface $response)
+{		
+	...
+	//elseif( time() > $token["expires"] ){             
+    //    $response->setError(401, 'invalid_token', 'The access token provided has expired');
+    //}
+    ...
+}	
+
+This makes sure our tokens doesn't get expired.
+
+## Step 8: You're ready!
 
 Usually you should be ready to get started by visiting the hostname you have set up. If it does not work, log an [issue](https://github.com/iRail/hyperRail/issues/new). We'll help you out and fix the documentation for everyone else.
