@@ -3,7 +3,7 @@
 @parent
 @stop
 @section('content')
-<div id="main" ng-app="irailapp" ng-controller="PlannerCtrl">
+<div id="main" ng-app="irailapp">
     @include('core.navigation')
     <div class="container">
         <div class="row routeplanner view1" ng-show="planning">
