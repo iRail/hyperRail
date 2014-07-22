@@ -43,20 +43,19 @@ class CheckinController extends BaseController {
 			if (Sentry::check()) {
 				$user_id = Sentry::getUser()->id;
 				$checkins = Checkin::where('user_id', $user_id)->get();
+				//TODO: remove code duplication and put this in BaseController
+				$negotiator = new \Negotiation\FormatNegotiator();
+				$acceptHeader = Request::header('accept');
+				$priorities = array('text/html', 'application/json', '*/*');
+				$result = $negotiator->getBest($acceptHeader, $priorities);
+				$val = "text/html";
+		        //unless the negotiator has found something better for us
+				if (isset($result)) {
+					$val = $result->getValue();
+				}
 			} else{
 				return Redirect::to("/login");
 			}
-		}
-
-		//TODO: remove code duplication and put this in BaseController
-		$negotiator = new \Negotiation\FormatNegotiator();
-		$acceptHeader = Request::header('accept');
-		$priorities = array('text/html', 'application/json', '*/*');
-		$result = $negotiator->getBest($acceptHeader, $priorities);
-		$val = "text/html";
-        //unless the negotiator has found something better for us
-		if (isset($result)) {
-			$val = $result->getValue();
 		}
 
 		if (isset($checkins[0])) {
@@ -159,7 +158,7 @@ class CheckinController extends BaseController {
 	 */
 	public static function destroy($departure) {
 
-		// OAuth API
+// OAuth API
 		if(Input::has('access_token')){
 				// include our OAuth2 Server object
 			require_once __DIR__.'/OAuthServer/server.php';
@@ -178,7 +177,7 @@ class CheckinController extends BaseController {
 			$userarray = DB::select('select * from users where access_token = ?', array($access_token));
 
 			if (!count($userarray)) {
-				return json_encode("No correct parameter given. irail.dev/checkins/{departure_URI}?access_token=...");
+				return json_encode("No correct parameter given. irail.be/checkins/{departure_URI}?access_token=...");
 			}
 
 			$user = $userarray[0];
