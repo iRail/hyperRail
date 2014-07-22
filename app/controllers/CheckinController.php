@@ -107,7 +107,7 @@ class CheckinController extends BaseController {
 		switch ($val){
 			case "application/json":
 			case "application/ld+json":
-				if (Sentry::check()) {
+				if (Sentry::check() || Input::has('access_token')) {
 					return Response::make($checkins, 200)->header('Content-Type', 'application/ld+json')->header('Vary', 'accept');
 				}
 				return Response::make("Unauthorized Access", 403);
