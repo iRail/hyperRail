@@ -61,9 +61,17 @@ bower install
 grunt 
 ```
 
-### Step 7: Access tokens lifetime
+## Step 7: Access tokens lifetime
 
-Bshaffer's library works with refresh tokens. To disable that, you need to comment in /vendor/bshaffer/oauth2-server-php/src/OAuth2/Controller/ResourceController.php:
+Bshaffer's library works with refresh tokens.
+Go to
+```
+/vendor/bshaffer/oauth2-server-php/src/OAuth2/Controller/ResourceController.php:
+```
+
+and comment te next section:
+
+```
 public function getAccessTokenData(RequestInterface $request, ResponseInterface $response)
 {		
 	...
@@ -72,8 +80,9 @@ public function getAccessTokenData(RequestInterface $request, ResponseInterface 
     //}
     ...
 }	
+```
 
-This makes sure our tokens doesn't get expired.
+This makes sure our tokens won't expired.
 
 ## Step 8: You're ready!
 
