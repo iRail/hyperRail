@@ -115,7 +115,7 @@ class IRailLoginController extends BaseController {
 		                $url .= $key . '=' . $value;
 		                $url .= '&';
 		            }
-
+		            
     				return Redirect::to($url);
     			}
 				return Redirect::to('/route');

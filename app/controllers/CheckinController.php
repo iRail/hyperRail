@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 class CheckinController extends BaseController {
 
@@ -25,16 +25,17 @@ class CheckinController extends BaseController {
 
 			$access_token = Input::get('access_token');
 
-			$userarray = DB::select('select * from users where access_token = ?', array($access_token));
+			// record: access_token | client_id | user_id ...
+			$access_token_array = DB::select('select * from oauth_access_tokens where access_token = ?', array($access_token));
 
-			if (!count($userarray)) {
-				return json_encode("No correct parameter given. irail.dev/checkins?access_token=...");
+			if (!count($access_token_array)) {
+				return json_encode("No correct parameter given. irail.be/checkins?access_token=...");
 			}
 
-			$user = $userarray[0];
+			$user_id = $access_token_array[0]->user_id;
 
 	        // checkins in JSON-format
-			$checkins = Checkin::where('user_id', $user->id)->get();
+			$checkins = Checkin::where('user_id', $user_id)->get();
 
 
 			$val = "application/json";
