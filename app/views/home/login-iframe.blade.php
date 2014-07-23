@@ -5,24 +5,18 @@
 @section('content')
     <div class="wrapper">
         <div id="main">
-            @include('core.navigation')
+            @include('core.navigation-iframe')
             <div class="container">
                 <div class="row login">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                           <div class="panel panel-info">
                             <div class="panel-heading">Please Login</div>
                             <div class="panel-body">
-                                <div>
-                                    <a href="{{ URL::to('/oauth/twitter') }}" class="btn btn-info btn-lg btn-block"><i class="fa fa-twitter"></i> | Sign in with Twitter</a>
+                                <div style="margin-bottom: 30px;">
+                                    <a href={{ $twitter_url }} class="btn btn-info btn-lg btn-block"><i class="fa fa-twitter"></i> | Sign in with Twitter</a>
                                 </div>
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col-md-6">
-                          <div class="panel panel-info">
-                            <div class="panel-heading">Please Login</div>
-                            <div class="panel-body">
-                                {{ Form::open(array('url' => 'login')) }}
+
+                                {{ Form::open(array('url' => $url )) }}
                                 @if($errors->has('login'))
                                     <div class="alert alert-danger">
                                         <a href="#" class="close" data-dismiss="alert">&times;</a>

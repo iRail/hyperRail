@@ -3,9 +3,9 @@
 class AuthorizeController extends BaseController
 {
     /**
-     * The user is directed here by the client in order to authorize the client app
-     * to access his/her data
-     */
+    * The user is directed here by the client in order to authorize the client app
+    * to access his/her data
+    */
     public function getAuthorize()
     {
 
@@ -21,31 +21,45 @@ class AuthorizeController extends BaseController
             die;
         }
 
-        // display an authorization form
         $response_type = Input::get('response_type');
         $client_id = Input::get('client_id');
         $redirect_uri = Input::get('redirect_uri');
         $state = Input::get('state');
 
-        $url = URL::to('authorize');
-
-        $queryparams = array('response_type'    => $response_type,
-           'client_id'    => $client_id,
-           'redirect_uri' => $redirect_uri,
-           'state'       => $state);
-
-        $url .= '?';
-        foreach($queryparams as $key => $value){
-            $url .= $key . '=' . $value;
-            $url .= '&';
-        }
-
         // If user is not logged in, redirect to login
         if (!Sentry::check()) {
-            return Redirect::to('login');
+            // display an authorization form
+            $url = URL::to('login');
+
+            $queryparams = array('response_type' => $response_type,
+               'client_id' => $client_id,
+               'redirect_uri' => $redirect_uri,
+               'state' => $state);
+
+            $url .= '?';
+            foreach($queryparams as $key => $value){
+                $url .= $key . '=' . $value;
+                $url .= '&';
+            }
+
+            return Redirect::to($url);
         }
-        // If logged in, ask to authorize 
+        // If logged in, ask to authorize
         else {
+
+            $url = URL::to('authorize');
+
+            $queryparams = array('response_type' => $response_type,
+               'client_id' => $client_id,
+               'redirect_uri' => $redirect_uri,
+               'state' => $state);
+
+            $url .= '?';
+            foreach($queryparams as $key => $value){
+                $url .= $key . '=' . $value;
+                $url .= '&';
+            }
+
             // application name from database corresponding with the client_id
             $results = DB::select('select * from oauth_clients where client_id = ?', array($client_id))[0];
 
@@ -92,6 +106,13 @@ class AuthorizeController extends BaseController
 
            header('Location: ' . $returnpage);
            die();
-       } 
+       }
+       // user clicks NO
+       else {
+          $url = $response->getHttpHeader('Location');
+
+          header('Location: ' . $url);
+          die();
+       }
    }
 }
