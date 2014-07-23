@@ -5,7 +5,7 @@
 @section('content')
 <div class="wrapper">
     <div id="main">
-        @include('core.navigation')
+        @include('core.navigation-iframe')
         <div class="container">
             <div class="row login">
                 <div class="col-md-4 col-md-offset-4">

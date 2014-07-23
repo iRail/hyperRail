@@ -24,7 +24,38 @@ class IRailLoginController extends BaseController {
 
 	public function getLogin()
 	{
-		return View::make('home.login');
+		// when the user isn't logged in and wants to authorize
+		if(!empty(Input::get('client_id'))) {
+
+		    // display an authorization form
+	        $response_type = Input::get('response_type');
+	        $client_id = Input::get('client_id');
+	        $redirect_uri = Input::get('redirect_uri');
+	        $state = Input::get('state');
+
+	   		$url = URL::to('login');
+	   		$twitter_url = URL::to('oauth/twitter');
+
+	        $queryparams = array('response_type' => $response_type,
+	           'client_id' => $client_id,
+	           'redirect_uri' => $redirect_uri,
+	           'state' => $state);
+
+	        $url .= '?';
+	        $twitter_url .= '?';
+	        foreach($queryparams as $key => $value){
+	            $url .= $key . '=' . $value;
+	            $url .= '&';
+
+	            $twitter_url .= $key . '=' . $value;
+	            $twitter_url .= '&';
+	        }
+
+	        return View::make('home.login-iframe')->with(array('url' => $url, 'twitter_url' => $twitter_url));
+		}
+		else{
+			return View::make('home.login');
+		}
 	}
 
 
@@ -64,6 +95,29 @@ class IRailLoginController extends BaseController {
 			if($user)
 			{
     			$user->save();
+
+    			// third-party authorization
+    			if (!empty(Input::get('client_id'))) {
+		            $response_type = Input::get('response_type');
+		            $client_id = Input::get('client_id');
+		            $redirect_uri = Input::get('redirect_uri');
+		            $state = Input::get('state');
+
+		            $url = URL::to('authorize');
+
+		            $queryparams = array('response_type' => $response_type,
+		               'client_id' => $client_id,
+		               'redirect_uri' => $redirect_uri,
+		               'state' => $state);
+
+		            $url .= '?';
+		            foreach ($queryparams as $key => $value) {
+		                $url .= $key . '=' . $value;
+		                $url .= '&';
+		            }
+
+    				return Redirect::to($url);
+    			}
 				return Redirect::to('/route');
 			}
 
