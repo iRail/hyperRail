@@ -17,7 +17,7 @@ Thereby, implement a link with the nice iRail-logo so the user gets redirected t
 
 Simple HTML example:
 
-```
+```bash
 <a href="https://irail.be/authorize?response_type=token&client_id=YOURCLIENTID&redirect_uri=YOURREDIRECT_URI&state=xyz">Link iRail</a>
 ```
 
