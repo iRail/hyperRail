@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row login">
                 <div class="col-md-4 col-md-offset-4">
-                      <div class="panel panel-info">
+                      <div class="panel">
                         <div class="panel-heading">Authorize application</div>
                         <div class="panel-body">
                             <form action="{{ $url }}" method="post">
