@@ -8,9 +8,9 @@
         @include('core.navigation-iframe')
         <div class="container">
             <div class="row login">
-                <div class="col-md-4 col-md-offset-4">
+                <div class="col-md-6 col-md-offset-3">
                       <div class="panel">
-                            <div class="panel-heading"><p class="h3">Authorize application</p></div>
+                            <div class="panel-heading"></div>
                         <div class="panel-body">
                             <form action="{{ $url }}" method="post">
                                 <div class="form-group" style="text-align:center;">
