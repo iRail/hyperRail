@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="<?php echo Config::get('app.locale');; ?>">
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<?php $__env->startSection('header'); ?>
+			<?php echo $__env->make('core.head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<?php echo $__env->yieldSection(); ?>
+		<link rel="shortcut icon" href="<?php echo URL::asset('favicon.ico'); ?>"/>
+		<link rel="stylesheet" href="<?php echo URL::asset('builds/css/main.css'); ?>">
+	</head>
+<body>
+	<?php echo $__env->yieldContent('content'); ?>
+	<?php echo $__env->make('core.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<?php echo HTML::script('//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'); ?>
+	<?php echo $__env->yieldContent('pageScripts'); ?>
+</body>
+</html>
