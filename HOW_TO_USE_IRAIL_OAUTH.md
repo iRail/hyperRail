@@ -13,7 +13,9 @@ There isn't a developer-page so to register you have to contact iRail with e-mai
 ##2. Make a link##
 If you want to use data of a user, that user will first have to tell iRail he/she wants to share data with your application. 
 Thereby, implement a link with the nice iRail-logo so the user gets redirected to:
-```https://irail.be/authorize?response_type=token&client_id=YOURCLIENTID&redirect_uri=YOURREDIRECT_URI&state=xyz```
+```bash
+https://irail.be/authorize?response_type=token&client_id=YOURCLIENTID&redirect_uri=YOURREDIRECT_URI&state=xyz
+```
 
 Simple HTML example:
 
