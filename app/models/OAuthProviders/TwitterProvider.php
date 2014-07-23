@@ -30,7 +30,7 @@ class TwitterProvider implements IOAuthProvider{
             // display an authorization form
             $response_type = Input::get('response_type');
             $client_id = Input::get('client_id');
-            $redirect_uri = Input::get('redirect_uri');rest
+            $redirect_uri = Input::get('redirect_uri');
             $state = Input::get('state');
 
             $querystring = '?';

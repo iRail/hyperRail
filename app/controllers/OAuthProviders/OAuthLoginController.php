@@ -86,8 +86,3 @@ class OAuthLoginController extends BaseController {
         }
     }
 }
-
-public function postLogin(){
-
-}
-}
