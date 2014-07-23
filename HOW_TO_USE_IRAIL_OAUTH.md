@@ -54,17 +54,17 @@ Example output:
 
 ```json
 [
-{
-"@id" : "http:\/\/irail.be\/stations\/NMBS\/008892007\/departures\/2014071610167a28fedbe2e337a68a83c4c050d6c795",
-"delay" : "0",
-"platform" : "7",
-"routeLabel" : "IR 3608",
-"scheduledDepartureTime" : "10:16:00 16-07-2014",
-"stop" : "http:\/\/irail.be\/stations\/NMBS\/008892007",
-"headsign" : "Antwerpen-Centraal",
-"seeAlso" : "http:\/\/archive.irail.be\/irail?object=http%3A%2F%2Firail.be%2Fstations%2FNMBS%2F008892007%2Fdepartures%2F2014071610167a28fedbe2e337a68a83c4c050d6c795"
-}, 
-...
+	{
+	"@id" : "http:\/\/irail.be\/stations\/NMBS\/008892007\/departures\/2014071610167a28fedbe2e337a68a83c4c050d6c795",
+	"delay" : "0",
+	"platform" : "7",
+	"routeLabel" : "IR 3608",
+	"scheduledDepartureTime" : "10:16:00 16-07-2014",
+	"stop" : "http:\/\/irail.be\/stations\/NMBS\/008892007",
+	"headsign" : "Antwerpen-Centraal",
+	"seeAlso" : "http:\/\/archive.irail.be\/irail?object=http%3A%2F%2Firail.be%2Fstations%2FNMBS%2F008892007%2Fdepartures%2F2014071610167a28fedbe2e337a68a83c4c050d6c795"
+	}, 
+	...
 ]
 ```
 
