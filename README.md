@@ -86,18 +86,7 @@ port: 3306
 ```
 ### OAuth2.0-server API (WIP)
 
-First of all your application has to be registered in our database with a client-id, clientsecret and redirect-url of your application. Contact us if you want to use our API.
-
-To make an oauth_client, execute following example SQL-command:
-INSERT INTO oauth_clients (client_id, client_secret, redirect_uri, application_name) VALUES ("testclient", "testpass", "http://fake/", "testapplication");
-
-A token can easily be asked by going to:
-https://irail.be/authorize?response_type=token&client_id={yourid}&redirect_uri={yoursite}&state=xyz
-
-This will redirect you to the configured redirect_uri. The token can be parsed from the query-parameter "access_token".
-
-Access check-in resources with token:
-https://irail.be/checkins?access_token=TOKEN
+You can read all about this in the ```HOW_TO_USE_IRAIL_OAUTH.md``` file in de root directory or click <a href="https://github.com/oSoc14/hyperRail/blob/develop/HOW_TO_USE_IRAIL_OAUTH.md">here</a>.
 
 ### Reminder
 
