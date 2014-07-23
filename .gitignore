@@ -25,6 +25,7 @@ app/config/development
 app/config/production
 app/storage/.gitkeep
 app/storage/*
+app/storage/*/*
 _ide_helper.php
 app/config/packages/artdarek
 app/config/packages/cartalyst
