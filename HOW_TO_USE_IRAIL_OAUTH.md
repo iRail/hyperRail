@@ -8,7 +8,11 @@ First, you need to register your application. Therefore we need a ```REDIRECT_UR
 In return we give you a ```CLIENTID``` so we can identify you.
 
 There isn't a developer-page so to register you have to contact iRail with e-mail, Twitter... :)
+Or if you are running a copy of iRail, you can add yourself to your local iRail database with this query:
 
+```sql
+INSERT INTO oauth_clients (client_id, client_secret, redirect_uri, application_name) VALUES ("testclient", "testpass", "http://fake/", "testapplication");
+```
 
 ##2. Make a link##
 If you want to use data of a user, that user will first have to tell iRail he/she wants to share data with your application. 
@@ -67,6 +71,7 @@ Example output:
 	...
 ]
 ```
+
 
 
 
