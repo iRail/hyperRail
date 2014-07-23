@@ -8,9 +8,9 @@
             @include('core.navigation')
             <div class="container">
                 <div class="row login">
-                    <div class="col-md-4 col-md-offset-4">
-                          <div class="panel panel-info">
-                            <div class="panel-heading">Please Register</div>
+                    <div class="col-md-6 col-md-offset-3">
+                          <div class="panel">
+                            <div class="panel-heading"><p class="h3">Register</p></div>
                             <div class="panel-body">
                                 {{ Form::open(array('url' => 'register')) }}
                                 @if($errors->any())

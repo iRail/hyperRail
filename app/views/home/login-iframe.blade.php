@@ -10,7 +10,7 @@
                 <div class="row login">
                     <div class="col-md-12">
                           <div class="panel panel-info">
-                            <div class="panel-heading">Please Login</div>
+                            <div class="panel-heading"><p class="h3">Please login</p></div>
                             <div class="panel-body">
                                 <div style="margin-bottom: 30px;">
                                     <a href={{ $twitter_url }} class="btn btn-info btn-lg btn-block"><i class="fa fa-twitter"></i> | Sign in with Twitter</a>
