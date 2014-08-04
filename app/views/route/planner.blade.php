@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('layouts.default')
 @section('header')
 @parent
@@ -17,9 +18,46 @@
                     <label for="departure">{{Lang::get('client.fromStation')}}</label>
                     <div class="input-group">
                         <input type="text" ng-model="departure" placeholder="{{Lang::get('client.typeFromStation')}}" typeahead="station as station.name for station in stations['@graph'] | filter:{name:$viewValue} | limitTo:5" typeahead-template-url="customTemplate.html" class="form-control input-lg" tabindex="1">
+=======
+<!DOCTYPE html>
+<html lang="{{Config::get('app.locale');}}" ng-app="irailapp" ng-controller="PlannerCtrl">
+    @include('core.head')
+<body>
+<div class="wrapper">
+    <div id="main">
+        @include('core.navigation')
+        <div class="container">
+            <div class="row routeplanner view1" ng-show="planning">
+                <div class="col-sm-6">
+                    <script type="text/ng-template" id="customTemplate.html">
+                        <a>
+                            <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+                        </a>
+                    </script>
+                    <div class="form-group">
+                        <label for="departure">{{Lang::get('client.fromStation')}}</label>
+                        <div class="input-group">
+                        <input type="text" ng-model="departure" placeholder="{{Lang::get('client.typeFromStation')}}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" class="form-control input-lg" tabindex="1">
+>>>>>>> 738cff2d8f8e1b5556e77962a43fcda132478daf
                         <a class="input-group-addon" ng-show="departure['@id']" href="@{{departure['@id']}}" target="_blank" data-toggle="tooltip" data-placement="left" title="{{Lang::get('client.viewLiveboard')}}"><i class="fa fa-clock-o"></i></a>
                         <span class="input-group-addon" ng-hide="departure['@id']"></span>
                     </div>
+<<<<<<< HEAD
+=======
+                    <div class="form-group">
+                        <label for="destination">{{Lang::get('client.toStation')}}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="destination" placeholder="{{Lang::get('client.typeToStation')}}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" typeahead-on-select='focusOnConfirm()' class="form-control input-lg" tabindex="2">
+                            <a class="input-group-addon btn" ng-show="destination['@id']" href="@{{destination['@id']}}" target="_blank" data-toggle="tooltip" data-placement="left" title="{{Lang::get('client.viewLiveboard')}}"><i class="fa fa-clock-o"></i></a>
+                            <span class="input-group-addon" ng-hide="destination['@id']"></span>
+                        </div>
+                    </div>
+                    <label for="destination">{{Lang::get('client.chooseDate')}}</label>
+                    <div class="datepicker">
+                        <datepicker ng-class="time" ng-model="mydate" show-weeks="false" ></datepicker>
+                    </div>
+                    <br/>
+>>>>>>> 738cff2d8f8e1b5556e77962a43fcda132478daf
                 </div>
                 <div class="form-group">
                     <label for="destination">{{Lang::get('client.toStation')}}</label>
