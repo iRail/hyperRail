@@ -141,6 +141,8 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
     // TODO: Check if select box has been set
   };
 
+
+
   /**
    * Resets the route planner to default values
    */

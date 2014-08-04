@@ -1,7 +1,8 @@
-<!DOCTYPE html>
-<html>
-@include('core.head')
-<body>
+@extends('layouts.default')
+@section('header')
+    @parent
+@stop
+@section('content')
 <div class="container">
     <br/>
     <div class="row routeplanner view1 well" ng-show="planning">
@@ -22,6 +23,4 @@
         </div>
     </div>
 </div>
-@include('core.footer')
-</body>
-</html>
+@stop

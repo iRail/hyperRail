@@ -8,7 +8,12 @@
         "easyrdf/easyrdf": "*",
         "semsol/arc2": "*",
         "ml/json-ld": "1.*",
-        "willdurand/negotiation": "@stable"
+        "willdurand/negotiation": "@stable",
+        "artdarek/oauth-4-laravel": "dev-master",
+        "cartalyst/sentry": "2.1.*",
+        "bshaffer/oauth2-server-php": "v1.3",
+        "bshaffer/oauth2-server-httpfoundation-bridge": "v1.0"
+
     },
     "require-dev": {
         "phpunit/phpunit": "4.0.*",

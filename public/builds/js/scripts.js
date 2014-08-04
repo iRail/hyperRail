@@ -31046,6 +31046,65 @@ function GetURLParameter(sParam){
     }
 }
 
+var DepartureDetailCtrl = function ($scope, $http, $filter, $timeout) {
+
+  
+  /**
+   * Save the entered data and request
+   */
+  $scope.checkin = function (e, departure) {
+    
+        $( "#checkin-button").html('<img src="/images/loader.gif" alt="Loader" class="center">');
+
+        var request = $http({
+            method: "post",
+            headers: {'content-type': 'application/json'},
+            url: "https://irail.dev/checkins",
+            data: {
+                departure: departure
+            }
+        }).success(function(response){
+              window.location.reload(false); 
+
+        }).error(function(error){
+
+        });
+
+        
+
+  };
+$scope.checkout = function (e, departure) {
+      //departure = encodeURIComponent(departure);
+
+      $( "#checkin-button").html('<img src="/images/loader.gif" alt="Loader" class="center">');
+
+      var request = $http({
+            method: "delete",
+            headers: {'content-type': 'application/json'},
+            url: "https://irail.dev/checkins/" + departure
+           
+        }).success(function(response){
+
+        }).error(function(error){
+
+        });
+
+        window.location.reload(false); 
+
+
+  };
+
+};
+
+angular.module("irailapp.controllers")
+    .controller("DepartureDetailCtrl", [
+        "$scope",
+        "$http",
+        "$filter",
+        "$timeout",
+        DepartureDetailCtrl
+    ]);
+
 var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
 
   /*--------------------------------------------------------
@@ -31188,6 +31247,132 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
     }
     // TODO: Check if select box has been set
   };
+
+  /**
+   * Save the entered data and request
+   */
+  $scope.checkin = function (e) {
+    var con = $scope.connections[$(e.target).data('id')];
+
+    var veh = con['departure']['vehicle'].split(".");
+    var vehicle = veh[veh.length-1];
+ 
+
+    $http({method: 'GET', url: $scope.departure['@id'].replace('.be', '.dev').replace('http://', 'https://'), headers: {'Accept': 'application/ld+json'}}).
+    success(function(data, status, headers, config) {
+
+      //Look for correct departure      
+      for (var i = 0; i < data['@graph'].length; i++) {
+        if (data['@graph'][i]['routeLabel'].replace(' ', '') == vehicle) {
+          var dep = data['@graph'][i];
+          break;
+        }
+        
+      }
+       
+        /**
+          Send post request with complete URI of departure and id of user for storage in DB
+          Currently we use get but in future switch to post
+        */
+
+        var request = $http({
+            method: "post",
+            headers: {'content-type': 'application/json'},
+            url: "https://irail.dev/checkins",
+            data: {
+                departure: dep['@id']
+            }
+        }).success(function(response){
+                // Change css class and text
+                $(e.target).toggleClass('label-warning');
+                if ($(e.target)[0]['innerHTML'] == 'Check in') {
+                  $(e.target)[0]['innerHTML'] = 'Check out';
+                } else {
+                  $(e.target)[0]['innerHTML'] = 'Check in';
+                }
+
+
+
+        }).error(function(error){
+
+        });
+
+
+
+
+    }).
+    error(function(data, status, headers, config) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+      console.log('failure');
+    });
+
+    
+  
+  };
+
+  $scope.isCheckedIn = function (e) {
+    var con = $scope.connections[$(e.target).data('id')];
+
+    var veh = con['departure']['vehicle'].split(".");
+    var vehicle = veh[veh.length-1];
+ 
+
+    $http({method: 'GET', url: $scope.departure['@id'].replace('.be', '.dev').replace('http://', 'https://'), headers: {'Accept': 'application/ld+json'}}).
+    success(function(data, status, headers, config) {
+
+      //Look for correct departure      
+      for (var i = 0; i < data['@graph'].length; i++) {
+        if (data['@graph'][i]['routeLabel'].replace(' ', '') == vehicle) {
+          var dep = data['@graph'][i];
+          break;
+        }
+        
+      }
+       
+        /**
+          Send post request with complete URI of departure and id of user for storage in DB
+          Currently we use get but in future switch to post
+        */
+
+        var request = $http({
+            method: "get",
+            headers: {'content-type': 'application/json'},
+            url: "https://irail.dev/checkins",
+        }).success(function(response){
+
+
+          console.log(response);
+          /*
+                // Change css class and text
+                $(e.target).toggleClass('label-warning');
+                if ($(e.target)[0]['innerHTML'] == 'Check in') {
+                  $(e.target)[0]['innerHTML'] = 'Check out';
+                } else {
+                  $(e.target)[0]['innerHTML'] = 'Check in';
+                }
+*/
+
+
+        }).error(function(error){
+          console.log('ERROR');
+          console.log(error);
+        });
+
+
+
+
+    }).
+    error(function(data, status, headers, config) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+      console.log('failure');
+    });
+
+    
+  
+  };
+
 
   /**
    * Resets the route planner to default values
