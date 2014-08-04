@@ -1,9 +1,15 @@
 var StationSearchCtrl = function ($scope, $http, $filter, $timeout) {
-  $http.get('', { headers: {
-    'Accept': 'application/ld+json'
-  }}).success( function (data) {
-    $scope.stations = data;
-  });
+  
+  $scope.getStations = function(query) {
+    return $http.get('', {
+      params: {
+        q: query
+      }
+    }).then(function(res){
+      return res["data"]["@graph"];
+    });
+  };
+
   $(document).keypress( function (e) {
     if (e.which === 13) {
       $('#confirm').focus();
