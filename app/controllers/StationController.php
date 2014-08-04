@@ -43,22 +43,29 @@ class StationController extends \BaseController {
             $query = str_replace("\-","[\- ]",$query);
             $query = str_replace(" ","[\- ]",$query);
 
+            $count = 0;
             foreach($stations->{"@graph"} as $station) {
                 if(preg_match('/.*'. $query . '.*/i',$station->{"name"}, $match)){
                     $newstations->{"@graph"}[] = $station;
+                    $count ++;
                 }else if (isset($station->alternative)) {
                     if(is_array($station->alternative)) {
                         foreach($station->alternative as $alternative) {
                             if(preg_match('/.*('. $query . ').*/i',$alternative->{"@value"},$match)){
                                 $newstations->{"@graph"}[] = $station;
+                                $count ++;
                                 break;
                             }
                         }
                     } else {
                         if(preg_match('/.*'. $query . '.*/i',$station->alternative->{"@value"})){
                             $newstations->{"@graph"}[] = $station;
+                            $count ++;
                         }
                     }
+                }
+                if($count > 5) {
+                    return json_encode($newstations);
                 }
             }
             return json_encode($newstations);
