@@ -31190,7 +31190,7 @@ function GetURLParameter(sParam){
     }
 }
 
-var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
+var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
 
   /*--------------------------------------------------------
    * INITIAL VARIABLES & SETUP
@@ -31339,12 +31339,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
    * Resets the route planner to default values
    */
   $scope.resetplanner = function (e) {
-    e.stopPropagation();
-    e.preventDefault();
-    $scope.error = false;
-    $scope.loading = false;
-    $scope.results = false;
-    $scope.planning = true;
+  	$window.location.reload();
   };
 
   $scope.reverse = function () {
@@ -31433,6 +31428,7 @@ angular.module("irailapp.controllers")
         "$http",
         "$filter",
         "$timeout",
+		"$window",
         PlannerCtrl
     ]);
 
