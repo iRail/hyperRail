@@ -103,7 +103,8 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
       // First result should be close to your set time
       data.connection.reverse();
     }
-    $scope.connections = (typeof data.connection !== 'undefined') ? data.connection : [];
+
+    $scope.connections = data.connection;
 
   };
 

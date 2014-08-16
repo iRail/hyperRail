@@ -16,7 +16,7 @@ class RouteController extends \BaseController {
         if (isset($result)) {
             $val = $result->getValue();
         }
-        
+
         switch ($val){
             case "text/html":
                 return Response::view('route.planner')->header('Content-Type', "text/html")->header('Vary', 'accept');
@@ -54,7 +54,9 @@ class RouteController extends \BaseController {
                 return trim($json);
             }
             catch(ErrorException $ex){
-                return null;
+                return array(
+					'connection' => [],
+				);
             }
         } else {
             // Show the HYDRA JSON-LD for doing a request to the right URI
