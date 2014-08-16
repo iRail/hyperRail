@@ -30,6 +30,7 @@ return array(
     "errorReturn" => "Terug naar de planner",
     "errorReturnLiveboard" => "Terug naar stations zoeken",
     "errorMail" => "mail ons",
+	"errorHoliday" => "We konden geen routes vinden. Op feestdagen is het mogelijk dat er geen treinen rijden in kleinere stations.",
     "stationsIdentical" => "Uw vertrekstation en bestemmingsstation zijn hetzelfde! We kunnen geen route berekenen waar er geen is :)",
     "quickFilter" => "Type hier om snel liveboard-resultaten te filteren",
     "noResultsFoundLiveboard" => "Het spijt ons. Volgens onze data vertrekken er hier geen treinen momenteel.",
@@ -113,5 +114,5 @@ return array(
     "ofStation" => "Selecteer station",
     "to_optionalStation" => "Selecteer richting (optioneel)",
     "refreshBoard" => "Vernieuw",
-    "marketLink" => "Download de officiële app"
+    "marketLink" => "Download de officiële app",
 );

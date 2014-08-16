@@ -59,5 +59,6 @@ return array(
     "ofStation" => "Klicken Sie",
     "to_optionalStation" => "Klicken Sie",
     "refreshBoard" => "Erfrischen",
-    "marketLink" => "Download des offiziellen App"
+    "marketLink" => "Download des offiziellen App",
+	"errorHoliday" => "We konden geen routes vinden. Op feestdagen is het mogelijk dat er geen treinen rijden in kleinere stations.",
 );

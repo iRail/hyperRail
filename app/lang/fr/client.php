@@ -29,6 +29,7 @@ return array(
     "errorReturn" => "Retour au planificateur",
     "errorReturnLiveboard" => "Retour à la recherche de gare",
     "errorMail" => "envoyez nous un mail",
+	"errorHoliday" => "We konden geen routes vinden. Op feestdagen is het mogelijk dat er geen treinen rijden in kleinere stations.",
     "stationsIdentical" => "Les gares de départ et de destination sont les mêmes. Nous ne pouvons pas calculer de trajet s'il n'y en a pas :)",
     "quickFilter" => "Tapez ici pour filtrer rapidement les résultats du liveboard",
     "noResultsFoundLiveboard" => "Nous sommes désolés. Selon nos données, il n'y a pas de train au départ en ce moment dans cette gare.",
@@ -109,5 +110,5 @@ return array(
     "ofStation" => "from station",
     "to_optionalStation" => "Sélectionnez la direction (optionnel)",
     "refreshBoard" => "Rafraîchir",
-    "marketLink" => "Téléchargez l'application officielle"
+    "marketLink" => "Téléchargez l'application officielle",
 );

@@ -3,7 +3,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
   /*--------------------------------------------------------
    * INITIAL VARIABLES & SETUP
    *-------------------------------------------------------*/
-  
+
   // Init departure and destination as undefined
   $scope.departure = undefined;
   $scope.destination = undefined;
@@ -103,7 +103,8 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
       // First result should be close to your set time
       data.connection.reverse();
     }
-    $scope.connections = data.connection;
+    $scope.connections = (typeof data.connection !== 'undefined') ? data.connection : [];
+
   };
 
   /**
@@ -120,8 +121,8 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
       return;
     }
     // Check if departure and destination are bound
-    
-    
+
+
     if ($scope.departure && $scope.destination) {
       $scope.confirmRouteSearch();
       // If not bound, try to bind data
