@@ -29,7 +29,7 @@ return array(
     "errorReturn" => "Return to the planner",
     "errorReturnLiveboard" => "Return to station search",
     "errorMail" => "mail us",
-    "errorHoliday" => "We konden geen routes vinden. Op feestdagen is het mogelijk dat er geen treinen rijden in kleinere stations.",
+    "errorHoliday" => "We couldn't find any trains. On holidays, it is possible that there are no trains in smaller stations.",
     "stationsIdentical" => "The departure and destination station are the same. We can't calculate a route where there is none :)",
     "quickFilter" => "Type here to quickly filter liveboard results",
     "noResultsFoundLiveboard" => "We're sorry. According to our data, there are no trains departing right now in this station.",
