@@ -55,7 +55,7 @@ class RouteController extends \BaseController {
             }
             catch(ErrorException $ex){
                 return array(
-                    'connection' => [],
+                    'connection' => array(),
                 );
             }
         } else {
