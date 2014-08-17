@@ -59,5 +59,6 @@ return array(
     "ofStation" => "Klicken Sie",
     "to_optionalStation" => "Klicken Sie",
     "refreshBoard" => "Erfrischen",
-    "marketLink" => "Download des offiziellen App"
+    "marketLink" => "Download des offiziellen App",
+    "errorHoliday" => "Wir können keine Verbindung finden. An Feiertagen ist es möglich, daß an kleineren Haltestellen keine Züge halten.",
 );

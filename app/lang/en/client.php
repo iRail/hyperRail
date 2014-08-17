@@ -29,6 +29,7 @@ return array(
     "errorReturn" => "Return to the planner",
     "errorReturnLiveboard" => "Return to station search",
     "errorMail" => "mail us",
+    "errorHoliday" => "We couldn't find any trains. On holidays, it is possible that there are no trains in smaller stations.",
     "stationsIdentical" => "The departure and destination station are the same. We can't calculate a route where there is none :)",
     "quickFilter" => "Type here to quickly filter liveboard results",
     "noResultsFoundLiveboard" => "We're sorry. According to our data, there are no trains departing right now in this station.",
@@ -109,5 +110,5 @@ return array(
     "ofStation" => "Select station",
     "to_optionalStation" => "Click here for destination (optional)",
     "refreshBoard" => "Refresh",
-    "marketLink" => "Download the official app"
+    "marketLink" => "Download the official app",
 );

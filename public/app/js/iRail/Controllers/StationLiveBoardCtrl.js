@@ -2,6 +2,7 @@ var StationLiveBoardCtrl = function ($scope, $http, $filter, $timeout) {
   $scope.loading = true;
 
   var config = {headers: {'Accept': 'application/ld+json'}};
+
   $http.get('', config).success( function (data) {
     $scope.stations = data;
     var location = document.URL;
@@ -29,6 +30,17 @@ var StationLiveBoardCtrl = function ($scope, $http, $filter, $timeout) {
   $scope.resetplanner = function () {
     // Should not do anything
   };
+
+  /**
+   * Helper method to determine if a result should be highlighted or not
+   *
+   * @param index
+   * @returns {boolean}
+   */
+    $scope.isSelected = function (index) {
+      return (index + 1 ) == GetURLParameter('result');
+    }
+
 };
 
 angular.module('irailapp.controllers')

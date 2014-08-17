@@ -21,7 +21,7 @@
                     <input class="input-lg form-control" ng-model="searchText" placeholder="{{Lang::get('client.quickFilter')}}">
                     <br/>
                     <div class="list-group">
-                        <a class="list-group-item" ng-repeat="dep in liveboardData['@graph'] | filter:searchText" ng-href="@{{dep['@id']}}">
+                        <a class="list-group-item" ng-class="{'active': isSelected($index)}" ng-repeat="dep in liveboardData['@graph'] | filter:searchText" ng-href="@{{dep['@id']}}">
                               <span class="container33 liveboard-list">
                                     <span class="platform-left" ng-if="dep.platform">
                                         <span class="badge">@{{dep.platform}}</span>
