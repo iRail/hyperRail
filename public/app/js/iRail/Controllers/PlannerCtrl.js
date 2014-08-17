@@ -1,9 +1,9 @@
-var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
+var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
 
   /*--------------------------------------------------------
    * INITIAL VARIABLES & SETUP
    *-------------------------------------------------------*/
-  
+
   // Init departure and destination as undefined
   $scope.departure = undefined;
   $scope.destination = undefined;
@@ -103,7 +103,9 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
       // First result should be close to your set time
       data.connection.reverse();
     }
+
     $scope.connections = data.connection;
+
   };
 
   /**
@@ -120,8 +122,8 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
       return;
     }
     // Check if departure and destination are bound
-    
-    
+
+
     if ($scope.departure && $scope.destination) {
       $scope.confirmRouteSearch();
       // If not bound, try to bind data
@@ -145,12 +147,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout) {
    * Resets the route planner to default values
    */
   $scope.resetplanner = function (e) {
-    e.stopPropagation();
-    e.preventDefault();
-    $scope.error = false;
-    $scope.loading = false;
-    $scope.results = false;
-    $scope.planning = true;
+    $window.location.reload();
   };
 
   $scope.reverse = function () {
@@ -239,5 +236,6 @@ angular.module("irailapp.controllers")
         "$http",
         "$filter",
         "$timeout",
+        "$window",
         PlannerCtrl
     ]);
