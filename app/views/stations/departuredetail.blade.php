@@ -28,7 +28,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <img src="{{ URL::asset('images/train.svg') }}" />
+                    <?php $delay = $station['delay']/60; ?>
+
+                    @if ($station['delay'] > 0)
+                        <?php $image = min($delay / 5, 9); ?>
+
+                        {{ HTML::image('images/irail_logo_delays-0' . $image .'.svg') }}
+                    @else
+                        <img src="{{ URL::asset('images/train.svg') }}" />
+                    @endif
                 </div>
                 <div class="col-sm-6">
                     <br/>
