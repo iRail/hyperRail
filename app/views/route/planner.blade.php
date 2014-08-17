@@ -6,11 +6,11 @@
     <div id="main">
         @include('core.navigation')
         <div class="container">
-			@include('_partials.route.planner')
-			@include('_partials.route.loading')
-			@include('_partials.route.errors')
-			@include('_partials.route.empty')
-           	@include('_partials.route.results')
+            @include('_partials.route.planner')
+            @include('_partials.route.loading')
+            @include('_partials.route.errors')
+            @include('_partials.route.empty')
+            @include('_partials.route.results')
         </div>
     </div>
 </div>

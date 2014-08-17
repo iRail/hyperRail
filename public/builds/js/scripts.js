@@ -31339,7 +31339,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
    * Resets the route planner to default values
    */
   $scope.resetplanner = function (e) {
-  	$window.location.reload();
+    $window.location.reload();
   };
 
   $scope.reverse = function () {
@@ -31428,7 +31428,7 @@ angular.module("irailapp.controllers")
         "$http",
         "$filter",
         "$timeout",
-		"$window",
+        "$window",
         PlannerCtrl
     ]);
 
@@ -31465,15 +31465,15 @@ var StationLiveBoardCtrl = function ($scope, $http, $filter, $timeout) {
     // Should not do anything
   };
 
-	/**
-	 * Helper method to determine if a result should be highlighted or not
-	 *
- 	 * @param index
-	 * @returns {boolean}
-	 */
-  	$scope.isSelected = function (index) {
-		return (index + 1 ) == GetURLParameter('result');
-  	}
+  /**
+   * Helper method to determine if a result should be highlighted or not
+   *
+   * @param index
+   * @returns {boolean}
+   */
+    $scope.isSelected = function (index) {
+      return (index + 1 ) == GetURLParameter('result');
+    }
 
 };
 

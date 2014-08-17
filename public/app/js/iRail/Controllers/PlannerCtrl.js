@@ -147,7 +147,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
    * Resets the route planner to default values
    */
   $scope.resetplanner = function (e) {
-  	$window.location.reload();
+    $window.location.reload();
   };
 
   $scope.reverse = function () {
@@ -236,6 +236,6 @@ angular.module("irailapp.controllers")
         "$http",
         "$filter",
         "$timeout",
-		"$window",
+        "$window",
         PlannerCtrl
     ]);
