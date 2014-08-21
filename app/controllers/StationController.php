@@ -28,6 +28,9 @@ class StationController extends \BaseController {
         }
     }
 
+    /**
+     * To be rewritten using an in memory store such as redis
+     */
     private function getStations($query = "") {
         if ($query && $query !== "") {
             //filter the stations on name match
@@ -40,25 +43,25 @@ class StationController extends \BaseController {
             $newstations->{"@graph"} = array();
 
             // dashes are the same as spaces
+            $query = $this->normalizeAccents($query);            
             $query = str_replace("\-","[\- ]",$query);
             $query = str_replace(" ","[\- ]",$query);
-
             $count = 0;
             foreach($stations->{"@graph"} as $station) {
-                if(preg_match('/.*'. $query . '.*/i',$station->{"name"}, $match)){
+                if(preg_match('/.*'. $query . '.*/i',$this->normalizeAccents($station->{"name"}), $match)){
                     $newstations->{"@graph"}[] = $station;
                     $count ++;
                 }else if (isset($station->alternative)) {
                     if(is_array($station->alternative)) {
                         foreach($station->alternative as $alternative) {
-                            if(preg_match('/.*('. $query . ').*/i',$alternative->{"@value"},$match)){
+                            if(preg_match('/.*('. $query . ').*/i',$this->normalizeAccents($alternative->{"@value"}),$match)){
                                 $newstations->{"@graph"}[] = $station;
                                 $count ++;
                                 break;
                             }
                         }
                     } else {
-                        if(preg_match('/.*'. $query . '.*/i',$station->alternative->{"@value"})){
+                        if(preg_match('/.*'. $query . '.*/i',$this->normalizeAccents($station->alternative->{"@value"}))){
                             $newstations->{"@graph"}[] = $station;
                             $count ++;
                         }
@@ -74,6 +77,16 @@ class StationController extends \BaseController {
         }
     }
         
+    public function normalizeAccents($str) {
+        //We work for German, French and Dutch, so we have to take into account that some words may have accents
+        //Taken from https://stackoverflow.com/questions/3371697/replacing-accented-characters-php
+        $unwanted_array = array('Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
+                            'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
+                            'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
+                            'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
+                            'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y' );
+        return strtr( $str, $unwanted_array );
+    }
 
     public function redirectToNMBSStations(){
         return Redirect::to('stations/NMBS');
