@@ -59,6 +59,8 @@ Now run the following command in the root directory of Hyperrail:
 npm install
 bower install
 grunt 
+composer install
+composer update
 ```
 
 ## Step 7: Access tokens lifetime
