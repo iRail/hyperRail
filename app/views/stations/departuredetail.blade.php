@@ -43,6 +43,12 @@
                     <br/>
                     <p class="label label-primary label-lg">{{date('H:i', strtotime($station['scheduledDepartureTime']))}}</p>
                     <?php
+                    if (!is_array($station->delay)) {
+                        if ($station->delay > 0) {
+                            echo "<p class='label label-warning label-lg'>+" . ($station->delay/60) . "' " . Lang::get('client.delay') . '</p>';
+                        }
+                    }
+                    
                     // check if train is cancelled
                     $cancelled = false;
 

@@ -59,7 +59,7 @@
                     <p class="h1"><strong>{{$departureStation->name}}</strong></p>
                     <p class="h2">{{Lang::get('client.to')}}</p>
                     <p class="h1"><strong>{{str_replace("[NMBS/SNCB]", "", $station->headsign);}}</strong></p>
-                   <?php
+                    <?php
                     if (!is_array($station->delay)) {
                         if ($station->delay > 0) {
                             echo "<p class='label label-warning label-lg'>+" . ($station->delay/60) . "' " . Lang::get('client.delay') . '</p>';
