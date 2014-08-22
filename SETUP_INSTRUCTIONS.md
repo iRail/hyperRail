@@ -58,8 +58,11 @@ Now run the following command in the root directory of Hyperrail:
 ```bash
 npm install
 bower install
-grunt 
 composer install
+
+grunt 
+
+Later on:
 composer update
 ```
 
