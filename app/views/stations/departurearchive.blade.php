@@ -37,9 +37,21 @@
                     <p class="label label-info label-lg">{{Lang::get('client.archived')}}</p>
                     <p class="label label-primary label-lg">{{date('H:i', strtotime($station->scheduledDepartureTime))}}</p>
                     <?php
-                        if (is_array($station->delay) && sizeof($station->delay)>1) {
-                                echo "<p class='label label-warning label-lg'>" . "cancelled" . " </p>";
-                        }
+                    // check if train is cancelled
+                    $cancelled = false;
+
+                    if (!is_array($station->delay) && $station->delay == 'cancel')
+                        $cancelled = true;
+
+                    // station->delay can return an array of delays
+                    else if(is_array($station->delay)){
+                        // check if one of the array-elements = "cancel"
+                        foreach ($station->delay as $delay)
+                            if($delay == 'cancel') $cancelled = true;
+                    }         
+
+                    if ($cancelled) echo "<p class='label label-warning label-lg'>" . "cancelled" . " </p>";
+
                     ?>
                     <br/>
                     <br/>
@@ -49,14 +61,16 @@
                     <p class="h1"><strong>{{str_replace("[NMBS/SNCB]", "", $station->headsign);}}</strong></p>
                     <?php
                     if (!is_array($station->delay)) {
-                        if ($station->delay > 0){
+                        if ($station->delay > 0) {
                             echo "<p class='label label-warning label-lg'>+" . ($station->delay/60) . "' " . Lang::get('client.delay') . '</p>';
                         }
-                    } else {
+                    } 
+                    else {
                         echo "<hr/>";
                         echo "<p>" . Lang::get('client.historicalDelays') . "</p>";
                         foreach ($station->delay as $delay) {
-                            echo "<li class='delay label label-lg'>" . $delay/60 . " min</li>";
+                            if($delay != 'cancel')
+                                echo "<li class='delay label label-lg'>" . $delay/60 . " min</li>";
                         }
                     }
                     ?>

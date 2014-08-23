@@ -43,13 +43,28 @@
                     <br/>
                     <p class="label label-primary label-lg">{{date('H:i', strtotime($station['scheduledDepartureTime']))}}</p>
                     <?php
-                    if ($station['delay'] > 0){
-                        echo "<p class='label label-warning label-lg'>+" . ($station['delay']/60) . "' " . Lang::get('client.delay') . '</p>';
-                    }   
-                    if (is_array($station['delay']) && sizeof($station['delay'])>1) {
-                        echo "<p class='label label-warning label-lg'>" . "cancelled" . " </p>";
+                    if (!is_array($station->delay)) {
+                        if ($station->delay > 0) {
+                            echo "<p class='label label-warning label-lg'>+" . ($station->delay/60) . "' " . Lang::get('client.delay') . '</p>';
+                        }
                     }
-                    ?>			
+                    
+                    // check if train is cancelled
+                    $cancelled = false;
+
+                    if (!is_array($station->delay) && $station->delay == 'cancel')
+                        $cancelled = true;
+
+                    // station->delay can return an array of delays
+                    else if(is_array($station->delay)){
+                        // check if one of the array-elements = "cancel"
+                        foreach ($station->delay as $delay)
+                            if($delay == 'cancel') $cancelled = true;
+                    }         
+
+                    if ($cancelled) echo "<p class='label label-warning label-lg'>" . "cancelled" . " </p>";
+
+                    ?>  
                     <br/>
                     <br/>
                     <p class="h2">{{Lang::get('client.platform')}} {{$station['platform']}}</p>
