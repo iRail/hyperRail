@@ -84,7 +84,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
 
 
   $scope.getStations = function(query) {
-    return $http.get('/stations/NMBS/', {
+    return $http.get('/stations/NMBS', {
       params: {
         q: query
       }
