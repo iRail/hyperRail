@@ -22,12 +22,13 @@ Route::get('/language', 'LanguageController@index');
 Route::get('/stations/', 'StationController@redirectToNMBSStations');
 Route::get('/stations/NMBS', 'StationController@index');
 Route::get('/stations/NMBS/{id}', 'StationController@liveboard');
+Route::get('/stations/NMBS/{id}/departures', 'StationController@liveboard');//should list the departures
 Route::get('/stations/NMBS/{id}/departures/{trainHash}', 'StationController@specificTrain');
 
-Route::get('/stations/nmbs', 'StationController@index');
-Route::get('/stations/nmbs/{id}', 'StationController@liveboard');
+Route::get('/stations/nmbs', 'StationController@index'); //should list stations
+Route::get('/stations/nmbs/{id}', 'StationController@liveboard'); //should list infomation about the station
+Route::get('/stations/nmbs/{id}/departures', 'StationController@liveboard');//should list the departures
 Route::get('/stations/nmbs/{id}/departures/{trainHash}', 'StationController@specificTrain');
-
 /*
 |--------------------------------------------------------------------------
 | Classic iRail redirection messages

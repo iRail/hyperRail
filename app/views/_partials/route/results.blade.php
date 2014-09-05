@@ -26,7 +26,7 @@
                         <span class="tcenter">
                             <strong>
                                 <i class="fa fa-clock-o"></i> 
-                                @{{ ((conn.arrival.time-conn.departure.time)/3600)-0.5 | number:0}}:@{{ ((conn.arrival.time-conn.departure.time)%3600)/60 | number:0}}
+                                @{{ formatDuration( ((conn.arrival.time-conn.departure.time)/60) ) }}
                             </strong>
                         </span>
                         <span class="tright">
