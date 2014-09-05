@@ -1,7 +1,5 @@
 <?php
 
-use hyperRail\Tests\JsonLDTest;
-
 class HomeController extends BaseController {
 
 	/*
