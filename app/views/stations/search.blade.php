@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="irailapp" ng-controller="StationSearchCtrl">
+<html lang="{{Config::get('app.locale');}}" ng-app="irailapp" ng-controller="StationSearchCtrl">
 @include('core.head')
 <body>
 <div class="wrapper">
