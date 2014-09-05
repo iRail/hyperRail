@@ -65,9 +65,13 @@ return array(
     "nearby" => "Nearby",
     "most_used" => "Most used",
     "log_in" => "Log in",
+    "log_out" => "Log out",
     "register" => "Register",
     "username" => "Username",
     "password" => "Password",
+    "noAccount" => "Not yet an account",
+    "wrongUsernameOrPassword" => "Wrong username or password",
+    "userAlreadyExists" => "This user already exists",
     "err404_FirstParagraph" => "We're so sorry!",
     "err404_SecondParagraph" => "Something went wrong on our servers",
     "go_back" => "Go back",
@@ -111,4 +115,5 @@ return array(
     "to_optionalStation" => "Click here for destination (optional)",
     "refreshBoard" => "Refresh",
     "marketLink" => "Download the official app",
+    "traveldiary" => "Travel Diary"
 );

@@ -20,21 +20,9 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment( function() {
-    $haystack = __DIR__; // Catch the directory path
-    // Set the boolean
-    $isLocal = strpos($haystack, 'Users/nicoverbruggen/Repositories/hyperRail');
-    $isLocalVagrant = strpos($haystack, 'var/www/html/');
-    $isDevelopment = strpos($haystack, 'var/www/irail.be/development/');
-    $isTest = strpos($haystack, 'var/www/irail.be/test/');
-    $isProduction = strpos($haystack, 'var/www/irail.be/web/');
-    // Return the correct environment
-    if ($isLocal) return "local";
-    if ($isLocalVagrant) return "vagrant";
-    if ($isDevelopment) return "development";
-    if ($isTest) return "test";
-    if ($isProduction) return "production";
-});
+$env = $app->detectEnvironment(array(
+    'local' => array('your-machine-name'),
+));
 
 /*
 |--------------------------------------------------------------------------

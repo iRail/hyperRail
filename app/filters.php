@@ -53,11 +53,16 @@ App::after(function($request, $response)
 |
 */
 
-Route::filter('auth', function()
-{
-	if (Auth::guest()) return Redirect::guest('login');
-});
+// Route::filter('auth', function()
+// {
+// 	if (Auth::guest()) return Redirect::guest('login');
+// });
 
+// Filter for Sentry's user-identity system
+Route::filter('auth', function(){
+
+    if(!Sentry::check()) return Redirect::guest('login');
+});
 
 Route::filter('auth.basic', function()
 {
