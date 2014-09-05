@@ -31199,7 +31199,7 @@ var irailapp = angular.module('irailapp',
     [
         'ui.bootstrap',
         'ngAnimate',
-        'irailapp.controllers',
+        'irailapp.controllers'
     ]
 );
 
@@ -31222,6 +31222,11 @@ function GetURLParameter(sParam){
     }
 }
 
+$(function(){
+    if (window.innerWidth > 500){
+        $('#collapseCalendar').addClass('in');
+    }
+});
 var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
 
   /*--------------------------------------------------------
@@ -31406,6 +31411,10 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
     $scope.mytime = new Date(itime.setHours(23, 59, 0));
     $scope.confirmRouteSearch();
   };
+
+    $scope.clientWidthNotMobile = function () {
+        return(window.innerWidth > 500);
+    };
 
   // Fetch stations via HTTP GET request
   $http.get("stations/NMBS",{header:{"Accept":"application/json"}}).success(function (data) {
