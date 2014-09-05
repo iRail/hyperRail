@@ -31436,10 +31436,6 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
     $scope.confirmRouteSearch();
   };
 
-    $scope.clientWidthNotMobile = function () {
-        return(window.innerWidth > 500);
-    };
-
   // Fetch stations via HTTP GET request
   $http.get("stations/NMBS",{header:{"Accept":"application/json"}}).success(function (data) {
     $scope.stations = data;
