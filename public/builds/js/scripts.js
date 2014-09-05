@@ -31481,6 +31481,24 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
       }
     }
   });
+  $scope.formatDuration = function(minutes){
+    //return minutes;
+    
+    var hours = Math.floor(minutes/60);
+    var minutes = Math.floor(minutes%60);
+
+    var str = "";
+    if ( hours < 10 ){
+      str += "0";
+    }
+    str += hours + ":";
+    if ( minutes < 10 ){
+      str += "0";
+    }
+    str += minutes;
+
+    return str;
+  };
 };
 
 angular.module("irailapp.controllers")
