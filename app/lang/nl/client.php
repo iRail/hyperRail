@@ -69,9 +69,13 @@ return array(
     "nearby" => "Dichtbij",
     "most_used" => "Gebruikte",
     "log_in" => "Aanmelden",
+    "log_out" => "Afmelden",
     "register" => "Registreer",
     "username" => "Gebruikersnaam",
     "password" => "Wachtwoord",
+    "noAccount" => "Nog geen account",
+    "wrongUsernameOrPassword" => "Onjuiste gebruikersnaam of wachtwoord",
+    "userAlreadyExists" => "Deze gebruiker bestaat al",
     "err404_FirstParagraph" => "Het spijt ons",
     "err404_SecondParagraph" => "Er ging iets mis.",
     "go_back" => "Ga terug",
@@ -115,4 +119,5 @@ return array(
     "to_optionalStation" => "Selecteer richting (optioneel)",
     "refreshBoard" => "Vernieuw",
     "marketLink" => "Download de officiële app",
+    "traveldiary" => "Reisdagboek"
 );

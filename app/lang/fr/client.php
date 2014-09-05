@@ -65,9 +65,13 @@ return array(
     "nearby" => "A proximité",
     "most_used" => "Plus utilisés",
     "log_in" => "Se connecter",
+    "log_out" => "Déconnecter",
     "register" => "S'enregistrer",
     "username" => "Utilisateur",
     "password" => "Mot de passe",
+    "noAccount" => "Pas encore registré",
+    "wrongUsernameOrPassword" => "Nom d'utilisateur ou mot de passe incorrect",
+    "userAlreadyExists" => "Cet utilisateur existe déjà",
     "err404_FirstParagraph" => "Désolé!",
     "err404_SecondParagraph" => "Erreur de nos serveurs",
     "go_back" => "Retour",
@@ -111,4 +115,5 @@ return array(
     "to_optionalStation" => "Sélectionnez la direction (optionnel)",
     "refreshBoard" => "Rafraîchir",
     "marketLink" => "Téléchargez l'application officielle",
+    "traveldiary" => "Carnet de Voyage"
 );

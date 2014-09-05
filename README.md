@@ -37,6 +37,61 @@ Data returned through the API (when specifically requesting `application/ld+json
 
 Data dumps and the data that is used (and will be used and queryable in the future) are available at <a href="http://archive.irail.be">http://archive.irail.be</a>.
 
+### Authentication interface
+
+OAuth URI namespace (WIP): 
+
+In order to log in with a oAuth provider, send a request to 'irail.be/oauth/{provider}' (supported provider: 'google'). 
+
+The LoginController checks what provider it is and executes the corresponding login()-method of the specific provider. Every provider has it's own Provider-class which implements an OAuthProvider-interface.
+
+Inside the login()-method of a Provider-class happens the oAuth-process.
+
+
+### Modify database.php 
+Vagrant automatically uses 'root' as username and password. For this reason you should go to app/config and create a folder named 'productie' and copy database.php in it.
+Also put this folder in .gitignore.
+Next, you open that file in 'productie' and modify the mysql section to this:
+
+```bash
+		'mysql' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'hyperrail',
+			'username'  => 'root',
+			'password'  => 'root',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
+```
+
+Later when entering production, modify the vagrant file and app/config/database.php.
+
+### Connect to vagrant database
+
+* Open MySQL Workbench or any other tool you like.
+* Connect to a new database using the following settings:
+
+```bash
+Connection Method: Standard TCP/IP over SSH
+SSH Hostname: 127.0.0.1:2222
+SSH Username: root
+SSH Keyfile: select ~/.vagrant.d/insecure_private_key
+MySQL hostname: 127.0.0.1
+MySQL Server Port: 3306
+Username: root
+Password: root
+port: 3306
+```
+### OAuth2.0-server API (WIP)
+
+You can read all about this in the ```HOW_TO_USE_IRAIL_OAUTH.md``` file in de root directory or click <a href="https://github.com/oSoc14/hyperRail/blob/develop/HOW_TO_USE_IRAIL_OAUTH.md">here</a>.
+
+### Reminder
+
+When going in production, you have to set the right credentials for OAuth-providers in:
+app/config/packages/artdarek/oauth-4-laravel/config.php
 
 ### Thanks to
 
