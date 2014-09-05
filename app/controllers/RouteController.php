@@ -27,7 +27,6 @@ class RouteController extends \BaseController {
                 break;
         }
     }
-
     static function getJSON(){
         if(Input::get('from') && Input::get('to')) {
             $from =  urldecode(Input::get('from')); // required
@@ -77,5 +76,4 @@ _:to hydra:variable "to" ;
 
         }
     }
-
 }

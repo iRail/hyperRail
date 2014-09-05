@@ -14,6 +14,17 @@ class LiveboardItem {
     public $headsign;           // The final destination of this train (headsign, string)
     public $routeLabel;         // Label assigned to the train
 
+    /**
+     * Set the values for this LiveboardItem.
+     * @param $stationId
+     * @param $requestDate
+     * @param $requestTime
+     * @param $routeLabel
+     * @param $headSign
+     * @param $delay
+     * @param $time
+     * @param $platform
+     */
     public function fill($stationId, $requestDate, $requestTime, $routeLabel, $headSign,
                                         $delay, $time, $platform){
         $this->headsign = $headSign;
@@ -26,6 +37,10 @@ class LiveboardItem {
         $this->destinationURL = "http://" . _DOMAIN_ . "/stations/NMBS/" . $stationId;
     }
 
+    /**
+     * Converts this object to a JSON-LD compatible array (using @id).
+     * @return array
+     */
     public function toArray(){
         $dataArray = array(
             "@id" => $this->stationURL,

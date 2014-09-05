@@ -25,7 +25,8 @@
                         </span>
                         <span class="tcenter">
                             <strong>
-                                <i class="fa fa-clock-o"></i> @{{ ((conn.arrival.time-conn.departure.time))/60 }}'
+                                <i class="fa fa-clock-o"></i> 
+                                @{{ ((conn.arrival.time-conn.departure.time)/3600)-0.5 | number:0}}:@{{ ((conn.arrival.time-conn.departure.time)%3600)/60 | number:0}}
                             </strong>
                         </span>
                         <span class="tright">
@@ -112,6 +113,5 @@
             <a class="btn btn-default btn-50" ng-click="latest()">{{Lang::get('client.latestRide')}} &gt;&gt;</a>
         </div>
         <a class="btn btn-primary btn-wide btn-lg btn-botm" ng-click="reverse()"><i class="fa fa-exchange"></i> {{Lang::get('client.reverse')}}</a>
-        <a class="btn btn-default btn-wide btn-lg btn-botm" ng-click="resetplanner($event)"><i class="fa fa-undo"></i> {{Lang::get('client.planAnother')}}</a>
     </div>
 </div>
