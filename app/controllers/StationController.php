@@ -249,7 +249,6 @@ class StationController extends \BaseController {
             case "application/ld+json":
             default:
                 $stationStringName = \hyperRail\StationString::convertToString($station_id);
-
                 if (!$archived){
                     
                     $URL = "http://api.irail.be/liveboard/?station=" . urlencode($stationStringName->name) . "&date=" . date("mmddyy" ,$datetime)  . "&time=" . date("Hi", $datetime) . "&fast=true&lang=nl&format=json";
