@@ -1,6 +1,6 @@
 @if (count($checkins) == 0)
 <div class="alert alert-info">
-	<p>You have no existing travel entries</p>
+	<p>{{Lang::get('client.ErrTravelDiary')}}</p>
 </div>
 @else
 <div class="row results" ng-show="results">
@@ -8,7 +8,9 @@
 		<p class="h1">{{Lang::get('client.traveldiary')}}</strong></p>
 		<div class="list-group">
 			<div class="" id="past-checkins">
-				<a id="show-passed" class="btn btn-default btn-lg  btn-wide" onclick="$('#passed-checkins-body').toggle(200)">Show past checkins</a>
+				<a id="show-passed" class="btn btn-default btn-lg  btn-wide" onclick="$('#passed-checkins-body').toggle(200)">
+					{{Lang::get('client.showPastCheckins')}}
+				</a>
 				<div class="" id="passed-checkins-body" style="display: none;">
 					@foreach ($checkins as $checkin)
 					@if (strtotime($checkin['scheduledDepartureTime']) < strtotime('now')) 

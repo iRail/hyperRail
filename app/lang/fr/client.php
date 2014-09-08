@@ -115,5 +115,7 @@ return array(
     "to_optionalStation" => "Sélectionnez la direction (optionnel)",
     "refreshBoard" => "Rafraîchir",
     "marketLink" => "Téléchargez l'application officielle",
-    "traveldiary" => "Carnet de Voyage"
+    "traveldiary" => "Carnet de Voyage",
+    "showPastCheckins" => "Afficher des checkins passés",
+    "ErrTravelDiary" => "Vous n'avez pas des voyages"
 );

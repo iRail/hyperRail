@@ -115,5 +115,7 @@ return array(
     "to_optionalStation" => "Click here for destination (optional)",
     "refreshBoard" => "Refresh",
     "marketLink" => "Download the official app",
-    "traveldiary" => "Travel Diary"
+    "traveldiary" => "Travel Diary",
+    "showPastCheckins" => "Show past checkins",
+    "ErrTravelDiary" => "You have no travel entries"
 );

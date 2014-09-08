@@ -119,5 +119,7 @@ return array(
     "to_optionalStation" => "Selecteer richting (optioneel)",
     "refreshBoard" => "Vernieuw",
     "marketLink" => "Download de officiële app",
-    "traveldiary" => "Treingids"
+    "traveldiary" => "Treingids",
+    "showPastCheckins" => "Toon oude checkins",
+    "ErrTravelDiary" => "U heeft geen ingecheckte treinritten"
 );
