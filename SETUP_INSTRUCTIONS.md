@@ -86,9 +86,12 @@ public function getAccessTokenData(RequestInterface $request, ResponseInterface 
     ...
 }	
 ```
-
 This makes sure our tokens won't expired.
 
-## Step 8: You're ready!
+## Step 8: Add credentials
+
+Add your Twitter credentials to app/config/packages/artdarek/oauth-4-laravel/config.php
+
+## Step 9: You're ready!
 
 Usually you should be ready to get started by visiting the hostname you have set up. If it does not work, log an [issue](https://github.com/iRail/hyperRail/issues/new). We'll help you out and fix the documentation for everyone else.
