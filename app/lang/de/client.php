@@ -65,4 +65,5 @@ return array(
     "refreshBoard" => "Erfrischen",
     "marketLink" => "Download des offiziellen App",
     "errorHoliday" => "Wir können keine Verbindung finden. An Feiertagen ist es möglich, daß an kleineren Haltestellen keine Züge halten.",
+    "traveldiary" => "Reisetagebuch"
 );

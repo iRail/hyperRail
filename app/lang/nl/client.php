@@ -119,5 +119,5 @@ return array(
     "to_optionalStation" => "Selecteer richting (optioneel)",
     "refreshBoard" => "Vernieuw",
     "marketLink" => "Download de officiële app",
-    "traveldiary" => "Reisdagboek"
+    "traveldiary" => "Treingids"
 );

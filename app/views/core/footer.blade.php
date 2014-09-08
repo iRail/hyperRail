@@ -11,4 +11,3 @@
         s.parentNode.insertBefore(g, s);
     }(document, 'script'));
 </script>
-<script src="{{ URL::asset('builds/js/scripts.js') }}"></script>
