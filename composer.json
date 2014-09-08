@@ -33,7 +33,7 @@
             "app/exceptions"
 		],
         "psr-0": {
-            "hyperRail" : "app/"
+            "hyperRail\\" : "app/"
         }
 	},
 	"scripts": {

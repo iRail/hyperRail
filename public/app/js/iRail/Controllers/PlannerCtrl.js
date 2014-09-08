@@ -89,6 +89,30 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
         q: query
       }
     }).then(function(res){
+      var lang = $('html').attr("lang");
+      
+      for( i in res["data"]["@graph"] ){
+        var station = res["data"]["@graph"][i];
+
+        //only if there are alternatives
+        if (station["alternative"]){
+          //array of alternatives
+          if ( station["alternative"] instanceof Array ){
+            var j = 0;
+            while ( j < station["alternative"].length 
+              && station["alternative"][j]["@language"] != lang){
+              j++;
+            }
+
+            if ( j < station["alternative"].length ){ //one found in right lang => switch
+              station["name"] = station["alternative"][j]["@value"];
+            }
+          }else if (station["alternative"]["@language"] == lang){ //single alternative
+            station["name"] = station["alternative"]["@value"];
+          }
+        }
+      }
+      
       return res["data"]["@graph"];
     });
   };
@@ -230,6 +254,24 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
       }
     }
   });
+  $scope.formatDuration = function(minutes){
+    //return minutes;
+    
+    var hours = Math.floor(minutes/60);
+    var minutes = Math.floor(minutes%60);
+
+    var str = "";
+    if ( hours < 10 ){
+      str += "0";
+    }
+    str += hours + ":";
+    if ( minutes < 10 ){
+      str += "0";
+    }
+    str += minutes;
+
+    return str;
+  };
 };
 
 angular.module("irailapp.controllers")
