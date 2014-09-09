@@ -18,25 +18,17 @@
     <link rel="shortcut icon" href="{{ URL::asset('favicon.ico') }}"/>
 
     <link rel="stylesheet" href="{{ URL::asset('builds/css/main.css') }}">
-
+    
     <script src="{{ URL::asset('builds/js/scripts.js') }}"></script>
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper" ng-app="irailapp" ng-controller="DepartureDetailCtrl">
     <div id="main">
         @include('core.navigation')
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <?php $delay = $station['delay']/60; ?>
-
-                    @if ($station['delay'] > 0)
-                        <?php $image = min($delay / 5, 9); ?>
-
-                        {{ HTML::image('images/irail_logo_delays-0' . $image .'.svg') }}
-                    @else
-                        <img src="{{ URL::asset('images/train.svg') }}" />
-                    @endif
+                    <img src="{{ URL::asset('images/train.svg') }}" />
                 </div>
                 <div class="col-sm-6">
                     <br/>
@@ -45,11 +37,10 @@
                     <?php
                     if ($station['delay'] > 0){
                         echo "<p class='label label-warning label-lg'>+" . ($station['delay']/60) . "' " . Lang::get('client.delay') . '</p>';
-                    }   
-                    if (is_array($station['delay']) && sizeof($station['delay'])>1) {
+                    } else if ($station['delay'] === 'cancel') {
                         echo "<p class='label label-warning label-lg'>" . "cancelled" . " </p>";
                     }
-                    ?>			
+                    ?>
                     <br/>
                     <br/>
                     <p class="h2">{{Lang::get('client.platform')}} {{$station['platform']}}</p>
@@ -76,4 +67,6 @@
         </div>
     </div>
 </div>
-@stop
+@include('core.footer')
+</body>
+</html>
