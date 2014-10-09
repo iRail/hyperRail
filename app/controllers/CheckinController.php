@@ -102,8 +102,13 @@ class CheckinController extends BaseController {
 
 		usort($checkins, 'sortByDepartureTime');
 			
-
-
+		// url of a departure begins always with http://irail.be/... 
+		// this code changes the host of the url to the host your using
+		// for example: http://irail.be/... -> https://irail.dev/ in development
+		foreach ($checkins as &$checkin) {
+				$i = strpos($checkin['@id'],'/stations');
+    			$checkin['@id'] = substr($checkin['@id'], $i); 
+		}
 
 		switch ($val){
 			case "application/json":

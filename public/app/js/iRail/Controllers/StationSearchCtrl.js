@@ -34,6 +34,18 @@ var StationSearchCtrl = function ($scope, $http, $filter, $timeout) {
     });
   };
 
+  // url of a departure begins always with http://irail.be/... 
+  // this code changes the host of the url
+  // for example: http://irail.be/... -> https://irail.dev/
+ $scope.$watch("departure", function() {
+   if( typeof $scope.departure === 'object' ){
+    var query = $scope.departure['@id'];
+    var i = query.search('/stations');
+
+    $scope.departure['@id'] = window.location.origin + query.substr(i); 
+   }     
+  });
+
   $(document).keypress( function (e) {
     if (e.which === 13) {
       $('#confirm').focus();
