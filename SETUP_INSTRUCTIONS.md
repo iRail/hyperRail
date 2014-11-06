@@ -31,7 +31,7 @@ Optional, but can be useful.
 ## Step 3: make app/storage writeable
 
 ```bash
-chmod -R 777 app/storage
+chmod a+w -R app/storage
 ```
 
 ## Step 4: Set up hostname
