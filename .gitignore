@@ -21,6 +21,7 @@ sftp-config.json
 .env.*.php
 .env.php
 .vagrant
+_ide_helper.php
 
 # Dotfiles
 .DS_Store

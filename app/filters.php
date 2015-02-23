@@ -11,35 +11,37 @@
 |
 */
 
-App::before(function($request)
-{
-    if (App::environment()=='production'){
-        if (!Request::secure()) return Redirect::secure(Request::getRequestUri());
+App::before(function ($request) {
+    // If on production, redirect to a secure page if possible
+    // TODO: set up nginx to do this automatically
+    if (App::environment() == 'production') {
+        if (!Request::secure()) {
+            return Redirect::secure(Request::getRequestUri());
+        }
     }
-    // TODO: implement language negotiation as an alternative to get('lang')
-    if (Input::get('lang')){
+    // Language negotiation
+    if (Input::get('lang')) {
         $languages = array('nl', 'en', 'fr');
         $locale = Input::get('lang');
-        if(in_array($locale, $languages)){
+        if (in_array($locale, $languages)) {
             App::setLocale($locale);
             Session::put('lang', $locale);
-        }else{
+        } else {
             $locale = null;
         }
-    }else{
+    } else {
         $languages = array('nl', 'en', 'fr');
         $locale = Session::get('lang');
-        if(in_array($locale, $languages)){
+        if (in_array($locale, $languages)) {
             App::setLocale($locale);
-        }else{
+        } else {
             $locale = null;
         }
     }
 });
 
-App::after(function($request, $response)
-{
-	//
+App::after(function ($request, $response) {
+    //
 });
 
 /*
@@ -53,15 +55,13 @@ App::after(function($request, $response)
 |
 */
 
-Route::filter('auth', function()
-{
-	if (Auth::guest()) return Redirect::guest('login');
+Route::filter('auth', function () {
+    if (Auth::guest()) return Redirect::guest('login');
 });
 
 
-Route::filter('auth.basic', function()
-{
-	return Auth::basic();
+Route::filter('auth.basic', function () {
+    return Auth::basic();
 });
 
 /*
@@ -75,9 +75,8 @@ Route::filter('auth.basic', function()
 |
 */
 
-Route::filter('guest', function()
-{
-	if (Auth::check()) return Redirect::to('/');
+Route::filter('guest', function () {
+    if (Auth::check()) return Redirect::to('/');
 });
 
 /*
@@ -91,10 +90,8 @@ Route::filter('guest', function()
 |
 */
 
-Route::filter('csrf', function()
-{
-	if (Session::token() != Input::get('_token'))
-	{
-		throw new Illuminate\Session\TokenMismatchException;
-	}
+Route::filter('csrf', function () {
+    if (Session::token() != Input::get('_token')) {
+        throw new Illuminate\Session\TokenMismatchException;
+    }
 });

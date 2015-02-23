@@ -1,5 +1,6 @@
 <?php
 
-class iRailClassicAPIException extends \Exception {
+class iRailClassicAPIException extends \Exception
+{
 
-} 
+}
