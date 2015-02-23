@@ -1,6 +1,6 @@
 ## hyperRail
 
-Introducing the new iRail.be. This is an application that transforms and uses data from the existing iRail API, which you can find [on GitHub](https://github.com/irail/api).
+Introducing the new [iRail.be](https://irail.be). This is an application that transforms and uses data from the existing iRail API, which you can find [on GitHub](https://github.com/irail/irail).
 
 ## Core concepts
 
@@ -23,7 +23,3 @@ In order to ask the API to serve you JSON (and not just the plain HTML that you 
 Data returned through the API (when specifically requesting `application/ld+json`) should be structured and contains information about other possible paths (interaction) and contexts. Following the HATEOAS principle: 
 
 > A REST client needs no prior knowledge about how to interact with any particular application or server beyond a generic understanding of hypermedia.
-
-### Data dumps
-
-Data dumps and the data that is used (and will be used and queryable in the future) are available at <a href="http://archive.irail.be">http://archive.irail.be</a>.
