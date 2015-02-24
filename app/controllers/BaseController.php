@@ -1,7 +1,7 @@
 <?php
 
-class BaseController extends Controller {
-
+class BaseController extends Controller
+{
     /**
      * Setup the layout used by the controller.
      *
@@ -9,10 +9,8 @@ class BaseController extends Controller {
      */
     protected function setupLayout()
     {
-        if ( ! is_null($this->layout))
-        {
+        if (!is_null($this->layout)) {
             $this->layout = View::make($this->layout);
         }
     }
-
 }
