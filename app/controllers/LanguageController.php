@@ -1,6 +1,7 @@
 <?php
 
-class LanguageController extends BaseController {
+class LanguageController extends BaseController
+{
 
     /*
     |--------------------------------------------------------------------------
