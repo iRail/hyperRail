@@ -1,19 +1,18 @@
 <?php
 
-class HomeController extends BaseController {
-
-	/*
-	|--------------------------------------------------------------------------
-	| Default Home Controller
-	|--------------------------------------------------------------------------
-	*/
-
-	public function showWelcome()
-	{
-        if (!Session::get('lang')){
+class HomeController extends BaseController
+{
+    /*
+    |--------------------------------------------------------------------------
+    | Default Home Controller
+    |--------------------------------------------------------------------------
+    */
+    public function showWelcome()
+    {
+        if (!Session::get('lang')) {
             return View::make('language');
-        }else{
+        } else {
             return Redirect::to('route');
         }
-	}
+    }
 }

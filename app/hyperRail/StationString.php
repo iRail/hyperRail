@@ -2,24 +2,23 @@
 
 namespace hyperRail;
 
-class StationString {
+class StationString
+{
     /**
      * Converts a station string to a station id. If the string cannot be converted,
      * null is returned.
      * @param $string
      * @return string or null
      */
-    public static function convertToId($string){
-
+    public static function convertToId($string)
+    {
         // Fetch stations list by http://github.com/iRail/stations to compare the station string with
-
         $json = \File::get(app_path() . "/stations.json");
         $data = json_decode($json);
-        //$alternates = array();
+        // $alternates = array();
         // For each station in the array of stations, attempt comparison
 
-        foreach($data->{"@graph"} as $station){
-
+        foreach ($data->{"@graph"} as $station) {
             /*
              * Write an array with station name alternates
              *
@@ -31,7 +30,7 @@ class StationString {
              * )
              */
             $alternates[$stations->name] = array();
-            foreach($stations->altentative as $alternate){
+            foreach ($stations->altentative as $alternate) {
                 $alternates[$stations->name][] = $alternate->{"@value"};
             }
 
@@ -40,14 +39,14 @@ class StationString {
              * comparisons to ensure that this process is functional.
              * TODO: write a function that loops through station name alternates
              */
-            
+
 
             /* If we can find the station name in the string,
              * we can return the station data if we get a hit!
              * Arguably we need to check if there are multiple hits:
              * TODO: check for multiple hits when using strpos()
              */
-            if (strpos($station->name,$string) !== false) {
+            if (strpos($station->name, $string) !== false) {
                 return $station;
             }
         }
@@ -63,7 +62,8 @@ class StationString {
      * @param $string
      * @return string or null
      */
-    public static function convertToString($string){
+    public static function convertToString($string)
+    {
 
         // Fetch stations list to compare the station string with
 
@@ -71,8 +71,8 @@ class StationString {
         $data = json_decode($json);
 
         // For each station in the array of stations, attempt comparison
-        
-        foreach($data->{"@graph"} as $station){
+
+        foreach ($data->{"@graph"} as $station) {
 
             /*
              * TODO: write an array with station name alternates
@@ -96,12 +96,12 @@ class StationString {
              * Arguably we need to check if there are multiple hits:
              * TODO: check for multiple hits when using strpos()
              */
-            
-            if (strpos($station->{"@id"},$string) !== false) {
+
+            if (strpos($station->{"@id"}, $string) !== false) {
                 return $station;
             }
         }
         return null;
     }
 
-} 
+}

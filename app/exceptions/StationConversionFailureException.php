@@ -1,5 +1,6 @@
 <?php
 
-class StationConversionFailureException extends \Exception {
+class StationConversionFailureException extends \Exception
+{
 
-} 
+}
