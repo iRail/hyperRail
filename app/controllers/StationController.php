@@ -54,7 +54,7 @@ class StationController extends \BaseController
 
             //make sure that we're only taking the first part before a /
             $query = $query.explode("/");
-            $query = $query[0];
+            $query = trim($query[0]);
             // Dashes are the same as spaces
             $query = $this->normalizeAccents($query);
             $query = str_replace("\-", "[\- ]", $query);
