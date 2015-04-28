@@ -1,5 +1,7 @@
 ## hyperRail
 
+[![Join the chat at https://gitter.im/iRail/hyperRail](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/iRail/hyperRail?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Introducing the new [iRail.be](https://irail.be). This is an application that transforms and uses data from the existing iRail API, which you can find [on GitHub](https://github.com/irail/irail).
 
 ## Core concepts
