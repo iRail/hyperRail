@@ -54,7 +54,11 @@ class StationController extends \BaseController
             
             // st. is the same as Saint
             $query = preg_replace("/st(\s|$)/i", "(saint|st|sint) ", $query);
-            
+
+            //make sure that we're only taking the first part before a /
+            $query = explode("/", $query);
+            $query = trim($query[0]);
+
             // Dashes are the same as spaces
             $query = $this->normalizeAccents($query);
             $query = str_replace("\-", "[\- ]", $query);
