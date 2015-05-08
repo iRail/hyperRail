@@ -59,12 +59,15 @@ class StationController extends \BaseController
             $query = explode("/", $query);
             $query = trim($query[0]);
 
+            //make sure something between brackets is ignored
+            $query = preg_replace("/\s?\(.*?\)/i", "", $query);
+            
             // Dashes are the same as spaces
             $query = $this->normalizeAccents($query);
             $query = str_replace("\-", "[\- ]", $query);
             $query = str_replace(" ", "[\- ]", $query);
             
-            $count = 0;            
+            $count = 0;
 
             foreach ($stations->{"@graph"} as $station) {
                 if (preg_match('/.*' . $query . '.*/i', $this->normalizeAccents($station->{"name"}), $match)) {
