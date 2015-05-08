@@ -51,12 +51,16 @@ class StationController extends \BaseController
             $newstations->{"@id"} = $stations->{"@id"};
             $newstations->{"@context"} = $stations->{"@context"};
             $newstations->{"@graph"} = array();
-
+            
+            // st. is the same as Saint
+            $query = preg_replace("/st(\s|$)/i", "(saint|st|sint) ", $query);
+            
             // Dashes are the same as spaces
             $query = $this->normalizeAccents($query);
             $query = str_replace("\-", "[\- ]", $query);
             $query = str_replace(" ", "[\- ]", $query);
-            $count = 0;
+            
+            $count = 0;            
 
             foreach ($stations->{"@graph"} as $station) {
                 if (preg_match('/.*' . $query . '.*/i', $this->normalizeAccents($station->{"name"}), $match)) {
@@ -118,6 +122,7 @@ class StationController extends \BaseController
             'û' => 'u', 'ý' => 'y', 'ý' => 'y', 'þ' => 'b',
             'ÿ' => 'y'
         );
+        
         return strtr($str, $unwanted_array);
     }
 
