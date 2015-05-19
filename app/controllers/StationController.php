@@ -52,16 +52,15 @@ class StationController extends \BaseController
             $newstations->{"@context"} = $stations->{"@context"};
             $newstations->{"@graph"} = array();
             
+            //make sure something between brackets is ignored
+            $query = preg_replace("/\s?\(.*?\)/i", "", $query);
+            
             // st. is the same as Saint
-            $query = preg_replace("/st\s/i", "(saint|st|sint) ", $query);
-            $query = preg_replace("/st$/i", "(saint|st|sint)", $query);
+            $query = preg_replace("/st(\s|$)/i", "(saint|st|sint) ", $query);
 
             //make sure that we're only taking the first part before a /
             $query = explode("/", $query);
             $query = trim($query[0]);
-
-            //make sure something between brackets is ignored
-            $query = preg_replace("/\s?\(.*?\)/i", "", $query);
             
             // Dashes are the same as spaces
             $query = $this->normalizeAccents($query);
