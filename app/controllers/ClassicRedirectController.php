@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Redirect;
+
 class ClassicRedirectController extends \BaseController
 {
 
@@ -45,13 +47,15 @@ class ClassicRedirectController extends \BaseController
     {
         $departure = \hyperRail\StationString::convertToId($departure_station);
         $destination = \hyperRail\StationString::convertToId($destination_station);
+
         if ($departure != null && $destination != null) {
             header("HTTP/1.1 301 Moved Permanently");
-            header("Location: https://" . _DOMAIN_ . "/route" .
-                "?mode=train" . "&from=" . $departure->id . "&to=" . $destination->id . "&time="
+            return Redirect::to("https://" . _DOMAIN_ . "/route" .
+                "?from=" . $departure->{'@id'} . "&to=" . $destination->{'@id'} . "&time="
                 . date("Hi") . "&auto=true");
+        } else {
+            return "It looks like we couldn't convert your route request to the new format :(";
         }
-        return "It looks like we couldn't convert your route request to the new format :(";
     }
 
     public function redirectSettings()

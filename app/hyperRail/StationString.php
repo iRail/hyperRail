@@ -19,35 +19,32 @@ class StationString
         // For each station in the array of stations, attempt comparison
 
         foreach ($data->{"@graph"} as $station) {
+
             /*
              * Write an array with station name alternates
              *
              * This also solves multilanguage issues since the strings are simply converted
              * to the proper id :) This way, we can make iRail multilanguage!
              *
-             * $alternates = array(
-             * "Gent-Sint-Pieters" => array('Ghent-Sint-Pieters', 'Gent Sint Pieters', 'Ghent Sint Pieters')
-             * )
              */
-            $alternates[$stations->name] = array();
-            foreach ($stations->altentative as $alternate) {
-                $alternates[$stations->name][] = $alternate->{"@value"};
-            }
-
-            /*
-             * Assuming we have a list of station name alternates, we can do even more
-             * comparisons to ensure that this process is functional.
-             * TODO: write a function that loops through station name alternates
-             */
-
 
             /* If we can find the station name in the string,
              * we can return the station data if we get a hit!
-             * Arguably we need to check if there are multiple hits:
-             * TODO: check for multiple hits when using strpos()
              */
             if (strpos($station->name, $string) !== false) {
                 return $station;
+            }
+
+            /*
+             * Assuming the main name was not a hit, try the alternates
+             * If an alternate value matches, return the station
+             */
+            if (isset($station->alternative)) {
+                foreach ($station->alternative as $alternate) {
+                    if (strpos($alternate->{"@value"}, $string) !== false) {
+                        return $station;
+                    }
+                }
             }
         }
         // If there is no station id found for this string...
