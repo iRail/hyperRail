@@ -1,25 +1,62 @@
-## hyperRail
+# iRail.be
 
-Introducing the new [iRail.be](https://irail.be). This is an application that transforms and uses data from the existing iRail API, which you can find [on GitHub](https://github.com/irail/irail).
+[iRail.be](https://irail.be) is a web-application that uses data from http://api.irail.be ([source code](https://github.com/irail/irail).) to create a hyper-media driven application for the Belgian railway company.
 
-## Core concepts
+_Looking for data? Check https://hello.irail.be for more info_
 
-### Content negotiation
+## Features
 
-#### Language
+ * Implemented: [Content negotiation](https://en.wikipedia.org/wiki/Content_negotiation) for languages (en, fr, nl and de) and content-types (application/json and text/html)
+ * Implemented: auto-complete for [all SNCB stations](https://irail.be/irail/stations)
+ * Implemented: route planning interface
+ * Planned: support for the [Hydra Linked Data vocabulary](http://www.hydra-cg.com/) for [hypermedia](https://en.wikipedia.org/wiki/Hypermedia)
 
-When a page is requested, the language preference is delegated from either the URL (using the GET parameter 'lang') or via accept headers. Accept headers take preference over any parameters.
+_Want more features? Please do contribute by adding [feature requests](https://github.com/iRail/hyperRail/issues/new). Are you a developer? We accept pull requests!_
 
-#### Content-type based on accept headers
+## Install locally for development purposes
 
-iRail doesn't use a classic API on another URL. There's no 'irail.be/api', instead you specify in the **accept headers** what kind of resource you'd like to request. By default, when visiting with a browser, you'll get a webpage that can be used by end-users.
+Next to following these steps, you can also use [vagrant](https://www.vagrantup.com/). After cloning the repo, do `vagrant up` and a new virtual machine will be set up.
 
-You can also ask the application (iRail.be) for other kinds of resources. For example, you can ask for a JSON version of the data that the routeplanner serves.
+### Step 0: Requirements and clone ###
 
-In order to ask the API to serve you JSON (and not just the plain HTML that you get when you visit irail.be in your browser), send a request to `irail.be/route` but specify the requested content-type in your accept headers, e.g. `application/ld+json`.
+* PHP 5.3+ for Laravel project
+* PHP 5.4+ for Way/Generators, if you have 5.4+ you can uncomment Way/Generators in /app/config/app.php
+* Apache
 
-### Hypermedia interface
+Clone the repository:
 
-Data returned through the API (when specifically requesting `application/ld+json`) should be structured and contains information about other possible paths (interaction) and contexts. Following the HATEOAS principle: 
+```bash
+git clone https://github.com/iRail/hyperRail.git
+```
 
-> A REST client needs no prior knowledge about how to interact with any particular application or server beyond a generic understanding of hypermedia.
+### Step 1: Install dependencies ###
+
+Run `composer update`. If you do not yet have composer, get it here: http://getcomposer.org
+
+### Step 2: Update bootstrap/start.php for environments ###
+
+Optional, but can be useful.
+
+### Step 3: make app/storage writeable ###
+
+```bash
+chmod -R 777 app/storage
+```
+
+### Step 4: Set up hostname ###
+
+In /app/config/app.php set the following to your personal hostname/preferences:
+
+	'url' => 'http://irail.dev',    // with http
+   	'url-short' => 'irail.dev',     // without http
+   	
+### Step 5: Set up resources ###
+
+ * `npm install`
+ * `npm run update-stations`
+ * `bower install`
+ * `grunt`
+
+### Step 6: You're ready! ###
+
+Usually you should be ready to get started by visiting the hostname you have set up. If it does not work, log an [issue](https://github.com/iRail/hyperRail/issues/new). We'll help you out and fix the documentation for everyone else.
