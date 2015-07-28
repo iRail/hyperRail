@@ -4,7 +4,11 @@
     "bower": "*",
     "grunt": "*",
     "grunt-cli": "*",
-    "glob": "*"
+    "glob": "*",
+    "irail-stations": "*"
+  },
+  "scripts" : {
+    "update-stations" : "irail-stations > app/stations.json"
   },
   "devDependencies": {
     "grunt-contrib-concat": "*",
