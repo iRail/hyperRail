@@ -17,6 +17,7 @@
                         <li>Brecht Van de Vyvere</li>
                         <li>Bram Devries</li>
                         <li>Andreas De Lille</li>
+                        <li>Tim Joosten</li>
                     </ul>
                 </div>
             </div>

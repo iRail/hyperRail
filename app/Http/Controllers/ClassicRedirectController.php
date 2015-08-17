@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// todo set _domain_ constant to config variable.
 // todo Update docblocks.
 
 use Illuminate\Support\Facades\Redirect;
