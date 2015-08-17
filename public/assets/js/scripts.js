@@ -32994,7 +32994,6 @@ if ("undefined" == typeof jQuery)
     }
     ])
 })(window, window.angular);
-//# sourceMappingURL=angular-animate.min.js.map
 
 /*
  * angular-ui-bootstrap

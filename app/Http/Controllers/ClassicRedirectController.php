@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 // todo Update docblocks.
 
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -19,7 +20,7 @@ class ClassicRedirectController extends Controller
     public function redirectBoard()
     {
         header("HTTP/1.1 301 Moved Permanently");
-        header("Location: http://" . _DOMAIN_ . "/liveboard");
+        header("Location: http://" . Config::get('app.url-short') . "/liveboard");
     }
     /**
      * Redirect classic liveboards URL to the new location
@@ -30,7 +31,7 @@ class ClassicRedirectController extends Controller
         $station_converted = \hyperRail\StationString::convertToId($station_provided_string);
         if ($station_converted != null) {
             header("HTTP/1.1 301 Moved Permanently");
-            header("Location: https://" . _DOMAIN_ . "/station/" . $station_converted->id);
+            header("Location: https://" . Config::get('app.url-short') . "/station/" . $station_converted->id);
         } else {
             return 'Liveboard for the following station: ' . $station_provided_string . ' was not found.';
         }
@@ -54,7 +55,7 @@ class ClassicRedirectController extends Controller
         $destination = \hyperRail\StationString::convertToId($destination_station);
         if ($departure != null && $destination != null) {
             header("HTTP/1.1 301 Moved Permanently");
-            return Redirect::to("https://" . _DOMAIN_ . "/route" .
+            return Redirect::to("https://" . Config::get('app.url-short') . "/route" .
                 "?from=" . $departure->{'@id'} . "&to=" . $destination->{'@id'} . "&time="
                 . date("Hi") . "&auto=true");
         } else {

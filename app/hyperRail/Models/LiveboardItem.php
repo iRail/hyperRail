@@ -1,5 +1,6 @@
 <?php
 namespace hyperRail\Models;
+use Illuminate\Support\Facades\Config;
 use stdClass;
 class LiveboardItem
 {
@@ -29,13 +30,13 @@ class LiveboardItem
         $this->routeLabel = preg_replace("/([A-Z]{1,2})(\d+)/", "$1 $2", $routeLabel);
         $md5hash = md5($this->routeLabel . $this->headsign);
         $this->stationURL = "http://"
-            . _DOMAIN_ . "/stations/NMBS/" .
+            . Config::get('app.url-short') . "/stations/NMBS/" .
             $stationId . "/departures/" . $requestDate .
             $requestTime . $md5hash;
         $this->delay = $delay;
         $this->scheduledDepartureTime = $time;
         $this->platform = $platform;
-        $this->destinationURL = "http://" . _DOMAIN_ . "/stations/NMBS/" . $stationId;
+        $this->destinationURL = "http://" . Config::get('app.url-short') . "/stations/NMBS/" . $stationId;
     }
     /**
      * Converts this object to a JSON-LD compatible array (using @id).

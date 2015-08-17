@@ -10,6 +10,11 @@ use Request;
 
 class RouteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('language');
+    }
+
     /**
      * @return \Illuminate\Http\Response
      */
