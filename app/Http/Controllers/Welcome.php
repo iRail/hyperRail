@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class Welcome extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('authencation');
+    }
+
     public function index()
     {
         if (! Session::get('lang')) {

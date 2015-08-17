@@ -13,6 +13,11 @@ use ML\JsonLD\JsonLD;
 
 class StationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('authencation');
+    }
+
     /**
      * @param $str
      * @return string

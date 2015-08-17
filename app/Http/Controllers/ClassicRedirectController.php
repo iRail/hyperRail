@@ -14,6 +14,11 @@ use App\Http\Controllers\Controller;
 
 class ClassicRedirectController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('authencation');
+    }
+
     /**
      * Redirect classic liveboards URL to the new location
      */

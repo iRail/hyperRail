@@ -9,6 +9,11 @@ use App\Http\Controllers\Controller;
 
 class ContributorsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('authencation');
+    }
+
     public function showContributors()
     {
         return View('contributors.home');
