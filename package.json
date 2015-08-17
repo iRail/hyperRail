@@ -5,6 +5,9 @@
   },
   "dependencies": {
     "laravel-elixir": "^3.0.0",
-    "bootstrap-sass": "^3.0.0"
+    "irail-stations": "*"
+  },
+  "scripts" : {
+    "update-stations" : "irail-stations > app/stations.json"
   }
 }
