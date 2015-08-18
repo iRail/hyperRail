@@ -24,23 +24,23 @@
                         <a class="list-group-item" ng-class="{'active': isSelected($index)}" ng-repeat="dep in liveboardData['@graph'] | filter:searchText" ng-href="@{!! dep['@id']!!}">
                               <span class="container33 liveboard-list">
                                     <span class="platform-left" ng-if="dep.platform">
-                                        <span class="badge">@{!! dep.platform !!}</span>
+                                        <span class="badge">@{{ dep.platform }}</span>
                                     </span>
                                     <span class="platform-left" ng-if="!dep.platform">
                                         <span class="badge">?</span>
                                     </span>
                                     <span class="station-middle">
                                         <strong>
-                                            @{!! dep.headsign !!}
+                                            @{{ dep.headsign }}
                                         </strong>
                                     </span>
                                     <span class="time-right">
-                                        @{!! dep.scheduledDepartureTime | date:'HH:mm' !!}
+                                        @{{ dep.scheduledDepartureTime | date:'HH:mm' }}
 
                                     </span>
                                   <span class="delay-right">
                                     <span class="delay" ng-if="dep.delay > 0">
-                                        &nbsp;&nbsp;+@{!! dep.delay/60!!}
+                                        &nbsp;&nbsp;+@{{ dep.delay/60 }}
                                     </span>
                                   </span>
                               </span>
@@ -56,7 +56,7 @@
                     <div class="well">
                         <h1 class="center"><i class="fa fa-support fa-3x center"></i>
                         </h1>
-                        <h3>{!!Lang::get('client.error')!!} <strong>{!! Lang::get('client.errorNoLiveboard')!!}</strong></h3>
+                        <h3>{!! Lang::get('client.error')!!} <strong>{!! Lang::get('client.errorNoLiveboard')!!}</strong></h3>
                         <p>{!! Lang::get('client.errorExplanation')!!} <a href="mailto:iRail@list.iRail.be">{!! Lang::get('client.errorMail')!!}</a>.</p>
                         <br/>
                         <a href="/stations/NMBS" class="btn btn-danger btn-lg btn-wide"><i class="fa fa-chevron-left"></i> {!! Lang::get('client.errorReturnLiveboard')!!}</a>
