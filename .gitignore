@@ -9,16 +9,13 @@ app/database/testing.sqlite
 bootstrap/compiled.php
 composer.phar
 docs/api.apib
-public/app/js
-public/builds
-public/styleguide
-app/tests/meta/coverage
+
 
 # Development
 .idea
 .sublimets
 sftp-config.json
-.env.*.php
+.env.
 .env.php
 .vagrant
 _ide_helper.php
@@ -26,3 +23,5 @@ _ide_helper.php
 # Dotfiles
 .DS_Store
 Thumbs.db
+
+.env
