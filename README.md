@@ -13,14 +13,9 @@ _Looking for data? Check https://hello.irail.be for more info_
 
 _Want more features? Please do contribute by adding [feature requests](https://github.com/iRail/hyperRail/issues/new). Are you a developer? We accept pull requests!_
 
-## Install locally for development purposes
-
-Next to following these steps, you can also use [vagrant](https://www.vagrantup.com/). After cloning the repo, do `vagrant up` and a new virtual machine will be set up.
-
 ### Step 0: Requirements and clone ###
 
-* PHP 5.3+ for Laravel project
-* PHP 5.4+ for Way/Generators, if you have 5.4+ you can uncomment Way/Generators in /app/config/app.php
+* PHP 5.5+ for Laravel project
 * Apache
 
 Clone the repository:
@@ -40,7 +35,7 @@ Optional, but can be useful.
 ### Step 3: make app/storage writeable ###
 
 ```bash
-chmod -R 777 app/storage
+chmod -R 777 storage
 ```
 
 ### Step 4: Set up hostname ###
