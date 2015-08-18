@@ -34,7 +34,7 @@
                                 <i class="fa fa-exclamation-triangle"></i>
                             </span>
                             <span ng-if="conn.vias.number > 0">
-                                @{{ conn.vias.number }}x <img src="{{ URL::asset('assets/images/stair.svg') }}" />
+                                @{{ conn.vias.number }}x <img src="{{ URL::asset('images/stair.svg') }}" />
                             </span>
                         </span>
                     </span>

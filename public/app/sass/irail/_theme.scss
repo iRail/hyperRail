@@ -1,0 +1,225 @@
+/* Main SASS CSS file */
+
+
+input.ng-invalid {
+  border: 1px solid red !important;
+  }
+
+.navbar-nav{
+  li a{
+  font-size: 1.1em;
+  }
+  }
+
+.navbar-bottom{
+  margin-bottom: 5px !important;
+  }
+
+.navbar-brand{
+  line-height: 1.7em !important;
+  padding-top: 10px !important;
+  padding-right: 20px !important;
+  padding-left: 5px !important;
+  padding-bottom: 0px !important;
+  }
+
+.fa-12{
+  font-size: 1.3em;
+  }
+
+.container33{
+  display: inline-block;
+  width: 100%;
+  .tleft{
+  float: left;
+  width: 60%;
+  text-align: left;
+  }
+  .tright{
+  float: left;
+  width: 20%;
+  text-align: right;
+  }
+  .tcenter{
+  float: left;
+  width: 20%;
+  text-align: center;
+  }
+  .platform-left{
+  float: left;
+  width: 20%;
+  text-align: left;
+  }
+  .time-right{
+  margin-top: 5px;
+  float: left;
+  width: 20%;
+  text-align: right;
+  }
+  .station-middle{
+  margin-top: 5px;
+  float: left;
+  width: 50%;
+  text-align: left;
+  }
+  .delay-right{
+  margin-top: 5px;
+  float: left;
+  width: 10%;
+  text-align: left;
+  }
+}
+
+.liveboard-list{
+  font-size: 1.3em;
+  }
+
+.delay{
+  color: red;
+  }
+
+.max-w5{
+  max-width: 480px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.floatright{
+  float: right;
+  clear: both;
+  }
+
+.center{
+  text-align: center;
+  }
+
+.list-group{
+  margin-bottom: 0px !important;
+  }
+
+.loader {
+  margin: 6em auto;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 1.1em solid rgba(0, 0, 0, 0.2);
+  border-right: 1.1em solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1.1em solid rgba(0, 0, 0, 0.2);
+  border-left: 1.1em solid #C72929;
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+  }
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+  }
+@-webkit-keyframes load8 {
+  0% {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  }
+  100% {
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+  }
+  }
+@keyframes load8 {
+  0% {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  }
+  100% {
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+  }
+  }
+
+.btn-wide{
+  width: 100% !important;
+  }
+
+.btn-50{
+  width: 50% !important;
+  }
+
+.btn-botm{
+  margin-bottom: 15px;
+  }
+
+.planner-time{
+  font-size: 1.3em;
+  color: #C72929;
+  margin-right: 15px;
+  width: 50%;
+  }
+
+.planner-station{
+  width: 50%;
+  font-size: 1.2em;
+  margin-right: 15px;
+  }
+
+.delay-route{
+  color: red;
+  }
+
+.badge{
+  font-size: 1.3em;
+  }
+
+.navbar-name{
+  font-size: 1.2em;
+  font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-weight: bold;
+  }
+
+.irail-logo{
+  position: relative;
+  top: -3px;
+  }
+
+.datepicker{
+  .btn-info.active{
+  background-color: #C72929 !important;
+  border-color: #C72929 !important;
+  span.text-info{
+    color: #FFF !important;
+    }
+  }
+  }
+
+.ul-lg{
+  li{
+  font-size: 1.4em;
+  }
+  }
+
+/* Animations */
+
+.row.ng-hide-remove {
+  -webkit-animation: fadeIn 0.7s;
+  animation: fadeIn 0.7s;
+  }
+
+a.bounceIn.ng-hide-remove {
+  -webkit-animation: bounceIn 0.7s;
+  animation: bounceIn 0.7s;
+  }
+
+
+.row.loading.ng-hide-remove {
+  -webkit-animation: bounceIn 0.7s;
+  animation: bounceIn 0.7s;
+  }
+
+.row.routeplanner.ng-hide-remove {
+  -webkit-animation: fadeInDown 0.7s;
+  animation: fadeInDown 0.7s;
+  }
+
+.label-lg{
+  font-size: 1.5em;
+  }
+//gooby pls

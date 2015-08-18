@@ -11,8 +11,8 @@
 
     <link rel="shortcut icon" href="{{ URL::asset('favicon.ico') }}"/>
 
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('builds/css/main.css') }}">
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic' rel='stylesheet' type='text/css'>
 
-    <script src="{{ URL::asset('assets/js/scripts.js') }}"></script>
+    <script src="{{ URL::asset('builds/js/scripts.js') }}"></script>
 </head>
