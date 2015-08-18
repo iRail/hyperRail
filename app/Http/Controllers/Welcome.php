@@ -14,7 +14,7 @@ class Welcome extends Controller
 {
     public function __construct()
     {
-        $this->middleware('authencation');
+        $this->middleware('language');
     }
 
     public function index()
