@@ -1,6 +1,7 @@
 <?php
 namespace hyperRail;
 use hyperRail\Models\LiveboardItem;
+
 /**
  * Class iRailFormatConverter
  * Converts the old JSON to objects.

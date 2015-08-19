@@ -151,6 +151,193 @@ class StationController extends Controller
     }
 
     /**
+    * Shows a train or train data, based on the accept-header.
+    * @param $station_id
+    * @param $liveboard_id
+    * @return array
+    * @throws EasyRdf_Exception
+    */
+   public function specificTrain($station_id, $liveboard_id)
+   {
+       $negotiator = new \Negotiation\FormatNegotiator();
+       $acceptHeader = Request::header('accept');
+       $priorities = array('application/json', 'text/html', '*/*');
+       $result = $negotiator->getBest($acceptHeader, $priorities);
+       $val = $result->getValue();
+       //get the right date-time to query
+       $datetime = substr($liveboard_id, 0, 12);
+       $datetime = strtotime($datetime);
+       $archived = false;
+       if ($datetime < strtotime("now")) {
+           $archived = true;
+       }
+       switch ($val) {
+           case "text/html":
+               // Convert id to string for interpretation by old API
+               $stationStringName = \hyperRail\StationString::convertToString($station_id);
+               if (!$archived) {
+                   // Set up path to old api
+                   $URL = "http://api.irail.be/liveboard/?station=" . urlencode($stationStringName->name) .
+                       "&date=" . date("mmddyy", $datetime) . "&time=" . date("Hi", $datetime) .
+                       "&fast=true&lang=nl&format=json";
+                   // Get the contents of this path
+                   $data = file_get_contents($URL);
+                   // Convert the data to the new liveboard object
+                   $newData = \hyperRail\FormatConverter::convertLiveboardData($data, $station_id);
+                   // Read new liveboard object and return the page but load data
+                   foreach ($newData['@graph'] as $graph) {
+                       if (strpos($graph['@id'], $liveboard_id) !== false) {
+                           return View::make('stations.departuredetail')
+                               ->with('station', $graph)
+                               ->with('departureStation', $stationStringName);
+                       }
+                   }
+                   App::abort(404);
+               } else {
+                   // If no match is found, attempt to look in the archive
+                   // Fetch file using curl
+                   $ch = curl_init(
+                       "http://archive.irail.be/" . 'irail?subject=' .
+                       urlencode('http://irail.be/stations/NMBS/' . $station_id . '/departures/' . $liveboard_id)
+                   );
+                   curl_setopt($ch, CURLOPT_HEADER, 0);
+                   $request_headers[] = 'Accept: text/turtle';
+                   curl_setopt($ch, CURLOPT_HTTPHEADER, $request_headers);
+                   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                   $turtle = (curl_exec($ch));
+                   curl_close($ch);
+                   // Convert turtle to json-ld
+                   // Create a new graph
+                   $graph = new EasyRdf_Graph();
+                   if (empty($_REQUEST['data'])) {
+                       // Load the sample information
+                       $graph->parse($turtle, 'turtle');
+                   }
+                   // Export to JSON LD
+                   $format = EasyRdf_Format::getFormat('jsonld');
+                   $output = $graph->serialise($format);
+                   if (!is_scalar($output)) {
+                       $output = var_export($output, true);
+                   }
+                   // First, define the context
+                   $context = array(
+                       "delay" => "http://semweb.mmlab.be/ns/rplod/delay",
+                       "platform" => "http://semweb.mmlab.be/ns/rplod/platform",
+                       "scheduledDepartureTime" => "http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime",
+                       "headsign" => "http://vocab.org/transit/terms/headsign",
+                       "routeLabel" => "http://semweb.mmlab.be/ns/rplod/routeLabel",
+                       "stop" => array(
+                           "@id" => "http://semweb.mmlab.be/ns/rplod/stop",
+                           "@type" => "@id"
+                       ),
+                       "seeAlso" => array(
+                           "@id" => "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+                           "@type" => "@id",
+                       )
+                   );
+                   // Next, encode the context as JSON
+                   $jsonContext = json_encode($context);
+                   // Compact the JsonLD by using @context
+                   $compacted = JsonLD::compact($output, $jsonContext);
+                   // Print the resulting JSON-LD!
+                   $urlToFind = 'NMBS/' . $station_id . '/departures/' . $liveboard_id;
+                   $stationDataFallback = json_decode(JsonLD::toString($compacted, true));
+                   foreach ($stationDataFallback->{'@graph'} as $graph) {
+                       if (strpos($graph->{'@id'}, $urlToFind) !== false) {
+                           return View::make('stations.departurearchive')
+                               ->with('station', $graph)
+                               ->with('departureStation', $stationStringName);
+                       }
+                   }
+                   App::abort(404);
+               }
+               break;
+           case "application/json":
+           case "application/ld+json":
+           default:
+               $stationStringName = \hyperRail\StationString::convertToString($station_id);
+               if (!$archived) {
+                   $URL = "http://api.irail.be/liveboard/?station=" . urlencode($stationStringName->name) .
+                       "&date=" . date("mmddyy", $datetime) . "&time=" . date("Hi", $datetime) .
+                       "&fast=true&lang=nl&format=json";
+                   $data = file_get_contents($URL);
+                   $newData = \hyperRail\FormatConverter::convertLiveboardData($data, $station_id);
+                   foreach ($newData['@graph'] as $graph) {
+                       if (strpos($graph['@id'], $liveboard_id) !== false) {
+                           $context = array(
+                               "delay" => "http://semweb.mmlab.be/ns/rplod/delay",
+                               "platform" => "http://semweb.mmlab.be/ns/rplod/platform",
+                               "scheduledDepartureTime" => "http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime",
+                               "headsign" => "http://vocab.org/transit/terms/headsign",
+                               "routeLabel" => "http://semweb.mmlab.be/ns/rplod/routeLabel",
+                               "stop" => array(
+                                   "@id" => "http://semweb.mmlab.be/ns/rplod/stop",
+                                   "@type" => "@id"
+                               ),
+                           );
+                           return array("@context" => $context, "@graph" => $graph);
+                       }
+                   }
+                   App::abort(404);
+               } else {
+                   // If no match is found, attempt to look in the archive
+                   // Fetch file using curl
+                   $ch = curl_init("http://archive.irail.be/" . 'irail?subject=' .
+                       urlencode('http://irail.be/stations/NMBS/' . $station_id . '/departures/' . $liveboard_id));
+                   curl_setopt($ch, CURLOPT_HEADER, 0);
+                   $request_headers[] = 'Accept: text/turtle';
+                   curl_setopt($ch, CURLOPT_HTTPHEADER, $request_headers);
+                   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                   $turtle = (curl_exec($ch));
+                   curl_close($ch);
+                   // Convert turtle to json-ld
+                   // Create a new graph
+                   $graph = new EasyRdf_Graph();
+                   if (empty($_REQUEST['data'])) {
+                       // Load the sample information
+                       $graph->parse($turtle, 'turtle');
+                   }
+                   // Export to JSON LD
+                   $format = EasyRdf_Format::getFormat('jsonld');
+                   $output = $graph->serialise($format);
+                   if (!is_scalar($output)) {
+                       $output = var_export($output, true);
+                   }
+                   // First, define the context
+                   $context = array(
+                       "delay" => "http://semweb.mmlab.be/ns/rplod/delay",
+                       "platform" => "http://semweb.mmlab.be/ns/rplod/platform",
+                       "scheduledDepartureTime" => "http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime",
+                       "headsign" => "http://vocab.org/transit/terms/headsign",
+                       "routeLabel" => "http://semweb.mmlab.be/ns/rplod/routeLabel",
+                       "stop" => array(
+                           "@id" => "http://semweb.mmlab.be/ns/rplod/stop",
+                           "@type" => "@id"
+                       ),
+                       "seeAlso" => array(
+                           "@id" => "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+                           "@type" => "@id",
+                       )
+                   );
+                   // Next, encode the context as JSON
+                   $jsonContext = json_encode($context);
+                   // Compact the JsonLD by using @context
+                   $compacted = JsonLD::compact($output, $jsonContext);
+                   // Print the resulting JSON-LD!
+                   $urlToFind = 'NMBS/' . $station_id . '/departures/' . $liveboard_id;
+                   $stationDataFallback = json_decode(JsonLD::toString($compacted, true));
+                   foreach ($stationDataFallback->{'@graph'} as $graph) {
+                       if (strpos($graph->{'@id'}, $urlToFind) !== false) {
+                           return array("@context" => $context, "@graph" => $graph);
+                       }
+                   }
+                   App::abort(404);
+               }
+               break;
+       }
+   }
+
+    /**
      * Shows a liveboard or liveboard data, based on the accept-header.
      * @param $id
      * @return \Illuminate\Http\Response
