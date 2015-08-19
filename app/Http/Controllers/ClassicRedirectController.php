@@ -29,6 +29,8 @@ class ClassicRedirectController extends Controller
     /**
      * Redirect classic liveboards URL to the new location
      * and interpret the station name
+     *
+     * @param $station_provided_string
      */
     public function redirectBoardSingleStation($station_provided_string)
     {
@@ -44,6 +46,9 @@ class ClassicRedirectController extends Controller
     /**
      * Redirect classic liveboards URL to the new location
      * and interpret two station names
+     *
+     * @param $station
+     * @param $station2
      */
     public function redirectBoardTwoStations($station, $station2)
     {
@@ -52,6 +57,9 @@ class ClassicRedirectController extends Controller
     /**
      * Redirect classic routing from the old iRail to the new
      * way the routing is done
+     *
+     * @param $departure_station
+     * @param $destination_station
      */
     public function redirectHomeRoute($departure_station, $destination_station)
     {
@@ -66,6 +74,7 @@ class ClassicRedirectController extends Controller
             return "It looks like we couldn't convert your route request to the new format :(";
         }
     }
+    
     public function redirectSettings()
     {
         return 'iRail has been changed. iRail no longer has a dedicated settings page.';
