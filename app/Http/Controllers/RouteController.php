@@ -51,6 +51,7 @@ class RouteController extends Controller
                 break;
         }
     }
+
     /**
      * Generate JSON based on data we get back from the iRail scraper.
      * @return array|string
