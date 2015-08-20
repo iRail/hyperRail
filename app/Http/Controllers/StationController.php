@@ -6,6 +6,7 @@ use Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
 use ML\JsonLD\JsonLD;
