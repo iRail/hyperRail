@@ -14,7 +14,10 @@ class stationTest extends TestCase
 
     public function testStationNmbs()
     {
-        $response = $this->call('GET', '/stations/NMBS');
-        $this->assertEquals(200, $response->status());
+        $responseNMBS = $this->call('GET', '/stations/NMBS');
+        $responsenmbs = $this->call('GET', '/stations/nmbs');
+
+        $this->assertEquals(200, $responseNMBS->status());
+        $this->assertEquals(200, $responsenmbs->status());
     }
 }
