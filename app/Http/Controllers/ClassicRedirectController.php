@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// todo Update docblocks.
-
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Request;
@@ -31,6 +29,7 @@ class ClassicRedirectController extends Controller
      * and interpret the station name
      *
      * @param $station_provided_string
+     * @return null|string
      */
     public function redirectBoardSingleStation($station_provided_string)
     {
@@ -43,23 +42,27 @@ class ClassicRedirectController extends Controller
         }
         return null;
     }
+
     /**
      * Redirect classic liveboards URL to the new location
      * and interpret two station names
      *
      * @param $station
      * @param $station2
+     * @return string
      */
     public function redirectBoardTwoStations($station, $station2)
     {
         return 'Liveboards with multiple stations are no longer supported.';
     }
+
     /**
      * Redirect classic routing from the old iRail to the new
      * way the routing is done
      *
      * @param $departure_station
      * @param $destination_station
+     * @return string
      */
     public function redirectHomeRoute($departure_station, $destination_station)
     {
