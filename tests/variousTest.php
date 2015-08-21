@@ -17,4 +17,10 @@ class variousTest extends TestCase
         $response = $this->call('GET', '/contributors');
         $this->assertEquals(200, $response->status());
     }
+
+    public function testLanguage()
+    {
+        $response = $this->call('GET', '/language');
+        $this->assertEquals(200, $response->status());
+    }
 }
