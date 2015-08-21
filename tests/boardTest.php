@@ -9,6 +9,6 @@ class boardTest extends TestCase
     public function testBoardUrl()
     {
         $response = $this->call('GET', '/board');
-        $this->assertEquals(200, $response->status());
+        $this->assertEquals(301, $response->status());
     }
 }

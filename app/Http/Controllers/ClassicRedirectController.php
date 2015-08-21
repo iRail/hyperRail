@@ -23,9 +23,9 @@ class ClassicRedirectController extends Controller
      */
     public function redirectBoard()
     {
-        header("HTTP/1.1 301 Moved Permanently");
-        header("Location: http://" . Config::get('app.url-short') . "/liveboard");
+        return Redirect::to("http://" . Config::get('app.url-short') . "/liveboard", 301);
     }
+
     /**
      * Redirect classic liveboards URL to the new location
      * and interpret the station name
