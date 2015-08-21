@@ -13,8 +13,10 @@ class FormatConverter
     /**
      * Converts a list of Liveboard items to an array.
      * @param $json
-     * @param $id
+     * @param $station_id
      * @param string $format
+     * @return array
+     * @internal param $id
      */
     public static function convertLiveboardData($json, $station_id, $format = "jsonld")
     {
@@ -57,6 +59,7 @@ class FormatConverter
                 "@type" => "@id"
             ),
         );
+
         return array("@context" => $context, "@graph" => $liveboardCollection);
     }
 }
