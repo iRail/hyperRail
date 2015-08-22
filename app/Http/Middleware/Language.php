@@ -1,21 +1,22 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace app\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session;
 
 class Language
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -29,7 +30,7 @@ class Language
         }
         // Language negotiation
         if (Input::get('lang')) {
-            $languages = array('nl', 'en', 'fr');
+            $languages = ['nl', 'en', 'fr'];
             $locale = Input::get('lang');
             if (in_array($locale, $languages)) {
                 App::setLocale($locale);
@@ -38,7 +39,7 @@ class Language
                 $locale = null;
             }
         } else {
-            $languages = array('nl', 'en', 'fr');
+            $languages = ['nl', 'en', 'fr'];
             $locale = Session::get('lang');
             if (in_array($locale, $languages)) {
                 App::setLocale($locale);
