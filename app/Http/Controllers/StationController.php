@@ -104,7 +104,7 @@ class StationController extends Controller
                     // Get the contents of this path
                     $data = file_get_contents($URL);
                     // Convert the data to the new liveboard object
-                    $newData = \hyperRail\FormatConverter::convertLiveboardData($data, $station_id);
+                    $newData = \App\hyperRail\FormatConverter::convertLiveboardData($data, $station_id);
                     // Read new liveboard object and return the page but load data
                     foreach ($newData['@graph'] as $graph) {
                         if (strpos($graph['@id'], $liveboard_id) !== false) {
@@ -182,7 +182,7 @@ class StationController extends Controller
                         "&date=" . date("mmddyy", $datetime) . "&time=" . date("Hi", $datetime) .
                         "&fast=true&lang=nl&format=json";
                     $data = file_get_contents($URL);
-                    $newData = \hyperRail\FormatConverter::convertLiveboardData($data, $station_id);
+                    $newData = \App\hyperRail\FormatConverter::convertLiveboardData($data, $station_id);
                     foreach ($newData['@graph'] as $graph) {
                         if (strpos($graph['@id'], $liveboard_id) !== false) {
                             $context = array(
@@ -310,7 +310,7 @@ class StationController extends Controller
                         . date("mmddyy", $datetime) . "&time=" . date("Hi", $datetime);
                     $data = file_get_contents($URL);
                     try {
-                        $newData = \hyperRail\FormatConverter::convertLiveboardData($data, $id);
+                        $newData = \App\hyperRail\FormatConverter::convertLiveboardData($data, $id);
                         $jsonLD = (string)json_encode($newData);
                         return Response::make($jsonLD, 200)
                             ->header('Content-Type', 'application/ld+json')

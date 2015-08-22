@@ -1,7 +1,7 @@
 <?php
-namespace hyperRail;
+namespace App\hyperRail;
 
-use hyperRail\Models\LiveboardItem;
+use App\hyperRail\Models\LiveboardItem;
 
 /**
  * Class iRailFormatConverter

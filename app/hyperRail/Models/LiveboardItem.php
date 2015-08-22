@@ -1,5 +1,5 @@
 <?php
-namespace hyperRail\Models;
+namespace App\hyperRail\Models;
 
 use Illuminate\Support\Facades\Config;
 use stdClass;
