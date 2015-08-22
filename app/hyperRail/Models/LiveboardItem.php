@@ -1,7 +1,9 @@
 <?php
 namespace hyperRail\Models;
+
 use Illuminate\Support\Facades\Config;
 use stdClass;
+
 class LiveboardItem
 {
     // DEPARTURE DATA
@@ -13,6 +15,7 @@ class LiveboardItem
     public $destinationURL;    // The final destination of this train (URL)
     public $headsign;           // The final destination of this train (headsign, string)
     public $routeLabel;         // Label assigned to the train
+
     /**
      * Set the values for this LiveboardItem.
      * @param $stationId
@@ -38,6 +41,7 @@ class LiveboardItem
         $this->platform = $platform;
         $this->destinationURL = "http://" . Config::get('app.url-short') . "/stations/NMBS/" . $stationId;
     }
+
     /**
      * Converts this object to a JSON-LD compatible array (using @id).
      * @return array

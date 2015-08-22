@@ -51,6 +51,7 @@ class RouteController extends Controller
                 break;
         }
     }
+
     /**
      * Generate JSON based on data we get back from the iRail scraper.
      * @return array|string
@@ -91,9 +92,9 @@ class RouteController extends Controller
                     $time . '&timeSel=' . $timeSel . '&lang=' . $lang . '&format=json');
                 return trim($json);
             } catch (ErrorException $ex) {
-                return array(
-                    'connection' => array(),
-                );
+                return [
+                    'connection' => [],
+                ];
             }
         } else {
             // TODO: Show the HYDRA JSON-LD for doing a request to the right URI

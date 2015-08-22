@@ -1,6 +1,8 @@
 <?php
 namespace hyperRail;
+
 use hyperRail\Models\LiveboardItem;
+
 /**
  * Class iRailFormatConverter
  * Converts the old JSON to objects.
@@ -11,12 +13,14 @@ class FormatConverter
     /**
      * Converts a list of Liveboard items to an array.
      * @param $json
-     * @param $id
+     * @param $station_id
      * @param string $format
+     * @return array
+     * @internal param $id
      */
     public static function convertLiveboardData($json, $station_id, $format = "jsonld")
     {
-        $liveboardCollection = array();
+        $liveboardCollection = [];
         $initialData = json_decode($json);
         // TODO: check if json can be decoded (is it an error?)
         // Set globals
@@ -30,20 +34,32 @@ class FormatConverter
             $date = date('Ymd', $time);
             $time = date('Hi', $time);
             $vehicleShort = explode("BE.NMBS.", $departure->vehicle);
-            $liveboardItem->fill($station_id, $date, $time, $vehicleShort[1], $departure->station, $departure->delay, date('c', $departure->time), $departure->platform);
+
+            $liveboardItem->fill(
+                $station_id,
+                $date,
+                $time,
+                $vehicleShort[1],
+                $departure->station,
+                $departure->delay,
+                date('c', $departure->time),
+                $departure->platform
+            );
+
             array_push($liveboardCollection, $liveboardItem->toArray());
         }
-        $context = array(
+        $context = [
             "delay" => "http://semweb.mmlab.be/ns/rplod/delay",
             "platform" => "http://semweb.mmlab.be/ns/rplod/platform",
             "scheduledDepartureTime" => "http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime",
             "headsign" => "http://vocab.org/transit/terms/headsign",
             "routeLabel" => "http://semweb.mmlab.be/ns/rplod/routeLabel",
-            "stop" => array(
+            "stop" => [
                 "@id" => "http://semweb.mmlab.be/ns/rplod/stop",
                 "@type" => "@id"
-            ),
-        );
-        return array("@context" => $context, "@graph" => $liveboardCollection);
+            ],
+        ];
+
+        return ["@context" => $context, "@graph" => $liveboardCollection];
     }
 }

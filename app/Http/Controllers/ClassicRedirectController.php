@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// todo Update docblocks.
-
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Request;
@@ -15,7 +13,7 @@ class ClassicRedirectController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('authencation');
+        $this->middleware('language');
     }
 
     /**
@@ -23,12 +21,15 @@ class ClassicRedirectController extends Controller
      */
     public function redirectBoard()
     {
-        header("HTTP/1.1 301 Moved Permanently");
-        header("Location: http://" . Config::get('app.url-short') . "/liveboard");
+        return Redirect::to("http://" . Config::get('app.url-short') . "/liveboard", 301);
     }
+
     /**
      * Redirect classic liveboards URL to the new location
      * and interpret the station name
+     *
+     * @param  string, $station_provided_string
+     * @return null|string
      */
     public function redirectBoardSingleStation($station_provided_string)
     {
@@ -41,17 +42,27 @@ class ClassicRedirectController extends Controller
         }
         return null;
     }
+
     /**
      * Redirect classic liveboards URL to the new location
      * and interpret two station names
+     *
+     * @param $station
+     * @param $station2
+     * @return string
      */
     public function redirectBoardTwoStations($station, $station2)
     {
         return 'Liveboards with multiple stations are no longer supported.';
     }
+
     /**
      * Redirect classic routing from the old iRail to the new
      * way the routing is done
+     *
+     * @param $departure_station,   the departure station.
+     * @param $destination_station, the destination station.
+     * @return string
      */
     public function redirectHomeRoute($departure_station, $destination_station)
     {
@@ -66,6 +77,7 @@ class ClassicRedirectController extends Controller
             return "It looks like we couldn't convert your route request to the new format :(";
         }
     }
+    
     public function redirectSettings()
     {
         return 'iRail has been changed. iRail no longer has a dedicated settings page.';
