@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
+use irail\stations\Stations;
 use ML\JsonLD\JsonLD;
 
 class StationController extends Controller
@@ -19,95 +20,16 @@ class StationController extends Controller
     }
 
     /**
-     * @param $str
-     * @return string
-     * Languages supported are: German, French and Dutch
-     * We have to take into account that some words may have accents
-     * Taken from https://stackoverflow.com/questions/3371697/replacing-accented-characters-php
-     */
-    public function normalizeAccents($str)
-    {
-        $unwanted_array = [
-            'Š' => 'S', 'š' => 's', 'Ž' => 'Z', 'ž' => 'z',
-            'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A',
-            'Ä' => 'A', 'Å' => 'A', 'Æ' => 'A', 'Ç' => 'C',
-            'È' => 'E', 'É' => 'E', 'Ê' => 'E', 'Ë' => 'E',
-            'Ì' => 'I', 'Í' => 'I', 'Î' => 'I', 'Ï' => 'I',
-            'Ñ' => 'N', 'Ò' => 'O', 'Ó' => 'O', 'Ô' => 'O',
-            'Õ' => 'O', 'Ö' => 'O', 'Ø' => 'O', 'Ù' => 'U',
-            'Ú' => 'U', 'Û' => 'U', 'Ü' => 'U', 'Ý' => 'Y',
-            'Þ' => 'B', 'ß' => 'Ss', 'à' => 'a', 'á' => 'a',
-            'â' => 'a', 'ã' => 'a', 'ä' => 'a', 'å' => 'a',
-            'æ' => 'a', 'ç' => 'c', 'è' => 'e', 'é' => 'e',
-            'ê' => 'e', 'ë' => 'e', 'ì' => 'i', 'í' => 'i',
-            'î' => 'i', 'ï' => 'i', 'ð' => 'o', 'ñ' => 'n',
-            'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o',
-            'ö' => 'o', 'ø' => 'o', 'ù' => 'u', 'ú' => 'u',
-            'û' => 'u', 'ý' => 'y', 'þ' => 'b', 'ÿ' => 'y'
-        ];
-
-        return strtr($str, $unwanted_array);
-    }
-
-    // TODO: rewrite using an in-memory store (e.g. redis)
-    /**
+     * Uses irail\stations\Stations to resolve the station
      * @param string $query
-     * @return string
+     * @return object
      */
     private function getStations($query = "")
     {
         if ($query && $query !== "") {
-            // Filter the stations on name match
-            $stations = json_decode(File::get(app_path() . '/stations.json'));
-            $newstations = new \stdClass;
-            $newstations->{"@id"} = $stations->{"@id"};
-            $newstations->{"@context"} = $stations->{"@context"};
-            $newstations->{"@graph"} = array();
-
-            //make sure something between brackets is ignored
-            $query = preg_replace("/\s?\(.*?\)/i", "", $query);
-
-            // st. is the same as Saint
-            $query = preg_replace("/st(\s|$)/i", "(saint|st|sint) ", $query);
-            //make sure that we're only taking the first part before a /
-            $query = explode("/", $query);
-            $query = trim($query[0]);
-
-            // Dashes are the same as spaces
-            $query = $this->normalizeAccents($query);
-            $query = str_replace("\-", "[\- ]", $query);
-            $query = str_replace(" ", "[\- ]", $query);
-
-            $count = 0;
-            foreach ($stations->{"@graph"} as $station) {
-                if (preg_match('/.*' . $query . '.*/i', $this->normalizeAccents($station->{"name"}), $match)) {
-                    $newstations->{"@graph"}[] = $station;
-                    $count++;
-                } elseif (isset($station->alternative)) {
-                    if (is_array($station->alternative)) {
-                        foreach ($station->alternative as $alternative) {
-                            if (preg_match('/.*(' . $query . ').*/i', $this
-                                ->normalizeAccents($alternative->{"@value"}), $match)) {
-                                $newstations->{"@graph"}[] = $station;
-                                $count++;
-                                break;
-                            }
-                        }
-                    } else {
-                        if (preg_match('/.*' . $query . '.*/i', $this
-                            ->normalizeAccents($station->alternative->{"@value"}))) {
-                            $newstations->{"@graph"}[] = $station;
-                            $count++;
-                        }
-                    }
-                }
-                if ($count > 5) {
-                    return json_encode($newstations);
-                }
-            }
-            return json_encode($newstations);
+            return Stations::getStations($query);
         } else {
-            return File::get(app_path() . '/stations.json');
+            return Stations::getStations();
         }
     }
 
@@ -133,7 +55,7 @@ class StationController extends Controller
             case "application/json":
             case "application/ld+json":
             default:
-                return Response::make($this->getStations(Input::get("q")), 200)
+                return Response::make(json_encode($this->getStations(Input::get("q"))), 200)
                     ->header('Content-Type', 'application/ld+json')
                     ->header('Vary', 'accept');
                 break;
@@ -173,7 +95,7 @@ class StationController extends Controller
         switch ($val) {
             case "text/html":
                 // Convert id to string for interpretation by old API
-                $stationStringName = \hyperRail\StationString::convertToString($station_id);
+                $stationStringName = Stations::getStationFromId($station_id);
                 if (!$archived) {
                     // Set up path to old api
                     $URL = "http://api.irail.be/liveboard/?station=" . urlencode($stationStringName->name) .
@@ -254,7 +176,7 @@ class StationController extends Controller
             case "application/json":
             case "application/ld+json":
             default:
-                $stationStringName = \hyperRail\StationString::convertToString($station_id);
+                $stationStringName = Stations::getStationFromId($station_id);
                 if (!$archived) {
                     $URL = "http://api.irail.be/liveboard/?station=" . urlencode($stationStringName->name) .
                         "&date=" . date("mmddyy", $datetime) . "&time=" . date("Hi", $datetime) .
@@ -355,7 +277,7 @@ class StationController extends Controller
         switch ($val) {
             case "text/html":
                 try {
-                    $station = \hyperRail\StationString::convertToString($id);
+                    $station = Stations::getStationFromId($id);
                     if ($station == null) {
                         throw new \App\Exceptions\StationConversionFailureException();
                     }
@@ -372,7 +294,7 @@ class StationController extends Controller
             case "application/ld+json":
             default:
                 try {
-                    $stationStringName = \hyperRail\StationString::convertToString($id);
+                    $stationStringName = Stations::getStationFromId($id);
                     if ($stationStringName == null) {
                         throw new \App\Exceptions\StationConversionFailureException();
                     }
