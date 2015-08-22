@@ -1,7 +1,7 @@
 <?php
-namespace App\Exceptions;
+
+namespace app\Exceptions;
 
 class iRailClassicAPIException extends \Exception
 {
-
 }
