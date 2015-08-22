@@ -27,7 +27,7 @@ class StationController extends Controller
      */
     public function normalizeAccents($str)
     {
-        $unwanted_array = array(
+        $unwanted_array = [
             'Š' => 'S', 'š' => 's', 'Ž' => 'Z', 'ž' => 'z',
             'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A',
             'Ä' => 'A', 'Å' => 'A', 'Æ' => 'A', 'Ç' => 'C',
@@ -43,9 +43,8 @@ class StationController extends Controller
             'î' => 'i', 'ï' => 'i', 'ð' => 'o', 'ñ' => 'n',
             'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o',
             'ö' => 'o', 'ø' => 'o', 'ù' => 'u', 'ú' => 'u',
-            'û' => 'u', 'ý' => 'y', 'þ' => 'b',
-            'ÿ' => 'y'
-        );
+            'û' => 'u', 'ý' => 'y', 'þ' => 'b', 'ÿ' => 'y'
+        ];
 
         return strtr($str, $unwanted_array);
     }
@@ -220,21 +219,21 @@ class StationController extends Controller
                         $output = var_export($output, true);
                     }
                     // First, define the context
-                    $context = array(
+                    $context = [
                         "delay" => "http://semweb.mmlab.be/ns/rplod/delay",
                         "platform" => "http://semweb.mmlab.be/ns/rplod/platform",
                         "scheduledDepartureTime" => "http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime",
                         "headsign" => "http://vocab.org/transit/terms/headsign",
                         "routeLabel" => "http://semweb.mmlab.be/ns/rplod/routeLabel",
-                        "stop" => array(
+                        "stop" => [
                             "@id" => "http://semweb.mmlab.be/ns/rplod/stop",
                             "@type" => "@id"
-                        ),
-                        "seeAlso" => array(
+                        ],
+                        "seeAlso" => [
                             "@id" => "http://www.w3.org/2000/01/rdf-schema#seeAlso",
                             "@type" => "@id",
-                        )
-                    );
+                        ]
+                    ];
                     // Next, encode the context as JSON
                     $jsonContext = json_encode($context);
                     // Compact the JsonLD by using @context
@@ -304,21 +303,21 @@ class StationController extends Controller
                         $output = var_export($output, true);
                     }
                     // First, define the context
-                    $context = array(
+                    $context = [
                         "delay" => "http://semweb.mmlab.be/ns/rplod/delay",
                         "platform" => "http://semweb.mmlab.be/ns/rplod/platform",
                         "scheduledDepartureTime" => "http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime",
                         "headsign" => "http://vocab.org/transit/terms/headsign",
                         "routeLabel" => "http://semweb.mmlab.be/ns/rplod/routeLabel",
-                        "stop" => array(
+                        "stop" => [
                             "@id" => "http://semweb.mmlab.be/ns/rplod/stop",
                             "@type" => "@id"
-                        ),
-                        "seeAlso" => array(
+                        ],
+                        "seeAlso" => [
                             "@id" => "http://www.w3.org/2000/01/rdf-schema#seeAlso",
                             "@type" => "@id",
-                        )
-                    );
+                        ]
+                    ];
                     // Next, encode the context as JSON
                     $jsonContext = json_encode($context);
                     // Compact the JsonLD by using @context
@@ -328,7 +327,7 @@ class StationController extends Controller
                     $stationDataFallback = json_decode(JsonLD::toString($compacted, true));
                     foreach ($stationDataFallback->{'@graph'} as $graph) {
                         if (strpos($graph->{'@id'}, $urlToFind) !== false) {
-                            return array("@context" => $context, "@graph" => $graph);
+                            return ["@context" => $context, "@graph" => $graph];
                         }
                     }
                     App::abort(404);
