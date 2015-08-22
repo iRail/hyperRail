@@ -23,7 +23,7 @@ class RouteController extends Controller
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
         // Set priorities to json (if the app requests json provide it in favor of html)
-        $priorities = array('application/json', 'text/html', '*/*');
+        $priorities = ['application/json', 'text/html', '*/*'];
         // Get the best appropriate content type
         $result = $negotiator->getBest($acceptHeader, $priorities);
         // Default to html if $result is not set

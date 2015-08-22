@@ -39,7 +39,7 @@ class StationController extends Controller
         // Let the FormatNegotiator find out what to do with the request.
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
-        $priorities = array('application/json', 'text/html', '*/*');
+        $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = "text/html";
         if (isset($result)) {
@@ -80,7 +80,7 @@ class StationController extends Controller
     {
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
-        $priorities = array('application/json', 'text/html', '*/*');
+        $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = $result->getValue();
         //get the right date-time to query
@@ -183,18 +183,18 @@ class StationController extends Controller
                     $newData = \App\hyperRail\FormatConverter::convertLiveboardData($data, $station_id);
                     foreach ($newData['@graph'] as $graph) {
                         if (strpos($graph['@id'], $liveboard_id) !== false) {
-                            $context = array(
+                            $context = [
                                 "delay" => "http://semweb.mmlab.be/ns/rplod/delay",
                                 "platform" => "http://semweb.mmlab.be/ns/rplod/platform",
                                 "scheduledDepartureTime" => "http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime",
                                 "headsign" => "http://vocab.org/transit/terms/headsign",
                                 "routeLabel" => "http://semweb.mmlab.be/ns/rplod/routeLabel",
-                                "stop" => array(
+                                "stop" => [
                                     "@id" => "http://semweb.mmlab.be/ns/rplod/stop",
                                     "@type" => "@id"
-                                ),
-                            );
-                            return array("@context" => $context, "@graph" => $graph);
+                                ],
+                            ];
+                            return ["@context" => $context, "@graph" => $graph];
                         }
                     }
                     App::abort(404);
@@ -265,7 +265,7 @@ class StationController extends Controller
     {
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
-        $priorities = array('application/json', 'text/html', '*/*');
+        $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = "text/html";
         //unless the negotiator has found something better for us
@@ -279,7 +279,7 @@ class StationController extends Controller
                     if ($station == null) {
                         throw new \App\Exceptions\StationConversionFailureException();
                     }
-                    $data = array('station' => $station);
+                    $data = ['station' => $station];
                     return Response::view('stations.liveboard', $data)
                         ->header('Content-Type', "text/html")
                         ->header('Vary', 'accept');
@@ -314,13 +314,13 @@ class StationController extends Controller
                             ->header('Content-Type', 'application/ld+json')
                             ->header('Vary', 'accept');
                     } catch (Exception $ex) {
-                        $error = (string)json_encode(array('error' => 'An error occured while parsing the data'));
+                        $error = (string)json_encode(['error' => 'An error occured while parsing the data']);
                         return Response::make($error, 500)
                             ->header('Content-Type', 'application/json')
                             ->header('Vary', 'accept');
                     }
                 } catch (\App\Exceptions\StationConversionFailureException $ex) {
-                    $error = (string)json_encode(array('error' => 'This station does not exist!'));
+                    $error = (string)json_encode(['error' => 'This station does not exist!']);
                     App::abort(404);
                 }
                 break;

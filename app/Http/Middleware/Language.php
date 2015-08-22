@@ -29,7 +29,7 @@ class Language
         }
         // Language negotiation
         if (Input::get('lang')) {
-            $languages = array('nl', 'en', 'fr');
+            $languages = ['nl', 'en', 'fr'];
             $locale = Input::get('lang');
             if (in_array($locale, $languages)) {
                 App::setLocale($locale);
@@ -38,7 +38,7 @@ class Language
                 $locale = null;
             }
         } else {
-            $languages = array('nl', 'en', 'fr');
+            $languages = ['nl', 'en', 'fr'];
             $locale = Session::get('lang');
             if (in_array($locale, $languages)) {
                 App::setLocale($locale);
