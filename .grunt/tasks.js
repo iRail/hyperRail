@@ -1,41 +1,41 @@
 module.exports = function(grunt) {
 
-	////////////////////////////////////////////////////////////////////
-	/////////////////////////////// COMMANDS ///////////////////////////
-	////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////
+    /////////////////////////////// COMMANDS ///////////////////////////
+    ////////////////////////////////////////////////////////////////////
 
-	grunt.registerTask('default', 'Build assets for local', [
-		'css',
-		'js',
-		'copy',
-	]);
+    grunt.registerTask('default', 'Build assets for local', [
+        'css',
+        'js',
+        'copy',
+    ]);
 
-	grunt.registerTask('production', 'Build assets for production', [
-		'css',
-		'js',
-		'concat',
-		'minify'
-	]);
+    grunt.registerTask('production', 'Build assets for production', [
+        'css',
+        'js',
+        'concat',
+        'minify'
+    ]);
 
-	// Flow
-	////////////////////////////////////////////////////////////////////
+    // Flow
+    ////////////////////////////////////////////////////////////////////
 
-	grunt.registerTask('minify', 'Minify assets', [
-		'uglify',
-	]);
+    grunt.registerTask('minify', 'Minify assets', [
+        'uglify',
+    ]);
 
-	grunt.registerTask('js', 'Build scripts', [
-		'jshint',
-		'concat:js',
-	]);
+    grunt.registerTask('js', 'Build scripts', [
+        'jshint',
+        'concat:js',
+    ]);
 
-	// Assets
-	//////////////////////////////////////////////////////////////////////
+    // Assets
+    //////////////////////////////////////////////////////////////////////
 
-	grunt.registerTask('css', 'Build stylesheets', [
-		'compass:compile',
-		'autoprefixer',
-		'concat:css',
-	]);
+    grunt.registerTask('css', 'Build stylesheets', [
+        'compass:compile',
+        'autoprefixer',
+        'concat:css',
+    ]);
 
 };
