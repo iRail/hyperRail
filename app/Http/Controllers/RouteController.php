@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Response;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
-use ML\JsonLD\JsonLD;
 use Request;
 
 class RouteController extends Controller
