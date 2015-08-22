@@ -1,6 +1,8 @@
 <?php
 namespace hyperRail;
+
 use Illuminate\Support\Facades\File;
+
 class StationString
 {
     /**
@@ -47,6 +49,7 @@ class StationString
         // no not need to be complete. 'Pieters' will take me to 'Ghent-Sint-Pieters'!
         return null;
     }
+
     /**
      * Converts a station id to a station string. If the string cannot be converted,
      * null is returned.
