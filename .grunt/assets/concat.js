@@ -1,5 +1,5 @@
 module.exports = {
-     css: {
+    css: {
         files: {
             '<%= paths.compiled.css %>/main.css': [
                 '<%= components %>/fontawesome/css/font-awesome.min.css',
@@ -9,9 +9,9 @@ module.exports = {
             ],
         },
     },
-	js: {
-		files: {
-			'<%= paths.compiled.js %>/scripts.js': [
+    js: {
+        files: {
+            '<%= paths.compiled.js %>/scripts.js': [
                 '<%= paths.components.jquery %>',
                 '<%= paths.components.angular %>',
 
@@ -21,8 +21,8 @@ module.exports = {
                 '<%= components %>/angular-bootstrap/ui-bootstrap-tpls.min.js',
 
 
-				'<%= paths.original.js %>/**/*.js',
-			],
-		},
-	}
+                '<%= paths.original.js %>/**/*.js',
+            ],
+        },
+    }
 };
