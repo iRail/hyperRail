@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "name": "iRail/hyperRail",
+    "description": "The web interface of iRail.be",
+    "keywords": [],
+    "license": "CC0",
     "type": "project",
     "require": {
         "php": ">=5.5.9",
