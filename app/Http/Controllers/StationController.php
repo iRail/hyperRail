@@ -112,7 +112,7 @@ class StationController extends Controller
                     // Read new liveboard object and return the page but load data
                     foreach ($newData['@graph'] as $graph) {
                         if (strpos($graph['@id'], $liveboard_id) !== false) {
-                            return View::make('stations.departuredetail')
+                            return View('stations.departuredetail')
                                 ->with('station', $graph)
                                 ->with('departureStation', $stationStringName);
                         }
@@ -169,7 +169,7 @@ class StationController extends Controller
                     $stationDataFallback = json_decode(JsonLD::toString($compacted, true));
                     foreach ($stationDataFallback->{'@graph'} as $graph) {
                         if (strpos($graph->{'@id'}, $urlToFind) !== false) {
-                            return View::make('stations.departurearchive')
+                            return View('stations.departurearchive')
                                 ->with('station', $graph)
                                 ->with('departureStation', $stationStringName);
                         }
