@@ -19,7 +19,9 @@ class StationController extends Controller
 
     /**
      * Uses irail\stations\Stations to resolve the station
+     *
      * @param string $query
+     *
      * @return object
      */
     private function getStations($query = "")
@@ -61,7 +63,8 @@ class StationController extends Controller
     }
 
     /**
-     * Redirects to the stations page for NMBS
+     * Redirects to the stations page for NMBS.
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function redirectToNMBSStations()
@@ -71,8 +74,9 @@ class StationController extends Controller
 
     /**
      * Shows a train or train data, based on the accept-header.
-     * @param $station_id
-     * @param $liveboard_id
+     *
+     * @param  $station_id,    The ID of the station.
+     * @param  $liveboard_id,  The ID of the liveboard.
      * @return array
      * @throws EasyRdf_Exception
      */
