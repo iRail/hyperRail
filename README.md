@@ -7,7 +7,7 @@ _Looking for data? Check https://hello.irail.be for more info_
 ## Features
 
  * Implemented: [Content negotiation](https://en.wikipedia.org/wiki/Content_negotiation) for languages (en, fr, nl and de) and content-types (application/json and text/html)
- * Implemented: auto-complete for [all SNCB stations](https://irail.be/irail/stations)
+ * Implemented: auto-complete for [all SNCB stations](https://irail.be/stations/NMBS)
  * Implemented: route planning interface
  * Planned: support for the [Hydra Linked Data vocabulary](http://www.hydra-cg.com/) for [hypermedia](https://en.wikipedia.org/wiki/Hypermedia)
 
@@ -48,7 +48,6 @@ In /app/config/app.php set the following to your personal hostname/preferences:
 ### Step 5: Set up resources ###
 
  * `npm install`
- * `npm run update-stations`
  * `bower install`
  * `grunt`
 
@@ -56,7 +55,7 @@ In /app/config/app.php set the following to your personal hostname/preferences:
 
 Usually you should be ready to get started by visiting the hostname you have set up. If it does not work, log an [issue](https://github.com/iRail/hyperRail/issues/new). We'll help you out and fix the documentation for everyone else.
 
-In case you just want to update the stations list to the latest version, run: `npm run update-stations`
+In case you just want to update the stations list to the latest version, run: `composer update`
 
 # License
 
