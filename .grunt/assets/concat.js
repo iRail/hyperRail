@@ -5,9 +5,9 @@ module.exports = {
                 '<%= components %>/fontawesome/css/font-awesome.min.css',
                 '<%= components %>/animate.css/animate.min.css',
 
-                '<%= paths.original.css %>/**/*.css',
-            ],
-        },
+                '<%= paths.original.css %>/**/*.css'
+            ]
+        }
     },
     js: {
         files: {
@@ -21,8 +21,8 @@ module.exports = {
                 '<%= components %>/angular-bootstrap/ui-bootstrap-tpls.min.js',
 
 
-                '<%= paths.original.js %>/**/*.js',
-            ],
-        },
+                '<%= paths.original.js %>/**/*.js'
+            ]
+        }
     }
 };

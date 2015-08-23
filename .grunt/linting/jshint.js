@@ -34,5 +34,5 @@ module.exports = {
         }
     },
 
-    all: ['<%= paths.original.js %>/**/*.js', '!<%= paths.original.js %>/components/foundation.js'],
+    all: ['<%= paths.original.js %>/**/*.js', '!<%= paths.original.js %>/components/foundation.js']
 };
