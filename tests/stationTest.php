@@ -23,8 +23,11 @@ class stationTest extends TestCase
 
     public function testSpecificStation()
     {
-        $response = $this->call('GET', '/stations/NMBS/008727100');
-        $this->assertEquals(200, $response->status());
+        $urlCapitalCasing = $this->call('GET', '/stations/NMBS/008727100');
+        $urlLowerCasing = $this->call('GET', '/stations/nmbs/008727100');
+
+        $this->assertEquals(200, $urlCapitalCasing->status());
+        $this->assertEquals(200, $urlLowerCasing->status());
     }
 
     public function testSpecificTrainDepartures()
