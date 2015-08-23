@@ -21,16 +21,19 @@ Route::get('/stations/NMBS', 'StationController@index');
 Route::get('/stations/NMBS/{id}', 'StationController@liveboard');
 Route::get('/stations/NMBS/{id}/departures', 'StationController@liveboard');// should list the departures
 Route::get('/stations/NMBS/{id}/departures/{trainHash}', 'StationController@specificTrain');
+
 Route::get('/stations/nmbs', 'StationController@index'); // should list stations
 Route::get('/stations/nmbs/{id}', 'StationController@liveboard'); // should list information about the station
 Route::get('/stations/nmbs/{id}/departures', 'StationController@liveboard'); // should list the departures
 Route::get('/stations/nmbs/{id}/departures/{trainHash}', 'StationController@specificTrain');
-/*
-|--------------------------------------------------------------------------
-| Classic iRail redirection messages
-|--------------------------------------------------------------------------
-|
-*/
+
+/**
+ * --------------------------------------------------------------------------
+ * Classic iRail redirection messages
+ * --------------------------------------------------------------------------
+ *
+ */
+
 // Classic: irail.be/route/Station/StationTwo/?time=timestamp&date=date&direction=depart
 Route::get('/route/{departure_station}/{destination_station}/', 'ClassicRedirectController@redirectHomeRoute');
 // Classic: irail.be/board
