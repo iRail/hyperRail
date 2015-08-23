@@ -20,4 +20,10 @@ class stationTest extends TestCase
         $this->assertEquals(200, $responseNMBS->status());
         $this->assertEquals(200, $responsenmbs->status());
     }
+
+    public function testSpecificStation()
+    {
+        $response = $this->call('GET', '/stations/NMBS/008727100');
+        $this->assertEquals(200, $response->status());
+    }
 }
