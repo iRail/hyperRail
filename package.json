@@ -1,5 +1,13 @@
 {
   "name": "hyperRail",
+  "license": "CC0",
+  "bugs": {
+    "url": "https://www.github.com/iRail/hyperRail/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/iRail/hyperRail/issues"
+  },
   "dependencies": {
     "bower": "*",
     "grunt": "*",
