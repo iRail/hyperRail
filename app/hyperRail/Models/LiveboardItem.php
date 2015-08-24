@@ -48,7 +48,7 @@ class LiveboardItem
      */
     public function toArray()
     {
-        $dataArray = array(
+        $dataArray = [
             "@id" => $this->stationURL,
             "delay" => $this->delay,
             "platform" => $this->platform,
@@ -56,7 +56,7 @@ class LiveboardItem
             "stop" => $this->destinationURL,
             "headsign" => $this->headsign,
             "routeLabel" => $this->routeLabel
-        );
+        ];
         return $dataArray;
     }
 }

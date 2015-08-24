@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     grunt.registerTask('default', 'Build assets for local', [
         'css',
         'js',
-        'copy',
+        'copy'
     ]);
 
     grunt.registerTask('production', 'Build assets for production', [
@@ -21,12 +21,12 @@ module.exports = function(grunt) {
     ////////////////////////////////////////////////////////////////////
 
     grunt.registerTask('minify', 'Minify assets', [
-        'uglify',
+        'uglify'
     ]);
 
     grunt.registerTask('js', 'Build scripts', [
         'jshint',
-        'concat:js',
+        'concat:js'
     ]);
 
     // Assets
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
     grunt.registerTask('css', 'Build stylesheets', [
         'compass:compile',
         'autoprefixer',
-        'concat:css',
+        'concat:css'
     ]);
 
 };

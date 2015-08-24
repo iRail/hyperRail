@@ -18,7 +18,7 @@ module.exports = {
                 src    : ['**'],
                 cwd    : '<%= paths.original.fonts %>',
                 dest   : '<%= paths.compiled.fonts %>'
-            },
+            }
         ]
     }
 };

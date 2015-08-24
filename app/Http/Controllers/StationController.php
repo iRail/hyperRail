@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\File;
 use irail\stations\Stations;
 use ML\JsonLD\JsonLD;
 
@@ -41,7 +39,7 @@ class StationController extends Controller
         // Let the FormatNegotiator find out what to do with the request.
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
-        $priorities = array('application/json', 'text/html', '*/*');
+        $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = "text/html";
         if (isset($result)) {
@@ -82,7 +80,7 @@ class StationController extends Controller
     {
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
-        $priorities = array('application/json', 'text/html', '*/*');
+        $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = $result->getValue();
         //get the right date-time to query
@@ -95,20 +93,26 @@ class StationController extends Controller
         switch ($val) {
             case "text/html":
                 // Convert id to string for interpretation by old API
+
                 $stationStringName = Stations::getStationFromId($station_id);
-                if (!$archived) {
+
+                if (! $archived) {
                     // Set up path to old api
                     $URL = "http://api.irail.be/liveboard/?station=" . urlencode($stationStringName->name) .
                         "&date=" . date("mmddyy", $datetime) . "&time=" . date("Hi", $datetime) .
                         "&fast=true&lang=nl&format=json";
-                    // Get the contents of this path
-                    $data = file_get_contents($URL);
+
+                    // Get the contents.
+                    $guzzleClient = new \GuzzleHttp\Client();
+                    $guzzleRequest = $guzzleClient->get($URL);
+                    $data = $guzzleRequest->getBody();
+
                     // Convert the data to the new liveboard object
                     $newData = \App\hyperRail\FormatConverter::convertLiveboardData($data, $station_id);
                     // Read new liveboard object and return the page but load data
                     foreach ($newData['@graph'] as $graph) {
                         if (strpos($graph['@id'], $liveboard_id) !== false) {
-                            return View::make('stations.departuredetail')
+                            return View('stations.departuredetail')
                                 ->with('station', $graph)
                                 ->with('departureStation', $stationStringName);
                         }
@@ -165,7 +169,7 @@ class StationController extends Controller
                     $stationDataFallback = json_decode(JsonLD::toString($compacted, true));
                     foreach ($stationDataFallback->{'@graph'} as $graph) {
                         if (strpos($graph->{'@id'}, $urlToFind) !== false) {
-                            return View::make('stations.departurearchive')
+                            return View('stations.departurearchive')
                                 ->with('station', $graph)
                                 ->with('departureStation', $stationStringName);
                         }
@@ -185,18 +189,18 @@ class StationController extends Controller
                     $newData = \App\hyperRail\FormatConverter::convertLiveboardData($data, $station_id);
                     foreach ($newData['@graph'] as $graph) {
                         if (strpos($graph['@id'], $liveboard_id) !== false) {
-                            $context = array(
+                            $context = [
                                 "delay" => "http://semweb.mmlab.be/ns/rplod/delay",
                                 "platform" => "http://semweb.mmlab.be/ns/rplod/platform",
                                 "scheduledDepartureTime" => "http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime",
                                 "headsign" => "http://vocab.org/transit/terms/headsign",
                                 "routeLabel" => "http://semweb.mmlab.be/ns/rplod/routeLabel",
-                                "stop" => array(
+                                "stop" => [
                                     "@id" => "http://semweb.mmlab.be/ns/rplod/stop",
                                     "@type" => "@id"
-                                ),
-                            );
-                            return array("@context" => $context, "@graph" => $graph);
+                                ],
+                            ];
+                            return ["@context" => $context, "@graph" => $graph];
                         }
                     }
                     App::abort(404);
@@ -265,9 +269,10 @@ class StationController extends Controller
      */
     public function liveboard($id)
     {
+        $guzzleClient = new \GuzzleHttp\Client();
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
-        $priorities = array('application/json', 'text/html', '*/*');
+        $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = "text/html";
         //unless the negotiator has found something better for us
@@ -281,7 +286,7 @@ class StationController extends Controller
                     if ($station == null) {
                         throw new \App\Exceptions\StationConversionFailureException();
                     }
-                    $data = array('station' => $station);
+                    $data = ['station' => $station];
                     return Response::view('stations.liveboard', $data)
                         ->header('Content-Type', "text/html")
                         ->header('Vary', 'accept');
@@ -295,20 +300,26 @@ class StationController extends Controller
             default:
                 try {
                     $stationStringName = Stations::getStationFromId($id);
+
                     if ($stationStringName == null) {
                         throw new \App\Exceptions\StationConversionFailureException();
                     }
                     //Check for optional time parameters
                     $datetime = Input::get("datetime");
+
                     if (isset($datetime) && strtotime($datetime)) {
                         $datetime = strtotime($datetime);
                     } else {
                         $datetime = strtotime("now");
                     }
+
                     $URL = "http://api.irail.be/liveboard/?station="
                         . $stationStringName->name . "&fast=true&lang=nl&format=json&date="
                         . date("mmddyy", $datetime) . "&time=" . date("Hi", $datetime);
-                    $data = file_get_contents($URL);
+
+                    $guzzleRequest = $guzzleClient->get($URL);
+                    $data = $guzzleRequest->getBody();
+
                     try {
                         $newData = \App\hyperRail\FormatConverter::convertLiveboardData($data, $id);
                         $jsonLD = (string)json_encode($newData);
@@ -316,13 +327,13 @@ class StationController extends Controller
                             ->header('Content-Type', 'application/ld+json')
                             ->header('Vary', 'accept');
                     } catch (Exception $ex) {
-                        $error = (string)json_encode(array('error' => 'An error occured while parsing the data'));
+                        $error = (string) json_encode(['error' => 'An error occured while parsing the data']);
                         return Response::make($error, 500)
                             ->header('Content-Type', 'application/json')
                             ->header('Vary', 'accept');
                     }
                 } catch (\App\Exceptions\StationConversionFailureException $ex) {
-                    $error = (string)json_encode(array('error' => 'This station does not exist!'));
+                    $error = (string) json_encode(['error' => 'This station does not exist!']);
                     App::abort(404);
                 }
                 break;

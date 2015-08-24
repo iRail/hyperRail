@@ -4,6 +4,6 @@ module.exports = {
         cwd    : '<%= paths.compiled.js %>',
         src    : ['*.js'],
         dest   : '<%= paths.compiled.js %>',
-        ext    : '.min.js',
+        ext    : '.min.js'
     }
 };

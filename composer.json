@@ -11,7 +11,8 @@
         "semsol/arc2": "*",
         "ml/json-ld": "1.*",
         "willdurand/negotiation": "@stable",
-        "irail/stations": "^1.1"
+        "irail/stations": "^1.1",
+        "guzzlehttp/guzzle": "~6.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
