@@ -3,6 +3,7 @@
 [![Software License](https://img.shields.io/badge/license-CC0-brightgreen.svg?style=flat)](https://creativecommons.org/publicdomain/zero/1.0/)
 [![Dependency Status](https://david-dm.org/iRail/hyperRail.svg)](https://david-dm.org/iRail/hyperRail.svg)
 [![devDependency Status](https://img.shields.io/david/dev/iRail/hyperRail.svg?style=flat)](https://david-dm.org/iRail/hyperRail#info=devDependencies)
+[![Build Status](https://travis-ci.org/iRail/hyperRail.svg)](https://travis-ci.org/iRail/hyperRail)
 
 [iRail.be](https://irail.be) is a web-application that uses data from http://api.irail.be ([source code](https://github.com/irail/irail).) to create a hyper-media driven application for the Belgian railway company.
 
