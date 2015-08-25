@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\App;
 use irail\stations\Stations;
 use ML\JsonLD\JsonLD;
+USE Negotiation\FormatNegotiator;
+use App\hyperRail\FormatConverter;
 
 class StationController extends Controller
 {
@@ -37,7 +39,7 @@ class StationController extends Controller
     public function index()
     {
         // Let the FormatNegotiator find out what to do with the request.
-        $negotiator = new \Negotiation\FormatNegotiator();
+        $negotiator = new FormatNegotiator();
         $acceptHeader = Request::header('accept');
         $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
@@ -78,18 +80,21 @@ class StationController extends Controller
      */
     public function specificTrain($station_id, $liveboard_id)
     {
-        $negotiator = new \Negotiation\FormatNegotiator();
+        $negotiator = new FormatNegotiator();
         $acceptHeader = Request::header('accept');
         $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = $result->getValue();
-        //get the right date-time to query
+
+        // get the right date-time to query
         $datetime = substr($liveboard_id, 0, 12);
         $datetime = strtotime($datetime);
         $archived = false;
+
         if ($datetime < strtotime("now")) {
             $archived = true;
         }
+
         switch ($val) {
             case "text/html":
                 // Convert id to string for interpretation by old API
@@ -108,7 +113,8 @@ class StationController extends Controller
                     $data = $guzzleRequest->getBody();
 
                     // Convert the data to the new liveboard object
-                    $newData = \App\hyperRail\FormatConverter::convertLiveboardData($data, $station_id);
+                    $newData = FormatConverter::convertLiveboardData($data, $station_id);
+
                     // Read new liveboard object and return the page but load data
                     foreach ($newData['@graph'] as $graph) {
                         if (strpos($graph['@id'], $liveboard_id) !== false) {
@@ -131,19 +137,24 @@ class StationController extends Controller
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                     $turtle = (curl_exec($ch));
                     curl_close($ch);
+
                     // Convert turtle to json-ld
                     // Create a new graph
                     $graph = new EasyRdf_Graph();
+
                     if (empty($_REQUEST['data'])) {
                         // Load the sample information
                         $graph->parse($turtle, 'turtle');
                     }
+
                     // Export to JSON LD
                     $format = EasyRdf_Format::getFormat('jsonld');
                     $output = $graph->serialise($format);
+
                     if (!is_scalar($output)) {
                         $output = var_export($output, true);
                     }
+
                     // First, define the context
                     $context = [
                         "delay" => "http://semweb.mmlab.be/ns/rplod/delay",
@@ -160,13 +171,17 @@ class StationController extends Controller
                             "@type" => "@id",
                         ]
                     ];
+
                     // Next, encode the context as JSON
                     $jsonContext = json_encode($context);
+
                     // Compact the JsonLD by using @context
                     $compacted = JsonLD::compact($output, $jsonContext);
+
                     // Print the resulting JSON-LD!
                     $urlToFind = 'NMBS/' . $station_id . '/departures/' . $liveboard_id;
                     $stationDataFallback = json_decode(JsonLD::toString($compacted, true));
+
                     foreach ($stationDataFallback->{'@graph'} as $graph) {
                         if (strpos($graph->{'@id'}, $urlToFind) !== false) {
                             return View('stations.departurearchive')
@@ -174,6 +189,7 @@ class StationController extends Controller
                                 ->with('departureStation', $stationStringName);
                         }
                     }
+                    
                     App::abort(404);
                 }
                 break;
@@ -186,7 +202,7 @@ class StationController extends Controller
                         "&date=" . date("mmddyy", $datetime) . "&time=" . date("Hi", $datetime) .
                         "&fast=true&lang=nl&format=json";
                     $data = file_get_contents($URL);
-                    $newData = \App\hyperRail\FormatConverter::convertLiveboardData($data, $station_id);
+                    $newData = FormatConverter::convertLiveboardData($data, $station_id);
                     foreach ($newData['@graph'] as $graph) {
                         if (strpos($graph['@id'], $liveboard_id) !== false) {
                             $context = [
@@ -270,7 +286,7 @@ class StationController extends Controller
     public function liveboard($id)
     {
         $guzzleClient = new \GuzzleHttp\Client();
-        $negotiator = new \Negotiation\FormatNegotiator();
+        $negotiator = new FormatNegotiator();
         $acceptHeader = Request::header('accept');
         $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
@@ -321,7 +337,7 @@ class StationController extends Controller
                     $data = $guzzleRequest->getBody();
 
                     try {
-                        $newData = \App\hyperRail\FormatConverter::convertLiveboardData($data, $id);
+                        $newData = FormatConverter::convertLiveboardData($data, $id);
                         $jsonLD = (string)json_encode($newData);
                         return Response::make($jsonLD, 200)
                             ->header('Content-Type', 'application/ld+json')
