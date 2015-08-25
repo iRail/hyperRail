@@ -189,7 +189,6 @@ class StationController extends Controller
                                 ->with('departureStation', $stationStringName);
                         }
                     }
-                    
                     App::abort(404);
                 }
                 break;
@@ -280,11 +279,14 @@ class StationController extends Controller
 
     /**
      * Shows a liveboard or liveboard data, based on the accept-header.
-     * @param $id
+     *
+     * @param  integer $id the id of the station.
+     *
      * @return \Illuminate\Http\Response
      */
     public function liveboard($id)
     {
+
         $guzzleClient = new \GuzzleHttp\Client();
         $negotiator = new FormatNegotiator();
         $acceptHeader = Request::header('accept');
