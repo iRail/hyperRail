@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use hyperRail\StationString;
 
 class ClassicRedirectController extends Controller
 {
@@ -32,7 +33,7 @@ class ClassicRedirectController extends Controller
      */
     public function redirectBoardSingleStation($station_provided_string)
     {
-        $station_converted = \hyperRail\StationString::convertToId($station_provided_string);
+        $station_converted = StationString::convertToId($station_provided_string);
         if ($station_converted != null) {
             header("HTTP/1.1 301 Moved Permanently");
             header("Location: https://" . Config::get('app.url-short') . "/station/" . $station_converted->id);
@@ -67,8 +68,8 @@ class ClassicRedirectController extends Controller
      */
     public function redirectHomeRoute($departure_station, $destination_station)
     {
-        $departure = \hyperRail\StationString::convertToId($departure_station);
-        $destination = \hyperRail\StationString::convertToId($destination_station);
+        $departure = StationString::convertToId($departure_station);
+        $destination = StationString::convertToId($destination_station);
         if ($departure != null && $destination != null) {
             header("HTTP/1.1 301 Moved Permanently");
             return Redirect::to("https://" . Config::get('app.url-short') . "/route" .
