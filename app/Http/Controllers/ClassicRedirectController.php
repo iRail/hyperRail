@@ -27,7 +27,7 @@ class ClassicRedirectController extends Controller
      * and interpret the station name
      *
      * @param  string, $station_provided_string.
-     * 
+     *
      * @return null|string
      */
     public function redirectBoardSingleStation($station_provided_string)
@@ -46,8 +46,8 @@ class ClassicRedirectController extends Controller
      * Redirect classic liveboards URL to the new location
      * and interpret two station names
      *
-     * @param  integer $station  The first station.
-     * @param  integer $station2 The second station.
+     * @param  string $station  The first station.
+     * @param  string $station2 The second station.
      *
      * @return string
      */

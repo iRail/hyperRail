@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\App;
 use irail\stations\Stations;
 use ML\JsonLD\JsonLD;
-USE Negotiation\FormatNegotiator;
+use Negotiation\FormatNegotiator;
 use App\hyperRail\FormatConverter;
 
 class StationController extends Controller
