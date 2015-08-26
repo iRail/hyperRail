@@ -288,7 +288,7 @@ class StationController extends Controller
     public function liveboard($id)
     {
 
-        $guzzleClient = new \GuzzleHttp\Client();
+        $guzzleClient = new Client();
         $negotiator = new FormatNegotiator();
         $acceptHeader = Request::header('accept');
         $priorities = ['application/json', 'text/html', '*/*'];
