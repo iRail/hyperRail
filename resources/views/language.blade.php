@@ -18,6 +18,7 @@
                 <li><a href="route?lang=nl">Nederlands</a></li>
                 <li><a href="route?lang=fr">Français</a></li>
                 <li><a href="route?lang=en">English</a></li>
+                <li><a href="route?lang=de">Deutsch</a></li>
             </ul>
         </div>
     </div>

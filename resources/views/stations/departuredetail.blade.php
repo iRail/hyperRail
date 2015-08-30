@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{Config::get('app.locale');}}">
+<html lang="{{ Config::get('app.locale') }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,13 +49,13 @@
                     if (is_array($station['delay']) && sizeof($station['delay'])>1) {
                         echo "<p class='label label-warning label-lg'>" . "cancelled" . " </p>";
                     }
-                    ?>			
+                    ?>
                     <br/>
                     <br/>
                     <p class="h2">{{Lang::get('client.platform')}} {{$station['platform']}}</p>
                     <p class="h1"><strong>{{$departureStation->name}}</strong></p>
                     <p class="h2">{{Lang::get('client.to')}}</p>
-                    <p class="h1"><strong>{{str_replace("[NMBS/SNCB]", "", $station['headsign']);}}</strong></p>
+                    <p class="h1"><strong>{{ str_replace("[NMBS/SNCB]", "", $station['headsign']) }}</strong></p>
                 </div>
             </div>
         </div>

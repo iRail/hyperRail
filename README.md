@@ -43,20 +43,13 @@ Optional, but can be useful.
 chmod -R 777 storage
 ```
 
-### Step 4: Set up hostname ###
-
-In /app/config/app.php set the following to your personal hostname/preferences:
-
-	'url' => 'http://irail.dev',    // with http
-   	'url-short' => 'irail.dev',     // without http
-   	
-### Step 5: Set up resources ###
+### Step 4: Set up resources ###
 
  * `npm install`
  * `bower install`
  * `grunt`
 
-### Step 6: You're ready! ###
+### Step 5: You're ready! ###
 
 Usually you should be ready to get started by visiting the hostname you have set up. If it does not work, log an [issue](https://github.com/iRail/hyperRail/issues/new). We'll help you out and fix the documentation for everyone else.
 

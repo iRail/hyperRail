@@ -28,6 +28,7 @@ return array(
     "rideEarlier" => "frühere",
     "rideLater" => "spätere",
     "latestRide" => "Letzte",
+    "latestRide" => "Letzte",
     "english" => "Englisch",
     "dutch" => "Niederländisch",
     "pickLanguage" => "Sprache",
