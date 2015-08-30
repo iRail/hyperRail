@@ -17,7 +17,6 @@ class Language
         'nl',
         'en',
         'fr',
-        'de',
     ];
 
     /**
