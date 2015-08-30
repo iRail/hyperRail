@@ -1,4 +1,5 @@
 <?php
+
 namespace hyperRail;
 
 use Illuminate\Support\Facades\File;
@@ -14,11 +15,11 @@ class StationString
     public static function convertToId($string)
     {
         // Fetch stations list by http://github.com/iRail/stations to compare the station string with
-        $json = File::get(app_path() . "/stations.json");
+        $json = File::get(app_path().'/stations.json');
         $data = json_decode($json);
         // $alternates = array();
         // For each station in the array of stations, attempt comparison
-        foreach ($data->{"@graph"} as $station) {
+        foreach ($data->{'@graph'} as $station) {
             /*
              * Write an array with station name alternates
              *
@@ -38,7 +39,7 @@ class StationString
              */
             if (isset($station->alternative)) {
                 foreach ($station->alternative as $alternate) {
-                    if (strpos($alternate->{"@value"}, $string) !== false) {
+                    if (strpos($alternate->{'@value'}, $string) !== false) {
                         return $station;
                     }
                 }
@@ -47,7 +48,7 @@ class StationString
         // If there is no station id found for this string...
         // we return null. Cool thing about this method is that our strings
         // no not need to be complete. 'Pieters' will take me to 'Ghent-Sint-Pieters'!
-        return null;
+        return;
     }
     /**
      * Converts a station id to a station string. If the string cannot be converted,
@@ -58,10 +59,10 @@ class StationString
     public static function convertToString($string)
     {
         // Fetch stations list to compare the station string with
-        $json = File::get(app_path() . "/stations.json");
+        $json = File::get(app_path().'/stations.json');
         $data = json_decode($json);
         // For each station in the array of stations, attempt comparison
-        foreach ($data->{"@graph"} as $station) {
+        foreach ($data->{'@graph'} as $station) {
             /*
              * TODO: write an array with station name alternates
              *
@@ -82,10 +83,11 @@ class StationString
              * Arguably we need to check if there are multiple hits:
              * TODO: check for multiple hits when using strpos()
              */
-            if (strpos($station->{"@id"}, $string) !== false) {
+            if (strpos($station->{'@id'}, $string) !== false) {
                 return $station;
             }
         }
-        return null;
+
+        return;
     }
 }
