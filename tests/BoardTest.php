@@ -1,10 +1,7 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class boardTest extends TestCase
+class BoardTest extends TestCase
 {
     public function testBoardUrl()
     {
@@ -13,7 +10,7 @@ class boardTest extends TestCase
     }
 
     /**
-     * PHPUNIT: test for /board/{station}/{station2}
+     * PHPUNIT: test for /board/{station}/{station2}.
      */
     public function testBoardUrlTwoStations()
     {

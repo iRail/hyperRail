@@ -1,10 +1,7 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class stationTest extends TestCase
+class StationTest extends TestCase
 {
     public function testStation()
     {
@@ -33,7 +30,7 @@ class stationTest extends TestCase
     public function testSpecificTrainDepartures()
     {
         $urlCapitalCasing = $this->call('GET', '/stations/NMBS/008727100/departures');
-        $urlLowerCasing   = $this->call('GET', '/stations/nmbs/008727100/departures');
+        $urlLowerCasing = $this->call('GET', '/stations/nmbs/008727100/departures');
 
         $this->assertEquals(200, $urlCapitalCasing->status());
         $this->assertEquals(200, $urlLowerCasing->status());
