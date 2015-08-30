@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{Config::get('app.locale');}}">
+<html lang="{{ Config::get('app.locale') }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
     <meta name="twitter:creator" content="@iRail">
     <meta name="twitter:title" content="iRail | {{$departureStation->name}} to {{str_replace('[NMBS/SNCB]', '', $station->headsign)}}">
     <meta name="twitter:domain" content="https://iRail.be">
-    <meta name="twitter:description" content="Train to {{str_replace(' [NMBS/SNCB]', '', $station->headsign)}} departing at {{$departureStation->name}} left at platform {{$station->platform}} at {{date('H:i', strtotime($station->scheduledDepartureTime))}}<?php if (!is_array($station->delay)){ if ($station->delay > 0){ echo "with a delay of " . ((int)($station->delay)/60) . ' minutes'; }}?> on {{date('d/m/y', strtotime($station->scheduledDepartureTime))}}.">
+    <meta name="twitter:description" content="Train to {{str_replace(' [NMBS/SNCB]', '', $station->headsign)}} departing at {{$departureStation->name}} left at platform {{$station->platform}} at {{date('H:i', strtotime($station->scheduledDepartureTime))}}<?php if (!is_array($station->delay)){ if ($station->delay > 0){ echo "with a delay of " . ((int)($station->delay)/60) . ' minutes' }}?> on {{date('d/m/y', strtotime($station->scheduledDepartureTime))}}.">
     <meta name="twitter:image" content="{{ URL::asset('images/train.jpg') }}">
     <meta property="og:title" content="iRail.be" />
     <meta property="og:type" content="website" />
@@ -46,7 +46,7 @@
                     <p class="h2">{{Lang::get('client.platform')}} {{$station->platform}}</p>
                     <p class="h1"><strong>{{$departureStation->name}}</strong></p>
                     <p class="h2">{{Lang::get('client.to')}}</p>
-                    <p class="h1"><strong>{{str_replace("[NMBS/SNCB]", "", $station->headsign);}}</strong></p>
+                    <p class="h1"><strong>{{ str_replace("[NMBS/SNCB]", "", $station->headsign) }}</strong></p>
                     <?php
                     if (!is_array($station->delay)) {
                         if ($station->delay > 0){

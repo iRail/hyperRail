@@ -1,7 +1,7 @@
 <?php
 
 
-class routeTest extends TestCase
+class RouteTest extends TestCase
 {
     public function testRoute()
     {
