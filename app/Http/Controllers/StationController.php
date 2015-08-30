@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\App;
 use irail\stations\Stations;
 use ML\JsonLD\JsonLD;
-use \GuzzleHttp\Client;
+use GuzzleHttp\Client;
 use Negotiation\FormatNegotiator;
 use App\hyperRail\FormatConverter;
 use EasyRdf_Graph;
@@ -296,12 +296,8 @@ class StationController extends Controller
      */
     public function liveboard($id)
     {
-<<<<<<< HEAD
 
         $guzzleClient = new Client();
-=======
-        $guzzleClient = new \GuzzleHttp\Client();
->>>>>>> iRail/development
         $negotiator = new FormatNegotiator();
         $acceptHeader = Request::header('accept');
         $priorities = ['application/json', 'text/html', '*/*'];
