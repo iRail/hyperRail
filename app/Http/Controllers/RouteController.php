@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Config;
@@ -27,25 +28,25 @@ class RouteController extends Controller
         // Get the best appropriate content type
         $result = $negotiator->getBest($acceptHeader, $priorities);
         // Default to html if $result is not set
-        $val = "text/html";
+        $val = 'text/html';
         if (isset($result)) {
             $val = $result->getValue();
         }
         // See what kind of content we should return
         switch ($val) {
-            case "text/html":
+            case 'text/html':
                 // In case we want to return html, just let
                 // Laravel render the view and send the headers
                 return Response::view('route.planner')
-                    ->header('Content-Type', "text/html")
+                    ->header('Content-Type', 'text/html')
                     ->header('Vary', 'accept');
                 break;
-            case "application/json":
+            case 'application/json':
             default:
                 // In case we want to return JSON(LD) or something else, generate
                 // our JSON by calling our static function 'getJSON()'
                 return Response::make($this::getJSON())
-                    ->header('Content-Type', "application/json")
+                    ->header('Content-Type', 'application/json')
                     ->header('Vary', 'accept');
                 break;
         }
@@ -66,29 +67,30 @@ class RouteController extends Controller
             // Optional time
             $time = Input::get('time');
             // If time is not set, default to now
-            if (!Input::get('time')) {
-                $time = date("Hi", time());
+            if (! Input::get('time')) {
+                $time = date('Hi', time());
             }
             // Optional date
             $date = Input::get('date');
             // If date is not set, default to today
-            if (!Input::get('date')) {
-                $date = date("dmy", time());
+            if (! Input::get('date')) {
+                $date = date('dmy', time());
             }
             // Time selector: does the user want to arrive or depart at this hour?
             // Optional. Default to 'depart at hour' if null.
             $timeSel = Input::get('timeSel');
-            if (!Input::get('timeSel')) {
-                $timeSel = "depart";
+            if (! Input::get('timeSel')) {
+                $timeSel = 'depart';
             }
             // Get the app's current language/locale
             $lang = Config::get('app.locale');
-            $fromId = str_replace("http://irail.be/stations/NMBS/", "", $from);
-            $toId = str_replace("http://irail.be/stations/NMBS/", "", $to);
+            $fromId = str_replace('http://irail.be/stations/NMBS/', '', $from);
+            $toId = str_replace('http://irail.be/stations/NMBS/', '', $to);
             try {
                 $json = file_get_contents('http://api.irail.be/connections/?to='
-                    . $toId . '&from=' . $fromId . '&date=' . $date . '&time=' .
-                    $time . '&timeSel=' . $timeSel . '&lang=' . $lang . '&format=json');
+                    .$toId.'&from='.$fromId.'&date='.$date.'&time='.
+                    $time.'&timeSel='.$timeSel.'&lang='.$lang.'&format=json');
+
                 return trim($json);
             } catch (ErrorException $ex) {
                 return [
