@@ -1,16 +1,13 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class nmbsTest extends TestCase
+class RouteTest extends TestCase
 {
     public function testRoute()
     {
         $defaultURL = $this->call('GET', '/route');
-        $dutchURL   = $this->call('GET', '/route?lang=nl');
-        $frenchURL  = $this->call('GET', '/route?lang=fr');
+        $dutchURL = $this->call('GET', '/route?lang=nl');
+        $frenchURL = $this->call('GET', '/route?lang=fr');
         $englishURL = $this->call('GET', '/route?lang=en');
 
         $this->assertEquals(200, $defaultURL->status());

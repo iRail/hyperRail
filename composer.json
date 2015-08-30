@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "name": "iRail/hyperRail",
+    "description": "The web interface of iRail.be",
+    "keywords": [],
+    "license": "CC0",
     "type": "project",
     "require": {
         "php": ">=5.5.9",
@@ -11,13 +11,16 @@
         "semsol/arc2": "*",
         "ml/json-ld": "1.*",
         "willdurand/negotiation": "@stable",
-        "irail/stations": "^1.1"
+        "irail/stations": "^1.1",
+        "guzzlehttp/guzzle": "~6.0",
+        "barryvdh/laravel-debugbar": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
-        "phpspec/phpspec": "~2.1"
+        "phpspec/phpspec": "~2.1",
+        "laravel/homestead": "^2.1"
     },
     "autoload": {
         "classmap": [

@@ -1,5 +1,10 @@
 # iRail.be
 
+[![Software License](https://img.shields.io/badge/license-CC0-brightgreen.svg?style=flat)](https://creativecommons.org/publicdomain/zero/1.0/)
+[![Dependency Status](https://david-dm.org/iRail/hyperRail.svg)](https://david-dm.org/iRail/hyperRail.svg)
+[![devDependency Status](https://img.shields.io/david/dev/iRail/hyperRail.svg?style=flat)](https://david-dm.org/iRail/hyperRail#info=devDependencies)
+[![Build Status](https://travis-ci.org/iRail/hyperRail.svg)](https://travis-ci.org/iRail/hyperRail)
+
 [iRail.be](https://irail.be) is a web-application that uses data from http://api.irail.be ([source code](https://github.com/irail/irail).) to create a hyper-media driven application for the Belgian railway company.
 
 _Looking for data? Check https://hello.irail.be for more info_
@@ -7,7 +12,7 @@ _Looking for data? Check https://hello.irail.be for more info_
 ## Features
 
  * Implemented: [Content negotiation](https://en.wikipedia.org/wiki/Content_negotiation) for languages (en, fr, nl and de) and content-types (application/json and text/html)
- * Implemented: auto-complete for [all SNCB stations](https://irail.be/irail/stations)
+ * Implemented: auto-complete for [all SNCB stations](https://irail.be/stations/NMBS)
  * Implemented: route planning interface
  * Planned: support for the [Hydra Linked Data vocabulary](http://www.hydra-cg.com/) for [hypermedia](https://en.wikipedia.org/wiki/Hypermedia)
 
@@ -38,25 +43,17 @@ Optional, but can be useful.
 chmod -R 777 storage
 ```
 
-### Step 4: Set up hostname ###
-
-In /app/config/app.php set the following to your personal hostname/preferences:
-
-	'url' => 'http://irail.dev',    // with http
-   	'url-short' => 'irail.dev',     // without http
-   	
-### Step 5: Set up resources ###
+### Step 4: Set up resources ###
 
  * `npm install`
- * `npm run update-stations`
  * `bower install`
  * `grunt`
 
-### Step 6: You're ready! ###
+### Step 5: You're ready! ###
 
 Usually you should be ready to get started by visiting the hostname you have set up. If it does not work, log an [issue](https://github.com/iRail/hyperRail/issues/new). We'll help you out and fix the documentation for everyone else.
 
-In case you just want to update the stations list to the latest version, run: `npm run update-stations`
+In case you just want to update the stations list to the latest version, run: `composer update`
 
 # License
 

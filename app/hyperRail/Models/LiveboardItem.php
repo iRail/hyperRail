@@ -1,8 +1,6 @@
 <?php
-namespace App\hyperRail\Models;
 
-use Illuminate\Support\Facades\Config;
-use stdClass;
+namespace app\hyperRail\Models;
 
 class LiveboardItem
 {
@@ -18,6 +16,7 @@ class LiveboardItem
 
     /**
      * Set the values for this LiveboardItem.
+     *
      * @param $stationId
      * @param $requestDate
      * @param $requestTime
@@ -30,33 +29,43 @@ class LiveboardItem
     public function fill($stationId, $requestDate, $requestTime, $routeLabel, $headSign, $delay, $time, $platform)
     {
         $this->headsign = $headSign;
-        $this->routeLabel = preg_replace("/([A-Z]{1,2})(\d+)/", "$1 $2", $routeLabel);
-        $md5hash = md5($this->routeLabel . $this->headsign);
-        $this->stationURL = "http://"
-            . Config::get('app.url-short') . "/stations/NMBS/" .
-            $stationId . "/departures/" . $requestDate .
-            $requestTime . $md5hash;
+        $this->routeLabel = preg_replace("/([A-Z]{1,2})(\d+)/", '$1 $2', $routeLabel);
+        $this->stationURL = $this->getStationUrl($stationId, $requestDate, $requestTime);
         $this->delay = $delay;
         $this->scheduledDepartureTime = $time;
         $this->platform = $platform;
-        $this->destinationURL = "http://" . Config::get('app.url-short') . "/stations/NMBS/" . $stationId;
+        $this->destinationURL = route('station.index', [
+            'id' => $stationId,
+        ]);
     }
 
     /**
      * Converts this object to a JSON-LD compatible array (using @id).
+     *
      * @return array
      */
     public function toArray()
     {
-        $dataArray = array(
-            "@id" => $this->stationURL,
-            "delay" => $this->delay,
-            "platform" => $this->platform,
-            "scheduledDepartureTime" => $this->scheduledDepartureTime,
-            "stop" => $this->destinationURL,
-            "headsign" => $this->headsign,
-            "routeLabel" => $this->routeLabel
-        );
+        $dataArray = [
+            '@id' => $this->stationURL,
+            'delay' => $this->delay,
+            'platform' => $this->platform,
+            'scheduledDepartureTime' => $this->scheduledDepartureTime,
+            'stop' => $this->destinationURL,
+            'headsign' => $this->headsign,
+            'routeLabel' => $this->routeLabel,
+        ];
+
         return $dataArray;
+    }
+
+    private function getStationUrl($stationId, $requestDate, $requestTime)
+    {
+        $md5hash = md5($this->routeLabel.$this->headsign);
+
+        return route('stations.departures.hash', [
+            'id' => $stationId,
+            'trainHash' => $requestDate.$requestTime.$md5hash,
+        ]);
     }
 }

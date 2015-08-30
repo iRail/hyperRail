@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Response;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
-use ML\JsonLD\JsonLD;
 use Request;
 
 class RouteController extends Controller
@@ -24,7 +23,7 @@ class RouteController extends Controller
         $negotiator = new \Negotiation\FormatNegotiator();
         $acceptHeader = Request::header('accept');
         // Set priorities to json (if the app requests json provide it in favor of html)
-        $priorities = array('application/json', 'text/html', '*/*');
+        $priorities = ['application/json', 'text/html', '*/*'];
         // Get the best appropriate content type
         $result = $negotiator->getBest($acceptHeader, $priorities);
         // Default to html if $result is not set

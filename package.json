@@ -1,14 +1,18 @@
 {
   "name": "hyperRail",
+  "license": "CC0",
+  "bugs": {
+    "url": "https://www.github.com/iRail/hyperRail/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/iRail/hyperRail/issues"
+  },
   "dependencies": {
     "bower": "*",
     "grunt": "*",
     "grunt-cli": "*",
-    "glob": "*",
-    "irail-stations": "*"
-  },
-  "scripts" : {
-    "update-stations" : "irail-stations > app/stations.json"
+    "glob": "*"
   },
   "devDependencies": {
     "grunt-contrib-concat": "*",

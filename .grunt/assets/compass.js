@@ -14,12 +14,12 @@ module.exports = {
      */
     clean: {
         options: {
-            clean: true,
+            clean: true
         }
     },
 
     /**
      * Compile Sass files
      */
-    compile: {},
+    compile: {}
 };
