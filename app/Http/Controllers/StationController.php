@@ -110,7 +110,7 @@ class StationController extends Controller
 
                 $stationStringName = Stations::getStationFromId($station_id);
 
-                if (!$archived) {
+                if (! $archived) {
                     // Set up path to old api
                     $URL = 'http://api.irail.be/liveboard/?station='.urlencode($stationStringName->name).
                         '&date='.date('mmddyy', $datetime).'&time='.date('Hi', $datetime).
@@ -160,7 +160,7 @@ class StationController extends Controller
                     $format = EasyRdf_Format::getFormat('jsonld');
                     $output = $graph->serialise($format);
 
-                    if (!is_scalar($output)) {
+                    if (! is_scalar($output)) {
                         $output = var_export($output, true);
                     }
 
@@ -205,7 +205,7 @@ class StationController extends Controller
             case 'application/ld+json':
             default:
                 $stationStringName = Stations::getStationFromId($station_id);
-                if (!$archived) {
+                if (! $archived) {
                     $URL = 'http://api.irail.be/liveboard/?station='.urlencode($stationStringName->name).
                         '&date='.date('mmddyy', $datetime).'&time='.date('Hi', $datetime).
                         '&fast=true&lang=nl&format=json';
@@ -250,7 +250,7 @@ class StationController extends Controller
                     // Export to JSON LD
                     $format = EasyRdf_Format::getFormat('jsonld');
                     $output = $graph->serialise($format);
-                    if (!is_scalar($output)) {
+                    if (! is_scalar($output)) {
                         $output = var_export($output, true);
                     }
                     // First, define the context
@@ -296,7 +296,6 @@ class StationController extends Controller
      */
     public function liveboard($id)
     {
-
         $guzzleClient = new Client();
         $negotiator = new FormatNegotiator();
         $acceptHeader = Request::header('accept');
