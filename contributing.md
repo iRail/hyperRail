@@ -52,9 +52,9 @@ All these details will help people to fix any potential bugs.
 
 A pull request against this repo has the following things:
 
-### Only PR's to the development will be accepted.**
+### Only PR's to the development will be accepted.
 
-- **PSR-2 coding standard.**
-- **Must pass StyleCI and TravisCI.**
-- **A good description of what u have changed and/or added.**
-- **A specific PR title. No general title like: Improvements**
+- [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) coding standard.
+- Must pass StyleCI and TravisCI.
+- A good description of what u have changed and/or added.
+- A specific PR title. No general title like: Improvements
