@@ -19,6 +19,7 @@ class ClassicRedirectController extends Controller
     public function redirectBoard()
     {
         //return Redirect::to("http://" . Config::get('app.url-short') . "/liveboard", 301);
+        return Redirect::action('RouteController@index', [], 301);
     }
 
     /**
@@ -75,7 +76,7 @@ class ClassicRedirectController extends Controller
             //  . date("Hi") . "&auto=true");
 
             // return to Main route as $departure->{'@id'} returns full URL
-            return Redirect::action('RouteController@index', 301);
+            return Redirect::action('RouteController@index', [], 301);
         } else {
             return "It looks like we couldn't convert your route request to the new format :(";
         }
