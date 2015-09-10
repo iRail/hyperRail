@@ -50,13 +50,13 @@ class StationString
         // no not need to be complete. 'Pieters' will take me to 'Ghent-Sint-Pieters'!
         return;
     }
+    
     /**
      * Converts a station id to a station string. If the string cannot be converted,
      * null is returned.
      * @param $string
      * @return string or null
      */
-     
     public static function convertToString($string)
     {
         // Fetch stations list to compare the station string with
