@@ -56,6 +56,7 @@ class StationString
      * @param $string
      * @return string or null
      */
+     
     public static function convertToString($string)
     {
         // Fetch stations list to compare the station string with
