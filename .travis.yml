@@ -19,7 +19,7 @@ before_script:
     - travis_retry composer install --no-interaction --prefer-source --dev
 
     #apache
-    - apt-get update
+    - sudo apt-get update
     - apt-get install apache2 libapache2-mod-fastcgi
     # enable php-fpm
     - cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
