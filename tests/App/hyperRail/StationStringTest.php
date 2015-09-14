@@ -23,7 +23,7 @@ class stationStringTest extends TestCase
 
     public function testConvertToString()
     {
-        $controller = new StationString()
+        $controller = new StationString();
         $method = $controller->convertToString('http://irail.be/stations/NMBS/008011068');
 
         $this->assertTrue(sizeof($method) > 0);
