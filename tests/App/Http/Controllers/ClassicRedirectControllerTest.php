@@ -14,4 +14,17 @@ class ClassicRedirectControllerTest extends TestCase
 
     }
 
+    public function testRedirectHomeRedirectError()
+    {
+        $controller = new ClassicRedirectController();
+        $data = $controller->redirectHomeRoute(
+            'http://irail.be/stations/NMBS/008039904',
+            'http://irail.be/stations/NMBS/008032572'
+        );
+
+        $expected = "It looks like we couldn't convert your route request to the new format :(";
+
+        $this->assertEquals($data, $expected);
+    }
+
 }
