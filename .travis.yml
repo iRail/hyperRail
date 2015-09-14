@@ -13,9 +13,6 @@ addons:
 before_script:
   - composer install
 
-script:
-  - phpunit
-
 # Code coverage
 before_script:
     - travis_retry composer self-update
@@ -24,6 +21,7 @@ before_script:
 script:
     - vendor/bin/phpunit --coverage-clover=coverage.xml
     - php artisan serve
+    - phpunit
 
 after_success:
     - bash <(curl -s https://codecov.io/bash)
