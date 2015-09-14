@@ -17,9 +17,9 @@ before_script:
 before_script:
     - travis_retry composer self-update
     - travis_retry composer install --no-interaction --prefer-source --dev
-    - php -S localhost:8000 -t public server.php
 
 script:
+    - php -S localhost:8000 -t public server.php
     - vendor/bin/phpunit --coverage-clover=coverage.xml
     - phpunit
 
