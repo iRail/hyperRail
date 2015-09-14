@@ -13,4 +13,5 @@ class ClassicRedirectControllerTest extends TestCase
         $this->assertEquals($data, $expected);
 
     }
+
 }
