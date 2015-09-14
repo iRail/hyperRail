@@ -21,7 +21,7 @@ before_script:
 script:
     - php -S localhost:8000 -t public server.php
     - vendor/bin/phpunit --coverage-clover=coverage.xml
-    - phpunit
+    - phpunit -v -c phpunit.xml
 
 after_success:
     - bash <(curl -s https://codecov.io/bash)
