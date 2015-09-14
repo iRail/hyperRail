@@ -18,7 +18,18 @@ before_script:
     - travis_retry composer self-update
     - travis_retry composer install --no-interaction --prefer-source --dev
 
-    - service apache2 start
+    #apache
+    - apt-get update
+       - apt-get install apache2 libapache2-mod-fastcgi
+       # enable php-fpm
+       - cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
+       - a2enmod rewrite actions fastcgi alias
+       - echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+       - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
+       # configure apache virtual hosts
+       - cp -f build/travis-ci-apache /etc/apache2/sites-available/default
+       - sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/default
+       - service apache2 restart
 
 script:
     - vendor/bin/phpunit --coverage-clover=coverage.xml
