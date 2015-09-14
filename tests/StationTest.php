@@ -35,7 +35,7 @@ class StationTest extends TestCase
         ]);
         
         $outputData = json_decode($response->getOriginalContent(), true);
-        $this->assertEquals(200, $request->getStatusCode());
+        $this->assertEquals(200, $response->getStatusCode());
     }
 
     public function testSpecificStation()
