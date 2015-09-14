@@ -108,6 +108,7 @@ class StationController extends Controller
             case 'text/html':
                 // Convert id to string for interpretation by old API
 
+                // TODO: Refactor this.
                 $stationStringName = Stations::getStationFromId($station_id);
 
                 if (! $archived) {
@@ -309,8 +310,10 @@ class StationController extends Controller
         switch ($val) {
             case 'text/html':
                 try {
+                    // TODO: Refactor this.
                     $station = Stations::getStationFromId($id);
                     if ($station == null) {
+                        // TODO: Needs testing.
                         throw new \App\Exceptions\StationConversionFailureException();
                     }
                     $data = ['station' => $station];

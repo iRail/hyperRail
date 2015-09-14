@@ -29,7 +29,7 @@ class StationTest extends TestCase
                 'Accept' => 'application/json']
         ]);
 
-        $request = $guzzleClient->request('GET','http://127.0.0.1:8000/stations/nmbs');
+        $request = $guzzleClient->request('GET','http://127.0.0.1:9000/stations/nmbs');
         $OutputData = json_decode($request->getBody(true), true);
 
         $this->assertEquals(200, $request->getStatusCode());
