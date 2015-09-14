@@ -24,11 +24,6 @@ class StationTest extends TestCase
      */
     public function testStationNmbsCurlLdJson()
     {
-        $guzzleClient = new Client([
-            'headers' => [
-                'Accept' => 'application/json']
-        ]);
-        
         $response = $this->call('GET','/stations/nmbs', [
             'headers' => [
                 'Accept' => 'application/json']
