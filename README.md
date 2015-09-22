@@ -55,8 +55,4 @@ Usually you should be ready to get started by visiting the hostname you have set
 
 In case you just want to update the stations list to the latest version, run: `composer update`
 
-# License
-
-We hereby put this work in the public domain under a [CC0 license](https://creativecommons.org/publicdomain/zero/1.0/)!
-
 Feel free to attribute us at http://hello.irail.be.
