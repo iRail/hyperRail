@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Client;
 
 class StationTest extends TestCase
 {
@@ -16,6 +17,20 @@ class StationTest extends TestCase
 
         $this->assertEquals(200, $responseNMBS->status());
         $this->assertEquals(200, $responsenmbs->status());
+    }
+
+    /**
+     * TODO: Add assertHaskey() methods.
+     */
+    public function testStationNmbsCurlLdJson()
+    {
+        $response = $this->call('GET','/stations/nmbs', [
+            'headers' => [
+                'Accept' => 'application/json']
+        ]);
+        
+        $outputData = json_decode($response->getOriginalContent(), true);
+        $this->assertEquals(200, $response->getStatusCode());
     }
 
     public function testSpecificStation()

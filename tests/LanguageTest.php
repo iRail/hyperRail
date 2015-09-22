@@ -1,6 +1,5 @@
 <?php
 
-
 class LanguageTest extends TestCase
 {
     public function testLanguage()
