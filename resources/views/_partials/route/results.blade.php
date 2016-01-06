@@ -30,7 +30,7 @@
                             </strong>
                         </span>
                         <span class="tright">
-                            <span class="delay-route" ng-if="conn.departure.delay > 0">
+                            <span class="delay-route" ng-if="conn.departure.delay > 0 || conn.departure.canceled == 1 || conn.arrival.canceled == 1">
                                 <i class="fa fa-exclamation-triangle"></i>
                             </span>
                             <span ng-if="conn.vias.number > 0">
@@ -56,6 +56,9 @@
                         <span class="delay-route" ng-if="conn.departure.delay > 0">
                                 <i class="fa fa-exclamation-triangle"></i> + @{{ (conn.departure.delay)/60 }}'
                         </span>
+                        <span class="delay-route" ng-if="conn.departure.canceled > 0">
+                                <i class="fa fa-exclamation-triangle"></i> canceled
+                        </span>
                         </li>
                         <li class="list-group-item" ng-repeat="stop in conn.vias.via">
                             &darr; @{{stop.vehicle.replace("BE.NMBS.","")}} <span class="small">(@{{stop.direction.name}})</span>
@@ -73,6 +76,9 @@
                             </strong>
                         <span class="delay-route" ng-if="stop.departure.delay > 0">
                                 <i class="fa fa-exclamation-triangle"></i> + @{{ (stop.departure.delay)/60 }}'
+                        </span>
+                        <span class="delay-route" ng-if="stop.departure.canceled > 0">
+                                <i class="fa fa-exclamation-triangle"></i> canceled
                         </span>
                         </span>
                         <span class="planner-station">
