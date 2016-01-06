@@ -1,5 +1,6 @@
 <?php
-return array(
-    "title" => "Contributeurs",
-    "description" => "iRail ist gemacht durch diese Menschen:",
-);
+
+return [
+    'title' => 'Contributeurs',
+    'description' => 'iRail ist gemacht durch diese Menschen:',
+];

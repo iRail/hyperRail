@@ -30,6 +30,6 @@ class RedirectInsecure
      */
     private function prodIsInsecure($request)
     {
-        return app()->environment('production') && !$request->secure();
+        return app()->environment('production') && ! $request->secure();
     }
 }
