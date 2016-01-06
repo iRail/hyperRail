@@ -26,12 +26,13 @@ class LiveboardItem
      * @param $time
      * @param $platform
      */
-    public function fill($stationId, $requestDate, $requestTime, $routeLabel, $headSign, $delay, $time, $platform)
+    public function fill($stationId, $requestDate, $requestTime, $routeLabel, $headSign, $delay, $time, $platform, $canceled)
     {
         $this->headsign = $headSign;
         $this->routeLabel = preg_replace("/([A-Z]{1,2})(\d+)/", '$1 $2', $routeLabel);
         $this->stationURL = $this->getStationUrl($stationId, $requestDate, $requestTime);
         $this->delay = $delay;
+        $this->canceled = $canceled;
         $this->scheduledDepartureTime = $time;
         $this->platform = $platform;
         $this->destinationURL = route('station.index', [
@@ -50,6 +51,7 @@ class LiveboardItem
             '@id' => $this->stationURL,
             'delay' => $this->delay,
             'platform' => $this->platform,
+            'canceled' => $this->canceled,
             'scheduledDepartureTime' => $this->scheduledDepartureTime,
             'stop' => $this->destinationURL,
             'headsign' => $this->headsign,

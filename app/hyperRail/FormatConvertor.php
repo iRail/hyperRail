@@ -1,4 +1,5 @@
 <?php
+
 namespace App\hyperRail;
 
 use App\hyperRail\Models\LiveboardItem;
@@ -6,7 +7,6 @@ use App\hyperRail\Models\LiveboardItem;
 /**
  * Class iRailFormatConverter
  * Converts the old JSON to objects.
- * @package hyperRail
  */
 class FormatConverter
 {
@@ -18,7 +18,7 @@ class FormatConverter
      * @return array
      * @internal param $id
      */
-    public static function convertLiveboardData($json, $station_id, $format = "jsonld")
+    public static function convertLiveboardData($json, $station_id, $format = 'jsonld')
     {
         $liveboardCollection = [];
         $initialData = json_decode($json);
@@ -33,7 +33,8 @@ class FormatConverter
             $liveboardItem = new LiveboardItem();
             $date = date('Ymd', $time);
             $time = date('Hi', $time);
-            $vehicleShort = explode("BE.NMBS.", $departure->vehicle);
+            $vehicleShort = explode('BE.NMBS.', $departure->vehicle);
+            $canceled = $departure->canceled;
 
             $liveboardItem->fill(
                 $station_id,
@@ -43,23 +44,24 @@ class FormatConverter
                 $departure->station,
                 $departure->delay,
                 date('c', $departure->time),
-                $departure->platform
+                $departure->platform,
+                $canceled
             );
 
             array_push($liveboardCollection, $liveboardItem->toArray());
         }
         $context = [
-            "delay" => "http://semweb.mmlab.be/ns/rplod/delay",
-            "platform" => "http://semweb.mmlab.be/ns/rplod/platform",
-            "scheduledDepartureTime" => "http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime",
-            "headsign" => "http://vocab.org/transit/terms/headsign",
-            "routeLabel" => "http://semweb.mmlab.be/ns/rplod/routeLabel",
-            "stop" => [
-                "@id" => "http://semweb.mmlab.be/ns/rplod/stop",
-                "@type" => "@id"
+            'delay' => 'http://semweb.mmlab.be/ns/rplod/delay',
+            'platform' => 'http://semweb.mmlab.be/ns/rplod/platform',
+            'scheduledDepartureTime' => 'http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime',
+            'headsign' => 'http://vocab.org/transit/terms/headsign',
+            'routeLabel' => 'http://semweb.mmlab.be/ns/rplod/routeLabel',
+            'stop' => [
+                '@id' => 'http://semweb.mmlab.be/ns/rplod/stop',
+                '@type' => '@id',
             ],
         ];
 
-        return ["@context" => $context, "@graph" => $liveboardCollection];
+        return ['@context' => $context, '@graph' => $liveboardCollection];
     }
 }
