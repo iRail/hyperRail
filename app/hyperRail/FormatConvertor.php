@@ -34,6 +34,7 @@ class FormatConverter
             $date = date('Ymd', $time);
             $time = date('Hi', $time);
             $vehicleShort = explode('BE.NMBS.', $departure->vehicle);
+            $canceled = $departure->canceled;
 
             $liveboardItem->fill(
                 $station_id,
@@ -43,7 +44,8 @@ class FormatConverter
                 $departure->station,
                 $departure->delay,
                 date('c', $departure->time),
-                $departure->platform
+                $departure->platform,
+                $canceled
             );
 
             array_push($liveboardCollection, $liveboardItem->toArray());

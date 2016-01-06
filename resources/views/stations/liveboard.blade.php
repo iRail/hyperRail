@@ -43,6 +43,11 @@
                                         &nbsp;&nbsp;+@{{ dep.delay/60 }}
                                     </span>
                                   </span>
+                                  <span class="delay-right">
+                                    <span class="delay" ng-if="dep.canceled > 0">
+                                        &nbsp;&nbsp;canceled
+                                    </span>
+                                  </span>
                               </span>
                         </a>
                     </div>
