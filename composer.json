@@ -13,7 +13,7 @@
         "irail/stations": "^1.1",
         "guzzlehttp/guzzle": "~6.0",
         "barryvdh/laravel-debugbar": "^2.0",
-        "willdurand/negotiation": "^1.5"
+        "willdurand/negotiation": "^1.5.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
