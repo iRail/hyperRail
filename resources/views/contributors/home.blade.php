@@ -11,8 +11,8 @@
                     <h1>{{Lang::get('contributors.title')}}</h1>
                     <p>{{Lang::get('contributors.description')}}</p>
                     <ul>
-                        <li>Pieter Colpaert</li>
                         <li>Yeri Tiete</li>
+                        <li>Pieter Colpaert</li>
                         <li>Nico Verbruggen</li>
                         <li>Brecht Van de Vyvere</li>
                         <li>Bram Devries</li>

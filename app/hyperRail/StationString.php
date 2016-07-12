@@ -48,8 +48,8 @@ class StationString
         // If there is no station id found for this string...
         // we return null. Cool thing about this method is that our strings
         // no not need to be complete. 'Pieters' will take me to 'Ghent-Sint-Pieters'!
-        return;
     }
+
     /**
      * Converts a station id to a station string. If the string cannot be converted,
      * null is returned.
@@ -87,7 +87,5 @@ class StationString
                 return $station;
             }
         }
-
-        return;
     }
 }

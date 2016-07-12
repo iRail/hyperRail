@@ -39,8 +39,6 @@ class ClassicRedirectController extends Controller
         } else {
             return 'Liveboard for the following station: '.$station_provided_string.' was not found.';
         }
-
-        return;
     }
 
     /**
