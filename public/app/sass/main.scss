@@ -1,0 +1,73 @@
+/**
+ * Bootstrap
+ * First the custom variables
+ * Then the import of bootstrap components,
+ * comment the ones we don't need
+ */
+
+@import "bootstrap/variables";
+
+// Core variables and mixins
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins";
+
+// Reset and dependencies
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/normalize";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/print";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/glyphicons";
+
+// Core CSS
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/scaffolding";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/type";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/code";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/grid";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/tables";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/forms";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/buttons";
+
+// Components
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/component-animations";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/dropdowns";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/button-groups";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/input-groups";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/navs";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/navbar";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/breadcrumbs";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/pagination";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/pager";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/labels";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/badges";
+// @import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/jumbotron";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/thumbnails";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/alerts";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/progress-bars";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/media";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/list-group";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/panels";
+// @import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/responsive-embed";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/wells";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/close";
+
+// Components w/ JavaScript
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/modals";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/tooltip";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/popovers";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/carousel";
+
+// Utility classes
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/utilities";
+@import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/responsive-utilities";
+
+/**
+ * Other vendor CSS
+ */
+
+@import "../../components/animate.css/animate.css";
+@import "../../components/fontawesome/scss/font-awesome";
+
+/**
+ * Custom CSS
+ */
+
+@import "irail/animations";
+@import "irail/theme";

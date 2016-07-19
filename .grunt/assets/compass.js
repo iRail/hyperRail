@@ -1,7 +1,7 @@
 module.exports = {
     options: {
         appDir             : '<%= app %>/',
-        cssDir             : 'css',
+        cssDir             : '../builds/css',
         generatedImagesDir : 'img/sprite/generated',
         imagesDir          : 'img',
         outputStyle        : 'compressed',
