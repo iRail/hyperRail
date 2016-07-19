@@ -58,6 +58,7 @@
 @import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/utilities";
 @import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/responsive-utilities";
 
+
 /**
  * Other vendor CSS
  */
@@ -65,15 +66,19 @@
 @import "../../components/animate.css/animate.css";
 @import "../../components/fontawesome/scss/font-awesome";
 
+
 /**
  * Custom CSS
  */
 
 // .bc-: customisations to Bootstrap code/components
 
-@import "bootstrap-custom/bc-dropdowns";
+@import "bc.dropdowns";
 
 // .c-: custom components
 
-@import "irail/animations";
-@import "irail/theme";
+@import "tools.animations";
+
+// Shameful scss
+
+@import "shame";

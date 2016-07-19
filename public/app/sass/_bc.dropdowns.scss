@@ -10,7 +10,9 @@
 }
 
 .dropdown-menu > li > a {
-	font-size: 1.2em;
+	font-size: 1.1em;
 	padding-top: .75em;
 	padding-bottom: .75em;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
