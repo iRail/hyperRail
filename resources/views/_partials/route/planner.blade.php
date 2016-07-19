@@ -6,17 +6,17 @@
             </a>
         </script>
         <div class="form-group">
-            <label for="departure">{!! Lang::get('client.fromStation')!!}</label>
+            <label for="departureStation">{!! Lang::get('client.fromStation')!!}</label>
             <div class="input-group">
-                <input type="text" ng-model="departure" placeholder="{!! Lang::get('client.typeFromStation')!!}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" class="form-control input-lg" tabindex="1">
+                <input type="text" id="departureStation" ng-model="departure" placeholder="{!! Lang::get('client.typeFromStation')!!}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" class="form-control input-lg" tabindex="1">
                 <a class="input-group-addon" ng-show="departure['@id']" href="@{{departure['@id']}}" target="_blank" data-toggle="tooltip" data-placement="left" title="{!! Lang::get('client.viewLiveboard')!!}"><i class="fa fa-clock-o"></i></a>
                 <span class="input-group-addon" ng-hide="departure['@id']"></span>
             </div>
         </div>
         <div class="form-group">
-            <label for="destination">{!! Lang::get('client.toStation')!!}</label>
+            <label for="destinationStation">{!! Lang::get('client.toStation')!!}</label>
             <div class="input-group">
-                <input type="text" ng-model="destination" placeholder="{!! Lang::get('client.typeToStation')!!}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" typeahead-on-select='focusOnConfirm()' class="form-control input-lg" tabindex="2">
+                <input type="text" id="destinationStation" ng-model="destination" placeholder="{!! Lang::get('client.typeToStation')!!}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" typeahead-on-select='focusOnConfirm()' class="form-control input-lg" tabindex="2">
                 <a class="input-group-addon btn" ng-show="destination['@id']" href="@{{destination['@id']}}" target="_blank" data-toggle="tooltip" data-placement="left" title="{!! Lang::get('client.viewLiveboard')!!}"><i class="fa fa-clock-o"></i></a>
                 <span class="input-group-addon" ng-hide="destination['@id']"></span>
             </div>
@@ -42,8 +42,8 @@
         <br/>
     </div>
     <div class="col-sm-6">
-        <label for="destination">{!! Lang::get('client.chooseTime')!!}</label>
-        <select class="form-control input-lg timepicker" ng-model="timeoption">
+        <label for="departureTime">{!! Lang::get('client.chooseTime')!!}</label>
+        <select id="departureTime" class="form-control input-lg timepicker" ng-model="timeoption">
             <option value="depart">{!! Lang::get('client.departureAtHour')!!}</option>
             <option value="arrive">{!! Lang::get('client.arrivalAtHour')!!}</option>
         </select>
