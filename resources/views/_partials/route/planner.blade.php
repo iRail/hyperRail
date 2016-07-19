@@ -13,10 +13,10 @@
                 <div class="input-group">
                     <label for="departureStation" class="input-group-addon">{!! Lang::get('client.fromStation')!!}</label>
                     <input type="text" id="departureStation" ng-model="departure" placeholder="{!! Lang::get('client.typeFromStation')!!}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" class="form-control input-lg" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-                    <a class="input-group-addon" ng-show="departure['@id']" href="@{{departure['@id']}}" data-toggle="tooltip" data-placement="left" title="{!! Lang::get('client.viewLiveboard')!!}">
+                    {{-- <a class="input-group-addon" ng-show="departure['@id']" href="@{{departure['@id']}}" data-toggle="tooltip" data-placement="left" title="{!! Lang::get('client.viewLiveboard')!!}">
                         <i class="fa fa-clock-o"></i>
                         <span class="sr-only">{!! Lang::get('client.viewLiveboard')!!}</span>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>
@@ -26,10 +26,10 @@
                 <div class="input-group">
                     <label for="destinationStation" class="input-group-addon">{!! Lang::get('client.toStation')!!}</label>
                     <input type="text" id="destinationStation" ng-model="destination" placeholder="{!! Lang::get('client.typeToStation')!!}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" typeahead-on-select='focusOnConfirm()' class="form-control input-lg" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-                    <a class="input-group-addon btn" ng-show="destination['@id']" href="@{{destination['@id']}}" data-toggle="tooltip" data-placement="left" title="{!! Lang::get('client.viewLiveboard')!!}">
+                    {{-- <a class="input-group-addon btn" ng-show="destination['@id']" href="@{{destination['@id']}}" data-toggle="tooltip" data-placement="left" title="{!! Lang::get('client.viewLiveboard')!!}">
                         <i class="fa fa-clock-o"></i>
                         <span class="sr-only">{!! Lang::get('client.viewLiveboard')!!}</span>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>
@@ -53,13 +53,8 @@
                 <div class="panel-body">
                     <label for="departureTime" class="sr-only">{!! Lang::get('client.chooseTime')!!}</label>
 
-                    <label class="radio-inline"><input type="radio" id="departureTime" name="departureTime" ng-model="timeoption" value="depart">{!! Lang::get('client.departureAtHour')!!}</label>
-                    <label class="radio-inline"><input type="radio" id="departureTime" name="departureTime" ng-model="timeoption" value="arrive">{!! Lang::get('client.arrivalAtHour')!!}</label>
-
-                    {{-- <select id="departureTime" class="form-control input-lg timepicker" ng-model="timeoption">
-                        <option value="depart">{!! Lang::get('client.departureAtHour')!!}</option>
-                        <option value="arrive">{!! Lang::get('client.arrivalAtHour')!!}</option>
-                    </select> --}}
+                    <label class="radio-inline"><input type="radio" name="departureTime" ng-model="timeoption" value="depart">{!! Lang::get('client.departureAtHour')!!}</label>
+                    <label class="radio-inline"><input type="radio" name="departureTime" ng-model="timeoption" value="arrive">{!! Lang::get('client.arrivalAtHour')!!}</label>
 
                     <timepicker ng-model="mytime" ng-change="changed()" minute-step="15" show-meridian="ismeridian"></timepicker>
                     <div class="datepicker">
