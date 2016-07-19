@@ -44,7 +44,6 @@
                 <option value="depart">{!! Lang::get('client.departureAtHour')!!}</option>
                 <option value="arrive">{!! Lang::get('client.arrivalAtHour')!!}</option>
             </select>
-            <timepicker ng-model="mytime" ng-change="changed()" minute-step="15" show-meridian="ismeridian"></timepicker>
         </div>
 
         <div class="col-sm-6">
@@ -53,7 +52,8 @@
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseCalendar">
-                                {!! Lang::get('client.chooseDate')!!}
+                                {{-- {!! Lang::get('client.chooseDate')!!} --}}
+                                @{{mydate | date:'yyyy-MM-dd' }} @{{mytime | date:'HH:mm' }}
                             </a>
                         </h4>
                     </div>
@@ -62,6 +62,7 @@
                             <div class="datepicker">
                                 <datepicker ng-class="time" ng-model="mydate" show-weeks="false" starting-day="1"></datepicker>
                             </div>
+                            <timepicker ng-model="mytime" ng-change="changed()" minute-step="15" show-meridian="ismeridian"></timepicker>
                         </div>
                     </div>
                 </div>
