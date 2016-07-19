@@ -5,7 +5,7 @@
  * comment the ones we don't need
  */
 
-@import "bootstrap/variables";
+@import "settings.bootstrap";
 
 // Core variables and mixins
 @import "../../components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
@@ -68,6 +68,12 @@
 /**
  * Custom CSS
  */
+
+// .bc-: customisations to Bootstrap code/components
+
+@import "bootstrap-custom/bc-dropdowns";
+
+// .c-: custom components
 
 @import "irail/animations";
 @import "irail/theme";
