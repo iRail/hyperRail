@@ -7,11 +7,12 @@
     </script>
 
     <div class="row">
+
         <div class="col-sm-6">
             <div class="form-group">
                 <div class="input-group">
                     <label for="departureStation" class="input-group-addon">{!! Lang::get('client.fromStation')!!}</label>
-                    <input type="text" id="departureStation" ng-model="departure" placeholder="{!! Lang::get('client.typeFromStation')!!}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" class="form-control input-lg" autocomplete="off">
+                    <input type="text" id="departureStation" ng-model="departure" placeholder="{!! Lang::get('client.typeFromStation')!!}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" class="form-control input-lg" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                     <a class="input-group-addon" ng-show="departure['@id']" href="@{{departure['@id']}}" data-toggle="tooltip" data-placement="left" title="{!! Lang::get('client.viewLiveboard')!!}">
                         <i class="fa fa-clock-o"></i>
                         <span class="sr-only">{!! Lang::get('client.viewLiveboard')!!}</span>
@@ -24,7 +25,7 @@
             <div class="form-group">
                 <div class="input-group">
                     <label for="destinationStation" class="input-group-addon">{!! Lang::get('client.toStation')!!}</label>
-                    <input type="text" id="destinationStation" ng-model="destination" placeholder="{!! Lang::get('client.typeToStation')!!}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" typeahead-on-select='focusOnConfirm()' class="form-control input-lg" autocomplete="off">
+                    <input type="text" id="destinationStation" ng-model="destination" placeholder="{!! Lang::get('client.typeToStation')!!}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" typeahead-on-select='focusOnConfirm()' class="form-control input-lg" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                     <a class="input-group-addon btn" ng-show="destination['@id']" href="@{{destination['@id']}}" data-toggle="tooltip" data-placement="left" title="{!! Lang::get('client.viewLiveboard')!!}">
                         <i class="fa fa-clock-o"></i>
                         <span class="sr-only">{!! Lang::get('client.viewLiveboard')!!}</span>
@@ -32,9 +33,20 @@
                 </div>
             </div>
         </div>
+
     </div>
 
     <div class="row">
+
+        <div class="col-sm-6">
+            <label for="departureTime" class="sr-only">{!! Lang::get('client.chooseTime')!!}</label>
+            <select id="departureTime" class="form-control input-lg timepicker" ng-model="timeoption">
+                <option value="depart">{!! Lang::get('client.departureAtHour')!!}</option>
+                <option value="arrive">{!! Lang::get('client.arrivalAtHour')!!}</option>
+            </select>
+            <timepicker ng-model="mytime" ng-change="changed()" minute-step="15" show-meridian="ismeridian"></timepicker>
+        </div>
+
         <div class="col-sm-6">
             <div class="panel-group" id="accordion">
                 <div class="panel panel-default">
@@ -55,14 +67,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
-            <label for="departureTime" class="sr-only">{!! Lang::get('client.chooseTime')!!}</label>
-            <select id="departureTime" class="form-control input-lg timepicker" ng-model="timeoption">
-                <option value="depart">{!! Lang::get('client.departureAtHour')!!}</option>
-                <option value="arrive">{!! Lang::get('client.arrivalAtHour')!!}</option>
-            </select>
-            <timepicker ng-model="mytime" ng-change="changed()" minute-step="15" show-meridian="ismeridian"></timepicker>
-        </div>
+
     </div>
 
     <br/>
