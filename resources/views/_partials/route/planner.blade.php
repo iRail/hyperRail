@@ -60,7 +60,7 @@
                     <div id="collapseCalendar" class="panel-collapse collapse">
                         <div class="panel-body">
                             <div class="datepicker">
-                                <datepicker ng-class="time" ng-model="mydate" show-weeks="false"></datepicker>
+                                <datepicker ng-class="time" ng-model="mydate" show-weeks="false" starting-day="1"></datepicker>
                             </div>
                         </div>
                     </div>
