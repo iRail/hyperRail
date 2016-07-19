@@ -4,8 +4,8 @@ return [
     // START OF NEW TRANSLATION STRINGS
     'planNewRoute' => 'Plan new route',
     'searchStations' => 'Search stations',
-    'typeToStation' => 'Type destination station name',
-    'typeFromStation' => 'Type departure station name',
+    'typeToStation' => 'Charleroi',
+    'typeFromStation' => 'Antwerp',
     'chooseDate' => 'Choose date',
     'chooseTime' => 'Choose time',
     'confirmSearch' => 'Find trains',
