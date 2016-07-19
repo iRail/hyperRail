@@ -1,0 +1,32 @@
+/**
+ * Animations
+ */
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.row.ng-hide-remove {
+  animation: fadeIn 0.7s;
+}
+
+a.bounceIn.ng-hide-remove {
+  animation: bounceIn 0.7s;
+}
+
+.row.loading.ng-hide-remove {
+  animation: bounceIn 0.7s;
+}
+
+.row.routeplanner.ng-hide-remove {
+  animation: fadeInDown 0.7s;
+}
+
+.label-lg{
+  font-size: 1.5em;
+}
