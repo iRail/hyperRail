@@ -9,8 +9,8 @@ return [
     'chooseDate' => 'Kies datum',
     'chooseTime' => 'Kies tijdstip',
     'confirmSearch' => 'Zoek naar treinen',
-    'departureAtHour' => 'Vertrek om',
-    'arrivalAtHour' => 'Aankomst om',
+    'departureAtHour' => 'Vertrek',
+    'arrivalAtHour' => 'Aankomst',
     'loadingHeader' => 'Bezig met laden van resultaten.',
     'loadingSub' => 'Uw resultaten zullen over een paar seconden beschikbaar zijn.',
     'depart' => 'vertrekken',
@@ -35,7 +35,7 @@ return [
     'quickFilter' => 'Type hier om snel liveboard-resultaten te filteren',
     'noResultsFoundLiveboard' => 'Het spijt ons. Volgens onze data vertrekken er hier geen treinen momenteel.',
     //
-    'language' => 'Taalkeuze',
+    'language' => 'Kies taal',
     'isPartOf' => 'iRail is een onderdeel van',
     //
     'stationName' => 'Stationsnaam',

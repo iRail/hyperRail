@@ -36,39 +36,34 @@
 
     </div>
 
-    <div class="row">
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseCalendar" class="btn btn-ghost btn-lg btn-block">
+                    {{-- {!! Lang::get('client.chooseDate')!!} --}}
+                    @{{timeoption}}
+                    &nbsp;
+                    <i class="fa fa-clock-o"></i>&nbsp;@{{mytime | date:'HH:mm' }}
+                    &nbsp;
+                    <i class="fa fa-calendar"></i>&nbsp;@{{mydate | date:'yyyy–MM–dd' }}
+                </a>
+            </div>
+            <div id="collapseCalendar" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <label for="departureTime" class="sr-only">{!! Lang::get('client.chooseTime')!!}</label>
 
-        <div class="col-sm-6">
-            <label for="departureTime" class="sr-only">{!! Lang::get('client.chooseTime')!!}</label>
-            <select id="departureTime" class="form-control input-lg timepicker" ng-model="timeoption">
-                <option value="depart">{!! Lang::get('client.departureAtHour')!!}</option>
-                <option value="arrive">{!! Lang::get('client.arrivalAtHour')!!}</option>
-            </select>
-        </div>
+                    <select id="departureTime" class="form-control input-lg timepicker" ng-model="timeoption">
+                        <option value="depart">{!! Lang::get('client.departureAtHour')!!}</option>
+                        <option value="arrive">{!! Lang::get('client.arrivalAtHour')!!}</option>
+                    </select>
 
-        <div class="col-sm-6">
-            <div class="panel-group" id="accordion">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseCalendar">
-                                {{-- {!! Lang::get('client.chooseDate')!!} --}}
-                                @{{mydate | date:'yyyy-MM-dd' }} @{{mytime | date:'HH:mm' }}
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseCalendar" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <div class="datepicker">
-                                <datepicker ng-class="time" ng-model="mydate" show-weeks="false" starting-day="1"></datepicker>
-                            </div>
-                            <timepicker ng-model="mytime" ng-change="changed()" minute-step="15" show-meridian="ismeridian"></timepicker>
-                        </div>
+                    <timepicker ng-model="mytime" ng-change="changed()" minute-step="15" show-meridian="ismeridian"></timepicker>
+                    <div class="datepicker">
+                        <datepicker ng-class="time" ng-model="mydate" show-weeks="false" starting-day="1"></datepicker>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <br/>
