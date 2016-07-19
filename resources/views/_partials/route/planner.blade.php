@@ -41,7 +41,8 @@
             <div class="panel-heading">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseCalendar" class="btn btn-ghost btn-lg btn-block">
                     {{-- {!! Lang::get('client.chooseDate')!!} --}}
-                    @{{timeoption}}
+                    <span ng-show="timeoption == 'depart'">{!! Lang::get('client.departureAtHour')!!}</span>
+                    <span ng-show="timeoption == 'arrive'">{!! Lang::get('client.arrivalAtHour')!!}</span>
                     &nbsp;
                     <i class="fa fa-clock-o"></i>&nbsp;@{{mytime | date:'HH:mm' }}
                     &nbsp;
@@ -52,10 +53,13 @@
                 <div class="panel-body">
                     <label for="departureTime" class="sr-only">{!! Lang::get('client.chooseTime')!!}</label>
 
-                    <select id="departureTime" class="form-control input-lg timepicker" ng-model="timeoption">
+                    <label class="radio-inline"><input type="radio" id="departureTime" name="departureTime" ng-model="timeoption" value="depart">{!! Lang::get('client.departureAtHour')!!}</label>
+                    <label class="radio-inline"><input type="radio" id="departureTime" name="departureTime" ng-model="timeoption" value="arrive">{!! Lang::get('client.arrivalAtHour')!!}</label>
+
+                    {{-- <select id="departureTime" class="form-control input-lg timepicker" ng-model="timeoption">
                         <option value="depart">{!! Lang::get('client.departureAtHour')!!}</option>
                         <option value="arrive">{!! Lang::get('client.arrivalAtHour')!!}</option>
-                    </select>
+                    </select> --}}
 
                     <timepicker ng-model="mytime" ng-change="changed()" minute-step="15" show-meridian="ismeridian"></timepicker>
                     <div class="datepicker">
