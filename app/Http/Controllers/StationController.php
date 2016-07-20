@@ -11,7 +11,7 @@ use irail\stations\Stations;
 use ML\JsonLD\JsonLD;
 use GuzzleHttp\Client;
 use Negotiation\FormatNegotiator;
-use App\hyperRail\FormatConverter;
+use App\hyperRail\FormatConvertor;
 use EasyRdf_Graph;
 use EasyRdf_Format;
 
@@ -122,7 +122,7 @@ class StationController extends Controller
                     $data = $guzzleRequest->getBody();
 
                     // Convert the data to the new liveboard object
-                    $newData = FormatConverter::convertLiveboardData($data, $station_id);
+                    $newData = FormatConvertor::convertLiveboardData($data, $station_id);
 
                     // Read new liveboard object and return the page but load data
                     foreach ($newData['@graph'] as $graph) {
