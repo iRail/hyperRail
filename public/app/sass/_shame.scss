@@ -4,24 +4,8 @@
  * and this file should disappear
  */
 
-input.ng-invalid {
-  border: 1px solid red !important;
-}
-
-.navbar-nav li a {
-  font-size: 1.1em;
-}
-
-.navbar-bottom {
-  margin-bottom: 5px !important;
-}
-
-.navbar-brand {
-  line-height: 1.7em !important;
-  padding-top: 10px !important;
-  padding-right: 20px !important;
-  padding-left: 5px !important;
-  padding-bottom: 0px !important;
+.ng-invalid {
+  border-color: red;
 }
 
 .container33 {
@@ -88,10 +72,6 @@ input.ng-invalid {
   margin-right: auto !important;
 }
 
-.center {
-  text-align: center;
-}
-
 .list-group {
   margin-bottom: 0px !important;
 }
@@ -150,7 +130,7 @@ input.ng-invalid {
 
 .irail-logo {
   position: relative;
-  top: -3px;
+  top: -5px;
 }
 
 .datepicker {

@@ -6,7 +6,7 @@
     <br/>
     <div class="row routeplanner view1 well" ng-show="planning">
         <div class="col-sm-5 col-md-4">
-            <img src="images/logoLarge.svg" alt="Logo iRail" class="center">
+            <img src="images/logoLarge.svg" alt="Logo iRail" class="text-center">
         </div>
         <div class="col-sm-7 col-md-6">
             <h1><strong>iRail.be</strong></h1>
