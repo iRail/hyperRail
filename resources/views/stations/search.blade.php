@@ -22,7 +22,7 @@
                                typeahead-on-select='focus()'>
                     </div>
                     <a id="confirm" href="@{{departure['@id']}}" ng-show="departure['@id']"
-                       class="btn btn-primary btn-wide btn-lg bounceIn">{{ Lang::get('client.viewLiveboard') }}</a>
+                       class="btn btn-primary btn-block btn-lg bounceIn">{{ Lang::get('client.viewLiveboard') }}</a>
                 </div>
             </div>
         </div>

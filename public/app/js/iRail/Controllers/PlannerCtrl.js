@@ -90,7 +90,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
       }
     }).then(function(res){
       var lang = $('html').attr("lang");
-      
+
       for( i in res["data"]["@graph"] ){
         var station = res["data"]["@graph"][i];
 
@@ -99,7 +99,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
           //array of alternatives
           if ( station["alternative"] instanceof Array ){
             var j = 0;
-            while ( j < station["alternative"].length 
+            while ( j < station["alternative"].length
               && station["alternative"][j]["@language"] != lang){
               j++;
             }
@@ -112,7 +112,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
           }
         }
       }
-      
+
       return res["data"]["@graph"];
     });
   };
@@ -254,7 +254,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
   });
   $scope.formatDuration = function(minutes){
     //return minutes;
-    
+
     var hours = Math.floor(minutes/60);
     var minutes = Math.floor(minutes%60);
 
