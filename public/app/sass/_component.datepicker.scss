@@ -1,0 +1,50 @@
+/**
+ * Datepicker
+ */
+
+ .datepicker {
+
+  .btn-info.active {
+    background-color: $brand-primary !important;
+    border-color: $brand-primary !important;
+    span.text-info {
+      color: #FFF !important;
+    }
+  }
+}
+
+.datepicker .btn {
+  border: 0;
+  box-shadow: 0 0 0 1px $btn-default-border;
+
+  &:focus,
+  &.focus {
+    box-shadow: 0 0 0 1px darken($btn-default-border, 25%);
+  }
+
+  &:hover {
+    box-shadow: 0 0 0 1px darken($btn-default-border, 12%);
+  }
+
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    box-shadow: 0 0 0 1px darken($btn-default-border, 12%);
+
+    &:hover,
+    &:focus,
+    &.focus {
+      box-shadow: 0 0 0 1px darken($btn-default-border, 25%);
+    }
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus,
+    &.focus {
+      box-shadow: 0 0 0 1px $btn-default-border;
+    }
+  }
+}
