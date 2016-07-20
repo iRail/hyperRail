@@ -210,7 +210,7 @@ class StationController extends Controller
                         '&date='.date('mmddyy', $datetime).'&time='.date('Hi', $datetime).
                         '&fast=true&lang=nl&format=json';
                     $data = file_get_contents($URL);
-                    $newData = FormatConverter::convertLiveboardData($data, $station_id);
+                    $newData = FormatConvertor::convertLiveboardData($data, $station_id);
                     foreach ($newData['@graph'] as $graph) {
                         if (strpos($graph['@id'], $liveboard_id) !== false) {
                             $context = [
@@ -349,7 +349,7 @@ class StationController extends Controller
                     $data = $guzzleRequest->getBody();
 
                     try {
-                        $newData = FormatConverter::convertLiveboardData($data, $id);
+                        $newData = FormatConvertor::convertLiveboardData($data, $id);
                         $jsonLD = (string) json_encode($newData);
 
                         return Response::make($jsonLD, 200)
