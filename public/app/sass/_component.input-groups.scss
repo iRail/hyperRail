@@ -1,0 +1,26 @@
+//
+// Input groups
+// --------------------------------------------------
+
+.input-group-oneliner {
+	position: relative;
+	> input {
+		padding-left: 3.5em;
+	}
+}
+
+.input-group-label {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 4em;
+	height: 100%;
+	padding: 10px 16px;
+	font-size: 18px;
+	line-height: 1.33;
+	font-weight: 400;
+	text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

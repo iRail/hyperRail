@@ -10,8 +10,8 @@
 
         <div class="col-sm-6">
             <div class="form-group">
-                <div class="input-group">
-                    <label for="departureStation" class="input-group-addon">{!! Lang::get('client.fromStation')!!}</label>
+                <div class="input-group-oneliner">
+                    <label for="departureStation" class="input-group-label">{!! Lang::get('client.fromStation')!!}</label>
                     <input type="text" id="departureStation" ng-model="departure" placeholder="{!! Lang::get('client.typeFromStation')!!}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" class="form-control input-lg" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                     {{-- <a class="input-group-addon" ng-show="departure['@id']" href="@{{departure['@id']}}" data-toggle="tooltip" data-placement="left" title="{!! Lang::get('client.viewLiveboard')!!}">
                         <i class="fa fa-clock-o"></i>
@@ -23,8 +23,8 @@
 
         <div class="col-sm-6">
             <div class="form-group">
-                <div class="input-group">
-                    <label for="destinationStation" class="input-group-addon">{!! Lang::get('client.toStation')!!}</label>
+                <div class="input-group-oneliner">
+                    <label for="destinationStation" class="input-group-label">{!! Lang::get('client.toStation')!!}</label>
                     <input type="text" id="destinationStation" ng-model="destination" placeholder="{!! Lang::get('client.typeToStation')!!}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" typeahead-on-select='focusOnConfirm()' class="form-control input-lg" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                     {{-- <a class="input-group-addon btn" ng-show="destination['@id']" href="@{{destination['@id']}}" data-toggle="tooltip" data-placement="left" title="{!! Lang::get('client.viewLiveboard')!!}">
                         <i class="fa fa-clock-o"></i>

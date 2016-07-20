@@ -71,14 +71,20 @@
  * Custom CSS
  */
 
-// .bc-: customisations to Bootstrap code/components
+// Bootstrap: customisations to Bootstrap code/components
+// Uses Bootstrap classes, markup and variables
 
-@import "bc.dropdowns";
+@import "bootstrap.dropdowns";
 
-// .c-: custom components
+// Components: custom components
+
+@import "component.input-groups";
+
+// Tools:
 
 @import "tools.animations";
 
-// Shameful scss
+// Shameful SCSS
+// Quick fixes
 
 @import "shame";
