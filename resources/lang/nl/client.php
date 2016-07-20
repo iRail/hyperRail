@@ -4,8 +4,8 @@ return [
     // New translation strings
     'planNewRoute' => 'Plan nieuwe route',
     'searchStations' => 'Zoek naar stations',
-    'typeToStation' => 'Typ bestemmingstation',
-    'typeFromStation' => 'Typ vertrekstation',
+    'typeToStation' => 'Brussel',
+    'typeFromStation' => 'Antwerpen',
     'chooseDate' => 'Kies datum',
     'chooseTime' => 'Kies tijdstip',
     'confirmSearch' => 'Zoek naar treinen',
