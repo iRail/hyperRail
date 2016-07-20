@@ -1,14 +1,4 @@
 module.exports = {
-    css: {
-        files: {
-            '<%= paths.compiled.css %>/main.css': [
-                '<%= components %>/fontawesome/css/font-awesome.min.css',
-                '<%= components %>/animate.css/animate.min.css',
-
-                '<%= paths.original.css %>/**/*.css'
-            ]
-        }
-    },
     js: {
         files: {
             '<%= paths.compiled.js %>/scripts.js': [

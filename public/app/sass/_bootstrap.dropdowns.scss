@@ -1,0 +1,18 @@
+//
+// Dropdown menus
+// --------------------------------------------------
+
+.dropdown-menu {
+	right: 0;
+	margin-top: -1px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.dropdown-menu > li > a {
+	font-size: 1.1em;
+	padding-top: .75em;
+	padding-bottom: .75em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
