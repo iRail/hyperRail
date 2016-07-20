@@ -8,7 +8,7 @@ return [
     'typeFromStation' => 'Antwerpen',
     'chooseDate' => 'Kies datum',
     'chooseTime' => 'Kies tijdstip',
-    'confirmSearch' => 'Zoek naar treinen',
+    'confirmSearch' => 'Plan route',
     'departureAtHour' => 'Vertrek',
     'arrivalAtHour' => 'Aankomst',
     'loadingHeader' => 'Bezig met laden van resultaten.',

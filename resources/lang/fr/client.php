@@ -8,7 +8,7 @@ return [
     'typeFromStation' => 'Charleroi',
     'chooseDate' => 'Choisissez votre date de préférence',
     'chooseTime' => 'Choisissez votre heure de préférence',
-    'confirmSearch' => 'Rechercher un trajet',
+    'confirmSearch' => 'Recherchez trajet',
     'departureAtHour' => 'Départ',
     'arrivalAtHour' => 'Arrivée',
     'loadingHeader' => 'Chargement des résultats. Veuillez patienter.',
