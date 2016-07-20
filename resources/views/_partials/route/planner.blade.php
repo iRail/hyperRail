@@ -68,12 +68,10 @@
             </div>
         </div>
         <div class="col-sm-3">
-            <button type="submit" id="confirm" class="btn btn-default btn-lg btn-primary btn-block" ng-click="save()">
+            <button type="submit" id="confirm" class="btn btn-lg btn-primary btn-block" ng-click="save()" ng-disabled="departure == destination">
                 {!! Lang::get('client.confirmSearch')!!}
                 <i class="fa fa-angle-right"></i>
             </button>
-
-            {{-- ng-hide="departure == destination" --}}
         </div>
     </div>
 
