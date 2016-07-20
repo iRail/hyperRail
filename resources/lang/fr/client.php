@@ -30,7 +30,7 @@ return [
     'errorReturnLiveboard' => 'Retour à la recherche de gare',
     'errorMail' => 'envoyez nous un mail',
     'errorHoliday' => 'Nous n’avons pas pu trouver de trajet. Pendant les jours fériés il est possible qu’aucun train ne circulent dans les petites stations.',
-    'stationsIdentical' => 'Les gares de départ et de destination sont les mêmes. Nous ne pouvons pas calculer de trajet s'il n'y en a pas :)',
+    'stationsIdentical' => 'Les gares de départ et de destination sont les mêmes. Nous ne pouvons pas calculer de trajet s’il n’y en a pas :)',
     'quickFilter' => 'Tapez ici pour filtrer rapidement les résultats du liveboard',
     'noResultsFoundLiveboard' => 'Nous sommes désolés. Selon nos données, il n’y a pas de train au départ en ce moment dans cette gare.',
     'language' => 'Langue',
