@@ -1,7 +1,6 @@
 <div class="row" ng-show="results && connections.length > 0">
     <div class="col-md-9 col-sm-8">
-        {{-- <hr/> --}}
-        {{-- <h5>@{{connections.length}} {{Lang::get('client.routesFoundDescription')}}</h5> --}}
+        <hr/>
         <div class="panel-group results" id="accordion">
             <div class="panel panel-default" ng-repeat="conn in connections">
                 <div class="panel-heading">
@@ -98,7 +97,9 @@
             </p>
         </div>
     </div>
+
     <div class="col-md-3 col-sm-4 hidden-print">
+    <hr/>
         <div class="btn-group btn-block btn-botm">
             <a class="btn btn-default btn-50" ng-click="earlier()">
                 <i class="fa fa-angle-left"></i>
