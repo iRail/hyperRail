@@ -13,7 +13,7 @@
                 <div class="input-group-oneliner has-affix">
                     <label for="departureStation" class="input-group-label">{!! Lang::get('client.fromStation')!!}</label>
                     <input type="text" id="departureStation" ng-model="departure" placeholder="{!! Lang::get('client.typeFromStation')!!}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" class="form-control input-lg" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-                    <a class="input-group-affix" ng-click="reverse()"><i class="fa fa-exchange"></i> <span class="sr-only">{{Lang::get('client.reverse')}}</span></a>
+                    <a class="input-group-affix" ng-click="reverse()" ng-show="results"><i class="fa fa-exchange"></i> <span class="sr-only">{{Lang::get('client.reverse')}}</span></a>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
             </div>
         </div>
         <div class="col-sm-3">
-            <button type="submit" id="confirm" class="btn btn-lg btn-primary btn-block" ng-click="save()" ng-disabled="departure == destination">
+            <button type="submit" id="confirm" class="btn btn-lg btn-primary btn-block" ng-click="save()" ng-disabled="departure === destination">
                 {!! Lang::get('client.confirmSearch')!!}
                 <i class="fa fa-angle-right"></i>
             </button>
