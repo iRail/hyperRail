@@ -24,3 +24,16 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+.input-group-affix {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		// width: 4em;
+		height: 100%;
+		padding: 10px 16px;
+		font-size: 18px;
+		line-height: 1.33;
+		font-weight: 400;
+}

@@ -99,15 +99,27 @@
         </div>
     </div>
     <div class="col-md-3 col-sm-4 hidden-print">
-        <br/>
         <div class="btn-group btn-block btn-botm">
-            <a class="btn btn-default btn-50" ng-click="earlier()">&lt; {{Lang::get('client.rideEarlier')}}</a>
-            <a class="btn btn-default btn-50" ng-click="later()">{{Lang::get('client.rideLater')}} &gt;</a>
+            <a class="btn btn-default btn-50" ng-click="earlier()">
+                <i class="fa fa-angle-left"></i>
+                {{Lang::get('client.rideEarlier')}}
+            </a>
+            <a class="btn btn-default btn-50" ng-click="later()">
+                {{Lang::get('client.rideLater')}}
+                <i class="fa fa-angle-right"></i>
+            </a>
         </div>
         <div class="btn-group btn-block btn-botm">
-            <a class="btn btn-default btn-50" ng-click="earliest()">&lt;&lt; {{Lang::get('client.earliestRide')}}</a>
-            <a class="btn btn-default btn-50" ng-click="latest()">{{Lang::get('client.latestRide')}} &gt;&gt;</a>
+            <a class="btn btn-default btn-50" ng-click="earliest()">
+                <i class="fa fa-angle-left"></i>
+                <i class="fa fa-angle-left"></i>
+                {{Lang::get('client.earliestRide')}}
+            </a>
+            <a class="btn btn-default btn-50" ng-click="latest()">
+                {{Lang::get('client.latestRide')}}
+                <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right"></i>
+            </a>
         </div>
-        <a class="btn btn-primary btn-block btn-lg btn-botm" ng-click="reverse()"><i class="fa fa-exchange"></i> {{Lang::get('client.reverse')}}</a>
     </div>
 </div>
