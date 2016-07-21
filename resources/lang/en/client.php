@@ -6,7 +6,6 @@ return [
     'searchStations' => 'Search stations',
     'typeToStation' => 'Brussels',
     'typeFromStation' => 'Antwerp',
-    'chooseDate' => 'Choose date',
     'chooseTime' => 'Choose time',
     'confirmSearch' => 'Plan route',
     'departureAtHour' => 'Leave',
