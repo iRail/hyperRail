@@ -6,7 +6,6 @@ return [
     'searchStations' => 'Zoek naar stations',
     'typeToStation' => 'Brussel',
     'typeFromStation' => 'Antwerpen',
-    'chooseDate' => 'Kies datum',
     'chooseTime' => 'Kies tijdstip',
     'confirmSearch' => 'Plan route',
     'departureAtHour' => 'Vertrek',

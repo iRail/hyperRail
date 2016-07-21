@@ -13,10 +13,6 @@
                 <div class="input-group-oneliner">
                     <label for="departureStation" class="input-group-label">{!! Lang::get('client.fromStation')!!}</label>
                     <input type="text" id="departureStation" ng-model="departure" placeholder="{!! Lang::get('client.typeFromStation')!!}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" class="form-control input-lg" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-                    {{-- <a class="input-group-addon" ng-show="departure['@id']" href="@{{departure['@id']}}" data-toggle="tooltip" data-placement="left" title="{!! Lang::get('client.viewLiveboard')!!}">
-                        <i class="fa fa-clock-o"></i>
-                        <span class="sr-only">{!! Lang::get('client.viewLiveboard')!!}</span>
-                    </a> --}}
                 </div>
             </div>
         </div>
@@ -26,10 +22,6 @@
                 <div class="input-group-oneliner">
                     <label for="destinationStation" class="input-group-label">{!! Lang::get('client.toStation')!!}</label>
                     <input type="text" id="destinationStation" ng-model="destination" placeholder="{!! Lang::get('client.typeToStation')!!}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" typeahead-on-select='focusOnConfirm()' class="form-control input-lg" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-                    {{-- <a class="input-group-addon btn" ng-show="destination['@id']" href="@{{destination['@id']}}" data-toggle="tooltip" data-placement="left" title="{!! Lang::get('client.viewLiveboard')!!}">
-                        <i class="fa fa-clock-o"></i>
-                        <span class="sr-only">{!! Lang::get('client.viewLiveboard')!!}</span>
-                    </a> --}}
                 </div>
             </div>
         </div>
@@ -42,7 +34,6 @@
                 <div class="panel panel-default">
                     <div class="panel-heading p0">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseCalendar" class="btn btn-ghost btn-lg btn-block">
-                            {{-- {!! Lang::get('client.chooseDate')!!} --}}
                             <span ng-show="timeoption == 'depart'">{!! Lang::get('client.departureAtHour')!!}</span>
                             <span ng-show="timeoption == 'arrive'">{!! Lang::get('client.arrivalAtHour')!!}</span>
                             &nbsp;
