@@ -1,17 +1,6 @@
 <div class="row" ng-show="results && connections.length > 0">
     <div class="col-md-9 col-sm-8">
-        <h4>
-            {{Lang::get('client.from')}} <strong>@{{departure.name}}</strong> {{Lang::get('client.to')}} <strong>@{{destination.name}}</strong>
-            <br/>
-            {{Lang::get('client.on')}} <strong>@{{mydate | date}}</strong>.
-            <br/>
-            {{Lang::get('client.youWantTo')}}
-            <span ng-show="timeoption=='depart'"><strong>{{Lang::get('client.depart')}} </strong></span>
-            <span ng-show="timeoption=='arrive'"><strong>{{Lang::get('client.arrive')}} </strong></span>
-            {{Lang::get('client.at')}} @{{mytime | date : 'HH:mm' }}.
-        </h4>
         <hr/>
-        <h5>@{{connections.length}} {{Lang::get('client.routesFoundDescription')}}</h5>
         <div class="panel-group results" id="accordion">
             <div class="panel panel-default" ng-repeat="conn in connections">
                 <div class="panel-heading">
@@ -108,16 +97,30 @@
             </p>
         </div>
     </div>
+
     <div class="col-md-3 col-sm-4 hidden-print">
-        <br/>
+    <hr/>
         <div class="btn-group btn-block btn-botm">
-            <a class="btn btn-default btn-50" ng-click="earlier()">&lt; {{Lang::get('client.rideEarlier')}}</a>
-            <a class="btn btn-default btn-50" ng-click="later()">{{Lang::get('client.rideLater')}} &gt;</a>
+            <a class="btn btn-default btn-50" ng-click="earlier()">
+                <i class="fa fa-angle-left"></i>
+                {{Lang::get('client.rideEarlier')}}
+            </a>
+            <a class="btn btn-default btn-50" ng-click="later()">
+                {{Lang::get('client.rideLater')}}
+                <i class="fa fa-angle-right"></i>
+            </a>
         </div>
         <div class="btn-group btn-block btn-botm">
-            <a class="btn btn-default btn-50" ng-click="earliest()">&lt;&lt; {{Lang::get('client.earliestRide')}}</a>
-            <a class="btn btn-default btn-50" ng-click="latest()">{{Lang::get('client.latestRide')}} &gt;&gt;</a>
+            <a class="btn btn-default btn-50" ng-click="earliest()">
+                <i class="fa fa-angle-left"></i>
+                <i class="fa fa-angle-left"></i>
+                {{Lang::get('client.earliestRide')}}
+            </a>
+            <a class="btn btn-default btn-50" ng-click="latest()">
+                {{Lang::get('client.latestRide')}}
+                <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right"></i>
+            </a>
         </div>
-        <a class="btn btn-primary btn-block btn-lg btn-botm" ng-click="reverse()"><i class="fa fa-exchange"></i> {{Lang::get('client.reverse')}}</a>
     </div>
 </div>

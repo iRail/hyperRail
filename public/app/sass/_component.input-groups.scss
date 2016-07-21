@@ -6,6 +6,8 @@
 	position: relative;
 	> input {
 		padding-left: 3.5em;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 }
 
@@ -23,4 +25,20 @@
 	text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.has-affix > input {
+	padding-right: 2.2em;
+}
+
+.input-group-affix {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		height: 100%;
+		padding: 10px 16px;
+		font-size: 18px;
+		line-height: 1.33;
+		font-weight: 400;
 }
