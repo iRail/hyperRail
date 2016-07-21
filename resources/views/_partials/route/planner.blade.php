@@ -1,4 +1,4 @@
-<div class="routeplanner view1" ng-show="planning">
+<div class="routeplanner view1" ng-show="planning results">
 
     <script type="text/ng-template" id="customTemplate.html">
         <a>

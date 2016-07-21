@@ -1,17 +1,7 @@
 <div class="row" ng-show="results && connections.length > 0">
     <div class="col-md-9 col-sm-8">
-        <h4>
-            {{Lang::get('client.from')}} <strong>@{{departure.name}}</strong> {{Lang::get('client.to')}} <strong>@{{destination.name}}</strong>
-            <br/>
-            {{Lang::get('client.on')}} <strong>@{{mydate | date}}</strong>.
-            <br/>
-            {{Lang::get('client.youWantTo')}}
-            <span ng-show="timeoption=='depart'"><strong>{{Lang::get('client.depart')}} </strong></span>
-            <span ng-show="timeoption=='arrive'"><strong>{{Lang::get('client.arrive')}} </strong></span>
-            {{Lang::get('client.at')}} @{{mytime | date : 'HH:mm' }}.
-        </h4>
-        <hr/>
-        <h5>@{{connections.length}} {{Lang::get('client.routesFoundDescription')}}</h5>
+        {{-- <hr/> --}}
+        {{-- <h5>@{{connections.length}} {{Lang::get('client.routesFoundDescription')}}</h5> --}}
         <div class="panel-group results" id="accordion">
             <div class="panel panel-default" ng-repeat="conn in connections">
                 <div class="panel-heading">
