@@ -5,7 +5,7 @@
  */
 
 .ng-invalid {
-  border-color: red;
+  border-color: $brand-danger;
 }
 
 .container33 {
@@ -63,7 +63,7 @@
 }
 
 .delay {
-  color: red;
+  color: $brand-danger;
 }
 
 .max-w5 {
@@ -115,11 +115,7 @@
 }
 
 .delay-route {
-  color: red;
-}
-
-.badge {
-  font-size: 1.3em;
+  color: $brand-danger;
 }
 
 .ul-lg {
