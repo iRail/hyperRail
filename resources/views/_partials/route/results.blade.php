@@ -6,85 +6,106 @@
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" ng-href="#result-@{{connections.indexOf(conn)}}">
-                    <span class="container33">
-                        <span class="tleft">
-                            @{{ (conn.departure.time)*1000 | date:'HH:mm' }}
-                            &rarr;
-                            @{{ (conn.arrival.time)*1000 | date:'HH:mm' }}
-                        </span>
-                        <span class="tcenter">
-                            <strong>
-                                <i class="fa fa-clock-o"></i>
-                                @{{ formatDuration( ((conn.arrival.time-conn.departure.time)/60) ) }}
-                            </strong>
-                        </span>
-                        <span class="tright">
-                            <span class="delay-route" ng-if="conn.departure.delay > 0 || conn.departure.canceled == 1 || conn.arrival.canceled == 1">
-                                <i class="fa fa-exclamation-triangle"></i>
+                            <span class="container33">
+                                <span class="delay-route" ng-if="conn.departure.delay > 0 || conn.departure.canceled == 1 || conn.arrival.canceled == 1">
+                                    <i class="fa fa-exclamation-triangle"></i>
+                                </span>
+                                <span class="">
+                                    @{{ (conn.departure.time)*1000 | date:'HH:mm' }}
+                                    &rarr;
+                                    @{{ (conn.arrival.time)*1000 | date:'HH:mm' }}
+                                </span>
+                                <span class="text-muted">
+                                    (@{{ formatDuration( ((conn.arrival.time-conn.departure.time)/60) ) }})
+                                </span>
+                                <span class="pull-right">
+                                    <span ng-if="conn.vias.number > 0">
+                                        @{{ conn.vias.number }}&times; <img src="{{ URL::asset('images/stair.svg') }}" />
+                                    </span>
+                                    <span class="badge">
+                                        @{{ conn.departure.platform }}
+                                    </span>
+                                </span>
                             </span>
-                            <span ng-if="conn.vias.number > 0">
-                                @{{ conn.vias.number }}x <img src="{{ URL::asset('images/stair.svg') }}" />
-                            </span>
-                        </span>
-                    </span>
                         </a>
                     </h4>
                 </div>
                 <div id="result-@{{connections.indexOf(conn)}}" class="panel-collapse collapse" ng-class="{in : $first}"  >
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <span class="badge">@{{ conn.departure.platform }}</span>
-                        <span class="planner-time">
-                            <strong>
-                                @{{ (conn.departure.time)*1000 | date:'HH:mm' }}
-                            </strong>
-                        </span>
-                        <span class="planner-station">
-                            <strong>@{{ conn.departure.station}}</strong>
-                        </span>
-                        <span class="delay-route" ng-if="conn.departure.delay > 0">
+                            <span class="badge">
+                                @{{ conn.departure.platform }}
+                            </span>
+                            <span class="planner-time">
+                                <strong>
+                                    @{{ (conn.departure.time)*1000 | date:'HH:mm' }}
+                                </strong>
+                            </span>
+                            <span class="planner-station">
+                                <strong>
+                                    @{{ conn.departure.station}}
+                                </strong>
+                            </span>
+                            <span class="delay-route" ng-if="conn.departure.delay > 0">
                                 <i class="fa fa-exclamation-triangle"></i> + @{{ (conn.departure.delay)/60 }}'
-                        </span>
-                        <span class="delay-route" ng-if="conn.departure.canceled > 0">
+                            </span>
+                            <span class="delay-route" ng-if="conn.departure.canceled > 0">
                                 <i class="fa fa-exclamation-triangle"></i> canceled
-                        </span>
+                            </span>
                         </li>
                         <li class="list-group-item" ng-repeat="stop in conn.vias.via">
-                            &darr; @{{stop.vehicle.replace("BE.NMBS.","")}} <span class="small">(@{{stop.direction.name}})</span>
+                            &darr; @{{stop.vehicle.replace("BE.NMBS.","")}}
+                            <span class="small">
+                                (@{{stop.direction.name}})
+                            </span>
                             <br/>
                             <span class="planner-time">
-                                <strong>@{{(stop.arrival.time)*1000 | date:'HH:mm'}}</strong>
+                                <strong>
+                                    @{{(stop.arrival.time)*1000 | date:'HH:mm'}}
+                                </strong>
                             </span>
                             <br/>
                             &rarr; <span class="small">@{{(stop.timeBetween/60)}} {{Lang::get('client.mins')}}</span>
 
                             <br/>
-                            <span class="badge">@{{ stop.departure.platform }}</span>
-                        <span class="planner-time"><strong>
-                                @{{ (stop.departure.time)*1000 | date:'HH:mm' }}
-                            </strong>
-                        <span class="delay-route" ng-if="stop.departure.delay > 0">
-                                <i class="fa fa-exclamation-triangle"></i> + @{{ (stop.departure.delay)/60 }}'
-                        </span>
-                        <span class="delay-route" ng-if="stop.departure.canceled > 0">
-                                <i class="fa fa-exclamation-triangle"></i> canceled
-                        </span>
-                        </span>
-                        <span class="planner-station">
-                        <strong>@{{ stop.station}}</strong>
-                        </span>
+                            <span class="badge">
+                                @{{ stop.departure.platform }}
+                            </span>
+                            <span class="planner-time">
+                                <strong>
+                                    @{{ (stop.departure.time)*1000 | date:'HH:mm' }}
+                                </strong>
+                                <span class="delay-route" ng-if="stop.departure.delay > 0">
+                                    <i class="fa fa-exclamation-triangle"></i> + @{{ (stop.departure.delay)/60 }}'
+                                </span>
+                                <span class="delay-route" ng-if="stop.departure.canceled > 0">
+                                    <i class="fa fa-exclamation-triangle"></i> canceled
+                                </span>
+                            </span>
+                            <span class="planner-station">
+                                <strong>@{{ stop.station}}</strong>
+                            </span>
                             <br/>
                         </li>
                         <li class="list-group-item">
-                            &darr; @{{conn.arrival.vehicle.replace("BE.NMBS.","")}} <span class="small">(@{{conn.arrival.direction.name}})</span>
+                            &darr; @{{conn.arrival.vehicle.replace("BE.NMBS.","")}}
+                            <span class="small">
+                                (@{{conn.arrival.direction.name}})
+                            </span>
                             <br/>
-                            <span class="badge">@{{ conn.arrival.platform }}</span>
-                        <span class="planner-time"><strong>
-                                @{{ (conn.arrival.time)*1000 | date:'HH:mm' }}
-                            </strong></span>
-                        <span class="planner-station">
-                            <strong>@{{ conn.arrival.station}}</strong>
-                        </span>
+                            <span class="badge">
+                                @{{ conn.arrival.platform }}
+                            </span>
+                            <span class="planner-time">
+                                <strong>
+                                    @{{ (conn.arrival.time)*1000 | date:'HH:mm' }}
+                                </strong>
+                            </span>
+                            <span class="planner-station">
+                                <strong>
+                                    @{{ conn.arrival.station}}
+                                </strong>
+                            </span>
                         </li>
                     </ul>
                 </div>
@@ -99,7 +120,7 @@
     </div>
 
     <div class="col-md-3 col-sm-4 hidden-print">
-    <hr/>
+        <hr/>
         <div class="btn-group btn-block btn-botm">
             <a class="btn btn-default btn-50" ng-click="earlier()">
                 <i class="fa fa-angle-left"></i>
