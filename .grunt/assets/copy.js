@@ -10,7 +10,7 @@ module.exports = {
             {
                 expand : true,
                 src    : ['**'],
-                cwd    : '<%= components %>/fontawesome/fonts',
+                cwd    : '<%= components %>/font-awesome/fonts',
                 dest   : '<%= paths.compiled.fonts %>'
             },
             {
