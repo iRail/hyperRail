@@ -8,10 +8,6 @@
   border-color: $brand-danger;
 }
 
-// .planner-change {
-//   display: block;
-// }
-
 // .planner-time {
 //   margin-right: 15px;
 //   width: 50%;
@@ -21,6 +17,23 @@
 //   width: 50%;
 //   margin-right: 15px;
 // }
+
+.planner-train {
+  display: block;
+  color: $gray-light;
+}
+
+.planner-time {
+  width: 30%;
+}
+
+.planner-station {
+
+}
+
+.planner-platform {
+
+}
 
 .delay-route {
   color: $brand-danger;
