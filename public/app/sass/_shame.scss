@@ -8,6 +8,28 @@
   border-color: $brand-danger;
 }
 
+// .planner-change {
+//   display: block;
+// }
+
+// .planner-time {
+//   margin-right: 15px;
+//   width: 50%;
+// }
+
+// .planner-station {
+//   width: 50%;
+//   margin-right: 15px;
+// }
+
+.delay-route {
+  color: $brand-danger;
+}
+
+.delay {
+  color: $brand-danger;
+}
+
 .container33 {
   display: inline-block;
   width: 100%;
@@ -44,10 +66,6 @@
   font-size: 1.3em;
 }
 
-.delay {
-  color: $brand-danger;
-}
-
 .max-w5 {
   max-width: 480px !important;
   margin-left: auto !important;
@@ -81,23 +99,6 @@
 
 .btn-botm {
   margin-bottom: 15px;
-}
-
-.planner-time {
-  font-size: 1.3em;
-  color: $brand-primary;
-  margin-right: 15px;
-  width: 50%;
-}
-
-.planner-station {
-  width: 50%;
-  font-size: 1.2em;
-  margin-right: 15px;
-}
-
-.delay-route {
-  color: $brand-danger;
 }
 
 .ul-lg {
