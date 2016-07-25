@@ -11,13 +11,10 @@
                                 <span class="delay-route" ng-if="conn.departure.delay > 0 || conn.departure.canceled == 1 || conn.arrival.canceled == 1">
                                     <i class="fa fa-exclamation-triangle"></i>
                                 </span>
-                                <span class="">
-                                    @{{ (conn.departure.time)*1000 | date:'HH:mm' }}
-                                    <i class="fa fa-angle-right"></i>
-                                    @{{ (conn.arrival.time)*1000 | date:'HH:mm' }}
-                                </span>
-                                <br />
-                                <span class="text-muted">
+                                @{{ (conn.departure.time)*1000 | date:'HH:mm' }}
+                                <i class="fa fa-angle-right"></i>
+                                @{{ (conn.arrival.time)*1000 | date:'HH:mm' }}
+                                <span class="planner-meta text-muted">
                                     <span ng-show="@{{ getHours( (conn.arrival.time-conn.departure.time)/60 ) }} > 0">
                                         @{{ getHours( (conn.arrival.time-conn.departure.time)/60 ) }}
                                         {{Lang::get('client.hoursShort')}}
@@ -26,11 +23,12 @@
                                         @{{ getMinutes( (conn.arrival.time-conn.departure.time)/60 ) }}
                                         {{Lang::get('client.minutesShort')}}
                                     </span>
-                                </span>
-                                <span class="planner-change text-muted" ng-if="conn.vias.number > 0">
-                                    – @{{ conn.vias.number }} {{Lang::get('client.transfers')}}
+                                    <span class="planner-change" ng-if="conn.vias.number > 0">
+                                        – @{{ conn.vias.number }} {{Lang::get('client.transfers')}}
+                                    </span>
                                 </span>
                             </span>
+
                             <span class="pull-right">
                                 <span class="badge">@{{ conn.departure.platform }}</span>
                             </span>
@@ -83,7 +81,8 @@
                         <span class="planner-switch small text-muted">
                             @{{(stop.timeBetween/60)}} {{Lang::get('client.mins')}}
                             <br />
-                            van perron @{{ stop.arrival.platform }} naar perron @{{ stop.departure.platform }}
+                            {{Lang::get('client.fromPlatform')}} @{{ stop.arrival.platform }}
+                            {{Lang::get('client.toPlatform')}} @{{ stop.departure.platform }}
                         </span>
 
                         <div class="planner-row">

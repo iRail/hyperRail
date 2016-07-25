@@ -113,4 +113,6 @@ return [
     'minutesShort' => 'min',
     'hoursShort' => 'h',
     'transfers' => 'transfers',
+    'fromPlatform' => 'from platform',
+    'toPlatform' => 'to platform',
 ];

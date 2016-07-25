@@ -117,4 +117,6 @@ return [
     'minutesShort' => 'min',
     'hoursShort' => 'u',
     'transfers' => 'overstappen',
+    'fromPlatform' => 'van perron',
+    'toPlatform' => 'naar perron',
 ];

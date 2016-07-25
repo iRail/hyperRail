@@ -91,7 +91,7 @@ return [
     'en' => 'Anglais',
     'nl' => 'Néerlandais',
     'de' => 'Allemand',
-    'fr' => 'Francais',
+    'fr' => 'Français',
     'datausedfrom' => 'Données en provenance de',
     'madeby' => 'Réalisé par',
     'npo' => 'ASBL',
@@ -113,4 +113,6 @@ return [
     'minutesShort' => 'min',
     'hoursShort' => 'h',
     'transfers' => 'transferts',
+    'fromPlatform' => 'de quai',
+    'toPlatform' => 'à quai',
 ];
