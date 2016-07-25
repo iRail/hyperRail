@@ -112,5 +112,5 @@ return [
     'marketLink' => 'Téléchargez l’application officielle',
     'minutesShort' => 'min',
     'hoursShort' => 'h',
-    'transfers' => 'transfers',
+    'transfers' => 'transferts',
 ];
