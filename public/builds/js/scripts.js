@@ -31709,22 +31709,16 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
       }
     }
   });
-  $scope.formatDuration = function(minutes){
-    //return minutes;
-
-    var hours = Math.floor(minutes/60);
-    var minutes = Math.floor(minutes%60);
-
-    var str = "";
-    if ( hours < 10 ){
-      str += "0";
-    }
-    str += hours + ":";
-    if ( minutes < 10 ){
-      str += "0";
-    }
-    str += minutes;
-
+  $scope.getHours = function(minutes){
+    var hours = Math.floor(minutes/60),
+        str = "";
+    str = hours;
+    return str;
+  };
+  $scope.getMinutes = function(minutes){
+    var minutes = Math.floor(minutes%60),
+        str = "";
+    str = minutes;
     return str;
   };
 };

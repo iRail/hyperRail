@@ -114,4 +114,7 @@ return [
     'to_optionalStation' => 'Selecteer richting (optioneel)',
     'refreshBoard' => 'Vernieuw',
     'marketLink' => 'Download de officiële app',
+    'minutesShort' => 'min',
+    'hoursShort' => 'u',
+    'transfers' => 'overstappen',
 ];

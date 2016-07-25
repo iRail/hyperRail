@@ -110,4 +110,7 @@ return [
     'to_optionalStation' => 'Click here for destination (optional)',
     'refreshBoard' => 'Refresh',
     'marketLink' => 'Download the official app',
+    'minutesShort' => 'min',
+    'hoursShort' => 'h',
+    'transfers' => 'transfers',
 ];

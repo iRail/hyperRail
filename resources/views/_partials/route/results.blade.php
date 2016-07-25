@@ -13,14 +13,18 @@
                                 </span>
                                 <span class="">
                                     @{{ (conn.departure.time)*1000 | date:'HH:mm' }}
-                                    &rarr;
+                                    <i class="fa fa-angle-right"></i>
                                     @{{ (conn.arrival.time)*1000 | date:'HH:mm' }}
                                 </span>
+                                <br />
                                 <span class="text-muted">
-                                    (@{{ formatDuration( ((conn.arrival.time-conn.departure.time)/60) ) }})
+                                    @{{ getHours( (conn.arrival.time-conn.departure.time)/60 ) }}
+                                    {{Lang::get('client.hoursShort')}}
+                                    @{{ getMinutes( (conn.arrival.time-conn.departure.time)/60 ) }}
+                                    {{Lang::get('client.minutesShort')}}
                                 </span>
                                 <span class="planner-change text-muted" ng-if="conn.vias.number > 0">
-                                    <br />@{{ conn.vias.number }} transfers
+                                    – @{{ conn.vias.number }} {{Lang::get('client.transfers')}}
                                 </span>
                             </span>
                             <span class="pull-right">

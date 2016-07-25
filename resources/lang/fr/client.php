@@ -110,4 +110,7 @@ return [
     'to_optionalStation' => 'Sélectionnez la direction (optionnel)',
     'refreshBoard' => 'Rafraîchir',
     'marketLink' => 'Téléchargez l’application officielle',
+    'minutesShort' => 'min',
+    'hoursShort' => 'h',
+    'transfers' => 'transfers',
 ];
