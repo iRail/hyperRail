@@ -34,7 +34,7 @@
 
                 <div id="result-@{{connections.indexOf(conn)}}" class="panel-body panel-collapse collapse" ng-class="{in : $first}"  >
 
-                    <div class="clearfix">
+                    <div class="planner-row">
                         <span class="planner-time">
                             <b>@{{ (conn.departure.time)*1000 | date:'HH:mm' }}</b>
                             <span class="delay-route" ng-if="conn.departure.delay > 0">
@@ -49,62 +49,76 @@
                             <b>@{{ conn.departure.station}}</b>
                         </span>
 
-                        <span class="planner-platform badge pull-right">
-                            @{{ conn.departure.platform }}
+                        <span class="planner-platform">
+                            <span class="badge">@{{ conn.departure.platform }}</span>
                         </span>
                     </div>
 
                     <div ng-repeat="stop in conn.vias.via">
 
-                        <span class="planner-train"><i class="fa fa-train"></i> @{{stop.direction.name}} <span class="small">&ndash; @{{stop.vehicle.replace("BE.NMBS.","")}}</span></span>
+                        <span class="planner-train">
+                            <i class="fa fa-train"></i> @{{stop.direction.name}} <span class="small">&ndash; @{{stop.vehicle.replace("BE.NMBS.","")}}</span>
+                        </span>
+
+                        <div class="planner-row">
+                            <span class="planner-time">
+                                <b>@{{(stop.arrival.time)*1000 | date:'HH:mm'}}</b>
+                            </span>
+
+                            <span class="planner-station">
+                                <b>@{{ stop.station}}</b>
+                                <br />
+                                <span class="small text-muted">
+                                    @{{(stop.timeBetween/60)}} {{Lang::get('client.mins')}}
+                                </span>
+                            </span>
+
+                            <span class="planner-platform">
+                                <span class="badge">@{{ stop.arrival.platform }}</span>
+                            </span>
+                        </div>
 
                         <hr />
 
-                        <span class="planner-time">
-                            @{{(stop.arrival.time)*1000 | date:'HH:mm'}}
-                        </span>
-
-                        <span class="planner-station">
-                            <span class="small text-muted">@{{(stop.timeBetween/60)}} {{Lang::get('client.mins')}}</span>
-                        </span>
-
-                        <br />
-
-                        <span class="planner-time">
-                            <b>@{{ (stop.departure.time)*1000 | date:'HH:mm' }}</b>
-                            <span class="delay-route" ng-if="stop.departure.delay > 0">
-                                +@{{ (stop.departure.delay)/60 }}&prime;
+                        <div class="planner-row">
+                            <span class="planner-time">
+                                <b>@{{ (stop.departure.time)*1000 | date:'HH:mm' }}</b>
+                                <span class="delay-route" ng-if="stop.departure.delay > 0">
+                                    +@{{ (stop.departure.delay)/60 }}&prime;
+                                </span>
+                                <span class="delay-route" ng-if="stop.departure.canceled > 0">
+                                    canceled
+                                </span>
                             </span>
-                            <span class="delay-route" ng-if="stop.departure.canceled > 0">
-                                canceled
+
+                            <span class="planner-station">
+                                <b>@{{ stop.station}}</b>
                             </span>
-                        </span>
 
-                        <span class="planner-station">
-                            <b>@{{ stop.station}}</b>
-                        </span>
-
-                        <span class="planner-platform badge pull-right">
-                            @{{ stop.departure.platform }}
-                        </span>
+                            <span class="planner-platform">
+                                <span class="badge">@{{ stop.departure.platform }}</span>
+                            </span>
+                        </div>
 
                     </div>
 
-                    <span class="planner-train"><i class="fa fa-train"></i> @{{conn.arrival.direction.name}} <span class="small">&ndash; @{{conn.arrival.vehicle.replace("BE.NMBS.","")}}</span></span>
-
-                    <hr />
-
-                    <span class="planner-time">
-                            @{{ (conn.arrival.time)*1000 | date:'HH:mm' }}
+                    <span class="planner-train">
+                        <i class="fa fa-train"></i> @{{conn.arrival.direction.name}} <span class="small">&ndash; @{{conn.arrival.vehicle.replace("BE.NMBS.","")}}</span>
                     </span>
 
-                    <span class="planner-station">
-                            @{{ conn.arrival.station}}
-                    </span>
+                    <div class="planner-row">
+                        <span class="planner-time">
+                            <b>@{{ (conn.arrival.time)*1000 | date:'HH:mm' }}</b>
+                        </span>
 
-                    <span class="planner-platform badge pull-right">
-                        @{{ conn.arrival.platform }}
-                    </span>
+                        <span class="planner-station">
+                            <b>@{{ conn.arrival.station}}</b>
+                        </span>
+
+                        <span class="planner-platform">
+                            <span class="badge">@{{ conn.arrival.platform }}</span>
+                        </span>
+                    </div>
 
                 </div>
             </div>

@@ -1,0 +1,35 @@
+/**
+ * Components: planner
+ * Contains all of the planner css
+ */
+
+.planner-row {
+  @include clearfix;
+}
+
+  .planner-time {
+    display: block;
+    float: left;
+    width: 25%;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .planner-station {
+    display: block;
+    float: left;
+    width: 65%;
+  }
+
+  .planner-platform {
+    display: block;
+    width: 10%;
+    float: left;
+    text-align: right;
+  }
+
+  .planner-train {
+    display: block;
+    color: $gray-light;
+    margin: 0 0 20px 25%;
+    font-size: $font-size-small;
+  }
