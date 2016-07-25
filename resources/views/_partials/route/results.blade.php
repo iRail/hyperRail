@@ -18,10 +18,14 @@
                                 </span>
                                 <br />
                                 <span class="text-muted">
-                                    @{{ getHours( (conn.arrival.time-conn.departure.time)/60 ) }}
-                                    {{Lang::get('client.hoursShort')}}
-                                    @{{ getMinutes( (conn.arrival.time-conn.departure.time)/60 ) }}
-                                    {{Lang::get('client.minutesShort')}}
+                                    <span ng-show="@{{ getHours( (conn.arrival.time-conn.departure.time)/60 ) }} > 0">
+                                        @{{ getHours( (conn.arrival.time-conn.departure.time)/60 ) }}
+                                        {{Lang::get('client.hoursShort')}}
+                                    </span>
+                                    <span ng-show="@{{ getMinutes( (conn.arrival.time-conn.departure.time)/60 ) }} > 0">
+                                        @{{ getMinutes( (conn.arrival.time-conn.departure.time)/60 ) }}
+                                        {{Lang::get('client.minutesShort')}}
+                                    </span>
                                 </span>
                                 <span class="planner-change text-muted" ng-if="conn.vias.number > 0">
                                     – @{{ conn.vias.number }} {{Lang::get('client.transfers')}}
@@ -69,10 +73,6 @@
 
                             <span class="planner-station">
                                 <b>@{{ stop.station}}</b>
-                                <br />
-                                <span class="small text-muted">
-                                    @{{(stop.timeBetween/60)}} {{Lang::get('client.mins')}}
-                                </span>
                             </span>
 
                             <span class="planner-platform">
@@ -80,7 +80,11 @@
                             </span>
                         </div>
 
-                        <hr />
+                        <span class="planner-switch small text-muted">
+                            @{{(stop.timeBetween/60)}} {{Lang::get('client.mins')}}
+                            <br />
+                            van perron @{{ stop.arrival.platform }} naar perron @{{ stop.departure.platform }}
+                        </span>
 
                         <div class="planner-row">
                             <span class="planner-time">

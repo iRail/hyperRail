@@ -29,3 +29,11 @@
     margin: 0 0 20px 60px;
     font-size: $font-size-small;
   }
+
+  .planner-switch {
+    display: block;
+    padding: 10px 0;
+    margin: 10px 0;
+    border: 1px solid $gray-lighter;
+    border-width: 1px 0;
+  }
