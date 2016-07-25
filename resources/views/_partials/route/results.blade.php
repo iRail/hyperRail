@@ -24,9 +24,7 @@
                                 </span>
                             </span>
                             <span class="pull-right">
-                                <span class="badge">
-                                    @{{ conn.departure.platform }}
-                                </span>
+                                <span class="badge">@{{ conn.departure.platform }}</span>
                             </span>
                         </a>
                     </h2>
@@ -37,16 +35,16 @@
                     <div class="planner-row">
                         <span class="planner-time">
                             <b>@{{ (conn.departure.time)*1000 | date:'HH:mm' }}</b>
+                        </span>
+
+                        <span class="planner-station">
+                            <b>@{{ conn.departure.station}}</b>
                             <span class="delay-route" ng-if="conn.departure.delay > 0">
                                 +@{{ (conn.departure.delay)/60 }}&prime;
                             </span>
                             <span class="delay-route" ng-if="conn.departure.canceled > 0">
                                 <i class="fa fa-exclamation-triangle"></i> canceled
                             </span>
-                        </span>
-
-                        <span class="planner-station">
-                            <b>@{{ conn.departure.station}}</b>
                         </span>
 
                         <span class="planner-platform">
@@ -83,16 +81,16 @@
                         <div class="planner-row">
                             <span class="planner-time">
                                 <b>@{{ (stop.departure.time)*1000 | date:'HH:mm' }}</b>
+                            </span>
+
+                            <span class="planner-station">
+                                <b>@{{ stop.station}}</b>
                                 <span class="delay-route" ng-if="stop.departure.delay > 0">
                                     +@{{ (stop.departure.delay)/60 }}&prime;
                                 </span>
                                 <span class="delay-route" ng-if="stop.departure.canceled > 0">
                                     canceled
                                 </span>
-                            </span>
-
-                            <span class="planner-station">
-                                <b>@{{ stop.station}}</b>
                             </span>
 
                             <span class="planner-platform">

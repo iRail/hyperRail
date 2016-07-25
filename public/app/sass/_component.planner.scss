@@ -4,32 +4,28 @@
  */
 
 .planner-row {
-  @include clearfix;
+  display: flex;
+  flex-direction: row;
 }
 
   .planner-time {
     display: block;
-    float: left;
-    width: 25%;
+    width: 60px;
     font-variant-numeric: tabular-nums;
   }
 
   .planner-station {
     display: block;
-    float: left;
-    width: 65%;
+    flex: 1;
   }
 
   .planner-platform {
     display: block;
-    width: 10%;
-    float: left;
-    text-align: right;
   }
 
   .planner-train {
     display: block;
     color: $gray-light;
-    margin: 0 0 20px 25%;
+    margin: 0 0 20px 60px;
     font-size: $font-size-small;
   }
