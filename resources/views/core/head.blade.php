@@ -13,7 +13,7 @@
 
     <link rel="shortcut icon" href="{{ URL::asset('favicon.ico') }}"/>
 
-    <link rel="stylesheet" href="{{ URL::asset('builds/css/main.css?20160721') }}">
+    <link rel="stylesheet" href="{{ URL::asset('builds/css/main.css?20160726') }}">
 
-    <script src="{{ URL::asset('builds/js/scripts.js?20160721') }}"></script>
+    <script src="{{ URL::asset('builds/js/scripts.js?20160726') }}"></script>
 </head>
