@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 @include('core.head')
-<!-- Google Webfonts -->
+    <!-- Google Webfonts -->
     <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=PT+Sans:400,700'>
-<body>
-<!-- Navigation -->
+<body class="apps-page">
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -18,21 +17,13 @@
         </div>
         <div class="navbar-collapse collapse navbar-right">
             <ul class="nav navbar-nav">
-                <li>
-                    <a href="#about">About</a>
-                </li>
-                <li>
-                    <a href="#download">Download</a>
-                </li>
-                <li>
-                    <a href="#how">How?</a>
-                </li>
+                <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#about">About</a></li>
+                <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#how">How?</a></li>
+                <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#download">Download</a></li>
             </ul>
-        </div>
-        <!--/.nav-collapse -->
+        </div><!--/.nav-collapse -->
     </div>
 </div>
-<!-- /Navigation -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 col-lg-12 col-xs-12">
@@ -46,7 +37,7 @@
         </div>
     </div>
     <hr class="red"/>
-    <div class="row" id="about" style="padding-top:70px;">
+    <div class="row apps-page-part" id="about">
         <div class="col-md-12 col-lg-12 col-xs-12">
             <div class="col-md-3 col-lg-3 col-xs-12 col-md-offset-3 col-lg-offset-2 col-xs-offset-2">
                 <img width="70%" height="100%" src="{{ URL::asset('images/railer.png')}}" />
@@ -63,7 +54,7 @@
         </div>
     </div>
     <hr class="red">
-    <div class="row" id="download" style="padding-top:70px;">
+    <div class="row apps-page-part" id="download">
         <div class="col-md-12 col-lg-12 col-xs-12">
             <h2 class="apps-header text-center">Test the beta version now</h2>
         </div>
@@ -119,7 +110,7 @@
     </div>
     <hr class="red" />
     <!-- How does it work? -->
-    <div class="row" id="how" style="padding-top:70px;">
+    <div class="row apps-page-part" id="how">
         <div class="col-md-12 col-lg-12 col-xs-12">
             <h2 class="apps-header text-center">How does it work?</h2>
         </div>
@@ -141,7 +132,7 @@
     <!-- /How does it work?-->
     <!-- Imagine story -->
     <div class="row">
-        <div class="col-md-10 col-lg-10 col-xs-12 col-md-offset-1 col-lg-offset-1" style="border:1px solid rgb(191,41,41); ">
+        <div class="col-md-10 col-lg-10 col-xs-12 col-md-offset-1 col-lg-offset-1 irail-red-border">
             <img src="{{ URL::asset('images/brugge-gent-brussels-illustration.svg' )}}" />
 
             <p class="apps-text">

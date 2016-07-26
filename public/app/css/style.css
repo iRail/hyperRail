@@ -5758,41 +5758,56 @@ button.close {
   .hidden-print {
     display: none !important; } }
 /* Main SASS CSS file */
-.slogan {
-  font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important; }
+body.apps-page {
+  padding-top: 70px; }
 
-.slogan:first-child {
-  margin-top: 20px;
-  margin-bottom: 25px; }
+h2.apps-header {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 700;
+  font-size: 300%; }
 
-.slogan:last-child {
-  margin-top: 25px;
-  margin-bottom: 20px;
-  font-size: 45px;
-  font-weight: bold; }
+.apps-page-part {
+  padding-top: 70px; }
 
-#gif {
-  width: 20em; }
+p.apps-text {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 400;
+  font-size: 150%;
+  margin-top: 15px !important; }
 
-.railer-parent {
-  text-align: center; }
+a.plan-route-button {
+  display: inline-block;
+  width: 300px;
+  height: 100px; }
 
-.railer-block {
-  display: inline-block; }
+img.app-image {
+  width: 50%; }
 
-#railer {
-  float: left;
-  width: 18em;
-  padding: 20px 0; }
+a.app-link {
+  display: inline-block;
+  padding-left: 20px; }
 
-#railer-text {
-  float: left;
-  padding-left: 40px;
-  max-width: 465px;
-  text-align: left; }
+h3.app-name-ios {
+  padding-left: 30px !important; }
+
+h3.app-name {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 300%;
+  font-weight: 700; }
+
+h3.app-name small {
+  font-weight: 400;
+  color: #000000 !important; }
+
+div.thank-you-footer {
+  background: #bf2929;
+  color: #FFFFFF; }
 
 hr.red {
-  border-top: 1px solid #C72929; }
+  border-top: 1px solid #bf2929; }
+
+.irail-red-border {
+  border: 1px solid #bf2929; }
 
 input.ng-invalid {
   border: 1px solid red !important; }

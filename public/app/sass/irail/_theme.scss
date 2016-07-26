@@ -2,12 +2,21 @@
 // import PT Sans font family
 //@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
 
+body.apps-page
+{
+  padding-top:70px;
+}
 
 h2.apps-header
 {
   font-family:"PT Sans", sans-serif;
   font-weight:700;
   font-size:300%;
+}
+
+.apps-page-part
+{
+  padding-top:70px;
 }
 
 p.apps-text
@@ -62,6 +71,11 @@ div.thank-you-footer
 
 hr.red {
   border-top: 1px solid rgb(191,41,41);
+}
+
+.irail-red-border
+{
+  border:1px solid rgb(191,41,41);
 }
 
 input.ng-invalid {
