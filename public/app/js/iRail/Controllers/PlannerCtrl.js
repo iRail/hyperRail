@@ -291,8 +291,8 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
 
     // Send feedback
     //$http.post();
-    */
-  };
+    
+  };*/
 };
 
 angular.module("irailapp.controllers")
