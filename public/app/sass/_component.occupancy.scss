@@ -1,0 +1,30 @@
+/**
+* iRail / Spitsgids occupancy icons
+*/
+
+.occupancy-icon
+{
+	display:inline-block;
+	margin-right:6px;
+}
+
+.occupancy-high-16
+{
+	background:url(../../images/crowdness-high-16x16.png);
+	height:16px;
+	width:17px;
+}
+
+.occupancy-medium-16
+{
+	background:url(../../images/crowdness-medium-16x16.png);
+	height:16px;
+	width:17px;
+}
+
+.occupancy-low-16
+{
+	background:url(../../images/crowdness-low-16x16.png);
+	height:16px;
+	width:17px;
+}

@@ -30,6 +30,7 @@
                             </span>
 
                             <span class="pull-right">
+                                <img width="16" height="16" src="{{ URL::asset('images/crowdness-high-32x32.png') }}" />
                                 <span class="badge">@{{ conn.departure.platform }}</span>
                             </span>
                         </a>
@@ -62,6 +63,22 @@
 
                         <span class="planner-train">
                             <i class="fa fa-train"></i> @{{stop.direction.name}} <span class="small">&ndash; @{{stop.vehicle.replace("BE.NMBS.","")}}</span>
+                             <img src="{{ URL::asset('images/crowdness-medium-32x32.png')}}" alt="medium crowdness" height="16" width="16" />
+
+                             <!-- Feedback form -->
+                                 <div class="dropdown">
+                                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" aria-haspopup="true" aria-expanded="false">
+                                         {{ Lang::get('client.howBusyIsThisTrain') }}
+                                         <span class="caret"></span>
+                                     </button>
+                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                         <li><a href="#" ng-click="selectOccupancy($event, 'high')"><i class="occupancy-icon occupancy-high-16"></i>{{ Lang::get('client.highOccupied') }}</a></li>
+                                         <li><a href="#" ng-click="selectOccupancy($event, 'medium')"><i class="occupancy-icon occupancy-medium-16"></i>{{ Lang::get('client.mediumOccupied') }}</a></li>
+                                         <li><a href="#" ng-click="selectOccupancy($event, 'low')"><i class="occupancy-icon occupancy-low-16"></i>{{Lang::get('client.lowOccupied') }}</a></li>
+                                       </ul>
+                                     </div>
+                             <!-- /Feedback form -->                              
+
                         </span>
 
                         <div class="planner-row">
@@ -109,6 +126,21 @@
 
                     <span class="planner-train">
                         <i class="fa fa-train"></i> @{{conn.arrival.direction.name}} <span class="small">&ndash; @{{conn.arrival.vehicle.replace("BE.NMBS.","")}}</span>
+                        <img src="{{ URL::asset('images/crowdness-medium-32x32.png')}}" alt="medium crowdness" height="16" width="16" />
+                        <!-- Feedback form -->
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" aria-haspopup="true" aria-expanded="false">
+                                    {{ Lang::get('client.howBusyIsThisTrain') }}
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li><a href="#" ng-click="selectOccupancy($event, 'high')"><i class="occupancy-icon occupancy-high-16"></i>{{ Lang::get('client.highOccupied') }}</a></li>
+                                    <li><a href="#" ng-click="selectOccupancy($event, 'medium')"><i class="occupancy-icon occupancy-medium-16"></i>{{ Lang::get('client.mediumOccupied') }}</a></li>
+                                    <li><a href="#" ng-click="selectOccupancy($event, 'low')"><i class="occupancy-icon occupancy-low-16"></i>{{Lang::get('client.lowOccupied') }}</a></li>
+                                  </ul>
+                                  <button class="btn btn-primary">OK</button>
+                                </div>
+                        <!-- /Feedback form -->
                     </span>
 
                     <div class="planner-row">

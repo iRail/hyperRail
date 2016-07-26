@@ -264,6 +264,35 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
     str = minutes;
     return str;
   };
+
+
+  $scope.selectOccupancy = function($event, occupancy)
+  {
+    $event.preventDefault();
+    console.log($event.currentTarget);
+     console.log(occupancy);
+
+    var $selectedOccupancyElement = $($event.currentTarget);
+    var $dropdownElement = $selectedOccupancyElement.parent().parent().parent().find('button').first();
+
+    $dropdownElement.html($selectedOccupancyElement.html() + '<span class="caret"></span>');
+  };
+/*
+  $scope.sendFeedback = function(connection, vehicle, from, to, occupancy, departureTime){
+    // build parameters for feedback
+    var feedback = {
+      "connection"  : 'http://irail.be/connections/8871308/20160722/IC4516',
+      "vehicle"     :'http://api.irail.be/vehicle/?id=BE.NMBS.' + vehicle,
+      "from"        :'http://irail.be/stations/NMBS/' + from,
+      "to"          :'http://irail.be/stations/NMBS/' + to,
+      "occupancy"   :'http://api.irail.be/terms/' + occupancy,
+      "departureTime":'20160722T1642'
+    }
+
+    // Send feedback
+    //$http.post();
+    */
+  };
 };
 
 angular.module("irailapp.controllers")
