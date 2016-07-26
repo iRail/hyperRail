@@ -9,7 +9,7 @@ app/database/testing.sqlite
 bootstrap/compiled.php
 composer.phar
 docs/api.apib
-
+storage
 
 # Development
 .idea

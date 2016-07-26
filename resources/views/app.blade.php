@@ -35,13 +35,31 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 col-lg-12 col-xs-12">
-            <h1 class="text-center">Avoid that busy train.</h1>
-            <h1 class="text-center">Use an iRail app</h1>
+            <h2 class="text-center slogan">Avoid that busy train.</h2>
+            <img id="gif" class="center-block" src="{{ URL::asset('images/occupancy.gif')}}" />
+            <h2 class="text-center slogan">Use an iRail app.</h2>
         </div>
     </div>
-    <hr>
+    <hr class="red">
     <div class="row">
-        <div class="blabla"></div>
+        <div class="railer-parent col-md-12 col-lg-12 col-xs-12">
+            <div class="railer-block clearfix">
+                <img id="railer" src="{{ URL::asset('images/railer.png')}}" />
+                <div id="railer-text">
+                    <h2>Know how busy your train will be.</h2>
+                    <p>Trains can get really crowded sometimes, so wouldn&#39;t it be great to know in advance how busy your train will be, so you can take an earlier or later one?</p>
+                    <p>With iRail, we created just that. It shows you the occupancy of every train, and you can adjust it if the prediction is different from what you see on your train. iRail learns from that, so the more feedback you give, the more accurate it becomes!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="red">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-xs-12">
+            <h2>Test the beta version now</h2>
+            <p>iRail occupancy levels are still in beta. It means that its predictions might not be as accurate yet, and that it still lacks some functionalities. However, we want you to start using it, so we can use your feedback to improve it. The more you indicate the occupancy of the train you’re on, the better iRail will be able to predict busy trains in the future. So let’s get started!</p>
+
+        </div>
     </div>
 </div>
 @include('core.footer')

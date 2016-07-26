@@ -1,5 +1,49 @@
 /* Main SASS CSS file */
 
+.slogan {
+  font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+.slogan:first-child {
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+.slogan:last-child {
+  margin-top: 25px;
+  margin-bottom: 20px;
+  font-size: 45px;
+  font-weight: bold;
+}
+
+#gif {
+  width: 20em;
+}
+
+.railer-parent {
+  text-align: center;
+}
+
+.railer-block {
+  display: inline-block;
+}
+
+#railer {
+  float: left;
+  width: 18em;
+  padding: 20px 0;
+}
+
+#railer-text {
+  float: left;
+  padding-left: 40px;
+  max-width: 465px;
+  text-align: left;
+}
+
+hr.red {
+  border-top: 1px solid #C72929;
+}
 
 input.ng-invalid {
   border: 1px solid red !important;
@@ -17,8 +61,8 @@ input.ng-invalid {
 
 .navbar-brand{
   line-height: 1.7em !important;
-  padding-top: 10px !important;
-  padding-right: 20px !important;
+  padding-top: 15px !important;
+  padding-right: 15px !important;
   padding-left: 5px !important;
   padding-bottom: 0px !important;
   }
@@ -169,10 +213,16 @@ input.ng-invalid {
   font-size: 1.3em;
   }
 
+.navbar-brand > img {
+  float: left;
+  padding-right: 0.2em;
+}
+
 .navbar-name{
   font-size: 1.2em;
   font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: bold;
+  float: left;
   }
 
 .irail-logo{
