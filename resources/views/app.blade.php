@@ -155,19 +155,6 @@
         </div>
     </div>
     <!-- /end story -->
-
-<!--
-
-    <div class="row thank-you-footer">
-        <div class="col-md-12 col-lg-12 col-xs-12">
-            <p class="apps-text">
-                TreinTramBus <br/>
-                NMBS<br/>
-            </p>
-        </div>
-    </div>
-
-    -->
 </div>
 @include('core.footer')
 </body>
