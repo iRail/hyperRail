@@ -115,8 +115,8 @@ return [
     'transfers' => 'transfers',
     'fromPlatform' => 'from platform',
     'toPlatform' => 'to platform',
-    'howBusyIsThisTrain' => 'How busy is this train?',
-    'highOccupied' => 'Very busy',
-    'mediumOccupied' => 'Busy',
-    'lowOccupied' => 'Not busy'
+    'howBusyIsThisTrain' => 'Report crowdedness',
+    'highOccupied' => 'Very crowded',
+    'mediumOccupied' => 'Crowded',
+    'lowOccupied' => 'Pleasant'
 ];
