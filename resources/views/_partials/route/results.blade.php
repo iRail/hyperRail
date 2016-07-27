@@ -30,7 +30,7 @@
                             </span>
 
                             <span class="pull-right">
-                                <img width="16" height="16" src="/images/crowdness-@{{conn.departure.occupancy.name}}-32x32.png" />
+                                <img width="16" height="16" ng-src="/images/crowdness-@{{conn.departure.occupancy.name}}-32x32.png" />
                                 <span class="badge">@{{ conn.departure.platform }}</span>
                             </span>
                         </a>
@@ -63,7 +63,7 @@
 
                         <span class="planner-train">
                             <i class="fa fa-train"></i> @{{stop.direction.name}} <span class="small">&ndash; @{{stop.vehicle.replace("BE.NMBS.","")}}</span>
-                             <img src="{{ URL::asset('images/crowdness-medium-32x32.png')}}" alt="medium crowdness" height="16" width="16" />
+                             <img width="16" height="16" ng-src="/images/crowdness-@{{stop.departure.occupancy.name}}-32x32.png" />
                              @{{stop.occupancy.name}}
                              <!-- Feedback form -->
                                  <div class="dropdown">
@@ -121,12 +121,11 @@
                                 <span class="badge">@{{ stop.departure.platform }}</span>
                             </span>
                         </div>
-
                     </div>
 
                     <span class="planner-train">
                         <i class="fa fa-train"></i> @{{conn.arrival.direction.name}} <span class="small">&ndash; @{{conn.arrival.vehicle.replace("BE.NMBS.","")}}</span>
-                        <img src="/images/crowdness-@{{conn.departure.occupancy.name}}-32x32.png" alt="medium crowdness" height="16" width="16" />
+                        <img ng-src="/images/crowdness-@{{conn.departure.occupancy.name}}-32x32.png" alt="medium crowdness" height="16" width="16" />
                         
                         <!-- Feedback form -->
                             <div class="dropdown">
