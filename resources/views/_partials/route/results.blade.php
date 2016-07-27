@@ -62,12 +62,13 @@
                     <div ng-repeat="stop in conn.vias.via">
 
                         <span class="planner-train">
-                            <i class="fa fa-train"></i> @{{stop.direction.name}} <span class="small">&ndash; @{{stop.vehicle.replace("BE.NMBS.","")}}</span>
+                            <i class="fa fa-train"></i> @{{stop.direction.name}}
+                            <span class="small">&ndash; @{{stop.vehicle.replace("BE.NMBS.","")}}</span>
+                            <img ng-show="conn.departure.occupancy.name !== 'unknown'" ng-src="/images/crowdness-@{{stop.departure.occupancy.name}}-32x32.png" alt="@{{conn.departure.occupancy.name}}" height="16" width="16" />
 
                             @{{stop.occupancy.name}}
                             <!-- Feedback form -->
                             <div class="dropdown">
-                                <img ng-show="conn.departure.occupancy.name !== 'unknown'" ng-src="/images/crowdness-@{{stop.departure.occupancy.name}}-32x32.png" alt="@{{conn.departure.occupancy.name}}" height="16" width="16" />
                                 <button class="btn btn-link btn-link-subtle btn-xs dropdown-toggle" type="button" id="dropdownMenu2" aria-haspopup="true" aria-expanded="false">
                                     {{ Lang::get('client.howBusyIsThisTrain') }}
                                     &nbsp;<span class="caret"></span>
@@ -126,9 +127,10 @@
                     <span class="planner-train">
                         <i class="fa fa-train"></i> @{{conn.arrival.direction.name}}
                         <span class="small">&ndash; @{{conn.arrival.vehicle.replace("BE.NMBS.","")}}</span>
+                        <img ng-show="conn.departure.occupancy.name !== 'unknown'" ng-src="/images/crowdness-@{{conn.departure.occupancy.name}}-32x32.png" alt="@{{conn.departure.occupancy.name}}" height="16" width="16" />
+
                         <!-- Feedback form -->
                         <div class="dropdown">
-                            <img ng-show="conn.departure.occupancy.name !== 'unknown'" ng-src="/images/crowdness-@{{conn.departure.occupancy.name}}-32x32.png" alt="@{{conn.departure.occupancy.name}}" height="16" width="16" />
                             <button class="btn btn-link btn-link-subtle btn-xs dropdown-toggle" type="button" id="dropdownMenu2" aria-haspopup="true" aria-expanded="false">
                                 {{ Lang::get('client.howBusyIsThisTrain') }}
                                 &nbsp;<span class="caret"></span>
