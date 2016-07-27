@@ -72,7 +72,7 @@
         <!-- Plan a route -->
         <div class="col-md-10 col-lg-10 col-xs-12 col-md-offset-1 col-lg-offset-1 text-center">
             <a href="/route" class="plan-route-button text-center">
-                <img src="{{ URL::asset('images/plan-route-button.svg')}}" alt="Plan a route"/>
+                Plan a route
             </a>
         </div>
         <!-- /Plan a route -->
