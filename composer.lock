@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "02656d002ed7b4d0909bda2738429a35",
+    "hash": "7ec3c121cd94756c006a4a031e8130bd",
     "content-hash": "5886cde8f08a5e526e7b2113f90660df",
     "packages": [
         {
@@ -506,20 +506,23 @@
         },
         {
             "name": "irail/stations",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iRail/stations.git",
-                "reference": "4e5bf355810ca0744e0cec0304e390f21c36534d"
+                "reference": "436827a0ee282989e7529c031577b5fd5eca6002"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/iRail/stations/zipball/4e5bf355810ca0744e0cec0304e390f21c36534d",
-                "reference": "4e5bf355810ca0744e0cec0304e390f21c36534d",
+                "url": "https://api.github.com/repos/iRail/stations/zipball/436827a0ee282989e7529c031577b5fd5eca6002",
+                "reference": "436827a0ee282989e7529c031577b5fd5eca6002",
                 "shasum": ""
             },
             "require": {
                 "ml/json-ld": "^1.0"
+            },
+            "require-dev": {
+                "aterrien/forp-profiler": "~1.1"
             },
             "type": "library",
             "autoload": {
@@ -538,7 +541,7 @@
                 }
             ],
             "description": "Use the Belgian railway's station in your PHP project",
-            "time": "2015-10-12 16:21:58"
+            "time": "2016-07-27 12:26:20"
         },
         {
             "name": "jakub-onderka/php-console-color",

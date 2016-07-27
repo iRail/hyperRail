@@ -33,6 +33,14 @@ git clone https://github.com/iRail/hyperRail.git
 
 If you didn't have the project installed with composer you need to run `composer install`. If you do not yet have composer, get it here: http://getcomposer.org else if you have the project installed you can just use `composer update`.
 
+When installing this for the first time, also run this:
+
+```
+cp .env.example .env
+php artisan key:generate
+```
+and edit your `.env` after your own taste (e.g., you may want to switch development mode off)
+
 ### Step 2: Update bootstrap/start.php for environments ###
 
 Optional, but can be useful.
