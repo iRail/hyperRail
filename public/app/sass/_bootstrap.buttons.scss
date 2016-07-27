@@ -6,3 +6,19 @@
 	padding-left: 0;
 	padding-right: 0;
 }
+
+.btn-link-subtle {
+  color: $gray-dark;
+
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+  }
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus {
+      color: $btn-link-disabled-color;
+    }
+  }
+}
