@@ -37,7 +37,7 @@
             <img width="25%" height="100%" class="center-block" src="{{ URL::asset('images/occupancy.gif')}}" />
         </div>
         <div class="col-md-12 col-lg-12 col-xs-12">
-            <h2 class="text-center apps-header">Use an iRail app.</h2>
+            <h2 class="text-center apps-header">Use iRail.</h2>
         </div>
     </div>
     <hr class="red"/>
