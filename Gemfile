@@ -1,4 +1,4 @@
 source "https://rubygems.org"
 
-gem "sass", "~> 3.3.8"
-gem "compass", "1.0.0.alpha.18"
+gem "sass", "~> 3.4.22"
+gem "compass", "~> 1.0.3"

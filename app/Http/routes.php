@@ -22,7 +22,7 @@ Route::get('/stations/NMBS/{id}', [
     'uses' => 'StationController@liveboard',
 ]);
 
-Route::get('/stations/NMBS/{id}/departures', 'StationController@liveboard');// should list the departures
+Route::get('/stations/NMBS/{id}/departures', 'StationController@liveboard'); // should list the departures
 Route::get('/stations/NMBS/{id}/departures/{trainHash}', 'StationController@specificTrain');
 
 Route::get('/stations/nmbs', 'StationController@index'); // should list stations

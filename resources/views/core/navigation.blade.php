@@ -7,7 +7,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ URL::to('/') }}"><img class="irail-logo" src="{{ URL::asset('images/logo.svg')}}" /> <span class="navbar-name">iRail</span></a>
+            <a class="navbar-brand" href="{{ URL::to('/') }}">
+                <span><img class="irail-logo" src="{{ URL::asset('images/logo.svg')}}" /></span>
+                <span class="navbar-name">iRail</span>
+            </a>
         </div>
         <div class="navbar-collapse collapse navbar-right">
             <ul class="nav navbar-nav">

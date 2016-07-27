@@ -28,9 +28,3 @@ function GetURLParameter(sParam){
         }
     }
 }
-
-$(function(){
-    if (window.innerWidth > 500){
-        $('#collapseCalendar').addClass('in');
-    }
-});

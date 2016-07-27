@@ -9,6 +9,7 @@ app/database/testing.sqlite
 bootstrap/compiled.php
 composer.phar
 docs/api.apib
+
 storage
 
 # Development
@@ -26,3 +27,5 @@ Thumbs.db
 
 .env
 bower_components
+
+*.map

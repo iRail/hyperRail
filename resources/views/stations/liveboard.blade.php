@@ -9,8 +9,8 @@
             <div class="row loading" ng-show="loading">
                 <div class="col-md-12 col-sm-12">
                     <div class="loader">Loading...</div>
-                    <h4 class="center lg">{!!  Lang::get('client.loadingHeader')!!}</h4>
-                    <p class="small center">{!! Lang::get('client.loadingSub')!!}</p>
+                    <h4 class="text-center lg">{!!  Lang::get('client.loadingHeader')!!}</h4>
+                    <p class="small text-center">{!! Lang::get('client.loadingSub')!!}</p>
                 </div>
             </div>
             <div class="row results" ng-show="results">
@@ -59,12 +59,12 @@
             <div class="row max-w5" ng-show="error" >
                 <div class="col-md-12 col-sm-12">
                     <div class="well">
-                        <h1 class="center"><i class="fa fa-support fa-3x center"></i>
+                        <h1 class="text-center"><i class="fa fa-support fa-3x text-center"></i>
                         </h1>
                         <h3>{!! Lang::get('client.error')!!} <strong>{!! Lang::get('client.errorNoLiveboard')!!}</strong></h3>
                         <p>{!! Lang::get('client.errorExplanation')!!} <a href="mailto:iRail@list.iRail.be">{!! Lang::get('client.errorMail')!!}</a>.</p>
                         <br/>
-                        <a href="/stations/NMBS" class="btn btn-danger btn-lg btn-wide"><i class="fa fa-chevron-left"></i> {!! Lang::get('client.errorReturnLiveboard')!!}</a>
+                        <a href="/stations/NMBS" class="btn btn-danger btn-lg btn-block"><i class="fa fa-chevron-left"></i> {!! Lang::get('client.errorReturnLiveboard')!!}</a>
                         <br/>
                     </div>
                 </div>

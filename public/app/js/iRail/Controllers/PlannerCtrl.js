@@ -22,7 +22,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
    *-------------------------------------------------------*/
 
   $(document).keypress(function (e) {
-    if(e.which === 13 && $scope.planning === true){
+    if(e.which === 13){
       $("#confirm").focus();
     }
   });
@@ -90,7 +90,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
       }
     }).then(function(res){
       var lang = $('html').attr("lang");
-      
+
       for( i in res["data"]["@graph"] ){
         var station = res["data"]["@graph"][i];
 
@@ -99,7 +99,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
           //array of alternatives
           if ( station["alternative"] instanceof Array ){
             var j = 0;
-            while ( j < station["alternative"].length 
+            while ( j < station["alternative"].length
               && station["alternative"][j]["@language"] != lang){
               j++;
             }
@@ -112,7 +112,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
           }
         }
       }
-      
+
       return res["data"]["@graph"];
     });
   };
@@ -252,22 +252,16 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
       }
     }
   });
-  $scope.formatDuration = function(minutes){
-    //return minutes;
-    
-    var hours = Math.floor(minutes/60);
-    var minutes = Math.floor(minutes%60);
-
-    var str = "";
-    if ( hours < 10 ){
-      str += "0";
-    }
-    str += hours + ":";
-    if ( minutes < 10 ){
-      str += "0";
-    }
-    str += minutes;
-
+  $scope.getHours = function(minutes){
+    var hours = Math.floor(minutes/60),
+        str = "";
+    str = hours;
+    return str;
+  };
+  $scope.getMinutes = function(minutes){
+    var minutes = Math.floor(minutes%60),
+        str = "";
+    str = minutes;
     return str;
   };
 };
