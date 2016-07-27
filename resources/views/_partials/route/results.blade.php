@@ -30,7 +30,7 @@
                             </span>
 
                             <span class="pull-right">
-                                <img width="16" height="16" ng-src="/images/crowdness-@{{conn.departure.occupancy.name}}-32x32.png" />
+                                <img ng-show="conn.departure.occupancy.name !== 'unknown'" ng-src="/images/crowdness-@{{conn.departure.occupancy.name}}-32x32.png" alt="@{{conn.departure.occupancy.name}}" height="16" width="16" />
                                 <span class="badge">@{{ conn.departure.platform }}</span>
                             </span>
                         </a>
@@ -62,23 +62,24 @@
                     <div ng-repeat="stop in conn.vias.via">
 
                         <span class="planner-train">
-                            <i class="fa fa-train"></i> @{{stop.direction.name}} <span class="small">&ndash; @{{stop.vehicle.replace("BE.NMBS.","")}}</span>
-                             <img width="16" height="16" ng-src="/images/crowdness-@{{stop.departure.occupancy.name}}-32x32.png" />
-                             @{{stop.occupancy.name}}
-                             <!-- Feedback form -->
-                                 <div class="dropdown">
-                                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" aria-haspopup="true" aria-expanded="false">
-                                         {{ Lang::get('client.howBusyIsThisTrain') }}
-                                         <span class="caret"></span>
-                                     </button>
-                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                         <li><a href="#" ng-click="selectOccupancy($event, 'high')"><i class="occupancy-icon occupancy-high-16"></i>{{ Lang::get('client.highOccupied') }}</a></li>
-                                         <li><a href="#" ng-click="selectOccupancy($event, 'medium')"><i class="occupancy-icon occupancy-medium-16"></i>{{ Lang::get('client.mediumOccupied') }}</a></li>
-                                         <li><a href="#" ng-click="selectOccupancy($event, 'low')"><i class="occupancy-icon occupancy-low-16"></i>{{Lang::get('client.lowOccupied') }}</a></li>
-                                       </ul>
-                                     </div>
-                             <!-- /Feedback form -->                              
+                            <i class="fa fa-train"></i> @{{stop.direction.name}}
+                            <span class="small">&ndash; @{{stop.vehicle.replace("BE.NMBS.","")}}</span>
+                            <img ng-show="conn.departure.occupancy.name !== 'unknown'" ng-src="/images/crowdness-@{{stop.departure.occupancy.name}}-32x32.png" alt="@{{conn.departure.occupancy.name}}" height="16" width="16" />
 
+                            @{{stop.occupancy.name}}
+                            <!-- Feedback form -->
+                            <div class="dropdown">
+                                <button class="btn btn-link btn-link-subtle btn-xs dropdown-toggle" type="button" id="dropdownMenu2" aria-haspopup="true" aria-expanded="false">
+                                    {{ Lang::get('client.howBusyIsThisTrain') }}
+                                    &nbsp;<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li><a href="#" ng-click="selectOccupancy($event, 'high')"><i class="occupancy-icon occupancy-high-16"></i>{{ Lang::get('client.highOccupied') }}</a></li>
+                                    <li><a href="#" ng-click="selectOccupancy($event, 'medium')"><i class="occupancy-icon occupancy-medium-16"></i>{{ Lang::get('client.mediumOccupied') }}</a></li>
+                                    <li><a href="#" ng-click="selectOccupancy($event, 'low')"><i class="occupancy-icon occupancy-low-16"></i>{{Lang::get('client.lowOccupied') }}</a></li>
+                                </ul>
+                            </div>
+                            <!-- /Feedback form -->
                         </span>
 
                         <div class="planner-row">
@@ -124,22 +125,22 @@
                     </div>
 
                     <span class="planner-train">
-                        <i class="fa fa-train"></i> @{{conn.arrival.direction.name}} <span class="small">&ndash; @{{conn.arrival.vehicle.replace("BE.NMBS.","")}}</span>
-                        <img ng-src="/images/crowdness-@{{conn.departure.occupancy.name}}-32x32.png" alt="medium crowdness" height="16" width="16" />
-                        
+                        <i class="fa fa-train"></i> @{{conn.arrival.direction.name}}
+                        <span class="small">&ndash; @{{conn.arrival.vehicle.replace("BE.NMBS.","")}}</span>
+                        <img ng-show="conn.departure.occupancy.name !== 'unknown'" ng-src="/images/crowdness-@{{conn.departure.occupancy.name}}-32x32.png" alt="@{{conn.departure.occupancy.name}}" height="16" width="16" />
+
                         <!-- Feedback form -->
-                            <div class="dropdown">
-                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" aria-haspopup="true" aria-expanded="false">
-                                    {{ Lang::get('client.howBusyIsThisTrain') }}
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <li><a href="#" ng-click="selectOccupancy($event, 'high')"><i class="occupancy-icon occupancy-high-16"></i>{{ Lang::get('client.highOccupied') }}</a></li>
-                                    <li><a href="#" ng-click="selectOccupancy($event, 'medium')"><i class="occupancy-icon occupancy-medium-16"></i>{{ Lang::get('client.mediumOccupied') }}</a></li>
-                                    <li><a href="#" ng-click="selectOccupancy($event, 'low')"><i class="occupancy-icon occupancy-low-16"></i>{{Lang::get('client.lowOccupied') }}</a></li>
-                                  </ul>
-                                  <a href="#confirm">Bevestig</a>
-                                </div>
+                        <div class="dropdown">
+                            <button class="btn btn-link btn-link-subtle btn-xs dropdown-toggle" type="button" id="dropdownMenu2" aria-haspopup="true" aria-expanded="false">
+                                {{ Lang::get('client.howBusyIsThisTrain') }}
+                                &nbsp;<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <li><a href="#" ng-click="selectOccupancy($event, 'high')"><i class="occupancy-icon occupancy-high-16"></i>{{ Lang::get('client.highOccupied') }}</a></li>
+                                <li><a href="#" ng-click="selectOccupancy($event, 'medium')"><i class="occupancy-icon occupancy-medium-16"></i>{{ Lang::get('client.mediumOccupied') }}</a></li>
+                                <li><a href="#" ng-click="selectOccupancy($event, 'low')"><i class="occupancy-icon occupancy-low-16"></i>{{Lang::get('client.lowOccupied') }}</a></li>
+                            </ul>
+                        </div>
                         <!-- /Feedback form -->
                     </span>
 
