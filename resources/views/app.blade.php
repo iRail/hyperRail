@@ -49,10 +49,10 @@
             <div class="col-md-6 col-lg-6 col-xs-12">
                     <h2 class="apps-header">Know how busy your train will be.</h2>
                     <p class="apps-text">
-                        Trains can get really crowded sometimes, so wouldn&#39;t it be great to <strong>know in advance how busy your train will be</strong>, so you can take an earlier or later one?
+                        Trains can get really crowded sometimes, so wouldn't it be great to <strong>know in advance how busy your train will be</strong>, so you can take an earlier or later one?
                     </p>
                     <p class="apps-text">
-                        With iRail, we created just that. It shows you the occupancy of every train, and you can adjust it if the prediction is different from what you see on your train. <strong>iRail learns</strong> from that, so the more feedback you give, the more accurate it becomes!
+                        With iRail, we created just that. It shows you the occupancy of every train, and you can adjust it if the prediction is different from what you see on your train. <strong>iRail will learn</strong> from that, so the more feedback you give, the better it will predict!
                     </p>
             </div>
         </div>
@@ -64,7 +64,8 @@
         </div>
         <div class="col-md-10 col-lg-10 col-xs-12 col-md-offset-1 col-lg-offset-1">
             <p class="apps-text">
-                iRail occupancy levels are still in beta. It means that its predictions might not be as accurate yet, and that it still lacks some functionalities. However, we want you to start using it, so we can <strong>use your feedback to improve it</strong>. The more you indicate the occupancy of the train you’re on, the better iRail will be able to predict busy trains in the future. So let’s get started!
+                iRail occupancy levels are still in beta. It means that its predictions might not be as accurate yet, and that it still lacks some functionalities. However, we want you to start using it, so we can <strong>use your feedback to improve it</strong>. The more you indicate the occupancy of the train you're on, the better
+                iRail will be able to predict busy trains in the future. So let's get started! 
             </p>
         </div>
 
@@ -77,13 +78,14 @@
         <!-- /Plan a route -->
         <div class="col-md-10 col-lg-10 col-xs-12 col-md-offset-1 col-lg-offset-1">
             <p class="apps-text">
-                Additionally, iRail occupancy rates will be available on <strong>Railer</strong> and <strong>BeTrains</strong> soon. Download them now, so you can be the first to use the new feature!
+                Additionally, iRail occupancy rates will be available on <strong>Railer</strong> and <strong>BeTrains</strong> soon. Download
+                them now, so you can be the first to use the new feature!
             </p>
         </div>
         <!-- Link to apps -->
         <div class="row">
             <!-- Railer app -->
-            <div class="col-md-5 col-lg-5 col-xs-12 col-md-offset-1 col-lg-offset-1 col-xs-offset-3">
+            <div class="col-md-5 col-lg-5 col-xs-12 col-md-offset-1 col-lg-offset-1 col-xs-offset-3 text-center">
 
                 <img class="app-image" src="{{URL::asset('images/Railer.png') }}" alt="Railer iOS app" />
                 <h3 class="app-name app-name-ios">
@@ -92,7 +94,7 @@
                 </h3>
 
                 <a href="https://itunes.apple.com/be/app/railer-voor-nmbs/id591205121" class="app-link ios-app-link">
-                    <img src="{{ URL::asset('images/get-on-playstore.png')}}" alt="Get on AppStore" width="50%"/>
+                    <img src="{{ URL::asset('images/get-on-appstore.png')}}" alt="Get on AppStore" width="50%"/>
                 </a>
             </div>
             <!-- /Railer app -->
@@ -122,14 +124,14 @@
             <p class="apps-text">
                 iRail assigns an <strong>occupancy level</strong> (Not Busy/Busy/Very Busy) to every stretch between stops,
                 for every train, every day. For a bunch of trains in the peak hours, we already know between
-                which stations they’re full based on data we got from NMBS/SNCB and a survey together with
+                which stations they're full based on data we got from NMBS/SNCB and a survey together with
                 <strong>TreinTramBus</strong>. 
             </p>
             <br />
             <p class="apps-text">
-                For other trains, we don’t have information yet. That is where you come into play as a user.
-                The more feedback you give, the more iRail will learn about busy trains. We can use this to
-                predict busy trains for other other times as well.
+                For other trains, we don't have information yet. That is where you come into play as a user.
+                The more feedback you give, the more iRail will learn about busy trains. We will use this to
+                predict busy trains for other other times in the future.
             </p>
         </div>
     </div>
@@ -142,8 +144,7 @@
             <p class="apps-text">
                 Imagine you’re taking a train from Bruges to Brussels, with one stop in Ghent. iRail
                 assigns the occupancy level you entered to the stretch between Bruges and Ghent, and
-                then uses our nifty <strong>occupancy transfer algorithm</strong> to predict the occupancy for the stretch
-                between Ghent and Brussels.
+                will then use a nifty <strong>occupancy transfer algorithm</strong> to predict the occupancy for the stretch between Ghent and Brussels.
             </p>
             <br/>
             <p class="apps-text">
@@ -154,7 +155,7 @@
 
         <div class="col-md-10 col-lg-10 col-xs-12 col-md-offset-1 col-lg-offset-1">
             <p class="apps-text">
-                So that’s it: the more you use Spitsgids, the better it will become!
+                So that's it: the more you use Spitsgids, the better it will become!
             </p>
         </div>
     </div>

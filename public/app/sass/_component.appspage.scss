@@ -11,6 +11,7 @@ h2.apps-header
   font-family:"PT Sans", sans-serif;
   font-weight:700;
   font-size:300%;
+  color:#000000;
 }
 
 .apps-page-part
@@ -24,6 +25,10 @@ p.apps-text
   font-weight:400;
   font-size:150%;
   margin-top:15px !important;
+}
+
+p.apps-text > strong {
+  color:#000000;
 }
 
 a.plan-route-button
