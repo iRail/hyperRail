@@ -10,6 +10,8 @@ bootstrap/compiled.php
 composer.phar
 docs/api.apib
 
+storage
+
 # Development
 .idea
 .sublimets
@@ -25,4 +27,5 @@ Thumbs.db
 
 .env
 bower_components
+
 *.map

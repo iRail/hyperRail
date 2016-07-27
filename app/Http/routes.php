@@ -13,6 +13,7 @@ Route::get('/', 'Welcome@index');
 Route::get('/route', 'RouteController@index');
 Route::get('/language', 'LanguageController@index');
 Route::get('/contributors', 'ContributorsController@showContributors');
+Route::get('/app', 'AppController@index');
 
 Route::get('/stations/', 'StationController@redirectToNMBSStations');
 Route::get('/stations/NMBS', 'StationController@index');

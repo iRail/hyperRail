@@ -1,0 +1,78 @@
+/*
+* Styles for app page
+*/
+body.apps-page
+{
+  padding-top:70px;
+}
+
+h2.apps-header
+{
+  font-family:"PT Sans", sans-serif;
+  font-weight:700;
+  font-size:300%;
+}
+
+.apps-page-part
+{
+  padding-top:70px;
+}
+
+p.apps-text
+{
+  font-family:"PT Sans", sans-serif;
+  font-weight:400;
+  font-size:150%;
+  margin-top:15px !important;
+}
+
+a.plan-route-button
+{
+  display:inline-block;
+  width:300px;
+  height:100px;
+}
+
+img.app-image 
+{
+  width:50%;
+}
+
+a.app-link
+{
+  display:inline-block;
+  padding-left:20px;
+}
+
+h3.app-name-ios
+{
+  padding-left:30px !important;
+}
+
+h3.app-name
+{
+  font-family:'PT Sans', sans-serif;
+  font-size:300%;
+  font-weight:700;
+}
+
+h3.app-name small
+{
+  font-weight:400;
+  color:#000000 !important;
+}
+
+div.thank-you-footer
+{
+  background:rgb(191,41,41);
+  color:#FFFFFF;
+}
+
+hr.red {
+  border-top: 1px solid rgb(191,41,41);
+}
+
+.irail-red-border
+{
+  border:1px solid rgb(191,41,41);
+}
