@@ -1,6 +1,7 @@
 /*
 * Styles for app page
 */
+
 body.apps-page
 {
   padding-top:70px;
@@ -37,12 +38,13 @@ a.plan-route-button
   width:350px;
   height:100px;
   background: rgb(191,41,41) url(../../images/logo.svg) left no-repeat;
+  background-size: 80px;
+  background-position:10px 20px;
   font-family:"PT Sans";
   color:#FFFFFF;
   font-size:300%;
   text-decoration: none;
   font-weight:700;
-  background-size: 80px;
   padding-left:50px;
   padding-top:16px;
 }
