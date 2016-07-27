@@ -34,7 +34,7 @@
             <h2 class="text-center">Avoid that busy train.</h2>
         </div>
         <div class="col-md-12 col-lg-12 col-xs-12 center-block">
-            <img width="25%" height="100%" class="center-block" src="{{ URL::asset('images/occupancy.gif')}}" />
+            <img width="25%" height="100%" class="center-block" src="{{ URL::asset('images/occupancy-mascottes.gif')}}" />
         </div>
         <div class="col-md-12 col-lg-12 col-xs-12">
             <h2 class="text-center apps-header">Use iRail.</h2>
