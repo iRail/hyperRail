@@ -1,0 +1,182 @@
+/*
+* Styles for app page
+*/
+
+body.apps-page
+{
+  padding-top:70px;
+}
+
+#mascotte {
+  width: 25%;
+  height: 100%;
+}
+
+h2 {
+  font-family:"PT Sans", sans-serif;
+  font-weight:700;
+}
+
+h2.use-irail
+{
+  font-size:300%;
+}
+
+h2.apps-header
+{
+  font-size:250%;
+}
+
+.fix {
+  margin-left: 2.333333333333%;
+}
+
+.apps-page-part
+{
+  padding-top:20px;
+}
+
+.center
+{
+  margin: 0 8.3333333%;
+}
+
+#about
+{
+  padding-top:40px;
+}
+
+#phone
+{
+  width: 70%;
+  height: 100%;
+}
+
+.app-text
+{
+  margin: 0 16.66666666%;
+}
+
+p.apps-text
+{
+  font-family:"PT Sans", sans-serif;
+  font-weight:400;
+  font-size:150%;
+  margin-top:15px !important;
+  margin-bottom: 30px;
+}
+
+p.apps-text > strong {
+  color:#000000;
+}
+
+a.plan-route-button
+{
+  display:inline-block;
+  width:200px;
+  height:50px;
+  background: rgb(191,41,41) url(../../images/logo.svg) left no-repeat;
+  background-size: 40px;
+  background-position:10px 10px;
+  font-family:"PT Sans";
+  color:#FFFFFF;
+  font-size:150%;
+  text-decoration: none;
+  font-weight:700;
+  padding-left:50px;
+  padding-top:10px;
+  margin-bottom: 25px;
+}
+
+a.plan-route-button:hover
+{
+  background: rgb(150,0,0) url(../../images/logo.svg) left no-repeat;
+  background-size: 40px;
+  background-position:10px 10px;
+}
+
+img.app-image 
+{
+  width:50%;
+}
+
+a.app-link
+{
+  display:inline-block;
+  padding-left:20px;
+}
+
+h3.app-name
+{
+  font-family:'PT Sans', sans-serif;
+  font-size:300%;
+  font-weight:700;
+}
+
+h3.app-name small
+{
+  font-weight:400;
+  color:#000000 !important;
+}
+
+div.thank-you-footer
+{
+  background:rgb(191,41,41);
+  color:#FFFFFF;
+}
+
+hr.red {
+  border-top: 1px solid rgb(191,41,41);
+  margin-top: 40px;
+}
+
+.irail-red-border
+{
+  border:1px solid rgb(191,41,41);
+  margin: 0 16.6666666666666%;
+}
+
+p.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+
+@media screen and (max-width: 991px) {
+  .col-md-4 {
+    text-align: center;
+  }
+
+  #phone {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 35%;
+  }
+
+  .app-text {
+    margin: 0 4.1666666666666%;
+  }
+
+  .button {
+    margin: 0 2.0833333333333%;
+  }
+
+  .irail-red-border {
+    margin: 0 2.0833333333333%;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .center {
+    width: 95.83333333333333333;
+    margin: 0;
+  }
+
+  h2.text-center:not(.hero) {
+    text-align: left;
+    margin: 0 4.1666666666666%;
+  }
+
+  #mascotte {
+    width: 50%;
+    height: 100%;
+  }
+}

@@ -30,8 +30,9 @@ git clone https://github.com/iRail/hyperRail.git
 ```
 
 ### Step 1: Install / Update dependencies ###
-
-If you didn't have the project installed with composer you need to run `composer install`. If you do not yet have composer, get it here: http://getcomposer.org else if you have the project installed you can just use `composer update`.
+In order to install the dependencies you have to run:
+`composer install`
+If you don't have composer, get it here: http://getcomposer.org
 
 When installing this for the first time, also run this:
 
