@@ -20,7 +20,7 @@
 
     <link rel="shortcut icon" href="{{ URL::asset('favicon.ico') }}"/>
 
-    <link rel="stylesheet" href="{{ URL::asset('builds/css/main.css?201607262') }}">
+    <link rel="stylesheet" href="{{ URL::asset('builds/css/main.css?201607282') }}">
 
     <script type="application/ld+json">
     {
@@ -31,13 +31,13 @@
         "@type": "ViewAction",
         "target": [
           "https://irail.be",
-          "android-app://CHANGETHISTOBETRAINSLINK",
+          "http://play.google.com/store/apps/details?id=tof.cv.mpp",
           {
             "@type": "EntryPoint",
-            "urlTemplate": "full RAILERLINK",
+            "urlTemplate": "https://itunes.apple.com/be/app/railer-voor-nmbs/id591205121",
             "actionApplication": {
               "@type": "SoftwareApplication",
-              "@id": "RAILERID",
+              "@id": "591205121",
               "name": "Railer App",
               "operatingSystem": "iOS"
             }
