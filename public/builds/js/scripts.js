@@ -31479,7 +31479,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
    *-------------------------------------------------------*/
 
   $(document).keypress(function (e) {
-    if(e.which === 13 && $scope.planning === true){
+    if(e.which === 13){
       $("#confirm").focus();
     }
   });
