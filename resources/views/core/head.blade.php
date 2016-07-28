@@ -9,6 +9,13 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://irail.be" />
     <meta property="og:image" content="{{ URL::asset('apple-touch-icon-precomposed.png') }}" />
+    <meta property="og:description" content="iRail is the best way to search for trains in Belgium." />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@iRail">
+    <meta name="twitter:title" content="iRail">
+    <meta name="twitter:description" content="iRail is the best way to search for trains in Belgium.">
+    <meta name="twitter:image" content="http://2016.summerofcode.be/images/socialmedia/tlogo2.png" />
+    <meta name="twitter:url" content="http://2016.summerofcode.be/" />
     <title>iRail.be</title>
 
     <link rel="shortcut icon" href="{{ URL::asset('favicon.ico') }}"/>

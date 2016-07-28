@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-@include('core.head')
+@include('core.apphead')
     <!-- Google Webfonts -->
     <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=PT+Sans:400,700'>
 <body class="apps-page">
@@ -41,24 +41,24 @@
 </nav>
 
 <div class="container-fluid">
-    <div class="row">
+    <div class="fix row">
         <div class="col-md-12 col-lg-12 col-xs-11">
-            <h2 class="text-center">Avoid that busy train.</h2>
+            <h2 class="hero text-center">Avoid that busy train.</h2>
         </div>
         <div class="col-md-12 col-lg-12 col-xs-11 center-block">
-            <img width="25%" height="100%" class="center-block" src="{{ URL::asset('images/occupancy-mascottes.gif')}}" />
+            <img id="mascotte" class="center-block" src="{{ URL::asset('images/occupancy-mascottes.gif')}}" />
         </div>
         <div class="col-md-12 col-lg-12 col-xs-11">
-            <h2 class="text-center apps-header">Use iRail.</h2>
+            <h2 class="hero text-center use-irail">Use iRail.</h2>
         </div>
     </div>
     <hr class="red"/>
     <div class="row apps-page-part" id="about">
-        <div class="col-md-12 col-lg-12 col-xs-11">
-            <div class="col-md-3 col-lg-3 col-xs-11 col-md-offset-3 col-lg-offset-2">
-                <img width="70%" height="100%" src="{{ URL::asset('images/railer.png')}}" />
+        <div class="col-md-10 col-lg-10 col-xs-20 center">
+            <div class="col-md-4">
+                <img id="phone" src="{{ URL::asset('images/phone.png')}}" />
             </div>
-            <div class="col-md-6 col-lg-6 col-xs-11">
+            <div class="col-md-8">
                     <h2 class="apps-header">Know how busy your train will be.</h2>
                     <p class="apps-text">
                         Trains can get really crowded sometimes, so wouldn't it be great to <strong>know in advance how busy your train will be</strong>, so you can take an earlier or later one?
@@ -74,7 +74,7 @@
         <div class="col-md-12 col-lg-12 col-xs-11">
             <h2 class="apps-header text-center">Test the beta version now</h2>
         </div>
-        <div class="col-md-10 col-lg-10 col-xs-11 col-md-offset-1 col-lg-offset-1">
+        <div class="app-text col-md-8 col-lg-8 col-xs-11">
             <p class="apps-text">
                 iRail occupancy levels are still in beta. It means that its predictions might not be as accurate yet, and that it still lacks some functionalities. However, we want you to start using it, so we can <strong>use your feedback to improve it</strong>. The more you indicate the occupancy of the train you're on, the better
                 iRail will be able to predict busy trains in the future. So let's get started! 
@@ -82,13 +82,13 @@
         </div>
 
         <!-- Plan a route -->
-        <div class="col-md-10 col-lg-10 col-xs-11 col-md-offset-1 col-lg-offset-1 text-center">
+        <div class="col-md-12 col-lg-12 col-xs-11 text-center button">
             <a href="/route" class="plan-route-button text-center">
                 Plan a route
             </a>
         </div>
         <!-- /Plan a route -->
-        <div class="col-md-10 col-lg-10 col-xs-11 col-md-offset-1 col-lg-offset-1">
+        <div class="app-text col-md-8 col-lg-8 col-xs-11">
             <p class="apps-text">
                 Additionally, iRail occupancy rates will be available on <strong>Railer</strong> and <strong>BeTrains</strong> soon. Download
                 them now, so you can be the first to use the new feature!
@@ -132,25 +132,25 @@
         <div class="col-md-12 col-lg-12 col-xs-12">
             <h2 class="apps-header text-center">How does it work?</h2>
         </div>
-        <div class="col-md-10 col-lg-10 col-xs-12 col-md-offset-1 col-lg-offset-1">
-            <p class="apps-text">
+        <!--<div class="col-md-8 col-lg-8 col-xs-12 col-md-offset-1 col-lg-offset-1">-->
+            <p class="col-md-8 col-lg-8 col-xs-11 no-margin-bottom app-text apps-text">
                 iRail assigns an <strong>occupancy level</strong> (Not Busy/Busy/Very Busy) to every stretch between stops,
                 for every train, every day. For a bunch of trains in the peak hours, we already know between
                 which stations they're full based on data we got from NMBS/SNCB and a survey together with
                 <strong>TreinTramBus</strong>. 
             </p>
             <br />
-            <p class="apps-text">
+            <p class="col-md-8 col-lg-8 col-xs-11 app-text apps-text">
                 For other trains, we don't have information yet. That is where you come into play as a user.
                 The more feedback you give, the more iRail will learn about busy trains. We will use this to
                 predict busy trains for other other times in the future.
             </p>
-        </div>
+        <!--</div>-->
     </div>
     <!-- /How does it work?-->
     <!-- Imagine story -->
     <div class="row">
-        <div class="col-md-10 col-lg-10 col-xs-11 col-md-offset-1 col-lg-offset-1 irail-red-border">
+        <div class="col-md-8 col-lg-8 irail-red-border">
             <img src="{{ URL::asset('images/brugge-gent-brussels-illustration.svg' )}}" />
 
             <p class="apps-text">
@@ -165,7 +165,7 @@
             </p>
         </div>
 
-        <div class="col-md-10 col-lg-10 col-xs-11 col-md-offset-1 col-lg-offset-1">
+        <div class="app-text col-md-8 col-lg-8 col-xs-11 col-md-offset-1 col-lg-offset-1">
             <p class="apps-text">
                 So that's it: the more you use Spitsgids, the better it will become!
             </p>
