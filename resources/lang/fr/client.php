@@ -115,4 +115,8 @@ return [
     'transfers' => 'transferts',
     'fromPlatform' => 'de quai',
     'toPlatform' => 'à quai',
+    'howBusyIsThisTrain' => 'A quel point ce train est-il chargé ?',
+    'highOccupied' => 'Très chargé',
+    'mediumOccupied' => 'Chargé',
+    'lowOccupied' => 'Pas chargé'
 ];

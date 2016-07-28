@@ -31721,6 +31721,50 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
     str = minutes;
     return str;
   };
+
+
+  $scope.selectOccupancy = function($event)
+  {
+    $event.preventDefault();
+
+    var feedbackUrl = 'https://api.irail.be/feedback/occupancy';
+    var $selectedOccupancyElement = $($event.currentTarget);
+    var connection = $selectedOccupancyElement.data('connection');
+    var occupancy = $selectedOccupancyElement.data('occupancy');
+
+    var vehicle = $selectedOccupancyElement.data('vehicle');
+
+    var from = $selectedOccupancyElement.data('from').split('/')[4];
+    var to = $selectedOccupancyElement.data('to');
+    var departureTime = $selectedOccupancyElement.data('date');
+
+    var departureTime = new Date(departureTime * 1000).toISOString().substr(0,10).replace(/-/g,'');
+
+    var data = {
+      "connection": connection,
+      "occupancy" : "http://api.irail.be/terms/"+occupancy,
+      "vehicle"   : "http://irail.be/vehicle/" + vehicle.split('.')[2],
+      "from"      : "http://irail.be/station/NMBS/00" + from,
+      "to"        : to,
+      "date"      : departureTime
+    }
+
+    var $dropdownElement = $selectedOccupancyElement.parent().parent().parent().find('button').first();
+
+    // Put selected occupancy in dropdown label
+    $dropdownElement.html($selectedOccupancyElement.html() + '<span class="caret"></span>');
+
+    $http.post(feedbackUrl, data, {header:{"Content-Type":"application/json"}}).then(function( response ){
+        if(response.status == 201)
+        {
+          // Remove feedback form + show thank you message!
+          var $feedbackForm = $dropdownElement.parent().html('Thank you for your feedback!');
+        }
+    }, function(errorResponse){
+        // Remove feedback form + show error message
+        var $feedbackForm = $dropdownElement.parent().html('Something went wrong. Try again.');
+    });
+  };
 };
 
 angular.module("irailapp.controllers")
