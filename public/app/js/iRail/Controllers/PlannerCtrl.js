@@ -266,33 +266,48 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
   };
 
 
-  $scope.selectOccupancy = function($event, occupancy)
+  $scope.selectOccupancy = function($event)
   {
     $event.preventDefault();
-    console.log($event.currentTarget);
-     console.log(occupancy);
 
+    var feedbackUrl = 'https://api.irail.be/feedback/occupancy';
     var $selectedOccupancyElement = $($event.currentTarget);
-    var $dropdownElement = $selectedOccupancyElement.parent().parent().parent().find('button').first();
+    var connection = $selectedOccupancyElement.data('connection');
+    var occupancy = $selectedOccupancyElement.data('occupancy');
 
-    $dropdownElement.html($selectedOccupancyElement.html() + '<span class="caret"></span>');
-  };
-/*
-  $scope.sendFeedback = function(connection, vehicle, from, to, occupancy, departureTime){
-    // build parameters for feedback
-    var feedback = {
-      "connection"  : 'http://irail.be/connections/8871308/20160722/IC4516',
-      "vehicle"     :'http://api.irail.be/vehicle/?id=BE.NMBS.' + vehicle,
-      "from"        :'http://irail.be/stations/NMBS/' + from,
-      "to"          :'http://irail.be/stations/NMBS/' + to,
-      "occupancy"   :'http://api.irail.be/terms/' + occupancy,
-      "departureTime":'20160722T1642'
+    var vehicle = $selectedOccupancyElement.data('vehicle');
+
+    var from = $selectedOccupancyElement.data('from').split('/')[4];
+    var to = $selectedOccupancyElement.data('to');
+    var departureTime = $selectedOccupancyElement.data('date');
+
+    var departureTime = new Date(departureTime * 1000).toISOString().substr(0,10).replace(/-/g,'');
+
+    var data = {
+      "connection": connection,
+      "occupancy" : "http://api.irail.be/terms/"+occupancy,
+      "vehicle"   : "http://irail.be/vehicle/" + vehicle.split('.')[2],
+      "from"      : "http://irail.be/station/NMBS/00" + from,
+      "to"        : to,
+      "date"      : departureTime
     }
 
-    // Send feedback
-    //$http.post();
-    
-  };*/
+    var $dropdownElement = $selectedOccupancyElement.parent().parent().parent().find('button').first();
+
+    // Put selected occupancy in dropdown label
+    $dropdownElement.html($selectedOccupancyElement.html() + '<span class="caret"></span>');
+
+    $http.post(feedbackUrl, data, {header:{"Content-Type":"application/json"}}).then(function( response ){
+        if(response.status == 201)
+        {
+          // Remove feedback form + show thank you message!
+          var $feedbackForm = $dropdownElement.parent().html('Thank you for your feedback!');
+        }
+    }, function(errorResponse){
+        // Remove feedback form + show error message
+        var $feedbackForm = $dropdownElement.parent().html('Something went wrong. Try again.');
+    });
+  };
 };
 
 angular.module("irailapp.controllers")

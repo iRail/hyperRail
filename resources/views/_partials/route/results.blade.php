@@ -66,15 +66,37 @@
                              <img width="16" height="16" ng-src="/images/crowdness-@{{stop.departure.occupancy.name}}-32x32.png" />
                              @{{stop.occupancy.name}}
                              <!-- Feedback form -->
-                                 <div class="dropdown">
+                                 <div class="dropdown" ng-show="{{ time() }} >= @{{stop.departure.time }}">
                                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" aria-haspopup="true" aria-expanded="false">
                                          {{ Lang::get('client.howBusyIsThisTrain') }}
                                          <span class="caret"></span>
                                      </button>
                                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                         <li><a href="#" ng-click="selectOccupancy($event, 'high')"><i class="occupancy-icon occupancy-high-16"></i>{{ Lang::get('client.highOccupied') }}</a></li>
-                                         <li><a href="#" ng-click="selectOccupancy($event, 'medium')"><i class="occupancy-icon occupancy-medium-16"></i>{{ Lang::get('client.mediumOccupied') }}</a></li>
-                                         <li><a href="#" ng-click="selectOccupancy($event, 'low')"><i class="occupancy-icon occupancy-low-16"></i>{{Lang::get('client.lowOccupied') }}</a></li>
+                                        <li>
+                                            <a href="#" ng-click="selectOccupancy($event)" data-occupancy="high"
+                                            data-from="@{{stop.departure.departureConnection}}"
+                                            data-to="@{{stop.stationinfo['@id']}}"
+                                            data-date="@{{conn.departure.time}}"
+                                            data-vehicle="@{{stop.vehicle}}"
+                                            data-connection="@{{stop.departure.departureConnection}}"><i class="occupancy-icon occupancy-high-16"></i>{{ Lang::get('client.highOccupied') }}</a>
+                                        </li>
+                                         <li>
+                                            <a href="#"
+                                                ng-click="selectOccupancy($event)" data-occupancy="medium"
+                                                data-from="@{{stop.departure.departureConnection}}"
+                                                data-to="@{{stop.stationinfo['@id']}}"
+                                                data-date="@{{conn.departure.time}}"
+                                                data-vehicle="@{{stop.vehicle}}"
+                                                data-connection="@{{stop.departure.departureConnection}}"><i class="occupancy-icon occupancy-medium-16"></i>
+                                                {{ Lang::get('client.mediumOccupied') }}</a></li>
+                                         <li>
+                                            <a href="#" ng-click="selectOccupancy($event)" data-occupancy="low"
+                                            data-from="@{{stop.departure.departureConnection}}"
+                                            data-to="@{{stop.stationinfo['@id']}}"
+                                            data-date="@{{conn.departure.time}}"
+                                            data-vehicle="@{{stop.vehicle}}"
+                                            data-connection="@{{stop.departure.departureConnection}}"><i class="occupancy-icon occupancy-low-16"></i>{{Lang::get('client.lowOccupied') }}</a>
+                                        </li>
                                        </ul>
                                      </div>
                              <!-- /Feedback form -->                              
@@ -128,17 +150,46 @@
                         <img ng-src="/images/crowdness-@{{conn.departure.occupancy.name}}-32x32.png" alt="medium crowdness" height="16" width="16" />
                         
                         <!-- Feedback form -->
-                            <div class="dropdown">
+                            <div class="dropdown" ng-show="{{ time() }} >= @{{conn.departure.time }}">
                                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" aria-haspopup="true" aria-expanded="false">
                                     {{ Lang::get('client.howBusyIsThisTrain') }}
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <li><a href="#" ng-click="selectOccupancy($event, 'high')"><i class="occupancy-icon occupancy-high-16"></i>{{ Lang::get('client.highOccupied') }}</a></li>
-                                    <li><a href="#" ng-click="selectOccupancy($event, 'medium')"><i class="occupancy-icon occupancy-medium-16"></i>{{ Lang::get('client.mediumOccupied') }}</a></li>
-                                    <li><a href="#" ng-click="selectOccupancy($event, 'low')"><i class="occupancy-icon occupancy-low-16"></i>{{Lang::get('client.lowOccupied') }}</a></li>
+                                    <li>
+                                        <a href="#"
+                                            ng-click="selectOccupancy($event)" data-occupancy="high"
+                                            data-from="@{{conn.departure.departureConnection}}"
+                                            data-to="@{{conn.arrival.stationinfo['@id']}}"
+                                            data-date="@{{conn.departure.time}}"
+                                            data-vehicle="@{{conn.departure.vehicle}}"
+                                            data-connection="@{{conn.departure.departureConnection}}"><i class="occupancy-icon occupancy-high-16"></i>
+                                            {{ Lang::get('client.highOccupied') }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            ng-click="selectOccupancy($event)" data-occupancy="medium"
+                                            data-from="@{{conn.departure.departureConnection}}"
+                                            data-to="@{{conn.arrival.stationinfo['@id']}}"
+                                            data-date="@{{conn.departure.time}}"
+                                            data-vehicle="@{{conn.departure.vehicle}}"
+                                            data-connection="@{{conn.departure.departureConnection}}"><i class="occupancy-icon occupancy-medium-16"></i>
+                                            {{ Lang::get('client.mediumOccupied') }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            ng-click="selectOccupancy($event)" data-occupancy="low"
+                                            data-from="@{{conn.departure.departureConnection}}"
+                                            data-to="@{{conn.arrival.stationinfo['@id']}}"
+                                            data-date="@{{conn.departure.time}}"
+                                            data-vehicle="@{{conn.departure.vehicle}}"
+                                            data-connection="@{{conn.departure.departureConnection}}"><i class="occupancy-icon occupancy-low-16"></i>
+                                            {{ Lang::get('client.lowOccupied') }}
+                                        </a>
+                                    </li>
                                   </ul>
-                                  <a href="#confirm">Bevestig</a>
                                 </div>
                         <!-- /Feedback form -->
                     </span>
