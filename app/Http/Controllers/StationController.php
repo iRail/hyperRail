@@ -32,7 +32,8 @@ class StationController extends Controller
     private function getStations($query = '')
     {
         if ($query && $query !== '') {
-            return Stations::getStations($query);
+            // query only Belgian stations and return a sorted array
+            return Stations::getStations($query, '', true);
         } else {
             return Stations::getStations();
         }

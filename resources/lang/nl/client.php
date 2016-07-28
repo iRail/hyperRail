@@ -119,4 +119,8 @@ return [
     'transfers' => 'overstappen',
     'fromPlatform' => 'van perron',
     'toPlatform' => 'naar perron',
+    'howBusyIsThisTrain' => 'Hoe druk is deze trein?',
+    'highOccupied' => 'Erg druk',
+    'mediumOccupied' => 'Druk',
+    'lowOccupied' => 'Niet druk',
 ];

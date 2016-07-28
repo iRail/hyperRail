@@ -34,6 +34,14 @@ In order to install the dependencies you have to run:
 `composer install`
 If you don't have composer, get it here: http://getcomposer.org
 
+When installing this for the first time, also run this:
+
+```
+cp .env.example .env
+php artisan key:generate
+```
+and edit your `.env` after your own taste (e.g., you may want to switch development mode off)
+
 ### Step 2: Update bootstrap/start.php for environments ###
 
 Optional, but can be useful.
