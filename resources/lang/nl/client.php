@@ -122,5 +122,5 @@ return [
     'howBusyIsThisTrain' => 'Hoe druk is deze trein?',
     'highOccupied' => 'Erg druk',
     'mediumOccupied' => 'Druk',
-    'lowOccupied' => 'Niet druk'
+    'lowOccupied' => 'Niet druk',
 ];
