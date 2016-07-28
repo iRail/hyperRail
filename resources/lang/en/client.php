@@ -118,5 +118,5 @@ return [
     'howBusyIsThisTrain' => 'How busy is this train?',
     'highOccupied' => 'Very busy',
     'mediumOccupied' => 'Busy',
-    'lowOccupied' => 'Not busy'
+    'lowOccupied' => 'Not busy',
 ];

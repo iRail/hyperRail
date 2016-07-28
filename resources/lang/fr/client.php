@@ -118,5 +118,5 @@ return [
     'howBusyIsThisTrain' => 'A quel point ce train est-il chargé ?',
     'highOccupied' => 'Très chargé',
     'mediumOccupied' => 'Chargé',
-    'lowOccupied' => 'Pas chargé'
+    'lowOccupied' => 'Pas chargé',
 ];
