@@ -70,8 +70,8 @@
                             @{{stop.occupancy.name}}
 
                             <!-- Feedback form -->
-                            {{-- Show the feedback form 5 minutes before departure time --}}
-                            <div class="dropdown" ng-show="{{ time() - (5 * 60) }} >= @{{conn.departure.time }}">
+                            {{-- Show the feedback form 10 minutes before departure time and 10 minutes after arrival time --}}
+                            <div class="dropdown" ng-show="{{ time() - (10 * 60) }} >= @{{conn.departure.time }} && (@{{conn.arrival.time }} + {{10 * 60}}) > {{ time() }}">
                                 <button class="btn btn-link btn-link-subtle btn-xs dropdown-toggle" type="button" id="dropdownMenu2" aria-haspopup="true" aria-expanded="false">
                                     {{ Lang::get('client.howBusyIsThisTrain') }}
                                     <span class="caret"></span>
@@ -156,8 +156,8 @@
                         <img ng-src="/images/crowdness-@{{conn.departure.occupancy.name}}-32x32.png" alt="@{{conn.departure.occupancy.name}}" height="16" width="16" />
 
                         <!-- Feedback form -->
-                        {{-- Show the feedback form 5 minutes before departure time --}}
-                            <div class="dropdown" ng-show="{{ time() - (5 * 60) }} >= @{{conn.departure.time }}">
+                        {{-- Show the feedback form 10 minutes before departure time and 10 minutes after arrival time --}}
+                            <div class="dropdown" ng-show="{{ time() - (10 * 60) }} >= @{{conn.departure.time }} && (@{{conn.arrival.time }} + {{10 * 60}}) > {{ time() }}">
                                 <button class="btn btn-link btn-link-subtle btn-xs dropdown-toggle" type="button" id="dropdownMenu2" aria-haspopup="true" aria-expanded="false">
                                     {{ Lang::get('client.howBusyIsThisTrain') }}
                                     <span class="caret"></span>
