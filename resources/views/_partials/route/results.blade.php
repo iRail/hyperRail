@@ -70,7 +70,8 @@
                             @{{stop.occupancy.name}}
 
                             <!-- Feedback form -->
-                            <div class="dropdown" ng-show="{{ time() }} >= @{{stop.departure.time }}">
+                            {{-- Show the feedback form 10 minutes before departure time and 10 minutes after arrival time --}}
+                            <div class="dropdown" ng-show="{{ time() - (10 * 60) }} >= @{{conn.departure.time }} && (@{{conn.arrival.time }} + {{10 * 60}}) > {{ time() }}">
                                 <button class="btn btn-link btn-link-subtle btn-xs dropdown-toggle" type="button" id="dropdownMenu2" aria-haspopup="true" aria-expanded="false">
                                     {{ Lang::get('client.howBusyIsThisTrain') }}
                                     <span class="caret"></span>
@@ -100,7 +101,7 @@
                                         data-to="@{{stop.stationinfo['@id']}}"
                                         data-date="@{{conn.departure.time}}"
                                         data-vehicle="@{{stop.vehicle}}"
-                                        data-connection="@{{stop.departure.departureConnection}}"><i class="occupancy-icon occupancy-low-16"></i>{{Lang::get('client.lowOccupied') }}</a>
+                                        data-connection="@{{stop.departure.departureConnection}}"><i class="occupancy-icon occupancy-low-16"></i>{{ Lang::get('client.lowOccupied') }}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -155,8 +156,8 @@
                         <img ng-src="/images/crowdness-@{{conn.departure.occupancy.name}}-32x32.png" alt="@{{conn.departure.occupancy.name}}" height="16" width="16" />
 
                         <!-- Feedback form -->
-
-                            <div class="dropdown" ng-show="{{ time() }} >= @{{conn.departure.time }}">
+                        {{-- Show the feedback form 10 minutes before departure time and 10 minutes after arrival time --}}
+                            <div class="dropdown" ng-show="{{ time() - (10 * 60) }} >= @{{conn.departure.time }} && (@{{conn.arrival.time }} + {{10 * 60}}) > {{ time() }}">
                                 <button class="btn btn-link btn-link-subtle btn-xs dropdown-toggle" type="button" id="dropdownMenu2" aria-haspopup="true" aria-expanded="false">
                                     {{ Lang::get('client.howBusyIsThisTrain') }}
                                     <span class="caret"></span>
