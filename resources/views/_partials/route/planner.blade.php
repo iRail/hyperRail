@@ -38,6 +38,7 @@
                             <span ng-show="timeoption == 'depart'">{!! Lang::get('client.departureAtHour')!!}</span>
                             <span ng-show="timeoption == 'arrive'">{!! Lang::get('client.arrivalAtHour')!!}</span>
                             &nbsp;
+                          
                             <i class="fa fa-clock-o"></i>&nbsp;@{{mytime | date:'HH:mm' }}
                             &nbsp;
                             <i class="fa fa-calendar"></i>&nbsp;@{{mydate | date:'yyyy–MM–dd' }}
@@ -49,10 +50,10 @@
 
                             <label class="radio-inline"><input type="radio" name="departureTime" ng-model="timeoption" value="depart">{!! Lang::get('client.departureAtHour')!!}</label>
                             <label class="radio-inline"><input type="radio" name="departureTime" ng-model="timeoption" value="arrive">{!! Lang::get('client.arrivalAtHour')!!}</label>
-
-                            <timepicker ng-model="mytime" ng-change="changed()" minute-step="15" show-meridian="ismeridian"></timepicker>
+                             
                             <div class="datepicker">
-                                <datepicker ng-class="time" ng-model="mydate" show-weeks="false" starting-day="1"></datepicker>
+                                <input type="time" ng-model="mytime" ng-change="changed()"/>
+                                <input type="date" ng-class="time" ng-model="mydate"/>
                             </div>
                         </div>
                     </div>
