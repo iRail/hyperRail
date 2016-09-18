@@ -30,7 +30,7 @@
                             </span>
 
                             <span class="pull-right">
-                                <img ng-src="/images/crowdness-@{{conn.departure.occupancy.name}}-32x32.png" alt="@{{conn.departure.occupancy.name}}" height="16" width="16" />
+                                <img ng-src="/images/occupancy-@{{conn.departure.occupancy.name}}.svg" alt="@{{conn.departure.occupancy.name}}" height="16" width="16" />
                                 <span class="badge">@{{ conn.departure.platform }}</span>
                             </span>
                         </a>
@@ -65,7 +65,7 @@
 
                         <i class="fa fa-train"></i> @{{stop.direction.name}}
                             <span class="small">&ndash; @{{stop.vehicle.replace("BE.NMBS.","")}}</span>
-                            <img ng-src="/images/crowdness-@{{stop.departure.occupancy.name}}-32x32.png" alt="@{{conn.departure.occupancy.name}}" height="16" width="16" />
+                            <img ng-src="/images/occupancy-@{{stop.departure.occupancy.name}}.svg" alt="@{{conn.departure.occupancy.name}}" height="16" width="16" />
 
                             @{{stop.occupancy.name}}
 
@@ -153,7 +153,7 @@
                     <span class="planner-train">
                         <i class="fa fa-train"></i> @{{conn.arrival.direction.name}}
                         <span class="small">&ndash; @{{conn.arrival.vehicle.replace("BE.NMBS.","")}}</span>
-                        <img ng-src="/images/crowdness-@{{conn.departure.occupancy.name}}-32x32.png" alt="@{{conn.departure.occupancy.name}}" height="16" width="16" />
+                        <img ng-src="/images/occupancy-@{{conn.departure.occupancy.name}}.svg" alt="@{{conn.departure.occupancy.name}}" height="16" width="16" />
 
                         <!-- Feedback form -->
                         {{-- Show the feedback form 10 minutes before departure time and 10 minutes after arrival time --}}
