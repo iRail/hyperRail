@@ -285,9 +285,9 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
 
     var data = {
       "connection": connection,
-      "occupancy" : "https://api.irail.be/terms/"+occupancy,
-      "vehicle"   : "https://irail.be/vehicle/" + vehicle.split('.')[2],
-      "from"      : "https://irail.be/stations/NMBS/00" + from,
+      "occupancy" : "http://api.irail.be/terms/"+occupancy,
+      "vehicle"   : "http://irail.be/vehicle/" + vehicle.split('.')[2],
+      "from"      : "http://irail.be/stations/NMBS/00" + from,
       "to"        : to,
       "date"      : departureTime
     }
