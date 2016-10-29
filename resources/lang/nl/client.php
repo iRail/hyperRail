@@ -1,7 +1,6 @@
 <?php
 
 return [
-    // New translation strings
     'planNewRoute' => 'Plan nieuwe route',
     'searchStations' => 'Zoek naar stations',
     'typeToStation' => 'Brussel',
@@ -10,6 +9,7 @@ return [
     'confirmSearch' => 'Plan route',
     'departureAtHour' => 'Vertrek',
     'arrivalAtHour' => 'Aankomst',
+    'loading' => 'Laden…',
     'loadingHeader' => 'Bezig met laden van resultaten.',
     'loadingSub' => 'Uw resultaten zullen over een paar seconden beschikbaar zijn.',
     'depart' => 'vertrekken',
@@ -20,7 +20,6 @@ return [
     'routesFoundDescription' => 'routes gevonden. De optimale route is al uitgebreid. U kan op de andere routes klikken om ze uit te breiden.',
     'reverse' => 'Trip omkeren',
     'planAnother' => 'Andere trip plannen',
-    //
     'errorCheckInput' => 'We konden je tekst niet omzetten naar een station. Gelieve je input te controleren. We suggereren automatisch stations! :)',
     'error' => 'Hmm, er is iets fout gegaan!',
     'errorNoRoutes' => 'We konden geen routes vinden.',
@@ -33,18 +32,15 @@ return [
     'stationsIdentical' => 'Uw vertrekstation en bestemmingsstation zijn hetzelfde! We kunnen geen route berekenen waar er geen is :)',
     'quickFilter' => 'Type hier om snel liveboard-resultaten te filteren',
     'noResultsFoundLiveboard' => 'Het spijt ons. Volgens onze data vertrekken er hier geen treinen momenteel.',
-    //
     'language' => 'Kies taal',
     'isPartOf' => 'iRail is een onderdeel van',
-    //
     'stationName' => 'Stationsnaam',
     'stationSearchPlaceholder' => 'Typ om te zoeken naar een station',
     'viewLiveboard' => 'Liveboard bekijken',
-    //
     'platform' => 'Perron',
     'station' => 'Station',
     'liveboardDescription' => 'Hier onder vind je een lijst met alle treinen die naar een bepaald station rijden en hun mogelijke vertragingen.',
-    //
+    'waitBetween' => 'Even wachten',
     'mins' => 'min. overstaptijd',
     '404ErrorTitle' => 'Pagina niet gevonden',
     '404Explanation' => 'We konden deze pagina niet vinden. Als je denkt dat dit een fout is, ',
@@ -54,7 +50,6 @@ return [
     'delay' => 'vertraging',
     'historicalDelays' => 'Geschiedenis van vertragingen',
     'archived' => 'Gearchiveerd',
-    //
     'search' => 'Zoek route',
     'departure_at' => 'Vertrek',
     'arrival_at' => 'Aankomst',
@@ -123,4 +118,6 @@ return [
     'highOccupied' => 'Erg druk',
     'mediumOccupied' => 'Druk',
     'lowOccupied' => 'Niet druk',
+    'canceled' => 'geannulleerd',
+    'thanksForUsing' => 'Deze route was met iRail.be gepland. Bedankt om onze webapp te gebruiken.',
 ];

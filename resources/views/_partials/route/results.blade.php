@@ -140,7 +140,7 @@
                                     +@{{ (stop.departure.delay)/60 }}&prime;
                                 </span>
                                 <span class="delay-route" ng-if="stop.departure.canceled > 0">
-                                    canceled
+                                    {{ Lang::get('client.canceled') }}
                                 </span>
                             </span>
 
@@ -222,7 +222,7 @@
         <div class="visible-print">
             <br/>
             <p>
-                This route was planned on iRail.be. Thank you very much for using our webapp.
+                {{ Lang::get('client.thanksForUsing')}}
             </p>
         </div>
     </div>

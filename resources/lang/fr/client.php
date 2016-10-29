@@ -1,7 +1,6 @@
 <?php
 
 return [
-    // START OF NEW TRANSLATION STRINGS: PLEASE TRANSLATE
     'planNewRoute' => 'Planifier un nouveau trajet',
     'searchStations' => 'Rechercher une gare',
     'typeToStation' => 'Bruxelles',
@@ -10,6 +9,7 @@ return [
     'confirmSearch' => 'Recherchez trajet',
     'departureAtHour' => 'Départ',
     'arrivalAtHour' => 'Arrivée',
+    'loading' => 'Chargement…',
     'loadingHeader' => 'Chargement des résultats. Veuillez patienter.',
     'loadingSub' => 'Vos résultats seront disponibles dans quelques secondes.',
     'depart' => 'partir',
@@ -50,7 +50,6 @@ return [
     'delay' => 'de retard',
     'historicalDelays' => 'Histoire de retard',
     'archived' => 'Archivée',
-    // END OF NEW TRANSLATION STRINGS
     'search' => 'Chercher',
     'departure_at' => 'Départ',
     'arrival_at' => 'Arrivée',
@@ -119,4 +118,6 @@ return [
     'highOccupied' => 'Très chargé',
     'mediumOccupied' => 'Chargé',
     'lowOccupied' => 'Pas chargé',
+    'canceled' => 'annulé',
+    'thanksForUsing' => 'Cette route a été planifié par iRail.be. Merci pour utiliser notre application web.',
 ];
