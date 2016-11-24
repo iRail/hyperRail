@@ -112,3 +112,11 @@ a.bounceIn.ng-hide-remove {
 .label-lg {
   font-size: 1.5em;
 }
+
+// override default form control
+// otherwise this is too small according to iOS
+// and it zooms in.
+.form-control {
+  font-size: 16px !important;
+  height: initial !important;
+}

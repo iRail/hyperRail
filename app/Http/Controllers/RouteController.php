@@ -102,4 +102,21 @@ class RouteController extends Controller
             return 'Required parameters are missing.';
         }
     }
+
+    /**
+     * Do a cURL request to given URL.
+     * @author Serkan Yildiz
+     * @param $url
+     * @return string $output
+     */
+    private static function getApiResponse($url)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $output = curl_exec($ch);
+        curl_close($ch);
+
+        return $output;
+    }
 }

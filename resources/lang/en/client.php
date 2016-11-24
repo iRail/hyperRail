@@ -1,7 +1,6 @@
 <?php
 
 return [
-    // START OF NEW TRANSLATION STRINGS
     'planNewRoute' => 'Plan new route',
     'searchStations' => 'Search stations',
     'typeToStation' => 'Brussels',
@@ -10,6 +9,7 @@ return [
     'confirmSearch' => 'Plan route',
     'departureAtHour' => 'Leave',
     'arrivalAtHour' => 'Arrive',
+    'loading' => 'Loading…',
     'loadingHeader' => 'Loading your results. Sit tight.',
     'loadingSub' => 'Your results will be available within a few seconds.',
     'depart' => 'depart',
@@ -50,7 +50,6 @@ return [
     'delay' => 'delay',
     'historicalDelays' => 'Historical delays',
     'archived' => 'Archived',
-    // END OF NEW TRANSLATION STRINGS
     'search' => 'Search',
     'departure_at' => 'Departure',
     'arrival_at' => 'Arrival',
@@ -119,4 +118,6 @@ return [
     'highOccupied' => 'Very busy',
     'mediumOccupied' => 'Busy',
     'lowOccupied' => 'Not busy',
+    'canceled' => 'canceled',
+    'thanksForUsing' => 'This route was planned on iRail.be. Thank you very much for using our webapp.',
 ];

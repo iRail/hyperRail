@@ -12,6 +12,6 @@ addons:
       - nodejs
 before_script:
   - composer install
-
+  - php artisan key:generate
 script:
   - phpunit

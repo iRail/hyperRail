@@ -2,7 +2,7 @@
     "name": "iRail/hyperRail",
     "description": "The web interface of iRail.be",
     "keywords": [],
-    "license": "CC0",
+    "license": "CC0-1.0",
     "type": "project",
     "require": {
         "php": ">=5.5.9",

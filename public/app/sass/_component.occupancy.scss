@@ -6,25 +6,26 @@
 {
 	display:inline-block;
 	margin-right:6px;
+	background-size: contain;
 }
 
 .occupancy-high-16
 {
-	background:url(../../images/crowdness-high-16x16.png);
+	background-image:url(../../images/occupancy-high.svg);
 	height:16px;
 	width:17px;
 }
 
 .occupancy-medium-16
 {
-	background:url(../../images/crowdness-medium-16x16.png);
+	background-image:url(../../images/occupancy-medium.svg);
 	height:16px;
 	width:17px;
 }
 
 .occupancy-low-16
 {
-	background:url(../../images/crowdness-low-16x16.png);
+	background-image:url(../../images/occupancy-low.svg);
 	height:16px;
 	width:17px;
 }
