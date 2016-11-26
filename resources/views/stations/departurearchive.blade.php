@@ -14,12 +14,12 @@
     <meta property="og:title" content="iRail.be" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://irail.be" />
-    <meta property="og:image" content="{!! URL::asset('apple-touch-icon-precomposed.png') !!}" />
-    <title>iRail | {!! $departureStation->name !!} to {!! str_replace('[NMBS/SNCB]', '', $station->headsign) !!}</title>
+    <meta property="og:image" content="{{ URL::asset('apple-touch-icon-precomposed.png') }}" />
+    <title>iRail | {{ $departureStation->name }} to {{ str_replace('[NMBS/SNCB]', '', $station->headsign) }}</title>
     <link rel="shortcut icon" href="{{ URL::asset('favicon.ico') }}"/>
     <link rel="stylesheet" href="{{ URL::asset('builds/css/main.css') }}">
 
-    <script src="{!! URL::asset('builds/js/scripts.js') !!}"></script>
+    <script src="{{ URL::asset('builds/js/scripts.js') }}"></script>
 
 </head>
 <body>
