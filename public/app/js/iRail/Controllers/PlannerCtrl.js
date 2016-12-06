@@ -21,12 +21,6 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
    * FUNCTIONS THAT CAN BE CALLED
    *-------------------------------------------------------*/
 
-  $(document).keypress(function (e) {
-    if(e.which === 13){
-      $("#confirm").focus();
-    }
-  });
-
   /**
    *  Check if we can dump the data
    */
