@@ -29,9 +29,17 @@ class Language
      */
     public function handle($request, Closure $next)
     {
-        $language = (Input::get('lang')) ?: Session::get('lang');
-        $this->setSupportedLanguage($language);
 
+        $browserLanguage = \Locale::lookup(['nl', 'fr', 'en'], $request->server('HTTP_ACCEPT_LANGUAGE'));
+
+        // if the user didn't set a language in the cookie, and a browser language is available, use browser language.
+        if (empty(Session::get('lang') && !empty($browserLanguage))) {
+            $language = $browserLanguage;
+        } else {
+            $language = (Input::get('lang')) ?: Session::get('lang');
+        }
+
+        $this->setSupportedLanguage($language);
         return $next($request);
     }
 
