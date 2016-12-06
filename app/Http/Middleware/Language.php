@@ -3,10 +3,10 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session;
 
 class Language
 {
@@ -29,17 +29,17 @@ class Language
      */
     public function handle($request, Closure $next)
     {
-
         $browserLanguage = \Locale::lookup(['nl', 'fr', 'en'], $request->server('HTTP_ACCEPT_LANGUAGE'));
 
         // if the user didn't set a language in the cookie, and a browser language is available, use browser language.
-        if (empty(Session::get('lang') && !empty($browserLanguage))) {
+        if (empty(Session::get('lang') && ! empty($browserLanguage))) {
             $language = $browserLanguage;
         } else {
             $language = (Input::get('lang')) ?: Session::get('lang');
         }
 
         $this->setSupportedLanguage($language);
+
         return $next($request);
     }
 
