@@ -17,6 +17,39 @@ class LanguageMiddlewareTest extends TestCase
         $this->setAssertLanguageTest('fr', 'fr');
     }
 
+    public function testSetLanguageToFrenchWhileBrowserDutch()
+    {
+        // GET parameters should have priority over browser language.
+        $response = $this->get('/?lang=fr', ['accept-language' => 'nl-be']);
+        $this->assertEquals('fr', $this->getApplicationLanguage());
+    }
+
+    public function testSetLanguageFromBrowser()
+    {
+        $response = $this->get('/', ['accept-language' => 'nl-be']);
+        $this->assertEquals('nl', $this->getApplicationLanguage());
+    }
+
+    public function testSetLanguageFromBrowser2()
+    {
+        $response = $this->get('/', ['accept-language' => 'nl']);
+        $this->assertEquals('nl', $this->getApplicationLanguage());
+    }
+
+    public function testSetLanguageFromBrowser3()
+    {
+        // unsupported languages mixed with supported. Should pick first supported.
+        $response = $this->get('/', ['accept-language' => 'da, nl;q=0.9, en;q=0.5']);
+        $this->assertEquals('nl', $this->getApplicationLanguage());
+    }
+
+    public function testSetLanguageFromBrowser4()
+    {
+        // unsupported languages. Should fall back to en.
+        $response = $this->get('/', ['accept-language' => 'da, se;q=0.9, no;q=0.5']);
+        $this->assertEquals('en', $this->getApplicationLanguage());
+    }
+
     public function testFallbackToDefaultLanguageWhenLanguageDoesNotExist()
     {
         $this->setAssertLanguageTest('en', 'NotALanguage');
