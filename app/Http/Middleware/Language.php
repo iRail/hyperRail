@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use Locale;
 use Closure;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
-use Locale;
 
 class Language
 {
@@ -32,10 +32,10 @@ class Language
     {
         $browserLanguage = $this->matchAcceptLanguage($request->server('HTTP_ACCEPT_LANGUAGE'), ['nl', 'fr', 'en']);
 
-        if (!empty(Input::get('lang'))) {
+        if (! empty(Input::get('lang'))) {
             // if a language is set in the browser, we need to update the language. User may have requested a switch.
             $language = Input::get('lang');
-        } elseif (empty(Session::get('lang')) && !empty($browserLanguage)) {
+        } elseif (empty(Session::get('lang')) && ! empty($browserLanguage)) {
             // if the user didn't set a language in the cookie, and a browser language is available, use browser language.
             $language = $browserLanguage;
         } else {
@@ -89,9 +89,9 @@ class Language
 
         $values = explode(',', $header);
 
-        $accept_language = array();
+        $accept_language = [];
 
-        foreach ($values AS $lang) {
+        foreach ($values as $lang) {
             $cnt = preg_match('/([-a-zA-Z]+)\s*;\s*q=([0-9\.]+)/', $lang, $matches);
             if ($cnt === 0) {
                 $accept_language[$lang] = 1;
@@ -107,11 +107,10 @@ class Language
                 // use filterMatches to ensure nl-be, nl, nl-nl all match nl, etc..
                 if (Locale::filterMatches($accept_lang, $supported_lang)) {
                     return $supported_lang;
-                };
+                }
             }
         }
 
         // no match found
-        return null;
     }
 }
