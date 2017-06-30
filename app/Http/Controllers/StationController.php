@@ -114,7 +114,7 @@ class StationController extends Controller
                 if (! $archived) {
                     // Set up path to old api
                     $URL = 'http://api.irail.be/liveboard/?station='.urlencode($stationStringName->name).
-                        '&date='.date('mmddyy', $datetime).'&time='.date('Hi', $datetime).
+                        '&date='.date('dmy', $datetime).'&time='.date('Hi', $datetime).
                         '&fast=true&lang=nl&format=json';
 
                     // Get the contents.
@@ -208,7 +208,7 @@ class StationController extends Controller
                 $stationStringName = Stations::getStationFromId($station_id);
                 if (! $archived) {
                     $URL = 'http://api.irail.be/liveboard/?station='.urlencode($stationStringName->name).
-                        '&date='.date('mmddyy', $datetime).'&time='.date('Hi', $datetime).
+                        '&date='.date('dmy', $datetime).'&time='.date('Hi', $datetime).
                         '&fast=true&lang=nl&format=json';
                     $data = file_get_contents($URL);
                     $newData = FormatConvertor::convertLiveboardData($data, $station_id);
@@ -344,7 +344,7 @@ class StationController extends Controller
 
                     $URL = 'http://api.irail.be/liveboard/?station='
                         .$stationStringName->name.'&fast=true&lang=nl&format=json&date='
-                        .date('mmddyy', $datetime).'&time='.date('Hi', $datetime);
+                        .date('dmy', $datetime).'&time='.date('Hi', $datetime);
 
                     $guzzleRequest = $guzzleClient->get($URL);
                     $data = $guzzleRequest->getBody();
