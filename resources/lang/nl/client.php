@@ -120,5 +120,5 @@ return [
     'lowOccupied' => 'Niet druk',
     'canceled' => 'geannulleerd',
     'thanksForUsing' => 'Deze route was met iRail.be gepland. Bedankt om onze webapp te gebruiken.',
-    'exportCalendar' => 'Exporteer naar Kalender'
+    'exportCalendar' => 'Exporteer naar Kalender',
 ];
