@@ -120,4 +120,5 @@ return [
     'lowOccupied' => 'Not busy',
     'canceled' => 'canceled',
     'thanksForUsing' => 'This route was planned on iRail.be. Thank you very much for using our webapp.',
+    'exportCalendar' => 'Export to Calendar'
 ];

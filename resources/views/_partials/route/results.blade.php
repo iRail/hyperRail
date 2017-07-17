@@ -138,6 +138,9 @@
                         </span>
                     </div>
 
+                    <div class="planner-options">
+                        <button class="btn btn-xs" ng-click="exportIcs(conn)"><i class="fa fa-calendar" aria-hidden="true"></i> {{ Lang::get('client.exportCalendar')}}</button>
+                    </div>
                 </div>
             </div>
         </div>

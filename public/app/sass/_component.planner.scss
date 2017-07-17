@@ -8,37 +8,45 @@
   flex-direction: row;
 }
 
-  .planner-time {
-    display: block;
-    width: 60px;
-    font-variant-numeric: tabular-nums;
-  }
+.planner-time {
+  display: block;
+  width: 60px;
+  font-variant-numeric: tabular-nums;
+}
 
-  .planner-station {
-    display: block;
-    flex: 1;
-  }
+.planner-station {
+  display: block;
+  flex: 1;
+}
 
-  .planner-platform {
-    display: block;
-  }
+.planner-platform {
+  display: block;
+}
 
-  .planner-train {
-    display: block;
-    color: $gray-light;
-    margin: 0 0 20px 60px;
-    font-size: $font-size-small;
-  }
+.planner-train {
+  display: block;
+  color: $gray-light;
+  margin: 0 0 20px 60px;
+  font-size: $font-size-small;
+}
 
-  .planner-switch {
-    display: block;
-    padding: 10px 0;
-    margin: 10px 0;
-    border: 1px solid $gray-lighter;
-    border-width: 1px 0;
-  }
+.planner-switch {
+  display: block;
+  padding: 10px 0;
+  margin: 10px 0;
+  border: 1px solid $gray-lighter;
+  border-width: 1px 0;
+}
 
-  .planner-meta {
-    display: block;
-    margin-top: 5px;
-  }
+.planner-meta {
+  display: block;
+  margin-top: 5px;
+}
+
+.planner-options {
+  border: 1px solid $gray-lighter;
+  border-width: 1px 0 0 0;
+  text-align: right;
+  padding: 10px 0 0 0;
+  margin: 10px 0 0 0;
+}

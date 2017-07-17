@@ -308,6 +308,25 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
         var $feedbackForm = $dropdownElement.parent().html('Something went wrong. Try again.');
     });
   };
+
+  $scope.exportIcs = function(trip) 
+  {
+    $http.post("export/ics", {"trip": trip}).success(function (data) {
+      // Create hidden link element to trigger a file download
+      var hiddenElement = document.createElement('a');
+      
+      // Set data
+      hiddenElement.href = 'data:attachment/ics,' + encodeURI(data);
+      hiddenElement.target = '_blank';
+      hiddenElement.download = 'irail.ics';
+
+      // Trigger element to initiate download
+      hiddenElement.click();
+
+      // Cleanup
+      hiddenElement.remove();
+    });
+  };
 };
 
 angular.module("irailapp.controllers")
