@@ -33,6 +33,8 @@ Route::get('/stations/nmbs/{id}/departures/{trainHash}', [
     'uses' => 'StationController@specificTrain',
 ]);
 
+Route::post('/export/ics', 'IcsController@getIcs');
+
 /*
  * --------------------------------------------------------------------------
  * Classic iRail redirection messages
