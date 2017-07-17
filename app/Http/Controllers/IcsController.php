@@ -23,7 +23,7 @@ class IcsController extends Controller
         $from = $trip['departure']['station'].' ('.$trip['departure']['platform'].')';
 
         // Handle vias
-        foreach($trip['vias']['via'] as $via) {
+        foreach ($trip['vias']['via'] as $via) {
             // Set arrival time for previous event and save
             $vEvent->setDtEnd(new \DateTime('@'.$via['arrival']['time']));
             $vEvent->setSummary('iRail - '.$from.' to '.$via['station'].' ('.$via['departure']['platform'].')');
