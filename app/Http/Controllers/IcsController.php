@@ -23,21 +23,23 @@ class IcsController extends Controller
         $from = $trip['departure']['station'].' ('.$trip['departure']['platform'].')';
 
         // Handle vias
-        foreach ($trip['vias']['via'] as $via) {
-            // Set arrival time for previous event and save
-            $vEvent->setDtEnd(new \DateTime('@'.$via['arrival']['time']));
-            $vEvent->setSummary('iRail - '.$from.' to '.$via['station'].' ('.$via['departure']['platform'].')');
-            $vCalendar->addComponent($vEvent);
+        if (array_key_exists('vias', $trip) && $trip['vias']['number'] > 0) {
+            foreach ($trip['vias']['via'] as $via) {
+                // Set arrival time for previous event and save
+                $vEvent->setDtEnd(new \DateTime('@'.$via['arrival']['time']));
+                $vEvent->setSummary('Journey from '.$from.' to '.$via['station'].' ('.$via['departure']['platform'].')');
+                $vCalendar->addComponent($vEvent);
 
-            // Initiate new event and set relevant fields
-            $vEvent = new \Eluceo\iCal\Component\Event();
-            $vEvent->setDtStart(new \DateTime('@'.$via['departure']['time']));
-            $from = $via['station'].'('.$via['departure']['platform'].')';
+                // Initiate new event and set relevant fields
+                $vEvent = new \Eluceo\iCal\Component\Event();
+                $vEvent->setDtStart(new \DateTime('@'.$via['departure']['time']));
+                $from = $via['station'].'('.$via['departure']['platform'].')';
+            }
         }
 
         // Close final event
         $vEvent->setDtEnd(new \DateTime('@'.$trip['arrival']['time']));
-        $vEvent->setSummary('iRail - '.$from.' to '.$trip['arrival']['station'].' ('.$trip['arrival']['platform'].')');
+        $vEvent->setSummary('Journey from '.$from.' to '.$trip['arrival']['station'].' ('.$trip['arrival']['platform'].')');
         $vCalendar->addComponent($vEvent);
 
         // Render ICS for use in Angular
