@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
 
-class IcsController extends Controller
+class ExportController extends Controller
 {
     public function __construct()
     {
@@ -20,26 +20,26 @@ class IcsController extends Controller
         // Initiate first event and add departure information
         $vEvent = new \Eluceo\iCal\Component\Event();
         $vEvent->setDtStart(new \DateTime('@'.$trip['departure']['time']));
-        $from = $trip['departure']['station'].' ('.$trip['departure']['platform'].')';
+        $from = $trip['departure']['station'].' (Platform: '.$trip['departure']['platform'].')';
 
         // Handle vias
         if (array_key_exists('vias', $trip) && $trip['vias']['number'] > 0) {
             foreach ($trip['vias']['via'] as $via) {
                 // Set arrival time for previous event and save
                 $vEvent->setDtEnd(new \DateTime('@'.$via['arrival']['time']));
-                $vEvent->setSummary('Journey from '.$from.' to '.$via['station'].' ('.$via['departure']['platform'].')');
+                $vEvent->setSummary('Journey from '.$from.' to '.$via['station'].' (Platform: '.$via['departure']['platform'].')');
                 $vCalendar->addComponent($vEvent);
 
                 // Initiate new event and set relevant fields
                 $vEvent = new \Eluceo\iCal\Component\Event();
                 $vEvent->setDtStart(new \DateTime('@'.$via['departure']['time']));
-                $from = $via['station'].'('.$via['departure']['platform'].')';
+                $from = $via['station'].'(Platform: '.$via['departure']['platform'].')';
             }
         }
 
         // Close final event
         $vEvent->setDtEnd(new \DateTime('@'.$trip['arrival']['time']));
-        $vEvent->setSummary('Journey from '.$from.' to '.$trip['arrival']['station'].' ('.$trip['arrival']['platform'].')');
+        $vEvent->setSummary('Journey from '.$from.' to '.$trip['arrival']['station'].' (Platform: '.$trip['arrival']['platform'].')');
         $vCalendar->addComponent($vEvent);
 
         // Render ICS for use in Angular
