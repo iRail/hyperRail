@@ -20,6 +20,11 @@ class ExportController extends Controller
         // Initiate first event and add departure information
         $vEvent = new \Eluceo\iCal\Component\Event();
         $vEvent->setDtStart(new \DateTime('@'.$trip['departure']['time']));
+        $vEvent->setLocation('Station '.$trip['departure']['station']);
+        $vEvent->setGeoLocation(new \Eluceo\iCal\Property\Event\Geo(
+            $trip['departure']['stationinfo']['locationY'], 
+            $trip['departure']['stationinfo']['locationX']
+        ));
         $from = $trip['departure']['station'].' (Platform: '.$trip['departure']['platform'].')';
 
         // Handle vias
@@ -33,6 +38,11 @@ class ExportController extends Controller
                 // Initiate new event and set relevant fields
                 $vEvent = new \Eluceo\iCal\Component\Event();
                 $vEvent->setDtStart(new \DateTime('@'.$via['departure']['time']));
+                $vEvent->setLocation('Station '.$via['station']);
+                $vEvent->setGeoLocation(new \Eluceo\iCal\Property\Event\Geo(
+                    $via['stationinfo']['locationY'], 
+                    $via['stationinfo']['locationX']
+                ));
                 $from = $via['station'].'(Platform: '.$via['departure']['platform'].')';
             }
         }
