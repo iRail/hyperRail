@@ -15,6 +15,12 @@ class ExportController extends Controller
     {
         $trip = Input::get('trip');
 
+        // Basic input check
+        if (!isset($trip['departure']) || !isset($trip['arrival'])) {
+            throw new CException('Incorrect trip data');
+        }
+
+        // Init ics file
         $vCalendar = new \Eluceo\iCal\Component\Calendar('www.irail.be');
 
         // Initiate first event and add departure information
@@ -28,7 +34,7 @@ class ExportController extends Controller
         $from = $trip['departure']['station'].' (Platform: '.$trip['departure']['platform'].')';
 
         // Handle vias
-        if (array_key_exists('vias', $trip) && $trip['vias']['number'] > 0) {
+        if (isset($trip['vias']) && $trip['vias']['number'] > 0) {
             foreach ($trip['vias']['via'] as $via) {
                 // Set arrival time for previous event and save
                 $vEvent->setDtEnd(new \DateTime('@'.$via['arrival']['time']));
