@@ -311,12 +311,13 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
 
   $scope.exportIcs = function(trip) 
   {
-    $http.post("export/ics", {"trip": trip}).then(function (data) {
+    $http.post("export/ics", {"trip": trip}).then(function (result) {
+
       // Create hidden link element to trigger a file download
       var hiddenElement = document.createElement("a");
       
       // Set data
-      hiddenElement.href = "data:attachment/ics," + encodeURI(data);
+      hiddenElement.href = "data:attachment/ics," + encodeURI(result.data);
       hiddenElement.target = "_blank";
       hiddenElement.download = "irail.ics";
 
