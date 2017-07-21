@@ -326,7 +326,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
       // Cleanup
       hiddenElement.remove();
     }, function () {
-      alert('Export failed');
+      alert('Something went wrong. Try again.');
     });
   };
 };
