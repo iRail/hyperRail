@@ -31,14 +31,23 @@ class ExportController extends Controller
             $trip['departure']['stationinfo']['locationY'], 
             $trip['departure']['stationinfo']['locationX']
         ));
-        $from = $trip['departure']['station'].' (Platform: '.$trip['departure']['platform'].')';
+        $from = trans('export.stationSummary', [
+            'station' => $trip['departure']['station'],
+            'platform' => $trip['departure']['platform']
+        ]);
 
         // Handle vias
         if (isset($trip['vias']) && $trip['vias']['number'] > 0) {
             foreach ($trip['vias']['via'] as $via) {
                 // Set arrival time for previous event and save
                 $vEvent->setDtEnd(new \DateTime('@'.$via['arrival']['time']));
-                $vEvent->setSummary('Journey from '.$from.' to '.$via['station'].' (Platform: '.$via['departure']['platform'].')');
+                $vEvent->setSummary(trans('export.summary', [
+                    'from' => $from,
+                    'to' => trans('export.stationSummary', [
+                        'station' => $via['station'],
+                        'platform' => $via['departure']['platform']
+                    ])
+                ]));
                 $vCalendar->addComponent($vEvent);
 
                 // Initiate new event and set relevant fields
@@ -49,13 +58,22 @@ class ExportController extends Controller
                     $via['stationinfo']['locationY'], 
                     $via['stationinfo']['locationX']
                 ));
-                $from = $via['station'].'(Platform: '.$via['departure']['platform'].')';
+                $from = trans('export.stationSummary', [
+                    'station' => ['station'],
+                    'platform' => $trip['departure']['platform']
+                ]);
             }
         }
 
         // Close final event
         $vEvent->setDtEnd(new \DateTime('@'.$trip['arrival']['time']));
-        $vEvent->setSummary('Journey from '.$from.' to '.$trip['arrival']['station'].' (Platform: '.$trip['arrival']['platform'].')');
+        $vEvent->setSummary(trans('export.summary', [
+            'from' => $from,
+            'to' => trans('export.stationSummary', [
+                'station' => $trip['arrival']['station'],
+                'platform' => $trip['arrival']['platform']
+            ])
+        ]));
         $vCalendar->addComponent($vEvent);
 
         // Render ICS for use in Angular
