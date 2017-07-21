@@ -311,20 +311,22 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
 
   $scope.exportIcs = function(trip) 
   {
-    $http.post("export/ics", {"trip": trip}).success(function (data) {
+    $http.post("export/ics", {"trip": trip}).then(function (data) {
       // Create hidden link element to trigger a file download
-      var hiddenElement = document.createElement('a');
+      var hiddenElement = document.createElement("a");
       
       // Set data
-      hiddenElement.href = 'data:attachment/ics,' + encodeURI(data);
-      hiddenElement.target = '_blank';
-      hiddenElement.download = 'irail.ics';
+      hiddenElement.href = "data:attachment/ics," + encodeURI(data);
+      hiddenElement.target = "_blank";
+      hiddenElement.download = "irail.ics";
 
       // Trigger element to initiate download
       hiddenElement.click();
 
       // Cleanup
       hiddenElement.remove();
+    }, function () {
+      alert('Export failed');
     });
   };
 };
