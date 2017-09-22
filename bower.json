@@ -20,6 +20,6 @@
     "bootstrap-sass-official": "*",
     "angular": "1.2.29",
     "font-awesome": "fontawesome#^4.6.3",
-    "bootstrap-sass": "bootstrap-sass-official#~3.3.6"
+    "bootstrap-sass": "bootstrap-sass-official#^3.3.6"
   }
 }
