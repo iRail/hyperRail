@@ -6,13 +6,15 @@
         </a>
     </script>
 
+    <form>
+
     <div class="row">
 
         <div class="col-sm-6">
             <div class="form-group">
                 <div class="input-group-oneliner has-affix">
                     <label for="departureStation" class="input-group-label">{{ Lang::get('client.fromStation') }}</label>
-                    <input type="text" id="departureStation" ng-model="departure" placeholder="{{ Lang::get('client.typeFromStation') }}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" class="form-control input-lg" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                    <input type="text" id="departureStation" ng-model="departure" placeholder="{{ Lang::get('client.typeFromStation') }}" typeahead="station as station.name for station in getStations($viewValue)" typeahead-template-url="customTemplate.html" class="form-control input-lg" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus>
                     <a class="input-group-affix" ng-click="reverse()" ng-show="results"><i class="fa fa-exchange"></i> <span class="sr-only">{{Lang::get('client.reverse')}}</span></a>
                 </div>
             </div>
@@ -66,7 +68,7 @@
             </button>
         </div>
     </div>
-
+    </form>
     <div class="alert alert-danger" ng-show="data === null">
         <p ng-show="stationnotfound === true">
             {{ Lang::get('client.errorCheckInput') }}
