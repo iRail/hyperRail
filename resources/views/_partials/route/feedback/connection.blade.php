@@ -10,7 +10,6 @@
             ng-click="selectOccupancy($event)"
             data-occupancy="high"
             data-from="@{{conn.departure.stationinfo['@id']}}"
-            data-to="@{{conn.arrival.stationinfo['@id']}}"
             data-date="@{{conn.departure.time}}"
             data-vehicle="@{{conn.departure.vehicle}}"
             data-connection="@{{conn.departure.departureConnection}}">
@@ -22,8 +21,7 @@
             <a href="#"
             ng-click="selectOccupancy($event)"
             data-occupancy="medium"
-            data-from="@{{conn.departure.departureConnection}}"
-            data-to="@{{conn.arrival.stationinfo['@id']}}"
+            data-from="@{{conn.departure.stationinfo['@id']}}"
             data-date="@{{conn.departure.time}}"
             data-vehicle="@{{conn.departure.vehicle}}"
             data-connection="@{{conn.departure.departureConnection}}">
@@ -35,8 +33,7 @@
             <a href="#"
             ng-click="selectOccupancy($event)"
             data-occupancy="low"
-            data-from="@{{conn.departure.departureConnection}}"
-            data-to="@{{conn.arrival.stationinfo['@id']}}"
+            data-from="@{{conn.departure.stationinfo['@id']}}"
             data-date="@{{conn.departure.time}}"
             data-vehicle="@{{conn.departure.vehicle}}"
             data-connection="@{{conn.departure.departureConnection}}">

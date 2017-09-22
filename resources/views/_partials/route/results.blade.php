@@ -59,19 +59,16 @@
                         </span>
                     </div>
 
+                    <span class="planner-train">
+                        <i class="fa fa-train"></i> @{{conn.departure.direction.name}}
+                        <span class="small">&ndash; @{{conn.departure.vehicle.replace("BE.NMBS.","")}}</span>
+                        <img ng-src="/images/occupancy-@{{conn.departure.occupancy.name || 'unknown'}}.svg"
+                             alt="@{{conn.departure.occupancy.name || 'occupancy unknown'}}" height="16" width="16"/>
+
+                        @include('_partials.route.feedback.connection')
+                    </span>
+
                     <div ng-repeat="stop in conn.vias.via">
-
-                        <span class="planner-train">
-
-                        <i class="fa fa-train"></i> @{{stop.direction.name}}
-                            <span class="small">&ndash; @{{stop.vehicle.replace("BE.NMBS.","")}}</span>
-                            <img ng-src="/images/occupancy-@{{stop.departure.occupancy.name || 'unknown'}}.svg" alt="@{{conn.departure.occupancy.name || 'occupancy unknown'}}" height="16" width="16" />
-
-                            @{{stop.occupancy.name}}
-
-                            @include('_partials.route.feedback.stop')
-
-                        </span>
 
                         <div class="planner-row">
                             <span class="planner-time">
@@ -113,16 +110,17 @@
                                 <span class="badge">@{{ stop.departure.platform }}</span>
                             </span>
                         </div>
+
+                        <span class="planner-train">
+                        <i class="fa fa-train"></i> @{{stop.departure.direction.name}}
+                            <span class="small">&ndash; @{{stop.departure.vehicle.replace("BE.NMBS.","")}}</span>
+                        <img ng-src="/images/occupancy-@{{stop.departure.occupancy.name || 'unknown'}}.svg"
+                             alt="@{{stop.departure.occupancy.name || 'occupancy unknown'}}" height="16" width="16"/>
+
+                            @include('_partials.route.feedback.stop')
+
+                        </span>
                     </div>
-
-                    <span class="planner-train">
-                        <i class="fa fa-train"></i> @{{conn.arrival.direction.name}}
-                        <span class="small">&ndash; @{{conn.arrival.vehicle.replace("BE.NMBS.","")}}</span>
-                        <img ng-src="/images/occupancy-@{{conn.departure.occupancy.name || 'unknown'}}.svg" alt="@{{conn.departure.occupancy.name || 'occupancy unknown'}}" height="16" width="16" />
-
-                        @include('_partials.route.feedback.connection')
-
-                    </span>
 
                     <div class="planner-row">
                         <span class="planner-time">
