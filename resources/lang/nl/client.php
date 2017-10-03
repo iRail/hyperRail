@@ -120,5 +120,5 @@ return [
     'lowOccupied' => 'Niet druk',
     'canceled' => 'geannulleerd',
     'thanksForUsing' => 'Deze route was met iRail.be gepland. Bedankt om onze webapp te gebruiken.',
-    'apidocs' => 'API documentatie'
+    'apidocs' => 'API documentatie',
 ];

@@ -14,10 +14,10 @@ Route::get('/route', 'RouteController@index');
 Route::get('/language', 'LanguageController@index');
 Route::get('/contributors', 'ContributorsController@showContributors');
 
-Route::get('/app', function() {
+Route::get('/app', function () {
     return Redirect::route('spitsgids');
 });
-Route::get('/spitsgids', [ 'as' => 'spitsgids', 'uses' =>'AppController@index']);
+Route::get('/spitsgids', ['as' => 'spitsgids', 'uses' =>'AppController@index']);
 
 Route::get('/stations/', 'StationController@redirectToNMBSStations');
 Route::get('/stations/NMBS', 'StationController@index');
