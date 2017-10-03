@@ -6,7 +6,7 @@ return [
     'typeToStation' => 'Bruxelles',
     'typeFromStation' => 'Charleroi',
     'chooseTime' => 'Choisissez votre heure de préférence',
-    'confirmSearch' => 'Recherchez trajet',
+    'confirmSearch' => 'Recherchez',
     'departureAtHour' => 'Départ',
     'arrivalAtHour' => 'Arrivée',
     'loading' => 'Chargement…',
