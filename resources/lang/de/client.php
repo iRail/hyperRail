@@ -62,4 +62,5 @@ return [
     'marketLink' => 'Download des offiziellen App',
     'errorHoliday' => 'Wir können keine Verbindung finden. An Feiertagen ist es möglich, daß an kleineren Haltestellen keine Züge halten.',
     'canceled' => 'annulliert',
+    'apidocs' => 'API-Dokumentation',
 ];

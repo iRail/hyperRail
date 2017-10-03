@@ -2,13 +2,9 @@
 * Styles for app page
 */
 
-body.apps-page
-{
-  padding-top:70px;
-}
-
 #mascotte {
   width: 25%;
+  max-width: 256px;
   height: 100%;
 }
 
@@ -48,7 +44,7 @@ h2.apps-header
 
 #phone
 {
-  width: 70%;
+  width: 100%;
   height: 100%;
 }
 
@@ -102,14 +98,20 @@ img.app-image
 
 a.app-link
 {
-  display:inline-block;
-  padding-left:20px;
+}
+
+.app-link img {
+  width:50%;
+}
+
+img.app-image{
+  width:50%;
 }
 
 h3.app-name
 {
   font-family:'PT Sans', sans-serif;
-  font-size:300%;
+  font-size:200%;
   font-weight:700;
 }
 

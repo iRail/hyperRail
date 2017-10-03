@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 class AppController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('language');
+    }
+
     /**
-     * Display a listing of the resource.
+     * Display the spitsgids page.
      *
      * @return \Illuminate\Http\Response
      */

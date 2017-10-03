@@ -20,7 +20,7 @@
 
     <link rel="shortcut icon" href="{{ URL::asset('favicon.ico') }}"/>
 
-    <link rel="stylesheet" href="{{ URL::asset('builds/css/main.css?201607282') }}">
+    <link rel="stylesheet" href="{{ URL::asset('builds/css/main.css?20171003') }}">
 
     <script type="application/ld+json">
     {
@@ -31,6 +31,7 @@
         "@type": "ViewAction",
         "target": [
           "https://irail.be",
+          "https://play.google.com/store/apps/details?id=be.hyperrail.android",
           "http://play.google.com/store/apps/details?id=tof.cv.mpp",
           {
             "@type": "EntryPoint",
@@ -46,5 +47,5 @@
       }
     }
     </script>
-    <script src="{{ URL::asset('builds/js/scripts.js?201607262') }}"></script>
+    <script src="{{ URL::asset('builds/js/scripts.js?20171003') }}"></script>
 </head>
