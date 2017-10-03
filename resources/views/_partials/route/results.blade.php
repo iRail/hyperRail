@@ -58,7 +58,7 @@
                             <span class="badge">@{{ conn.departure.platform }}</span>
                         </span>
                     </div>
-
+                    
                     <span class="planner-train">
                         <i class="fa fa-train"></i> @{{conn.departure.direction.name}}
                         <span class="small">&ndash; @{{conn.departure.vehicle.replace("BE.NMBS.","")}}</span>
@@ -110,12 +110,13 @@
                                 <span class="badge">@{{ stop.departure.platform }}</span>
                             </span>
                         </div>
-
+                        
                         <span class="planner-train">
                         <i class="fa fa-train"></i> @{{stop.departure.direction.name}}
                             <span class="small">&ndash; @{{stop.departure.vehicle.replace("BE.NMBS.","")}}</span>
                         <img ng-src="/images/occupancy-@{{stop.departure.occupancy.name || 'unknown'}}.svg"
                              alt="@{{stop.departure.occupancy.name || 'occupancy unknown'}}" height="16" width="16"/>
+
 
                             @include('_partials.route.feedback.stop')
 
