@@ -18,6 +18,7 @@
                         <li>Bram Devries</li>
                         <li>Andreas De Lille</li>
                         <li>Tim Joosten</li>
+                        <li>Bert Marcelis</li>
                     </ul>
                 </div>
             </div>

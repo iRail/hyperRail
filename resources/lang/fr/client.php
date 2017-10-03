@@ -120,4 +120,5 @@ return [
     'lowOccupied' => 'Pas chargé',
     'canceled' => 'annulé',
     'thanksForUsing' => 'Cette route a été planifié par iRail.be. Merci pour utiliser notre application web.',
+    'apidocs' => 'Documentation API'
 ];
