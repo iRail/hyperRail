@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Response;
+use Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
-use Request;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Response;
 
 class RouteController extends Controller
 {

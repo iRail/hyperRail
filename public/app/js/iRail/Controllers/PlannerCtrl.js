@@ -21,12 +21,6 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
    * FUNCTIONS THAT CAN BE CALLED
    *-------------------------------------------------------*/
 
-  $(document).keypress(function (e) {
-    if(e.which === 13){
-      $("#confirm").focus();
-    }
-  });
-
   /**
    *  Check if we can dump the data
    */
@@ -277,7 +271,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
 
     var vehicle = $selectedOccupancyElement.data('vehicle');
 
-    var from = $selectedOccupancyElement.data('from').split('/')[4];
+    var from = $selectedOccupancyElement.data('from').split('/')[5];
     var to = $selectedOccupancyElement.data('to');
     var departureTime = $selectedOccupancyElement.data('date');
 

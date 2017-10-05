@@ -9,10 +9,9 @@
             <a href="#"
             ng-click="selectOccupancy($event)"
             data-occupancy="high"
-            data-from="@{{stop.departure.stationinfo['id']}}"
-            data-to="@{{stop.stationinfo['@id']}}"
+            data-from="@{{stop.stationinfo['@id']}}"
             data-date="@{{stop.departure.time}}"
-            data-vehicle="@{{stop.vehicle}}"
+            data-vehicle="@{{stop.departure.vehicle}}"
             data-connection="@{{stop.departure.departureConnection}}">
                 <i class="occupancy-icon occupancy-high-16"></i>
                 {{ Lang::get('client.highOccupied') }}
@@ -22,10 +21,9 @@
             <a href="#"
             ng-click="selectOccupancy($event)"
             data-occupancy="medium"
-            data-from="@{{stop.departure.stationinfo['@id']}}"
-            data-to="@{{stop.stationinfo['@id']}}"
+            data-from="@{{stop.stationinfo['@id']}}"
             data-date="@{{stop.departure.time}}"
-            data-vehicle="@{{stop.vehicle}}"
+            data-vehicle="@{{stop.departure.vehicle}}"
             data-connection="@{{stop.departure.departureConnection}}">
                 <i class="occupancy-icon occupancy-medium-16"></i>
                 {{ Lang::get('client.mediumOccupied') }}
@@ -35,10 +33,9 @@
             <a href="#"
             ng-click="selectOccupancy($event)"
             data-occupancy="low"
-            data-from="@{{stop.departure.stationinfo['@id']}}"
-            data-to="@{{stop.stationinfo['@id']}}"
+            data-from="@{{stop.stationinfo['@id']}}"
             data-date="@{{stop.departure.time}}"
-            data-vehicle="@{{stop.vehicle}}"
+            data-vehicle="@{{stop.departure.vehicle}}"
             data-connection="@{{stop.departure.departureConnection}}">
                 <i class="occupancy-icon occupancy-low-16"></i>
                 {{ Lang::get('client.lowOccupied') }}

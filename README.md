@@ -22,6 +22,9 @@ _Want more features? Please do contribute by adding [feature requests](https://g
 
 * PHP 5.5+ for Laravel project
 * Apache
+* Composer (get it here: http://getcomposer.org)
+* Grunt (get it here: https://gruntjs.com/getting-started)
+* Compass (get it here: http://compass-style.org/install/)
 
 Clone the repository:
 
@@ -32,7 +35,6 @@ git clone https://github.com/iRail/hyperRail.git
 ### Step 1: Install / Update dependencies ###
 In order to install the dependencies you have to run:
 `composer install`
-If you don't have composer, get it here: http://getcomposer.org
 
 When installing this for the first time, also run this:
 

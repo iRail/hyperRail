@@ -1,46 +1,13 @@
 <!DOCTYPE html>
 <html>
 @include('core.apphead')
-    <!-- Google Webfonts -->
-    <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=PT+Sans:400,700'>
-<body class="apps-page">
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{ URL::to('/') }}">
-            <span>
-                <img class="irail-logo" src="{{ URL::asset('images/logo.svg')}}" />
-            </span>
-            <span class="navbar-name">iRail</span></a>
-        </div>
-        <div class="navbar-collapse collapse navbar-right">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a data-toggle="collapse" data-target=".navbar-collapse" href="#about">    About
-                    </a>
-                </li>
-                <li>
-                    <a data-toggle="collapse" data-target=".navbar-collapse" href="#how">
-                        How?
-                    </a>
-                </li>
-                <li>
-                    <a data-toggle="collapse" data-target=".navbar-collapse" href="#download">
-                        Download
-                    </a>
-                </li>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
+<!-- Google Webfonts -->
+<link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=PT+Sans:400,700'>
 
-<div class="container-fluid">
+<body>
+@include('core.navigation')
+
+<div class="container">
     <div class="fix row">
         <div class="col-md-12 col-lg-12 col-xs-11">
             <h2 class="hero text-center">Avoid that busy train.</h2>
@@ -90,35 +57,54 @@
         <!-- /Plan a route -->
         <div class="app-text col-md-8 col-lg-8 col-xs-11">
             <p class="apps-text">
-                Additionally, iRail occupancy rates will be available on <strong>Railer</strong> and <strong>BeTrains</strong> soon. Download
+                Additionally, iRail occupancy rates can be seen <strong>Railer</strong>, <strong>HyperRail</strong> and
+                <strong>BeTrains</strong> soon. Download
                 them now, so you can be the first to use the new feature!
             </p>
         </div>
         <!-- Link to apps -->
         <div class="row">
             <!-- Railer app -->
-            <div class="col-md-5 col-lg-5 col-xs-11 col-md-offset-1 col-lg-offset-1 text-center">
-
-                <img class="app-image" src="{{URL::asset('images/Railer.png') }}" alt="Railer iOS app" />
+            <div class="col-md-4 col-lg-4 col-xs-12 text-center">
+                <a href="https://itunes.apple.com/be/app/railer-voor-nmbs/id591205121" class="app-link ios-app-link">
+                    <img class="app-image" src="{{URL::asset('images/Railer.png') }}" alt="Railer iOS app" />
+                </a>
                 <h3 class="app-name app-name-ios">
                     Railer
                     <small> for iOS</small>
                 </h3>
 
                 <a href="https://itunes.apple.com/be/app/railer-voor-nmbs/id591205121" class="app-link ios-app-link">
-                    <img src="{{ URL::asset('images/get-on-appstore.png')}}" alt="Get on AppStore" width="50%"/>
+                    <img src="{{ URL::asset('images/get-on-appstore.png')}}" alt="Get on AppStore"/>
                 </a>
             </div>
             <!-- /Railer app -->
+            <!-- HyperRail app -->
+            <div class="col-md-4 col-lg-4 col-xs-12 text-center">
+                <a href="https://play.google.com/store/apps/details?id=be.hyperrail.android">
+                    <img class="app-image" src="{{ URL::asset('images/hyperrail.png') }}" alt="HyperRail Android app"/>
+                </a>
+                <h3 class="app-name">
+                    HyperRail
+                    <small> for Android</small>
+                </h3>
+                <a href="https://play.google.com/store/apps/details?id=be.hyperrail.android" class="app-link">
+                    <img src="{{ URL::asset('images/get-on-playstore.png')}}" alt="Get on Playstore"/>
+                </a>
+
+            </div>
+            <!-- /BeTrains app -->
             <!-- BeTrains app -->
-            <div class="col-md-5 col-lg-5 col-xs-11 col-md-offset-1 col-lg-offset-1 text-center">
-                <img class="app-image" src="{{ URL::asset('images/BeTrains.png') }}" alt="BeTrains Android app"/>
+            <div class="col-md-4 col-lg-4 col-xs-12 text-center">
+                <a href="https://play.google.com/store/apps/details?id=tof.cv.mpp">
+                    <img class="app-image" src="{{ URL::asset('images/BeTrains.png') }}" alt="BeTrains Android app"/>
+                </a>
                 <h3 class="app-name">
                     BeTrains
                     <small> for Android</small>
                 </h3>
                 <a href="https://play.google.com/store/apps/details?id=tof.cv.mpp" class="app-link">
-                    <img src="{{ URL::asset('images/get-on-playstore.png')}}" alt="Get on Playstore" width="50%"/>
+                    <img src="{{ URL::asset('images/get-on-playstore.png')}}" alt="Get on Playstore"/>
                 </a>
 
             </div>

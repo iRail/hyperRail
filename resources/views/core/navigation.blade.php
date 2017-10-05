@@ -16,6 +16,9 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{ URL::to('route') }}" ng-click="resetplanner($event)"><i class="fa fa-road fa-12"></i> {{Lang::get('client.planNewRoute')}}</a></li>
                 <li><a href="{{ URL::to('stations/NMBS') }}"><i class="fa fa-search fa-12"></i> {{Lang::get('client.searchStations')}}</a></li>
+                <li><a href="{{ URL::to('spitsgids') }}">Spitsgids</a></li>
+                <li><a href="https://docs.irail.be">{{Lang::get('client.apidocs')}}</a></li>
+                <li><a href="https://hello.irail.be">Blog</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
