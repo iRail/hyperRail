@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-@include('core.apphead')
+@include('core.head')
 <!-- Google Webfonts -->
 <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=PT+Sans:400,700'>
 
