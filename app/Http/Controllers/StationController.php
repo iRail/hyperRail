@@ -289,6 +289,68 @@ class StationController extends Controller
     }
 
     /**
+     * Shows a train or train data, based on the accept-header.
+     *
+     * @return array
+     * @throws EasyRdf_Exception
+     */
+    public function departureConnection($hafas_id, $date, $train_id)
+    {
+        $negotiator = new FormatNegotiator();
+        $acceptHeader = Request::header('accept');
+        $priorities = ['application/json', 'text/html', '*/*'];
+        $result = $negotiator->getBest($acceptHeader, $priorities);
+        $val = $result->getValue();
+        $station_id = '00'.$hafas_id;
+
+        // Convert id to string for interpretation by old API
+        $stationObject = Stations::getStationFromId($station_id);
+
+        // Set up path to old api
+        $URL = 'http://api.irail.be/vehicle/?id='.$train_id.
+            '&date='.date('dmy', strtotime($date)).
+            '&lang=nl&format=json';
+
+        // Get the contents.
+        $guzzleClient = new Client();
+        $guzzleRequest = $guzzleClient->get($URL);
+        $data = $guzzleRequest->getBody();
+        $data = \GuzzleHttp\json_decode($data, true);
+
+        // Read new liveboard object and return the page but load data
+        foreach ($data['stops']['stop'] as $stop) {
+            if (strpos(substr($stop['stationinfo']['@id'], 8), $station_id) !== false) {
+                switch ($val) {
+                    case 'text/html':
+                        return View('stations.departureConnection')
+                            ->with('stop', $stop)
+                            ->with('departureStation', $stationObject)
+                            ->with('direction', end($data['stops']['stop'])['station']);
+
+                    case 'application/json':
+                    case 'application/ld+json':
+                    default:
+                        $context = [
+                            'delay' => 'http://semweb.mmlab.be/ns/rplod/delay',
+                            'platform' => 'http://semweb.mmlab.be/ns/rplod/platform',
+                            'scheduledDepartureTime' => 'http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime',
+                            'headsign' => 'http://vocab.org/transit/terms/headsign',
+                            'routeLabel' => 'http://semweb.mmlab.be/ns/rplod/routeLabel',
+                            'stop' => [
+                                '@id' => 'http://semweb.mmlab.be/ns/rplod/stop',
+                                '@type' => '@id',
+                            ],
+                        ];
+
+                        return ['@context' => $context, '@graph' => $stop];
+                }
+            }
+        }
+
+        App::abort(404);
+    }
+
+    /**
      * Shows a liveboard or liveboard data, based on the accept-header.
      *
      * @param int $id the id of the station.
