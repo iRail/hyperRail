@@ -301,14 +301,14 @@ class StationController extends Controller
         $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = $result->getValue();
-        $station_id = '00' . $hafas_id;
+        $station_id = '00'.$hafas_id;
 
         // Convert id to string for interpretation by old API
         $stationObject = Stations::getStationFromId($station_id);
 
         // Set up path to old api
-        $URL = 'http://api.irail.be/vehicle/?id=' . $train_id .
-            '&date=' . date('dmy', strtotime($date)) .
+        $URL = 'http://api.irail.be/vehicle/?id='.$train_id.
+            '&date='.date('dmy', strtotime($date)).
             '&lang=nl&format=json';
 
         // Get the contents.
@@ -325,7 +325,7 @@ class StationController extends Controller
                         return View('stations.departureConnection')
                             ->with('stop', $stop)
                             ->with('departureStation', $stationObject)
-                            ->with('direction',end($data['stops']['stop'])['station']);
+                            ->with('direction', end($data['stops']['stop'])['station']);
 
                     case 'application/json':
                     case 'application/ld+json':
@@ -345,11 +345,9 @@ class StationController extends Controller
                         return ['@context' => $context, '@graph' => $stop];
                 }
             }
-
         }
 
         App::abort(404);
-
     }
 
     /**
