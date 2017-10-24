@@ -36,7 +36,10 @@ Route::get('/stations/nmbs/{id}/departures/{trainHash}', [
     'as' => 'stations.departures.hash',
     'uses' => 'StationController@specificTrain',
 ]);
-
+Route::get('/connections/{hafasId}/{date}/{trainId}', [
+    'as' => 'ids.departureconnection',
+    'uses' => 'StationController@departureConnection',
+]);
 /*
  * --------------------------------------------------------------------------
  * Classic iRail redirection messages
