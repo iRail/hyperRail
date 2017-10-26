@@ -40,6 +40,11 @@ Route::get('/connections/{hafasId}/{date}/{trainId}', [
     'as' => 'ids.departureconnection',
     'uses' => 'StationController@departureConnection',
 ]);
+
+Route::get('/vehicle/{trainId}', [
+    'as' => 'ids.vehicle',
+    'uses' => 'VehicleController@vehicle',
+]);
 /*
  * --------------------------------------------------------------------------
  * Classic iRail redirection messages
