@@ -63,4 +63,6 @@ return [
     'errorHoliday' => 'Wir können keine Verbindung finden. An Feiertagen ist es möglich, daß an kleineren Haltestellen keine Züge halten.',
     'canceled' => 'annulliert',
     'apidocs' => 'API-Dokumentation',
+    'cause' => 'Ursache',
+    'departureDateInvalid' => 'Diese Abfahrt ist zu weit in der Vergangenheit oder Zukunft.',
 ];

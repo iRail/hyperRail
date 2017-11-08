@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Exception\ClientException;
+use Mockery\Exception;
 use Request;
 use EasyRdf_Graph;
 use EasyRdf_Format;
@@ -311,11 +313,17 @@ class StationController extends Controller
             '&date='.date('dmy', strtotime($date)).
             '&lang=nl&format=json';
 
+        try{
         // Get the contents.
         $guzzleClient = new Client();
         $guzzleRequest = $guzzleClient->get($URL);
         $data = $guzzleRequest->getBody();
         $data = \GuzzleHttp\json_decode($data, true);
+        } catch (ClientException $e){
+            abort(404, 'client.departureDateInvalid');
+        } catch (Exception $e){
+            throw $e;
+        }
 
         // Read new liveboard object and return the page but load data
         foreach ($data['stops']['stop'] as $stop) {

@@ -36,8 +36,7 @@
 
                     @if ($stop['delay'] > 0)
                         <?php $image = min($delay / 5, 9); ?>
-
-                        {{ HTML::image('images/irail_logo_delays-0' . $image .'.svg') }}
+                        <img src="{{ URL::asset('images/irail_logo_delays-0' . $image .'.svg') }}">
                     @else
                         <img src="{{ URL::asset('images/train.svg') }}"/>
                     @endif

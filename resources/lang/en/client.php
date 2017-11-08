@@ -121,4 +121,6 @@ return [
     'canceled' => 'canceled',
     'thanksForUsing' => 'This route was planned on iRail.be. Thank you very much for using our webapp.',
     'apidocs' => 'API documentation',
+    'cause' => 'Cause',
+    'departureDateInvalid' => 'This departure lies too far in the past or future.',
 ];
