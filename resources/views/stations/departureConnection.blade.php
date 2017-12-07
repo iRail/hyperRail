@@ -11,7 +11,7 @@
     <meta name="twitter:domain" content="https://iRail.be">
     <meta name="twitter:description"
           content="Train to {{$direction}} departing at {{$departureStation->name}} leaves today at platform {{$stop['platform']}} at {{date('H:i', strtotime($stop['scheduledDepartureTime']))}}<?php if ($stop['delay'] > 0) {
-              echo "with a delay of " . ($stop['delay'] / 60) . ' minutes';
+              echo " with a delay of " . ($stop['delay'] / 60) . ' minutes';
           }?>.">
     <meta name="twitter:image" content="{{ URL::asset('images/train.jpg') }}">
     <meta property="og:title" content="iRail.be"/>
