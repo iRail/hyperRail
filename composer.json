@@ -20,7 +20,9 @@
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1",
-        "laravel/homestead": "^2.1"
+        "laravel/homestead": "^2.1",
+        "phpro/grumphp": "^0.12",
+        "squizlabs/php_codesniffer": "^3.2"
     },
     "autoload": {
         "classmap": [

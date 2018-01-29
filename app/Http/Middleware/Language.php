@@ -33,10 +33,11 @@ class Language
         $browserLanguage = $this->matchAcceptLanguage($request->server('HTTP_ACCEPT_LANGUAGE'), ['nl', 'fr', 'en']);
 
         if (! empty(Input::get('lang'))) {
-            // if a language is set in the browser, we need to update the language. User may have requested a switch.
+            // If a language is set in the browser, we need to update the language. User may have requested a switch.
             $language = Input::get('lang');
         } elseif (empty(Session::get('lang')) && ! empty($browserLanguage)) {
-            // if the user didn't set a language in the cookie, and a browser language is available, use browser language.
+            // If the user didn't set a language in the cookie, and a browser language is available,
+            // use browser language.
             $language = $browserLanguage;
         } else {
             $language = Session::get('lang');
@@ -72,8 +73,10 @@ class Language
      * Search a HTTP accept-header for a supported language. Take order (weight, q=) into account. Skip unsupported
      * languages.
      *
-     * This method has a big avantage over locale_lookup, as locale_lookup will only look at the first language in accept-language.
-     * This method will skip unsupported languages and keep searching for a supported, meaning that if only NL and EN are supported,
+     * This method has a big advantage over locale_lookup,
+     * as locale_lookup will only look at the first language in accept-language.
+     * This method will skip unsupported languages and keep searching for a supported,
+     * meaning that if only NL and EN are supported,
      * da, nl;q=0.5, en;q=0.2 will result in nl being chosen. (vs null return from locale_lookup)
      *
      * @param string $header the HTTP accept-language header to search

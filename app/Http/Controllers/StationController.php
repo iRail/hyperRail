@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Exception\ClientException;
-use Mockery\Exception;
 use Request;
 use EasyRdf_Graph;
 use EasyRdf_Format;
 use ML\JsonLD\JsonLD;
 use GuzzleHttp\Client;
+use Mockery\Exception;
 use irail\stations\Stations;
 use Negotiation\FormatNegotiator;
 use App\hyperRail\FormatConvertor;
@@ -16,6 +15,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
+use GuzzleHttp\Exception\ClientException;
 
 class StationController extends Controller
 {
@@ -313,15 +313,15 @@ class StationController extends Controller
             '&date='.date('dmy', strtotime($date)).
             '&lang=nl&format=json';
 
-        try{
-        // Get the contents.
-        $guzzleClient = new Client();
-        $guzzleRequest = $guzzleClient->get($URL);
-        $data = $guzzleRequest->getBody();
-        $data = \GuzzleHttp\json_decode($data, true);
-        } catch (ClientException $e){
+        try {
+            // Get the contents.
+            $guzzleClient = new Client();
+            $guzzleRequest = $guzzleClient->get($URL);
+            $data = $guzzleRequest->getBody();
+            $data = \GuzzleHttp\json_decode($data, true);
+        } catch (ClientException $e) {
             abort(404, 'client.departureDateInvalid');
-        } catch (Exception $e){
+        } catch (Exception $e) {
             throw $e;
         }
 
