@@ -2,18 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Request;
-use EasyRdf_Graph;
-use EasyRdf_Format;
-use ML\JsonLD\JsonLD;
 use GuzzleHttp\Client;
-use irail\stations\Stations;
 use Negotiation\FormatNegotiator;
-use App\hyperRail\FormatConvertor;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Response;
 
 class VehicleController extends Controller
 {
@@ -37,7 +28,7 @@ class VehicleController extends Controller
         $val = $result->getValue();
 
         // Set up path to old api
-        $URL = 'http://api.irail.be/vehicle/?id=' . $train_id .
+        $URL = 'http://api.irail.be/vehicle/?id='.$train_id.
             '&lang=nl&format=json';
 
         // Get the contents.
@@ -45,8 +36,6 @@ class VehicleController extends Controller
         $guzzleRequest = $guzzleClient->get($URL);
         $data = $guzzleRequest->getBody();
         $data = \GuzzleHttp\json_decode($data, true);
-
-        // Read new liveboard object and return the page but load data
 
         switch ($val) {
             case 'text/html':
@@ -72,8 +61,6 @@ class VehicleController extends Controller
                 return ['@context' => $context, '@graph' => $data['stops']['stop']];
         }
 
-
         App::abort(404);
     }
-
 }
