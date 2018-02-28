@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Request;
 use Negotiation\FormatNegotiator;
 use Illuminate\Support\Facades\App;
 
@@ -19,8 +20,14 @@ class VehicleController extends Controller
      * @return array
      * @throws EasyRdf_Exception
      */
-    public function vehicle($train_id)
+    public function vehicle($train_id, $date = null)
     {
+        if (starts_with($train_id, "http")) {
+            $train_id = 'BE.NMBS.' . base_path($train_id);
+        } elseif (!starts_with($train_id, "BE.NMBS.")) {
+            $train_id = 'BE.NMBS.' . $train_id;
+        }
+
         $negotiator = new FormatNegotiator();
         $acceptHeader = Request::header('accept');
         $priorities = ['application/json', 'text/html', '*/*'];
@@ -28,7 +35,7 @@ class VehicleController extends Controller
         $val = $result->getValue();
 
         // Set up path to old api
-        $URL = 'http://api.irail.be/vehicle/?id='.$train_id.
+        $URL = 'http://api.irail.be/vehicle/?id=' . $train_id .
             '&lang=nl&format=json';
 
         // Get the contents.
@@ -40,20 +47,20 @@ class VehicleController extends Controller
         switch ($val) {
             case 'text/html':
                 return View('vehicle.index')
-                    ->with('train_id', $train_id)
+                    ->with('train_id', substr($data['vehicle'],8))
                     ->with('stops', $data['stops']['stop']);
 
             case 'application/json':
             case 'application/ld+json':
             default:
                 $context = [
-                    'delay' => 'http://semweb.mmlab.be/ns/rplod/delay',
-                    'platform' => 'http://semweb.mmlab.be/ns/rplod/platform',
+                    'delay'                  => 'http://semweb.mmlab.be/ns/rplod/delay',
+                    'platform'               => 'http://semweb.mmlab.be/ns/rplod/platform',
                     'scheduledDepartureTime' => 'http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime',
-                    'headsign' => 'http://vocab.org/transit/terms/headsign',
-                    'routeLabel' => 'http://semweb.mmlab.be/ns/rplod/routeLabel',
-                    'stop' => [
-                        '@id' => 'http://semweb.mmlab.be/ns/rplod/stop',
+                    'headsign'               => 'http://vocab.org/transit/terms/headsign',
+                    'routeLabel'             => 'http://semweb.mmlab.be/ns/rplod/routeLabel',
+                    'stop'                   => [
+                        '@id'   => 'http://semweb.mmlab.be/ns/rplod/stop',
                         '@type' => '@id',
                     ],
                 ];

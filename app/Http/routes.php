@@ -45,6 +45,12 @@ Route::get('/vehicle/{trainId}', [
     'as' => 'ids.vehicle',
     'uses' => 'VehicleController@vehicle',
 ]);
+
+Route::get('/vehicle/{trainId}/{date}', [
+    'as' => 'ids.vehicleWithDate',
+    'uses' => 'VehicleController@vehicle',
+]);
+
 /*
  * --------------------------------------------------------------------------
  * Classic iRail redirection messages
