@@ -35,11 +35,12 @@
                     <?php $delay = $stop['delay'] / 60; ?>
 
                     @if ($stop['delay'] > 0)
-                        <?php $image = min($delay / 5, 9); ?>
-                        <img src="{{ URL::asset('images/irail_logo_delays-0' . $image .'.svg') }}">
+                        <?php $image = 'images/irail_logo_delays-0' . round(min($delay / 5, 9)) .'.svg'; ?>
                     @else
-                        <img src="{{ URL::asset('images/train.svg') }}"/>
+                        <?php $image = 'images/train.svg'; ?>
                     @endif
+
+                    <img src="{{ URL::asset($image) }}">
                 </div>
                 <div class="col-sm-6">
                     <br/>
@@ -47,10 +48,10 @@
                     <p class="label label-primary label-lg">{{date('H:i', $stop['scheduledDepartureTime'])}}</p>
                     <?php
                     if ($stop['delay'] > 0) {
-                        echo "<p class='label label-warning label-lg'>+" . ($stop['delay'] / 60) . "' " . Lang::get('client.delay') . '</p>';
+                        echo "<p class='label label-warning label-lg'>+" . $delay . "' " . Lang::get('client.delay') . '</p>';
                     }
                     if (is_array($stop['delay']) && sizeof($stop['delay']) > 1) {
-                        echo "<p class='label label-warning label-lg'>" . "cancelled" . " </p>";
+                        echo "<p class='label label-warning label-lg'>cancelled</p>";
                     }
                     ?>
                     <br/>
