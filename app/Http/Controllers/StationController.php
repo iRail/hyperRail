@@ -65,7 +65,8 @@ class StationController extends Controller
             default:
                 return Response::make(json_encode($this->getStations(Input::get('q'))), 200)
                     ->header('Content-Type', 'application/ld+json')
-                    ->header('Vary', 'accept');
+                    ->header('Vary', 'accept')
+                    ->header('access-control-allow-origin', '*');
                 break;
         }
     }
@@ -425,13 +426,15 @@ class StationController extends Controller
 
                         return Response::make($jsonLD, 200)
                             ->header('Content-Type', 'application/ld+json')
-                            ->header('Vary', 'accept');
+                            ->header('Vary', 'accept')
+                            ->header('access-control-allow-origin', '*');
                     } catch (Exception $ex) {
                         $error = (string) json_encode(['error' => 'An error occured while parsing the data']);
 
                         return Response::make($error, 500)
                             ->header('Content-Type', 'application/json')
-                            ->header('Vary', 'accept');
+                            ->header('Vary', 'accept')
+                            ->header('access-control-allow-origin', '*');
                     }
                 } catch (\App\Exceptions\StationConversionFailureException $ex) {
                     $error = (string) json_encode(['error' => 'This station does not exist!']);
