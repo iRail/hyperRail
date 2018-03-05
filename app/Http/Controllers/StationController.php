@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Exception\ClientException;
-use Mockery\Exception;
 use Request;
 use EasyRdf_Graph;
 use EasyRdf_Format;
 use ML\JsonLD\JsonLD;
 use GuzzleHttp\Client;
+use Mockery\Exception;
 use irail\stations\Stations;
 use Negotiation\FormatNegotiator;
 use App\hyperRail\FormatConvertor;
@@ -16,6 +15,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
+use GuzzleHttp\Exception\ClientException;
 
 class StationController extends Controller
 {
@@ -65,7 +65,8 @@ class StationController extends Controller
             default:
                 return Response::make(json_encode($this->getStations(Input::get('q'))), 200)
                     ->header('Content-Type', 'application/ld+json')
-                    ->header('Vary', 'accept');
+                    ->header('Vary', 'accept')
+                    ->header('access-control-allow-origin', '*');
                 break;
         }
     }
@@ -313,15 +314,15 @@ class StationController extends Controller
             '&date='.date('dmy', strtotime($date)).
             '&lang=nl&format=json';
 
-        try{
-        // Get the contents.
-        $guzzleClient = new Client();
-        $guzzleRequest = $guzzleClient->get($URL);
-        $data = $guzzleRequest->getBody();
-        $data = \GuzzleHttp\json_decode($data, true);
-        } catch (ClientException $e){
+        try {
+            // Get the contents.
+            $guzzleClient = new Client();
+            $guzzleRequest = $guzzleClient->get($URL);
+            $data = $guzzleRequest->getBody();
+            $data = \GuzzleHttp\json_decode($data, true);
+        } catch (ClientException $e) {
             abort(404, 'client.departureDateInvalid');
-        } catch (Exception $e){
+        } catch (Exception $e) {
             throw $e;
         }
 
@@ -425,13 +426,15 @@ class StationController extends Controller
 
                         return Response::make($jsonLD, 200)
                             ->header('Content-Type', 'application/ld+json')
-                            ->header('Vary', 'accept');
+                            ->header('Vary', 'accept')
+                            ->header('access-control-allow-origin', '*');
                     } catch (Exception $ex) {
                         $error = (string) json_encode(['error' => 'An error occured while parsing the data']);
 
                         return Response::make($error, 500)
                             ->header('Content-Type', 'application/json')
-                            ->header('Vary', 'accept');
+                            ->header('Vary', 'accept')
+                            ->header('access-control-allow-origin', '*');
                     }
                 } catch (\App\Exceptions\StationConversionFailureException $ex) {
                     $error = (string) json_encode(['error' => 'This station does not exist!']);
