@@ -1,5 +1,9 @@
 <?php
 
+namespace Tests\Feature\Middleware;
+
+use Tests\TestCase;
+
 class LanguageMiddlewareTest extends TestCase
 {
     public function testDefaultLanguage()

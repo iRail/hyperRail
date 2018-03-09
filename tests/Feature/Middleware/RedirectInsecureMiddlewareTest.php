@@ -1,5 +1,9 @@
 <?php
 
+namespace Tests\Feature\Middleware;
+
+use Tests\TestCase;
+
 class RedirectInsecureMiddlewareTest extends TestCase
 {
     protected function refreshApplication()
