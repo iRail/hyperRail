@@ -1,5 +1,9 @@
 <?php
 
+namespace Tests\Feature\Middleware;
+
+use Tests\TestCase;
+
 class LanguageMiddlewareTest extends TestCase
 {
     public function testDefaultLanguage()
@@ -62,7 +66,7 @@ class LanguageMiddlewareTest extends TestCase
             $params['lang'] = $lang;
         }
 
-        $response = $this->action('GET', 'RouteController@index', [], $params);
+        $response = $this->json('GET', '/route', ['lang' => $lang]);
 
         $this->assertEquals($expected, $this->getApplicationLanguage());
     }

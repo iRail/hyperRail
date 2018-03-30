@@ -1,12 +1,11 @@
 <?php
 
+namespace Tests\Feature\Middleware;
+
+use Tests\TestCase;
+
 class RedirectInsecureMiddlewareTest extends TestCase
 {
-    protected function refreshApplication()
-    {
-        // Overwrite method. Env will be set with setEnvironment
-    }
-
     public function testProductionEnvRedirectToSecure()
     {
         $this->setEnvironment('production');
