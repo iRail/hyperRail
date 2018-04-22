@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Request;
-use App\Http\Requests;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
+use Request;
 
 class RouteController extends Controller
 {
@@ -37,9 +36,12 @@ class RouteController extends Controller
             case 'text/html':
                 // In case we want to return html, just let
                 // Laravel render the view and send the headers
+                // This is a static page, where data is retrieved using javascript. Cache the static part for a long time.
                 return Response::view('route.planner')
                     ->header('Content-Type', 'text/html')
-                    ->header('Vary', 'accept');
+                    ->header('Vary', 'accept')
+                    ->header('Expires', (new Carbon())->addHours(24)->toAtomString())
+                    ->header('Cache-Control', 'max-age=86400, s-maxage=43200');
                 break;
             case 'application/json':
             default:
@@ -67,19 +69,19 @@ class RouteController extends Controller
             // Optional time
             $time = Input::get('time');
             // If time is not set, default to now
-            if (! Input::get('time')) {
+            if (!Input::get('time')) {
                 $time = date('Hi', time());
             }
             // Optional date
             $date = Input::get('date');
             // If date is not set, default to today
-            if (! Input::get('date')) {
+            if (!Input::get('date')) {
                 $date = date('dmy', time());
             }
             // Time selector: does the user want to arrive or depart at this hour?
             // Optional. Default to 'depart at hour' if null.
             $timeSel = Input::get('timeSel');
-            if (! Input::get('timeSel')) {
+            if (!Input::get('timeSel')) {
                 $timeSel = 'depart';
             }
             // Get the app's current language/locale
@@ -88,8 +90,8 @@ class RouteController extends Controller
             $toId = str_replace('http://irail.be/stations/NMBS/', '', $to);
             try {
                 $json = file_get_contents('http://api.irail.be/connections.php?to='
-                    .$toId.'&from='.$fromId.'&date='.$date.'&time='.
-                    $time.'&timeSel='.$timeSel.'&lang='.$lang.'&format=json');
+                    . $toId . '&from=' . $fromId . '&date=' . $date . '&time=' .
+                    $time . '&timeSel=' . $timeSel . '&lang=' . $lang . '&format=json');
 
                 return trim($json);
             } catch (ErrorException $ex) {
