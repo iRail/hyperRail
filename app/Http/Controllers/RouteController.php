@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Request;
-use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Response;
@@ -37,9 +36,12 @@ class RouteController extends Controller
             case 'text/html':
                 // In case we want to return html, just let
                 // Laravel render the view and send the headers
+                // This is a static page, where data is retrieved using javascript. Cache the static part for a long time.
                 return Response::view('route.planner')
                     ->header('Content-Type', 'text/html')
-                    ->header('Vary', 'accept');
+                    ->header('Vary', 'accept')
+                    ->header('Expires', (new Carbon())->addHours(24)->toAtomString())
+                    ->header('Cache-Control', 'max-age=86400, s-maxage=43200');
                 break;
             case 'application/json':
             default:
@@ -47,7 +49,9 @@ class RouteController extends Controller
                 // our JSON by calling our static function 'getJSON()'
                 return Response::make($this::getJSON())
                     ->header('Content-Type', 'application/json')
-                    ->header('Vary', 'accept');
+                    ->header('Vary', 'accept')
+                    ->header('Expires', (new Carbon())->addSeconds(30)->toAtomString())
+                    ->header('Cache-Control', 'max-age=30');
                 break;
         }
     }
