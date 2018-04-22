@@ -395,8 +395,8 @@ class StationController extends Controller
                     return Response::view('stations.liveboard', $data)
                         ->header('Content-Type', 'text/html')
                         ->header('Vary', 'accept')
-                        ->header('Expires', (new Carbon())->addSeconds(30)->toAtomString())
-                        ->header('Cache-Control', 'max-age=30, must-revalidate');
+                        ->header('Expires', (new Carbon())->addHours(24)->toAtomString())
+                        ->header('Cache-Control', 'max-age=86400, s-maxage=43200');
                     break;
                 } catch (\App\Exceptions\StationConversionFailureException $ex) {
                     App::abort(404);
