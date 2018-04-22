@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Response;
 use Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Response;
 
 class RouteController extends Controller
 {
@@ -49,7 +49,9 @@ class RouteController extends Controller
                 // our JSON by calling our static function 'getJSON()'
                 return Response::make($this::getJSON())
                     ->header('Content-Type', 'application/json')
-                    ->header('Vary', 'accept');
+                    ->header('Vary', 'accept')
+                    ->header('Expires', (new Carbon())->addSeconds(30)->toAtomString())
+                    ->header('Cache-Control', 'max-age=30');
                 break;
         }
     }
@@ -69,19 +71,19 @@ class RouteController extends Controller
             // Optional time
             $time = Input::get('time');
             // If time is not set, default to now
-            if (!Input::get('time')) {
+            if (! Input::get('time')) {
                 $time = date('Hi', time());
             }
             // Optional date
             $date = Input::get('date');
             // If date is not set, default to today
-            if (!Input::get('date')) {
+            if (! Input::get('date')) {
                 $date = date('dmy', time());
             }
             // Time selector: does the user want to arrive or depart at this hour?
             // Optional. Default to 'depart at hour' if null.
             $timeSel = Input::get('timeSel');
-            if (!Input::get('timeSel')) {
+            if (! Input::get('timeSel')) {
                 $timeSel = 'depart';
             }
             // Get the app's current language/locale
@@ -90,8 +92,8 @@ class RouteController extends Controller
             $toId = str_replace('http://irail.be/stations/NMBS/', '', $to);
             try {
                 $json = file_get_contents('http://api.irail.be/connections.php?to='
-                    . $toId . '&from=' . $fromId . '&date=' . $date . '&time=' .
-                    $time . '&timeSel=' . $timeSel . '&lang=' . $lang . '&format=json');
+                    .$toId.'&from='.$fromId.'&date='.$date.'&time='.
+                    $time.'&timeSel='.$timeSel.'&lang='.$lang.'&format=json');
 
                 return trim($json);
             } catch (ErrorException $ex) {
