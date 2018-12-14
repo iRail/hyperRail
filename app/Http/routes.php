@@ -51,6 +51,8 @@ Route::get('/vehicle/{trainId}/{date}', [
     'uses' => 'VehicleController@vehicle',
 ]);
 
+Route::get('/bluebike/', 'BluebikeController@index');
+
 /*
  * --------------------------------------------------------------------------
  * Classic iRail redirection messages
