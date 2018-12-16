@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Response;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Storage;
+
 
 class BluebikeController extends Controller
 {
@@ -30,6 +32,6 @@ class BluebikeController extends Controller
 
     public static function getJSON()
     {
-        return [ 'some' => 'bikes '];
+        return Storage::disk('local')->get('bluebike.geojson');
     }
 }
