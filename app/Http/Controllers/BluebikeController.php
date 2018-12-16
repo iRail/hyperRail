@@ -2,14 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use Storage;
-
+use Illuminate\Support\Facades\Response;
 
 class BluebikeController extends Controller
 {
