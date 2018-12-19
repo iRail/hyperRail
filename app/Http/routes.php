@@ -36,6 +36,9 @@ Route::get('/stations/nmbs/{id}/departures/{trainHash}', [
     'as' => 'stations.departures.hash',
     'uses' => 'StationController@specificTrain',
 ]);
+
+Route::get('/stations/bluebike', 'BluebikeController@index');
+
 Route::get('/connections/{hafasId}/{date}/{trainId}', [
     'as' => 'ids.departureconnection',
     'uses' => 'StationController@departureConnection',
@@ -50,8 +53,6 @@ Route::get('/vehicle/{trainId}/{date}', [
     'as' => 'ids.vehicleWithDate',
     'uses' => 'VehicleController@vehicle',
 ]);
-
-Route::get('/bluebike/', 'BluebikeController@index');
 
 /*
  * --------------------------------------------------------------------------
