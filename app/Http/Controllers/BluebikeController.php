@@ -20,7 +20,7 @@ class BluebikeController extends Controller
     public function index()
     {
         return Response::make($this::getJSON())
-            ->header('Content-Type', 'application/json')
+            ->header('Content-Type', 'application/ld+json')
             ->header('Cache-Control', 'max-age=600');
     }
 
