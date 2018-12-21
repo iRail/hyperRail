@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Storage;
-use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Redirect;
 
 class BluebikeController extends Controller
 {
@@ -19,9 +19,7 @@ class BluebikeController extends Controller
      */
     public function index()
     {
-        return Response::make($this::getJSON())
-            ->header('Content-Type', 'application/ld+json')
-            ->header('Cache-Control', 'max-age=600');
+        return Redirect::to('https://datapiloten.be/bluebike/availabilities.geojson', 302);
     }
 
     public static function getJSON()
