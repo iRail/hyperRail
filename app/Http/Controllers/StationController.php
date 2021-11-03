@@ -13,7 +13,7 @@ use irail\stations\Stations;
 use Negotiation\FormatNegotiator;
 use App\hyperRail\FormatConvertor;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Input;
+use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 use GuzzleHttp\Exception\ClientException;

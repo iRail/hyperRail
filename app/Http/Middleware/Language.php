@@ -2,12 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use Locale;
 use Closure;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
+use Locale;
 
 class Language
 {
@@ -32,10 +30,10 @@ class Language
     {
         $browserLanguage = $this->matchAcceptLanguage($request->server('HTTP_ACCEPT_LANGUAGE'), ['nl', 'fr', 'en']);
 
-        if (! empty(Input::get('lang'))) {
+        if (!empty($request->input('lang'))) {
             // if a language is set in the browser, we need to update the language. User may have requested a switch.
-            $language = Input::get('lang');
-        } elseif (empty(Session::get('lang')) && ! empty($browserLanguage)) {
+            $language = $request->input('lang');
+        } else if (empty(Session::get('lang')) && !empty($browserLanguage)) {
             // if the user didn't set a language in the cookie, and a browser language is available, use browser language.
             $language = $browserLanguage;
         } else {

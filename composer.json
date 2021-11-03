@@ -12,7 +12,8 @@
         "ml/json-ld": "1.*",
         "irail/stations": "^1.6",
         "guzzlehttp/guzzle": "^7.2",
-        "willdurand/negotiation": "^1.5.0"
+        "willdurand/negotiation": "^1.5.0",
+        "ext-intl": "*"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

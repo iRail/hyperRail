@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use Request;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
 
 class RouteController extends Controller
@@ -16,9 +15,10 @@ class RouteController extends Controller
     }
 
     /**
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // Use content negotiation to determine the correct format to return
         $negotiator = new \Negotiation\FormatNegotiator();
@@ -48,7 +48,7 @@ class RouteController extends Controller
             default:
                 // In case we want to return JSON(LD) or something else, generate
                 // our JSON by calling our static function 'getJSON()'
-                return Response::make($this::getJSON())
+                return Response::make($this::getJSON($request))
                     ->header('Content-Type', 'application/json')
                     ->header('Vary', 'accept')
                     ->header('Expires', (new Carbon())->addSeconds(30)->toAtomString())
@@ -61,30 +61,30 @@ class RouteController extends Controller
      * Generate JSON based on data we get back from the iRail scraper.
      * @return array|string
      */
-    public static function getJSON()
+    public static function getJSON($request)
     {
-        if (Input::get('from') && Input::get('to')) {
+        if ($request->input('from') && $request->input('to')) {
             // Most of our parsing will be done by checking various parameters,
             // most of them GET parameters.
             // Required parameters (from and to; destination and departure)
-            $from = urldecode(Input::get('from'));
-            $to = urldecode(Input::get('to'));
+            $from = urldecode($request->input('from'));
+            $to = urldecode($request->input('to'));
             // Optional time
-            $time = Input::get('time');
+            $time = $request->input('time');
             // If time is not set, default to now
-            if (! Input::get('time')) {
+            if (!$request->input('time')) {
                 $time = date('Hi', time());
             }
             // Optional date
-            $date = Input::get('date');
+            $date = $request->input('date');
             // If date is not set, default to today
-            if (! Input::get('date')) {
+            if (!$request->input('date')) {
                 $date = date('dmy', time());
             }
             // Time selector: does the user want to arrive or depart at this hour?
             // Optional. Default to 'depart at hour' if null.
-            $timeSel = Input::get('timeSel');
-            if (! Input::get('timeSel')) {
+            $timeSel = $request->input('timeSel');
+            if (!$request->input('timeSel')) {
                 $timeSel = 'depart';
             }
             // Get the app's current language/locale
@@ -93,8 +93,8 @@ class RouteController extends Controller
             $toId = str_replace('http://irail.be/stations/NMBS/', '', $to);
             try {
                 $json = file_get_contents('http://api.irail.be/connections.php?to='
-                    .$toId.'&from='.$fromId.'&date='.$date.'&time='.
-                    $time.'&timeSel='.$timeSel.'&lang='.$lang.'&format=json');
+                    . $toId . '&from=' . $fromId . '&date=' . $date . '&time=' .
+                    $time . '&timeSel=' . $timeSel . '&lang=' . $lang . '&format=json');
 
                 return trim($json);
             } catch (ErrorException $ex) {
@@ -106,22 +106,5 @@ class RouteController extends Controller
             // TODO: Show the HYDRA JSON-LD for doing a request to the right URI
             return 'Required parameters are missing.';
         }
-    }
-
-    /**
-     * Do a cURL request to given URL.
-     * @author Serkan Yildiz
-     * @param $url
-     * @return string $output
-     */
-    private static function getApiResponse($url)
-    {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $output = curl_exec($ch);
-        curl_close($ch);
-
-        return $output;
     }
 }
