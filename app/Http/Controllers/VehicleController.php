@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use GuzzleHttp\Client;
 use Negotiation\FormatNegotiator;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class VehicleController extends Controller
 {
@@ -29,7 +29,7 @@ class VehicleController extends Controller
         }
 
         $negotiator = new FormatNegotiator();
-        $acceptHeader = Request::header('accept');
+        $acceptHeader = \Illuminate\Support\Facades\Request::header('accept');
         $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = $result->getValue();

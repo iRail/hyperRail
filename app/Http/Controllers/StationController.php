@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Request;
 use Carbon\Carbon;
 use EasyRdf_Graph;
 use EasyRdf_Format;
+use Illuminate\Http\Request;
 use ML\JsonLD\JsonLD;
 use GuzzleHttp\Client;
 use Mockery\Exception;
@@ -13,7 +13,6 @@ use irail\stations\Stations;
 use Negotiation\FormatNegotiator;
 use App\hyperRail\FormatConvertor;
 use Illuminate\Support\Facades\App;
-use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 use GuzzleHttp\Exception\ClientException;
@@ -43,13 +42,14 @@ class StationController extends Controller
     }
 
     /**
+     * @param Request $request
      * @return \Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
         // Let the FormatNegotiator find out what to do with the request.
         $negotiator = new FormatNegotiator();
-        $acceptHeader = Request::header('accept');
+        $acceptHeader = \Illuminate\Support\Facades\Request::header('accept');
         $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = 'text/html';
@@ -66,7 +66,7 @@ class StationController extends Controller
             case 'application/json':
             case 'application/ld+json':
             default:
-                return Response::make(json_encode($this->getStations(Input::get('q'))), 200)
+                return Response::make(json_encode($this->getStations($request->input('q'))), 200)
                     ->header('Content-Type', 'application/ld+json')
                     ->header('Vary', 'accept')
                     ->header('access-control-allow-origin', '*')
@@ -96,10 +96,10 @@ class StationController extends Controller
      *
      * @throws EasyRdf_Exception
      */
-    public function specificTrain($station_id, $liveboard_id)
+    public function specificTrain(Request $request, $station_id, $liveboard_id)
     {
         $negotiator = new FormatNegotiator();
-        $acceptHeader = Request::header('accept');
+        $acceptHeader = \Illuminate\Support\Facades\Request::header('accept');
         $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = $result->getValue();
@@ -302,10 +302,10 @@ class StationController extends Controller
      * @return array
      * @throws EasyRdf_Exception
      */
-    public function departureConnection($hafas_id, $date, $train_id)
+    public function departureConnection(Request $request,$hafas_id, $date, $train_id)
     {
         $negotiator = new FormatNegotiator();
-        $acceptHeader = Request::header('accept');
+        $acceptHeader = \Illuminate\Support\Facades\Request::header('accept');
         $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = $result->getValue();
@@ -371,11 +371,11 @@ class StationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function liveboard($id)
+    public function liveboard(Request $request, $id)
     {
         $guzzleClient = new Client();
         $negotiator = new FormatNegotiator();
-        $acceptHeader = Request::header('accept');
+        $acceptHeader = \Illuminate\Support\Facades\Request::header('accept');
         $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = 'text/html';
@@ -412,7 +412,7 @@ class StationController extends Controller
                         throw new \App\Exceptions\StationConversionFailureException();
                     }
                     //Check for optional time parameters
-                    $datetime = Input::get('datetime');
+                    $datetime = $request->input('datetime');
 
                     if (isset($datetime) && strtotime($datetime)) {
                         $datetime = strtotime($datetime);

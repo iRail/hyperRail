@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
 class RouteController extends Controller
@@ -22,7 +22,7 @@ class RouteController extends Controller
     {
         // Use content negotiation to determine the correct format to return
         $negotiator = new \Negotiation\FormatNegotiator();
-        $acceptHeader = Request::header('accept');
+        $acceptHeader = \Illuminate\Support\Facades\Request::header('accept');
         // Set priorities to json (if the app requests json provide it in favor of html)
         $priorities = ['application/json', 'text/html', '*/*'];
         // Get the best appropriate content type
