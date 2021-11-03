@@ -9,6 +9,10 @@
  * It's a breeze. Simply tell Laravel the URIs it should respond to
  * and give it the controller to call when that URI is requested.
  */
+
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', 'Welcome@index');
 Route::get('/route', 'RouteController@index');
 Route::get('/language', 'LanguageController@index');
