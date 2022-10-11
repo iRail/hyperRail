@@ -6,13 +6,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://www.github.com/iRail/hyperRail/issues"
+    "url": "https://github.com/iRail/hyperRail.git"
   },
   "dependencies": {
-    "bower": "*",
-    "grunt": "*",
-    "grunt-cli": "*",
-    "glob": "*"
+    "bower": "^1.8",
+    "grunt": "^1.0",
+    "grunt-cli": "^1.2",
+    "glob": "^7.0"
   },
   "devDependencies": {
     "compass": "^0.1.1",
