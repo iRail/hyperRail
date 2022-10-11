@@ -9,6 +9,10 @@
  * It's a breeze. Simply tell Laravel the URIs it should respond to
  * and give it the controller to call when that URI is requested.
  */
+
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', 'Welcome@index');
 Route::get('/route', 'RouteController@index');
 Route::get('/language', 'LanguageController@index');
@@ -36,6 +40,10 @@ Route::get('/stations/nmbs/{id}/departures/{trainHash}', [
     'as' => 'stations.departures.hash',
     'uses' => 'StationController@specificTrain',
 ]);
+
+Route::get('/stations/bluebike', 'BluebikeController@index');
+Route::get('/stations/bluebike/{any}', 'BluebikeController@index');
+
 Route::get('/connections/{hafasId}/{date}/{trainId}', [
     'as' => 'ids.departureconnection',
     'uses' => 'StationController@departureConnection',

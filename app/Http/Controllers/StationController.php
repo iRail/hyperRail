@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Request;
+use Carbon\Carbon;
 use EasyRdf_Graph;
 use EasyRdf_Format;
+use Illuminate\Http\Request;
 use ML\JsonLD\JsonLD;
 use GuzzleHttp\Client;
 use Mockery\Exception;
@@ -12,7 +13,6 @@ use irail\stations\Stations;
 use Negotiation\FormatNegotiator;
 use App\hyperRail\FormatConvertor;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 use GuzzleHttp\Exception\ClientException;
@@ -42,13 +42,14 @@ class StationController extends Controller
     }
 
     /**
+     * @param Request $request
      * @return \Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
         // Let the FormatNegotiator find out what to do with the request.
         $negotiator = new FormatNegotiator();
-        $acceptHeader = Request::header('accept');
+        $acceptHeader = \Illuminate\Support\Facades\Request::header('accept');
         $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = 'text/html';
@@ -58,15 +59,19 @@ class StationController extends Controller
         // Evaluate the preferred content type.
         switch ($val) {
             case 'text/html':
-                return View('stations.search');
+                return Response::view('stations.search')
+                    ->header('Expires', (new Carbon())->addHours(24)->toAtomString())
+                    ->header('Cache-Control', 'max-age=86400, s-maxage=43200');
                 break;
             case 'application/json':
             case 'application/ld+json':
             default:
-                return Response::make(json_encode($this->getStations(Input::get('q'))), 200)
+                return Response::make(json_encode($this->getStations($request->input('q'))), 200)
                     ->header('Content-Type', 'application/ld+json')
                     ->header('Vary', 'accept')
-                    ->header('access-control-allow-origin', '*');
+                    ->header('access-control-allow-origin', '*')
+                    ->header('Expires', (new Carbon())->addHours(24)->toAtomString())
+                    ->header('Cache-Control', 'max-age=86400, s-maxage=43200');
                 break;
         }
     }
@@ -91,10 +96,10 @@ class StationController extends Controller
      *
      * @throws EasyRdf_Exception
      */
-    public function specificTrain($station_id, $liveboard_id)
+    public function specificTrain(Request $request, $station_id, $liveboard_id)
     {
         $negotiator = new FormatNegotiator();
-        $acceptHeader = Request::header('accept');
+        $acceptHeader = \Illuminate\Support\Facades\Request::header('accept');
         $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = $result->getValue();
@@ -170,17 +175,17 @@ class StationController extends Controller
 
                     // First, define the context
                     $context = [
-                        'delay' => 'http://semweb.mmlab.be/ns/rplod/delay',
-                        'platform' => 'http://semweb.mmlab.be/ns/rplod/platform',
+                        'delay'                  => 'http://semweb.mmlab.be/ns/rplod/delay',
+                        'platform'               => 'http://semweb.mmlab.be/ns/rplod/platform',
                         'scheduledDepartureTime' => 'http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime',
-                        'headsign' => 'http://vocab.org/transit/terms/headsign',
-                        'routeLabel' => 'http://semweb.mmlab.be/ns/rplod/routeLabel',
-                        'stop' => [
-                            '@id' => 'http://semweb.mmlab.be/ns/rplod/stop',
+                        'headsign'               => 'http://vocab.org/transit/terms/headsign',
+                        'routeLabel'             => 'http://semweb.mmlab.be/ns/rplod/routeLabel',
+                        'stop'                   => [
+                            '@id'   => 'http://semweb.mmlab.be/ns/rplod/stop',
                             '@type' => '@id',
                         ],
-                        'seeAlso' => [
-                            '@id' => 'http://www.w3.org/2000/01/rdf-schema#seeAlso',
+                        'seeAlso'                => [
+                            '@id'   => 'http://www.w3.org/2000/01/rdf-schema#seeAlso',
                             '@type' => '@id',
                         ],
                     ];
@@ -218,13 +223,13 @@ class StationController extends Controller
                     foreach ($newData['@graph'] as $graph) {
                         if (strpos($graph['@id'], $liveboard_id) !== false) {
                             $context = [
-                                'delay' => 'http://semweb.mmlab.be/ns/rplod/delay',
-                                'platform' => 'http://semweb.mmlab.be/ns/rplod/platform',
+                                'delay'                  => 'http://semweb.mmlab.be/ns/rplod/delay',
+                                'platform'               => 'http://semweb.mmlab.be/ns/rplod/platform',
                                 'scheduledDepartureTime' => 'http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime',
-                                'headsign' => 'http://vocab.org/transit/terms/headsign',
-                                'routeLabel' => 'http://semweb.mmlab.be/ns/rplod/routeLabel',
-                                'stop' => [
-                                    '@id' => 'http://semweb.mmlab.be/ns/rplod/stop',
+                                'headsign'               => 'http://vocab.org/transit/terms/headsign',
+                                'routeLabel'             => 'http://semweb.mmlab.be/ns/rplod/routeLabel',
+                                'stop'                   => [
+                                    '@id'   => 'http://semweb.mmlab.be/ns/rplod/stop',
                                     '@type' => '@id',
                                 ],
                             ];
@@ -259,17 +264,17 @@ class StationController extends Controller
                     }
                     // First, define the context
                     $context = [
-                        'delay' => 'http://semweb.mmlab.be/ns/rplod/delay',
-                        'platform' => 'http://semweb.mmlab.be/ns/rplod/platform',
+                        'delay'                  => 'http://semweb.mmlab.be/ns/rplod/delay',
+                        'platform'               => 'http://semweb.mmlab.be/ns/rplod/platform',
                         'scheduledDepartureTime' => 'http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime',
-                        'headsign' => 'http://vocab.org/transit/terms/headsign',
-                        'routeLabel' => 'http://semweb.mmlab.be/ns/rplod/routeLabel',
-                        'stop' => [
-                            '@id' => 'http://semweb.mmlab.be/ns/rplod/stop',
+                        'headsign'               => 'http://vocab.org/transit/terms/headsign',
+                        'routeLabel'             => 'http://semweb.mmlab.be/ns/rplod/routeLabel',
+                        'stop'                   => [
+                            '@id'   => 'http://semweb.mmlab.be/ns/rplod/stop',
                             '@type' => '@id',
                         ],
-                        'seeAlso' => [
-                            '@id' => 'http://www.w3.org/2000/01/rdf-schema#seeAlso',
+                        'seeAlso'                => [
+                            '@id'   => 'http://www.w3.org/2000/01/rdf-schema#seeAlso',
                             '@type' => '@id',
                         ],
                     ];
@@ -297,10 +302,10 @@ class StationController extends Controller
      * @return array
      * @throws EasyRdf_Exception
      */
-    public function departureConnection($hafas_id, $date, $train_id)
+    public function departureConnection(Request $request,$hafas_id, $date, $train_id)
     {
         $negotiator = new FormatNegotiator();
-        $acceptHeader = Request::header('accept');
+        $acceptHeader = \Illuminate\Support\Facades\Request::header('accept');
         $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = $result->getValue();
@@ -340,13 +345,13 @@ class StationController extends Controller
                     case 'application/ld+json':
                     default:
                         $context = [
-                            'delay' => 'http://semweb.mmlab.be/ns/rplod/delay',
-                            'platform' => 'http://semweb.mmlab.be/ns/rplod/platform',
+                            'delay'                  => 'http://semweb.mmlab.be/ns/rplod/delay',
+                            'platform'               => 'http://semweb.mmlab.be/ns/rplod/platform',
                             'scheduledDepartureTime' => 'http://semweb.mmlab.be/ns/rplod/scheduledDepartureTime',
-                            'headsign' => 'http://vocab.org/transit/terms/headsign',
-                            'routeLabel' => 'http://semweb.mmlab.be/ns/rplod/routeLabel',
-                            'stop' => [
-                                '@id' => 'http://semweb.mmlab.be/ns/rplod/stop',
+                            'headsign'               => 'http://vocab.org/transit/terms/headsign',
+                            'routeLabel'             => 'http://semweb.mmlab.be/ns/rplod/routeLabel',
+                            'stop'                   => [
+                                '@id'   => 'http://semweb.mmlab.be/ns/rplod/stop',
                                 '@type' => '@id',
                             ],
                         ];
@@ -366,11 +371,11 @@ class StationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function liveboard($id)
+    public function liveboard(Request $request, $id)
     {
         $guzzleClient = new Client();
         $negotiator = new FormatNegotiator();
-        $acceptHeader = Request::header('accept');
+        $acceptHeader = \Illuminate\Support\Facades\Request::header('accept');
         $priorities = ['application/json', 'text/html', '*/*'];
         $result = $negotiator->getBest($acceptHeader, $priorities);
         $val = 'text/html';
@@ -389,7 +394,9 @@ class StationController extends Controller
 
                     return Response::view('stations.liveboard', $data)
                         ->header('Content-Type', 'text/html')
-                        ->header('Vary', 'accept');
+                        ->header('Vary', 'accept')
+                        ->header('Expires', (new Carbon())->addHours(24)->toAtomString())
+                        ->header('Cache-Control', 'max-age=86400, s-maxage=43200');
                     break;
                 } catch (\App\Exceptions\StationConversionFailureException $ex) {
                     App::abort(404);
@@ -405,7 +412,7 @@ class StationController extends Controller
                         throw new \App\Exceptions\StationConversionFailureException();
                     }
                     //Check for optional time parameters
-                    $datetime = Input::get('datetime');
+                    $datetime = $request->input('datetime');
 
                     if (isset($datetime) && strtotime($datetime)) {
                         $datetime = strtotime($datetime);
@@ -427,7 +434,9 @@ class StationController extends Controller
                         return Response::make($jsonLD, 200)
                             ->header('Content-Type', 'application/ld+json')
                             ->header('Vary', 'accept')
-                            ->header('access-control-allow-origin', '*');
+                            ->header('access-control-allow-origin', '*')
+                            ->header('Expires', (new Carbon())->addSeconds(30)->toAtomString())
+                            ->header('Cache-Control', 'max-age=30');
                     } catch (Exception $ex) {
                         $error = (string) json_encode(['error' => 'An error occured while parsing the data']);
 

@@ -20,8 +20,8 @@ _Want more features? Please do contribute by adding [feature requests](https://g
 
 ### Step 0: Requirements and clone ###
 
-* PHP 5.5+ for Laravel project
-* Apache
+* PHP 5.5+ for Laravel project. PHP 7.0 or higher is recommended if you're setting up a new environment. The php_intl module is required to run this project.
+* NGINX, Apache, or any other server software of your choice.
 * Composer (get it here: http://getcomposer.org)
 * Grunt (get it here: https://gruntjs.com/getting-started)
 * Compass (get it here: http://compass-style.org/install/)
@@ -31,6 +31,8 @@ Clone the repository:
 ```bash
 git clone https://github.com/iRail/hyperRail.git
 ```
+
+Set up your server software to pass requests to the hostname of your choice to `public/index.php`
 
 ### Step 1: Install / Update dependencies ###
 In order to install the dependencies you have to run:
