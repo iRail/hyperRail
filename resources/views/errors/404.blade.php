@@ -12,7 +12,7 @@
                         <p class="text-center h1"><i class="fa fa-question-circle fa-3x text-center"></i>
                         </p>
                         <h3><strong>404</strong>: {{Lang::get('client.404ErrorTitle')}}</h3>
-                        @if(starts_with($exception->getMessage(),'client.'))
+                        @if(str_starts_with($exception->getMessage(),'client.'))
                             <p>{{Lang::get('client.cause')}}: {{ Lang::get($exception->getMessage()) }}</p>
                         @else
                             <p>{{Lang::get('client.404Explanation')}} <a href="mailto:iRail@list.iRail.be">{{Lang::get('client.errorMail')}}</a>.</p>
