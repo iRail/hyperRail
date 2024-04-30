@@ -92,7 +92,7 @@ class RouteController extends Controller
             $fromId = str_replace('http://irail.be/stations/NMBS/', '', $from);
             $toId = str_replace('http://irail.be/stations/NMBS/', '', $to);
             try {
-                $json = file_get_contents('http://api.irail.be/connections.php?to='
+                $json = file_get_contents('https://api.irail.be/v1/connections/?to='
                     . $toId . '&from=' . $fromId . '&date=' . $date . '&time=' .
                     $time . '&timeSel=' . $timeSel . '&lang=' . $lang . '&format=json');
 

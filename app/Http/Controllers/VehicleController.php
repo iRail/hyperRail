@@ -35,7 +35,7 @@ class VehicleController extends Controller
         $val = $result->getValue();
 
         // Set up path to old api
-        $URL = 'http://api.irail.be/vehicle/?id='.$train_id.
+        $URL = 'https://api.irail.be/v1/vehicle/?id='.$train_id.
             '&lang=nl&format=json';
 
         // Get the contents.

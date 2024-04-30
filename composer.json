@@ -18,7 +18,7 @@
     "require-dev": {
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "^9.0",
-        "phpspec/phpspec": "^6.3"
+        "phpspec/phpspec": "^7.5"
     },
     "autoload": {
         "classmap": [
