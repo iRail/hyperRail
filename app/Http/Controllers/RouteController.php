@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -92,11 +93,14 @@ class RouteController extends Controller
             $fromId = str_replace('http://irail.be/stations/NMBS/', '', $from);
             $toId = str_replace('http://irail.be/stations/NMBS/', '', $to);
             try {
-                $json = file_get_contents('https://api.irail.be/v1/connections/?to='
+                $url = 'https://api.irail.be/v1/connections/?to='
                     . $toId . '&from=' . $fromId . '&date=' . $date . '&time=' .
-                    $time . '&timeSel=' . $timeSel . '&lang=' . $lang . '&format=json');
+                    $time . '&timeSel=' . $timeSel . '&lang=' . $lang . '&format=json';
+                $guzzleClient = new Client();
+                $guzzleRequest = $guzzleClient->get($url)->withAddedHeader('User-Agent', 'irail.be');
+                $data = $guzzleRequest->getBody();
 
-                return trim($json);
+                return trim($data);
             } catch (ErrorException $ex) {
                 return [
                     'connection' => [],

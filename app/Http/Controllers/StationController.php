@@ -121,13 +121,13 @@ class StationController extends Controller
 
                 if (! $archived) {
                     // Set up path to old api
-                    $URL = 'https://api.irail.be/v1/liveboard/?station='.urlencode($stationStringName->name).
+                    $url = 'https://api.irail.be/v1/liveboard/?station='.urlencode($stationStringName->name).
                         '&date='.date('dmy', $datetime).'&time='.date('Hi', $datetime).
                         '&lang=nl&format=json';
 
                     // Get the contents.
                     $guzzleClient = new Client();
-                    $guzzleRequest = $guzzleClient->get($URL);
+                    $guzzleRequest = $guzzleClient->get($url)->withAddedHeader('User-Agent', 'irail.be');
                     $data = $guzzleRequest->getBody();
 
                     // Convert the data to the new liveboard object

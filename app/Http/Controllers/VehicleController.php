@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
-use Negotiation\FormatNegotiator;
 use Illuminate\Support\Facades\App;
-use Illuminate\Http\Request;
+use Negotiation\FormatNegotiator;
 
 class VehicleController extends Controller
 {
@@ -40,9 +39,9 @@ class VehicleController extends Controller
 
         // Get the contents.
         $guzzleClient = new Client();
-        $guzzleRequest = $guzzleClient->get($URL);
+        $guzzleRequest = $guzzleClient->get($URL)->withAddedHeader('User-Agent', 'irail.be');
         $data = $guzzleRequest->getBody();
-        $data = \GuzzleHttp\json_decode($data, true);
+        $data = json_decode($data, true);
 
         switch ($val) {
             case 'text/html':
