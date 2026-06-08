@@ -12,7 +12,7 @@ return [
      |
      */
 
-    'enabled' => null,
+    'enabled' => false,
 
     /*
      |--------------------------------------------------------------------------
@@ -27,7 +27,7 @@ return [
      |
      */
     'storage' => [
-        'enabled' => true,
+        'enabled' => false,
         'driver' => 'file', // redis, file, pdo
         'path' => storage_path().'/debugbar', // For file driver
         'connection' => null,   // Leave null for default connection (Redis/PDO)
@@ -59,7 +59,7 @@ return [
      |
      */
 
-    'capture_ajax' => true,
+    'capture_ajax' => false,
 
     /*
      |--------------------------------------------------------------------------
@@ -140,7 +140,7 @@ return [
      |
      */
 
-    'inject' => true,
+    'inject' => false,
 
     /*
      |--------------------------------------------------------------------------

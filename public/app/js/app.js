@@ -6,10 +6,12 @@ var irailapp = angular.module('irailapp',
     [
         'ui.bootstrap',
         'ngAnimate',
+        'irailapp.services',
         'irailapp.controllers'
     ]
 );
 
+angular.module('irailapp.services', []);
 angular.module('irailapp.controllers', []);
 
 /**

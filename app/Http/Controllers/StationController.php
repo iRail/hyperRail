@@ -42,11 +42,41 @@ class StationController extends Controller
     }
 
     /**
+     * Uses irail\stations\Stations to resolve one exact station by id.
+     *
+     * @param string $id
+     *
+     * @return object
+     */
+    private function getStationById($id)
+    {
+        $station = Stations::getStationFromID($id);
+        $stations = Stations::getStations('');
+
+        $result = new \stdClass();
+        $result->{'@context'} = $stations->{'@context'};
+        $result->{'@graph'} = [];
+
+        if ($station) {
+            $result->{'@id'} = $station->{'@id'};
+            $result->{'@graph'}[] = $station;
+        } else {
+            $result->{'@id'} = $stations->{'@id'}.'?id='.$id;
+        }
+
+        return $result;
+    }
+
+    /**
      * @param Request $request
      * @return \Illuminate\Http\Response|\Illuminate\View\View
      */
     public function index(Request $request)
     {
+        $stations = $request->filled('id')
+            ? $this->getStationById($request->input('id'))
+            : $this->getStations($request->input('q'));
+
         // Let the FormatNegotiator find out what to do with the request.
         $negotiator = new FormatNegotiator();
         $acceptHeader = \Illuminate\Support\Facades\Request::header('accept');
@@ -66,7 +96,7 @@ class StationController extends Controller
             case 'application/json':
             case 'application/ld+json':
             default:
-                return Response::make(json_encode($this->getStations($request->input('q'))), 200)
+                return Response::make(json_encode($stations), 200)
                     ->header('Content-Type', 'application/ld+json')
                     ->header('Vary', 'accept')
                     ->header('access-control-allow-origin', '*')

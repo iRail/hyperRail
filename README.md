@@ -14,7 +14,6 @@ _Looking for data? Check https://hello.irail.be for more info_
  * Implemented: [Content negotiation](https://en.wikipedia.org/wiki/Content_negotiation) for languages (en, fr, nl and de) and content-types (application/json and text/html)
  * Implemented: auto-complete for [all SNCB stations](https://irail.be/stations/NMBS)
  * Implemented: route planning interface
- * Planned: support for the [Hydra Linked Data vocabulary](http://www.hydra-cg.com/) for [hypermedia](https://en.wikipedia.org/wiki/Hypermedia)
 
 _Want more features? Please do contribute by adding [feature requests](https://github.com/iRail/hyperRail/issues/new). Are you a developer? We accept pull requests!_
 

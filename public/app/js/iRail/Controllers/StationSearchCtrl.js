@@ -1,37 +1,9 @@
-var StationSearchCtrl = function ($scope, $http, $filter, $timeout) {
+var StationSearchCtrl = function ($scope, $http, $filter, $timeout, StationAutocompleteService) {
+
+  StationAutocompleteService.setDebounce(180);
   
   $scope.getStations = function(query) {
-    return $http.get('', {
-      params: {
-        q: query
-      }
-    }).then(function(res){
-      var lang = $('html').attr("lang");
-      
-      for( i in res["data"]["@graph"] ){
-        var station = res["data"]["@graph"][i];
-
-        //only if there are alternatives
-        if (station["alternative"]){
-          //array of alternatives
-          if ( station["alternative"] instanceof Array ){
-            var j = 0;
-            while ( j < station["alternative"].length 
-              && station["alternative"][j]["@language"] != lang){
-              j++;
-            }
-
-            if ( j < station["alternative"].length ){ //one found in right lang => switch
-              station["name"] = station["alternative"][j]["@value"];
-            }
-          }else if (station["alternative"]["@language"] == lang){ //single alternative
-            station["name"] = station["alternative"]["@value"];
-          }
-        }
-      }
-
-      return res["data"]["@graph"];
-    });
+    return StationAutocompleteService.searchStations(query);
   };
 
   $(document).keypress( function (e) {
@@ -51,5 +23,6 @@ angular.module('irailapp.controllers')
     '$http',
     '$filter',
     '$timeout',
+    'StationAutocompleteService',
     StationSearchCtrl
   ]);

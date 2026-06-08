@@ -1,4 +1,11 @@
-var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
+/*global GetURLParameter */
+var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window, StationAutocompleteService) {
+
+  StationAutocompleteService.setDebounce(180);
+
+  function getQueryParameter(name) {
+    return GetURLParameter(name);
+  }
 
   /*--------------------------------------------------------
    * INITIAL VARIABLES & SETUP
@@ -69,46 +76,12 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
    * @param string
    */
   $scope.findStationById = function (suppliedIdentifierString) {
-    for (var i = 0, len = $scope.stations['@graph'].length; i < len; i=i+1) {
-      if (($scope.stations["@graph"][i]["@id"]).indexOf(suppliedIdentifierString) !== -1) {
-        return $scope.stations["@graph"][i];
-      }
-    }
+    return StationAutocompleteService.getStationById(suppliedIdentifierString);
   };
 
 
   $scope.getStations = function(query) {
-    return $http.get('/stations/NMBS', {
-      params: {
-        q: query
-      }
-    }).then(function(res){
-      var lang = $('html').attr("lang");
-
-      for( i in res["data"]["@graph"] ){
-        var station = res["data"]["@graph"][i];
-
-        //only if there are alternatives
-        if (station["alternative"]){
-          //array of alternatives
-          if ( station["alternative"] instanceof Array ){
-            var j = 0;
-            while ( j < station["alternative"].length
-              && station["alternative"][j]["@language"] != lang){
-              j++;
-            }
-
-            if ( j < station["alternative"].length ){ //one found in right lang => switch
-              station["name"] = station["alternative"][j]["@value"];
-            }
-          }else if (station["alternative"]["@language"] == lang){ //single alternative
-            station["name"] = station["alternative"]["@value"];
-          }
-        }
-      }
-
-      return res["data"]["@graph"];
-    });
+    return StationAutocompleteService.searchStations(query);
   };
 
   /**
@@ -146,16 +119,6 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
       $scope.confirmRouteSearch();
       // If not bound, try to bind data
     } else {
-      for (var i = 0, len = $scope.stations["@graph"].length; i < len; i=i+1) {
-        if (($scope.stations["@graph"][i].name.toLowerCase()).indexOf($scope.departure.toLowerCase()) !== -1) {
-          arr = $scope.stations["@graph"];
-          $scope.departure = arr[i];
-        }
-        if (($scope.stations["@graph"][i].name.toLowerCase()).indexOf($scope.destination.toLowerCase()) !== -1) {
-          arr = $scope.stations["@graph"];
-          $scope.destination = arr[i];
-        }
-      }
       $scope.confirmRouteSearch();
     }
     // TODO: Check if select box has been set
@@ -164,7 +127,7 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
   /**
    * Resets the route planner to default values
    */
-  $scope.resetplanner = function (e) {
+  $scope.resetplanner = function () {
     $window.location.reload();
   };
 
@@ -201,51 +164,46 @@ var PlannerCtrl = function ($scope, $http, $filter, $timeout, $window) {
     $scope.confirmRouteSearch();
   };
 
-  // Fetch stations via HTTP GET request
-  $http.get("stations/NMBS",{header:{"Accept":"application/json"}}).success(function (data) {
-    $scope.stations = data;
-    // Check if URL params are set
-    var dep = decodeURIComponent(GetURLParameter("from"));
-    var des =  decodeURIComponent(GetURLParameter("to"));
-    var urltime = GetURLParameter("time");
-    var dateparam = GetURLParameter("date");
-    var timeoption = GetURLParameter("timeSel");
-    if (dep !== "undefined" && des !== "undefined") {
-      // Get departure and destination id from URL
-      $scope.departure = $scope.findStationById(dep);
-      $scope.destination = $scope.findStationById(des);
-      // Get date
-      var parts = /^(\d\d)(\d\d)(\d{2})$/.exec(dateparam);
-      $scope.mydate = new Date( 20 + parts[3], parts[2]-1, parts[1] );
-      // Get time
-      var dat = new Date(), time = urltime.split(/^(\d\d)(\d\d)$/);
-      dat.setHours(time[1]);
-      dat.setMinutes(time[2]);
-      $scope.mytime = dat;
-      // Get time option
-      if (timeoption === "arrive") {
-        $scope.timeoption = "arrive";
-      }
-      else {
-        $scope.timeoption = "depart";
-      }
-      $scope.confirmRouteSearch();
-    } else if (GetURLParameter("from") !== "undefined") {
-      try {
-        $scope.departure = $scope.findStationById(decodeURIComponent(GetURLParameter("from")));
-      }
-      catch (ex) {
-        //console.log("Could not link departure station from URL.");
-      }
-    } else if (GetURLParameter("to") !== "undefined") {
-      try {
-        $scope.destination = $scope.findStationById(decodeURIComponent(GetURLParameter("to")));
-      }
-      catch (ex) {
-        //console.log("Could not link destination station from URL.");
-      }
+  // Check if URL params are set
+  var dep = decodeURIComponent(getQueryParameter("from"));
+  var des =  decodeURIComponent(getQueryParameter("to"));
+  var urltime = getQueryParameter("time");
+  var dateparam = getQueryParameter("date");
+  var timeoption = getQueryParameter("timeSel");
+  if (dep !== "undefined" && des !== "undefined") {
+    // Get date
+    var parts = /^(\d\d)(\d\d)(\d{2})$/.exec(dateparam);
+    $scope.mydate = new Date( 20 + parts[3], parts[2]-1, parts[1] );
+    // Get time
+    var dat = new Date(), time = urltime.split(/^(\d\d)(\d\d)$/);
+    dat.setHours(time[1]);
+    dat.setMinutes(time[2]);
+    $scope.mytime = dat;
+    // Get time option
+    if (timeoption === "arrive") {
+      $scope.timeoption = "arrive";
     }
-  });
+    else {
+      $scope.timeoption = "depart";
+    }
+
+    StationAutocompleteService.getStationById(dep).then(function (station) {
+      $scope.departure = station;
+
+      return StationAutocompleteService.getStationById(des);
+    }).then(function (station) {
+      $scope.destination = station;
+      $scope.confirmRouteSearch();
+    });
+  } else if (getQueryParameter("from") !== "undefined") {
+    StationAutocompleteService.getStationById(decodeURIComponent(getQueryParameter("from"))).then(function (station) {
+      $scope.departure = station;
+    });
+  } else if (getQueryParameter("to") !== "undefined") {
+    StationAutocompleteService.getStationById(decodeURIComponent(getQueryParameter("to"))).then(function (station) {
+      $scope.destination = station;
+    });
+  }
   $scope.getHours = function(minutes){
     var hours = Math.floor(minutes/60),
         str = "";
@@ -311,5 +269,6 @@ angular.module("irailapp.controllers")
         "$filter",
         "$timeout",
         "$window",
+        "StationAutocompleteService",
         PlannerCtrl
     ]);
